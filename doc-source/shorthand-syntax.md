@@ -1,0 +1,79 @@
+# Using Shorthand Syntax with the AWS Command Line Interface<a name="shorthand-syntax"></a>
+
+While the AWS Command Line Interface can take nonscalar option parameters in JSON format, it can be tedious to type large JSON lists or structures on the command line\. To address this issue, the AWS CLI supports a shorthand syntax that allows simpler representation of your option parameters than using the full JSON format\.
+
+## Structure Parameters<a name="shorthand-syntax-structure-parameters"></a>
+
+The shorthand syntax in the AWS CLI makes it easier for users to input parameters that are flat \(non\-nested structures\)\. The format is a comma separate list of key value pairs:
+
+**Linux, macOS, or Unix**
+
+```
+--option key1=value1,key2=value2,key3=value3
+```
+
+**Windows PowerShell**
+
+```
+--option "key1=value1,key2=value2,key3=value3"
+```
+
+This is equivalent to the following example formatted in JSON:
+
+```
+--option '{"key1":"value1","key2":"value2","key3":"value3"}'
+```
+
+There must be no whitespace between each comma\-separated key/value pair\. Here is an example of the DynamoDB `update-table` command with the `--provisioned-throughput` option specified in shorthand\.
+
+```
+$ aws dynamodb update-table --provisioned-throughput ReadCapacityUnits=15,WriteCapacityUnits=10 --table-name MyDDBTable
+```
+
+This is equivalent to the following example formatted in JSON:
+
+```
+$ aws dynamodb update-table --provisioned-throughput '{"ReadCapacityUnits":15,"WriteCapacityUnits":10}' --table-name MyDDBTable
+```
+
+## List Parameters<a name="shorthand-syntax-list-parameters"></a>
+
+Input parameters in a list form can be specified in two ways: JSON and shorthand\. The AWS CLI's shorthand syntax is designed to make it easier to pass in lists with number, string, or non\-nested structures\. The basic format is shown here, where values in the list are separated by a single space\.
+
+```
+--option value1 value2 value3
+```
+
+This is equivalent to the following example formatted in JSON\.
+
+```
+--option '[value1,value2,value3]'
+```
+
+As previously mentioned, you can specify a list of numbers, a list of strings, or a list of non\-nested structures in shorthand\. The following is an example of the `stop-instances` command for Amazon EC2, where the input parameter \(list of strings\) for the `--instance-ids` option is specified in shorthand\.
+
+```
+$ aws ec2 stop-instances --instance-ids i-1486157a i-1286157c i-ec3a7e87
+```
+
+This is equivalent to the following example formatted in JSON\.
+
+```
+$ aws ec2 stop-instances --instance-ids '["i-1486157a","i-1286157c","i-ec3a7e87"]'
+```
+
+Next is an example of the Amazon EC2 `create-tags` command, which takes a list of non\-nested structures for the `--tags` option\. The `--resources` option specifies the ID of the instance to be tagged\.
+
+```
+$ aws ec2 create-tags --resources i-1286157c --tags Key=My1stTag,Value=Value1 Key=My2ndTag,Value=Value2 Key=My3rdTag,Value=Value3
+```
+
+This is equivalent to the following example formatted in JSON\. The JSON parameter is written in multiple lines for readability\.
+
+```
+$ aws ec2 create-tags --resources i-1286157c --tags '[
+  {"Key": "My1stTag", "Value": "Value1"},
+  {"Key": "My2ndTag", "Value": "Value2"},
+  {"Key": "My3rdTag", "Value": "Value3"}
+]'
+```
