@@ -15,7 +15,7 @@ The bundled installer does not support installing to paths that contain spaces\.
 
 + Linux, macOS, or Unix
 
-+ Python 2 version 2\.6\.5\+ or Python 3 version 3\.3\+
++ Python 2 version 2\.7\+ or Python 3 version 3\.3\+
 
 Check your Python installation:
 
