@@ -17,7 +17,7 @@ If you don't have pip, check to see which version of Python is installed\.
 $ python --version
 ```
 
-**or**
+or
 
 ```
 $ python3 --version
@@ -50,6 +50,12 @@ If you don't have `pip`, install `pip` with the script provided by the Python Pa
 
    ```
    $ python get-pip.py --user
+   ```
+
+   or
+
+   ```
+   $ python3 get-pip.py --user
    ```
 
 1. Add the executable path to your PATH variable: `~/.local/bin`
