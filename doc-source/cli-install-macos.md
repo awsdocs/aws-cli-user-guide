@@ -22,7 +22,7 @@ You can install the latest version of Python and pip and then use them to instal
 
    ```
    $ curl -O https://bootstrap.pypa.io/get-pip.py
-   $ python3 get-pip.py --user
+   $ python get-pip.py --user
    ```
 
 1. Use `pip` to install the AWS CLI\.
