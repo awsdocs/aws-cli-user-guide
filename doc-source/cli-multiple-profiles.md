@@ -38,7 +38,7 @@ The AWS credentials file uses a different naming format than the CLI config file
 To use a named profile, add the `--profile` option to your command\. The following example lists running instances using the `user2` profile from the previous section\.
 
 ```
-$ aws ec2 describe-instances --profile user2
+$ aws ec2 describe-instances --region us-east-1 --profile user2
 ```
 
 If you are going to use a named profile for multiple commands, you can avoid specifying the profile in every command by setting the AWS\_PROFILE environment variable at the command line:
