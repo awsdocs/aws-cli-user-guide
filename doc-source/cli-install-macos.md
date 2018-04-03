@@ -28,7 +28,7 @@ You can install the latest version of Python and pip and then use them to instal
 1. Use `pip` to install the AWS CLI\.
 
    ```
-   $ pip3 install awscli --upgrade --user
+   $ pip install awscli --upgrade --user
    ```
 
 1. Verify that the AWS CLI is installed correctly\.
@@ -43,7 +43,7 @@ You can install the latest version of Python and pip and then use them to instal
 To upgrade to the latest version, run the installation command again:
 
 ```
-$ pip3 install awscli --upgrade --user
+$ pip install awscli --upgrade --user
 ```
 
 ## Adding the AWS CLI Executable to your Command Line Path<a name="awscli-install-osx-path"></a>
