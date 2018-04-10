@@ -54,3 +54,6 @@ $ export NO_PROXY=169.254.169.254
 ```
 > set NO_PROXY=169.254.169.254
 ```
+
+**Note**  
+Uppercase environment variables mentioned in this article are overriden by their lowercase version.
