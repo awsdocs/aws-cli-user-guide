@@ -30,7 +30,7 @@ $ aws ec2 delete-key-pair --key-name=-mykey
 + [Common Parameter Types](#parameter-types)
 + [Using JSON for Parameters](#cli-using-param-json)
 + [Quoting Strings](#quoting-strings)
-+ [Loading Parameters from a File](#cli-using-param-file)
++ [Loading Parameters from a URI](#cli-using-param-uri)
 
 ## Common Parameter Types<a name="parameter-types"></a>
 
@@ -209,9 +209,13 @@ If the value of a parameter is itself a JSON document, escape the quotes on the 
 $ aws sqs create-queue --queue-name my-queue --attributes '{ "RedrivePolicy":"{\"deadLetterTargetArn\":\"arn:aws:sqs:us-west-2:0123456789012:deadletter\", \"maxReceiveCount\":\"5\"}"}'
 ```
 
-## Loading Parameters from a File<a name="cli-using-param-file"></a>
+## Loading Parameters from a URI<a name="cli-using-param-uri"></a>
 
-To avoid the need to escape JSON strings at the command line, load the JSON from a file\. Load parameters from a local file by providing the path to the file using the `file://` prefix, as in the following examples\. 
+Sometimes it's convenient to load a parameter value from a local or remote file, in these cases the below URI formats can be used to provide the path to the file\. This behaviour is disabled for some parameters on commands where the underlying API expects a URI, for example CloudFormation Template URI's\. Also the behaviour can be disabled overall by adding `cli_follow_urlparam = false` to the configuration file\.
+
+### Loading Parameters from a local file<a name="cli-using-param-file"></a>
+
+This can be useful to avoid the need to escape JSON strings at the command line\. Load parameters from a local file by providing the path to the file using the `file://` prefix, as in the following examples\.
 
 **Linux, macOS, or Unix**
 
