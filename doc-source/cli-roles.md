@@ -12,6 +12,23 @@ source_profile = default
 
 In this case, the default profile is an IAM user with credentials and permission to assume a role named marketingadmin\. To access the role, you create a named profile\. Instead of configuring this profile with credentials, you specify the ARN of the role and the name of the profile that has access to it\.
 
+You may also want to use an Instance Profile (EC2 Metadata) or an ECSContainer Role in place of IAM user keys to avoid storing long lived credentials completely\.
+In that case you could replace the source_profile attribute with credential_source and specify how to source the credential that will allow to assume the specified role\. valid values are\:
+
++ Environment to pull source credentials from environment variables.
++ Ec2InstanceMetadata to use the EC2 instance role as source credentials.
++ EcsContainer to use the ECS container credentials as the source credentials.
+
+The following example shows the same `marketingadmin` role assumed using an Instance Profile (EC2 Metadata) Role\:
+```
+[profile marketingadmin]
+role_arn = arn:aws:iam::123456789012:role/marketingadmin
+credential_source = Ec2InstanceMetadata
+```
+
+For further reference see [ AWS CLI Configuration Variables ](https://docs.aws.amazon.com/cli/latest/topic/config-vars.html)\.
+
+
 
 + [Configuring and Using a Role](#cli-role-prepare)
 + [Using Multifactor Authentication](#cli-roles-mfa)
@@ -126,6 +143,8 @@ source_profile = default
 mfa_serial = arn:aws:iam::123456789012:mfa/jonsmith
 external_id = 123456
 ```
+
+For further reference see [ AWS CLI Configuration Variables ](https://docs.aws.amazon.com/cli/latest/topic/config-vars.html)\.
 
 ## Clearing Cached Credentials<a name="cli-roles-cache"></a>
 
