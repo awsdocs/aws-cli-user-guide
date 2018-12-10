@@ -6,7 +6,7 @@ You can access the features of Amazon EC2 using the AWS CLI\. To list the AWS CL
 aws ec2 help
 ```
 
-Before you run any commands, set your default credentials\. For more information, see [Configuring the AWS CLI](cli-chap-getting-started.md)\.
+Before you run any commands, set your default credentials\. For more information, see [Configuring the AWS CLI](cli-chap-configure.md)\.
 
 For examples of common tasks for Amazon EC2, see the following topics\.
 

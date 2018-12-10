@@ -1,11 +1,11 @@
-# Command Completion<a name="cli-command-completion"></a>
+# Command Completion<a name="cli-configure-completion"></a>
 
-On Unix\-like systems, the AWS CLI includes a command\-completion feature that enables you to use the TAB key to complete a partially typed command\. This feature is not automatically installed so you need to configure it manually\.
+On Unix\-like systems, the AWS CLI includes a command\-completion feature that enables you to use the **TAB** key to complete a partially typed command\. On most systems, this feature is not automatically installed so you need to configure it manually\.
 
-Configuring command completion requires two pieces of information: the name of the shell you are using and the location of the aws\_completer script\.
+To configure command completion, you must have two pieces of information: the name of the shell you are using and the location of the `aws_completer` script\.
 
-**Completion on Amazon Linux**  
- Command completion is configured by default on instances running Amazon Linux\.
+**Amazon Linux**  
+Command completion is automatically configured and enabled by default on Amazon EC2 instances that run Amazon Linux\.
 
 **Topics**
 + [Identify Your Shell](#cli-command-completion-shell)
@@ -15,7 +15,7 @@ Configuring command completion requires two pieces of information: the name of t
 
 ## Identify Your Shell<a name="cli-command-completion-shell"></a>
 
-If you are not sure which shell you are using, identify it with one of the following commands:
+If you are not sure which shell you are using, you can identify it with one of the following commands:
 
 **echo $SHELL** – show the shell's installation directory\. This will usually match the in\-use shell, unless you launched a different shell after logging in\.
 
@@ -37,14 +37,14 @@ $ ps
 
  The location can vary depending on the installation method used\. 
 
- **Package Manager** – programs such as pip, yum, brew and apt\-get typically install the AWS completer \(or a symlink to it\) to a standard path location\. In this case, `which` will locate the completer for you\. 
+ **Package Manager** – programs such as `pip`, `yum`, `brew` and `apt-get` typically install the AWS completer \(or a symlink to it\) to a standard path location\. In this case, the `which` command can locate the completer for you\. 
 
 ```
 $ which aws_completer
 /usr/local/bin/aws_completer
 ```
 
- **Bundled Installer** – if you used the bundled installer per the instructions in the previous section, the AWS completer will be located in the bin subfolder of the installation directory\. 
+ **Bundled Installer** – if you used the bundled installer per the instructions in the previous section, the AWS completer is located in the `bin` subfolder of the installation directory\. 
 
 ```
 $ ls /usr/local/aws/bin

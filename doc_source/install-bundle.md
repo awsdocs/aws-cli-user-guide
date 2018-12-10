@@ -1,6 +1,6 @@
-# Install the AWS CLI Using the Bundled Installer \(Linux, macOS, or Unix\)<a name="awscli-install-bundle"></a>
+# Install the AWS CLI Using the Bundled Installer \(Linux, macOS, or Unix\)<a name="install-bundle"></a>
 
-On Linux, macOS, or Unix, you can also use the bundled installer to install the AWS CLI\. The bundled installer includes all dependencies and can be used offline\.
+On Linux, macOS, or Unix, you can use the bundled installer to install the AWS CLI\. The bundled installer includes all dependencies and can be used offline\.
 
 **Important**  
 The bundled installer does not support installing to paths that contain spaces\.
@@ -21,7 +21,7 @@ Check your Python installation:
 $ python --version
 ```
 
-If your computer doesn't already have Python installed, or you would like to install a different version of Python, follow the procedure in [Install the AWS Command Line Interface on Linux](awscli-install-linux.md)\.
+If your computer doesn't already have Python installed, or you would like to install a different version of Python, follow the procedure in [Install the AWS Command Line Interface on Linux](install-linux.md)\.
 
 ## Install the AWS CLI Using the Bundled Installer<a name="install-bundle-other"></a>
 
@@ -52,7 +52,7 @@ If you don't have `unzip`, use your Linux distribution's built in package manage
 By default, the install script runs under the system default version of Python\. If you have installed an alternative version of Python and want to use that to install the AWS CLI, run the install script with that version by absolute path to the Python executable\. For example:  
 
    ```
-   $ sudo /usr/local/bin/python2.7 awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
+   $ sudo /usr/local/bin/python3.7 awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
    ```
 
 The installer installs the AWS CLI at `/usr/local/aws` and creates the symlink `aws` at the `/usr/local/bin` directory\. Using the `-b` option to create a symlink eliminates the need to specify the install directory in the user's `$PATH` variable\. This should enable all users to call the AWS CLI by typing `aws` from any directory\.

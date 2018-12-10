@@ -1,6 +1,6 @@
-# Install the AWS Command Line Interface on macOS<a name="cli-install-macos"></a>
+# Install the AWS Command Line Interface on macOS<a name="install-macos"></a>
 
-The recommended way of installing the AWS CLI on macOS is to use the bundle installer\. The bundled installer includes all dependencies and can be used offline\.
+The recommended way of installing the AWS CLI on macOS is to use the bundled installer\. The bundled installer includes all dependencies and can be used offline\.
 
 **Important**  
 The bundled installer does not support installing to paths that contain spaces\.
@@ -20,7 +20,7 @@ Check your Python installation:
 $ python --version
 ```
 
-If your computer doesn't already have Python installed, or you would like to install a different version of Python, follow the procedure in [Install the AWS Command Line Interface on Linux](awscli-install-linux.md)\.
+If your computer doesn't already have Python installed, or you would like to install a different version of Python, follow the procedure in [Install the AWS Command Line Interface on Linux](install-linux.md)\.
 
 ## Install the AWS CLI Using the Bundled Installer<a name="install-bundle-macos"></a>
 
@@ -40,21 +40,21 @@ Follow these steps from the command line to install the AWS CLI using the bundle
    $ unzip awscli-bundle.zip
    ```
 **Note**  
-If you don't have `unzip`, use your Linux distribution's built in package manager to install it\.
+If you don't have `unzip`, use your Linux distribution's built\-in package manager to install it\.
 
-1. Run the install executable\.
+1. Run the install program\.
 
    ```
    $ sudo ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
    ```
 **Note**  
-By default, the install script runs under the system default version of Python\. If you have installed an alternative version of Python and want to use that to install the AWS CLI, run the install script with that version by absolute path to the Python executable\. For example:  
+By default, the install script runs under the system's default version of Python\. If you have installed an alternative version of Python and want to use that to install the AWS CLI, run the install script specifying that version by including the absolute path to the Python program\. For example:  
 
    ```
-   $ sudo /usr/local/bin/python2.7 awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
+   $ sudo /usr/local/bin/python3.6 awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
    ```
 
-The installer installs the AWS CLI at `/usr/local/aws` and creates the symlink `aws` at the `/usr/local/bin` directory\. Using the `-b` option to create a symlink eliminates the need to specify the install directory in the user's `$PATH` variable\. This should enable all users to call the AWS CLI by typing `aws` from any directory\.
+This command installs the AWS CLI to `/usr/local/aws` and creates the symlink `aws` in the `/usr/local/bin` directory\. Using the `-b` option to create a symlink eliminates the need to specify the install directory in the user's `$PATH` variable\. This should enable all users to call the AWS CLI by typing `aws` from any directory\.
 
 To see an explanation of the `-i` and `-b` options, use the `-h` option:
 
@@ -64,7 +64,7 @@ $ ./awscli-bundle/install -h
 
 ## Install the AWS CLI on macOS Using pip<a name="awscli-install-osx-pip"></a>
 
-You can also use pip directly to install AWS CLI\. If you don't have pip, follow the instructions in the main [installation topic](installing.md)\. Run `pip --version` to see if your version of macOS already includes Python and pip\.
+You can also use pip directly to install AWS CLI\. If you don't have pip, follow the instructions in the main [installation topic](cli-chap-install.md)\. Run `pip --version` to see if your version of macOS already includes Python and pip\.
 
 ```
 $ pip --version
@@ -72,44 +72,44 @@ $ pip --version
 
 **To install the AWS CLI on macOS**
 
-1. Download and install Python 3\.6 from the [downloads page](https://www.python.org/downloads/release/python-361/) of [Python\.org](https://www.python.org)\.
+1. Download and install Python 3\.6 from the [downloads page](https://www.python.org/downloads/mac-osx/) of [Python\.org](https://www.python.org)\.
 
-1. Install `pip` with the script provided by the Python Packaging Authority\.
+1. Download and run the `pip` installation script provided by the Python Packaging Authority\.
 
    ```
    $ curl -O https://bootstrap.pypa.io/get-pip.py
    $ python3 get-pip.py --user
    ```
 
-1. Use `pip` to install the AWS CLI\.
+1. Use your newly installed `pip` to install the AWS CLI\.
 
    ```
-   $ pip3 install awscli --upgrade --user
+   $ pip install awscli --upgrade --user
    ```
 
 1. Verify that the AWS CLI is installed correctly\.
 
    ```
    $ aws --version
-   AWS CLI 1.11.84 (Python 3.6.1)
+   AWS CLI 1.16.67 (Python 3.7.1)
    ```
 
-   If the executable is not found, [add it to your command line path](#awscli-install-osx-path)\.
+   If the program is not found, [add it to your command line path](#awscli-install-osx-path)\.
 
 To upgrade to the latest version, run the installation command again:
 
 ```
-$ pip3 install awscli --upgrade --user
+$ pip install awscli --upgrade --user
 ```
 
 ## Adding the AWS CLI Executable to your Command Line Path<a name="awscli-install-osx-path"></a>
 
-After installing with `pip`, you may need to add the `aws` executable to your OS's `PATH` environment variable\. The location of the executable depends on where Python is installed\.
+After installing with `pip`, you may need to add the `aws` program to your OS's `PATH` environment variable\. The location of the program depends on where Python is installed\.
 
-**Example AWS CLI install location \- macOS with Python 3\.6 and pip \(user mode\)**  
+**Example AWS CLI install location \- macOS with Python 3\.7 and pip \(user mode\)**  
 
 ```
-~/Library/Python/3.6/bin
+~/Library/Python/3.7/bin
 ```
 
 If you don't know where Python is installed, run `which python`\.
@@ -119,14 +119,14 @@ $ which python
 /usr/local/bin/python
 ```
 
-The output may be the path to a symlink, not the actual executable\. Run `ls -al` to see where it points\.
+The output may be the path to a symlink, not the actual program\. Run `ls -al` to see where it points\.
 
 ```
 $ ls -al /usr/local/bin/python
-~/Library/Python/3.6/bin/python3.6
+~/Library/Python/3.7/bin/python3.7
 ```
 
-`pip` installs executables to the same folder that contains the Python executable\. Add this folder to your PATH variable\.
+`pip` installs programs in the same folder that contains the Python program\. Add this folder to your PATH variable\.
 
 **To modify your PATH variable \(Linux, macOS, or Unix\)**
 

@@ -7,7 +7,7 @@ For a complete reference to all of the available commands for each service, see 
 **Topics**
 + [Using Amazon DynamoDB with the AWS Command Line Interface](cli-dynamodb.md)
 + [Using Amazon EC2 through the AWS Command Line Interface](cli-using-ec2.md)
-+ [Using Amazon Glacier with the AWS Command Line Interface](cli-using-glacier.md)
++ [Using Amazon S3 Glacier with the AWS Command Line Interface](cli-using-glacier.md)
 + [AWS Identity and Access Management from the AWS Command Line Interface](cli-iam.md)
 + [Using Amazon S3 with the AWS Command Line Interface](cli-s3.md)
 + [Using the AWS Command Line Interface with Amazon SNS](cli-sqs-queue-sns-topic.md)

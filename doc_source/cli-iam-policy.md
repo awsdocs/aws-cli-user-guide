@@ -33,6 +33,6 @@ $ aws iam list-user-policies --user-name MyUser
 }
 ```
 
-## Additional Resources<a name="w3aac15c15c11c15"></a>
+## Additional Resources<a name="w3aac16c15c11c15"></a>
 
 For more information, see [Resources for Learning About Permissions and Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-additional-resources.html)\. This topic provides links to an overview of permissions and policies and links to examples of policies for accessing Amazon S3, Amazon EC2, and other services\.

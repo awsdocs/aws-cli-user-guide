@@ -16,7 +16,7 @@ The AWS CLI supports three different output formats:
 + Tab\-delimited text \(text\)
 + ASCII\-formatted table \(table\)
 
-As explained in the [configuration](cli-chap-getting-started.md) topic, the output format can be specified in three different ways:
+As explained in the [configuration](cli-chap-configure.md) topic, the output format can be specified in three different ways:
 + Using the `output` option in the configuration file\. The following example sets the output to `text`:
 
   ```
@@ -35,7 +35,7 @@ As explained in the [configuration](cli-chap-getting-started.md) topic, the outp
   ```
 
 **Note**  
-If the output format is specified in multiple ways, the usual [AWS CLI precedence rules](cli-chap-getting-started.md#config-settings-and-precedence) apply\. For example, using the `AWS_DEFAULT_OUTPUT` environment variable overrides any value set in the config file with `output`, and a value passed to an AWS CLI command with `--output` overrides any value set in the environment or in the config file\.
+If the output format is specified in multiple ways, the usual [AWS CLI precedence rules](cli-chap-configure.md#config-settings-and-precedence) apply\. For example, using the `AWS_DEFAULT_OUTPUT` environment variable overrides any value set in the config file with `output`, and a value passed to an AWS CLI command with `--output` overrides any value set in the environment or in the config file\.
 
 JSON is best for handling the output programmatically via various languages or `jq` \(a command\-line JSON processor\)\. The table format is easy for humans to read, and text format works well with traditional Unix text processing tools, such as `sed`, `grep`, and `awk`, as well as Windows PowerShell scripts\.
 

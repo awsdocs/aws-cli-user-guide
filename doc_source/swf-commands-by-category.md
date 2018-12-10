@@ -52,21 +52,21 @@ The following commands operate on a workflow execution\.
 
 Although you can perform administrative tasks from the Amazon SWF console, you can use the commands in this section to automate functions or build your own administrative tools\.
 
-### Activity Management<a name="w3aac15c21b9c21b5"></a>
+### Activity Management<a name="w3aac16c21b9c21b5"></a>
 + [register\-activity\-type](https://docs.aws.amazon.com/cli/latest/reference/swf/register-activity-type.html)
 + [deprecate\-activity\-type](https://docs.aws.amazon.com/cli/latest/reference/swf/deprecate-activity-type.html)
 
-### Workflow Management<a name="w3aac15c21b9c21b7"></a>
+### Workflow Management<a name="w3aac16c21b9c21b7"></a>
 + [register\-workflow\-type](https://docs.aws.amazon.com/cli/latest/reference/swf/register-workflow-type.html)
 + [deprecate\-workflow\-type](https://docs.aws.amazon.com/cli/latest/reference/swf/deprecate-workflow-type.html)
 
-### Domain Management<a name="w3aac15c21b9c21b9"></a>
+### Domain Management<a name="w3aac16c21b9c21b9"></a>
 + [register\-domain](https://docs.aws.amazon.com/cli/latest/reference/swf/register-domain.html)
 + [deprecate\-domain](https://docs.aws.amazon.com/cli/latest/reference/swf/deprecate-domain.html)
 
 For more information and examples of these domain management commands, see [Working with Amazon SWF Domains Using the AWS Command Line Interface](cli-using-swf-domains.md)\.
 
-### Workflow Execution Management<a name="w3aac15c21b9c21c11"></a>
+### Workflow Execution Management<a name="w3aac16c21b9c21c11"></a>
 + [request\-cancel\-workflow\-execution](https://docs.aws.amazon.com/cli/latest/reference/swf/request-cancel-workflow-execution.html)
 + [terminate\-workflow\-execution](https://docs.aws.amazon.com/cli/latest/reference/swf/terminate-workflow-execution.html)
 

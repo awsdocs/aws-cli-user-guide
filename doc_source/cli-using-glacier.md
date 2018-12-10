@@ -1,17 +1,17 @@
-# Using Amazon Glacier with the AWS Command Line Interface<a name="cli-using-glacier"></a>
+# Using Amazon S3 Glacier with the AWS Command Line Interface<a name="cli-using-glacier"></a>
 
- You can upload a large file to Amazon Glacier by splitting it into smaller parts and uploading them from the command line\. This topic describes the process of creating a vault, splitting a file, and configuring and executing a multipart upload to Amazon Glacier with the AWS CLI\. 
+ You can upload a large file to Glacier by splitting it into smaller parts and uploading them from the command line\. This topic describes the process of creating a vault, splitting a file, and configuring and executing a multipart upload to Glacier with the AWS CLI\. 
 
 **Note**  
 This tutorial uses several command line tools that typically come pre\-installed on Unix\-like operating systems including Linux and OS X\. Windows users can use the same tools by installing [Cygwin](https://www.cygwin.com/) and running the commands from the Cygwin terminal\. Windows native commands and utilities that perform the same functions are noted where available\.
 
 **Topics**
-+ [Create an Amazon Glacier Vault](#cli-using-glacier-vault)
++ [Create an Glacier Vault](#cli-using-glacier-vault)
 + [Prepare a File for Uploading](#cli-using-glacier-prep)
 + [Initiate a Multipart Upload and Upload Files](#cli-using-glacier-initiate)
 + [Complete the Upload](#cli-using-glacier-complete)
 
-## Create an Amazon Glacier Vault<a name="cli-using-glacier-vault"></a>
+## Create an Glacier Vault<a name="cli-using-glacier-vault"></a>
 
 Create a vault with the `aws glacier create-vault` command\. The following command creates a vault named `myvault`\.
 
@@ -61,7 +61,7 @@ creating file `chunkac'
 
 ## Initiate a Multipart Upload and Upload Files<a name="cli-using-glacier-initiate"></a>
 
-Create a multipart upload in Amazon Glacier by using the `aws glacier initiate-multipart-upload` command\.
+Create a multipart upload in Glacier by using the `aws glacier initiate-multipart-upload` command\.
 
 ```
 $ aws glacier initiate-multipart-upload --account-id - --archive-description "multipart upload test" --part-size 1048576 --vault-name myvault
@@ -71,7 +71,7 @@ $ aws glacier initiate-multipart-upload --account-id - --archive-description "mu
 }
 ```
 
-Amazon Glacier requires the size of each part in bytes \(1 MiB in this example\), your vault name, and an account ID in order to configure the multipart upload\. The AWS CLI outputs an upload ID when the operation is complete\. Save the upload ID to a shell variable for later use\.
+Glacier requires the size of each part in bytes \(1 MiB in this example\), your vault name, and an account ID in order to configure the multipart upload\. The AWS CLI outputs an upload ID when the operation is complete\. Save the upload ID to a shell variable for later use\.
 
 **Linux, macOS, or Unix**
 
@@ -105,11 +105,11 @@ $ aws glacier upload-multipart-part --upload-id $UPLOADID --body chunkac --range
 **Note**  
 The above example uses the dollar sign \("$"\) to dereference the `UPLOADID` shell variable\. On the Windows command line, use two percent signs \(i\.e\. `%UPLOADID%`\)\.
 
-You must specify the byte range of each part when you upload it so it can be reassembled in the proper order by Amazon Glacier\. Each piece is 1048576 bytes, so the first piece occupies bytes 0\-1048575, the second 1048576\-2097151, and the third 2097152\-3145727\.
+You must specify the byte range of each part when you upload it so it can be reassembled in the proper order by Glacier\. Each piece is 1048576 bytes, so the first piece occupies bytes 0\-1048575, the second 1048576\-2097151, and the third 2097152\-3145727\.
 
 ## Complete the Upload<a name="cli-using-glacier-complete"></a>
 
-Amazon Glacier requires a tree hash of the original file in order to confirm that all of the uploaded pieces reached AWS intact\. To calculate a tree hash, you split the file into 1 MiB parts and calculate a binary SHA\-256 hash of each piece\. Then you split the list of hashes into pairs, combine the two binary hashes in each pair, and take hashes of the results\. Repeat this process until there is only one hash left\. If there is an odd number of hashes at any level, promote it to the next level without modifying it\.
+Glacier requires a tree hash of the original file in order to confirm that all of the uploaded pieces reached AWS intact\. To calculate a tree hash, you split the file into 1 MiB parts and calculate a binary SHA\-256 hash of each piece\. Then you split the list of hashes into pairs, combine the two binary hashes in each pair, and take hashes of the results\. Repeat this process until there is only one hash left\. If there is an odd number of hashes at any level, promote it to the next level without modifying it\.
 
 The key to calculating a tree hash correctly when using command line utilities is to store each hash in binary format and only convert to hexadecimal at the last step\. Combining or hashing the hexadecimal version of any hash in the tree will cause an incorrect result\.
 
@@ -185,4 +185,4 @@ It is now safe to remove the part and hash files you created:
 $ rm chunk* hash*
 ```
 
-For more information on multipart uploads, see [Uploading Large Archives in Parts](https://docs.aws.amazon.com/amazonglacier/latest/dev/uploading-archive-mpu.html) and [Computing Checksums](https://docs.aws.amazon.com/amazonglacier/latest/dev/checksum-calculations.html) in the Amazon Glacier Developer Guide\. 
+For more information on multipart uploads, see [Uploading Large Archives in Parts](https://docs.aws.amazon.com/amazonglacier/latest/dev/uploading-archive-mpu.html) and [Computing Checksums](https://docs.aws.amazon.com/amazonglacier/latest/dev/checksum-calculations.html) in the Amazon S3 Glacier Developer Guide\. 

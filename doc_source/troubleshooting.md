@@ -5,9 +5,9 @@ After installing with `pip`, you may need to add the `aws` executable to your OS
 **Error:** *aws: command not found*
 
 You may need to add the `aws` executable to your OS's `PATH` environment variable\.
-+ **Windows** – [Adding the AWS CLI Executable to your Command Line Path](awscli-install-windows.md#awscli-install-windows-path)
-+ **macOS** – [Adding the AWS CLI Executable to your Command Line Path](cli-install-macos.md#awscli-install-osx-path)
-+ **Linux** – [Adding the AWS CLI Executable to your Command Line Path](awscli-install-linux.md#awscli-install-linux-path)
++ **Windows** – [Adding the AWS CLI Executable to your Command Line Path](install-windows.md#awscli-install-windows-path)
++ **macOS** – [Adding the AWS CLI Executable to your Command Line Path](install-macos.md#awscli-install-osx-path)
++ **Linux** – [Adding the AWS CLI Executable to your Command Line Path](install-linux.md#install-linux-path)
 
 If `aws` is in your `PATH` and you still see this error, it may not have the right file mode\. Try running it directly\.
 
