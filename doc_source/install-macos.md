@@ -91,7 +91,7 @@ $ pip --version
 
    ```
    $ aws --version
-   AWS CLI 1.16.67 (Python 3.7.1)
+   AWS CLI 1.16.71 (Python 3.7.1)
    ```
 
    If the program is not found, [add it to your command line path](#awscli-install-osx-path)\.

@@ -23,7 +23,7 @@ $ python --version
 $ python3 --version
 ```
 
-If you don't already have Python 2 version 2\.6\.5\+ or Python 3 version 3\.3\+, you must [install Python](install-linux-python.md)\. If you do already have Python installed, then proceed to installing pip and the AWS CLI\.
+If you don't already have Python 2 version 2\.6\.5\+ or Python 3 version 3\.3\+, you must first [install Python](install-linux-python.md)\. If you do already have Python installed, proceed to installing pip and the AWS CLI\.
 
 **Topics**
 + [Installing Pip](#install-linux-pip)
@@ -44,13 +44,15 @@ If you don't already have `pip` installed, you can install it with the script pr
    $ curl -O https://bootstrap.pypa.io/get-pip.py
    ```
 
-1. The script downloads and installs the latest version of `pip` and another required package named `setuptools`\. Run the script with Python:
+1. Run the script with Python to download and install the latest version of `pip` and other required support packages\.
 
    ```
    $ python get-pip.py --user
    ```
 
-1. Add the executable path to your PATH variable: `~/.local/bin`
+   When you include the `--user` switch, the script installs `pip` to the path `~/.local/bin`\.
+
+1. Ensure the path with pip is part of your PATH variable\.
 
    1. Find your shell's profile script in your user folder\. If you are not sure which shell you have, run `echo $SHELL`\.
 
@@ -62,13 +64,13 @@ If you don't already have `pip` installed, you can install it with the script pr
       + **Zsh** – `.zshrc`
       + **Tcsh** – `.tcshrc`, `.cshrc` or `.login`\.
 
-   1. Add an export command at the end of your profile script\.
+   1. Add an export command at the end of your profile script similar to the following example:
 
       ```
       export PATH=~/.local/bin:$PATH
       ```
 
-      This command adds the path, `~/.local/bin` in this example, to the current PATH variable\.
+      This command adds the path, `~/.local/bin` in this example, at the front of the current PATH variable\.
 
    1. Reload the profile into your current session to put those changes into effect\.
 
@@ -91,11 +93,13 @@ Use `pip` to install the AWS CLI\.
 $ pip install awscli --upgrade --user
 ```
 
+When you use the `--user` switch, `pip` installs the AWS CLI to `~/.local/bin`\. 
+
 Verify that the AWS CLI installed correctly\.
 
 ```
 $ aws --version
-aws-cli/1.16.67 Python/3.7.1 Linux/4.14.77-81.59-amzn2.x86_64 botocore/1.12.57
+aws-cli/1.16.71 Python/3.6.5 Linux/4.14.77-81.59-amzn2.x86_64 botocore/1.12.61
 ```
 
 If you get an error, see [Troubleshooting AWS CLI Errors](troubleshooting.md)\.
@@ -110,13 +114,16 @@ $ pip install awscli --upgrade --user
 
 After installing with `pip`, you might need to add the `aws` executable to your OS's `PATH` environment variable\.
 
-**Example AWS CLI install location \- Linux with pip \(user mode\)**  
+You can verify which folder pip installed the AWS CLI to by running this command:
 
 ```
-~/.local/bin
+$ which aws
+/home/username/.local/bin/aws
 ```
 
-If you didn't install in user mode, the executable might be in the `bin` folder of your Python installation\. If you don't know where Python is installed, run `which python`\.
+You can reference this as `~/.local/bin/` because `/home/username` corresponds to `~` in Linux\.
+
+If you omitted the `--user` switch and thus didn't install in user mode, the executable might be in the `bin` folder of your Python installation\. If you don't know where Python is installed, run this command:
 
 ```
 $ which python
@@ -127,7 +134,7 @@ The output may be the path to a symlink, not the actual executable\. Run `ls -al
 
 ```
 $ ls -al /usr/local/bin/python
-~/.local/Python/3.7/bin/python3.7
+/usr/local/bin/python -> ~/.local/Python/3.7/bin/python3.7
 ```
 
-If this is the same folder you added to the path in step 3 in [Installing Pip](#install-linux-pip), then you are done\. Otherwise, perform those same steps 3a thru 3c again, adding this folder to the path\.
+If this is the same folder you added to the path in step 3 in [Installing Pip](#install-linux-pip), then you are done\. Otherwise, perform those same steps 3a thru 3c again, adding this additional folder to the path\.

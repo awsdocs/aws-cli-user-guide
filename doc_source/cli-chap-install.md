@@ -48,7 +48,7 @@ Verify that the AWS CLI installed correctly by running `aws --version`\.
 
 ```
 $ aws --version
-aws-cli/1.16.67 Python/3.7.1 Linux/4.14.77-81.59-amzn2.x86_64 botocore/1.12.57
+aws-cli/1.16.71 Python/3.6.5 Linux/4.14.77-81.59-amzn2.x86_64 botocore/1.12.61
 ```
 
 The AWS CLI is updated regularly to add support for new services and commands\. To update to the latest version of the AWS CLI, run the installation command again\.

@@ -30,7 +30,7 @@ The CLI installs to `C:\Program Files\Amazon\AWSCLI` \(64\-bit version\) or `C:\
 
 ```
 C:\> aws --version
-aws-cli/1.16.67 Python/3.7.1 Windows/10 botocore/1.12.57
+aws-cli/1.16.71 Python/3.6.5 Windows/10 botocore/1.12.61
 ```
 
 Don't include the prompt symbol \('C:\\>' above\) when you type a command\. These are included in program listings to differentiate commands that you type from output returned by the CLI\. The rest of this guide uses the generic prompt symbol '$ ' except in cases where a command is Windows\-specific\.
@@ -55,9 +55,9 @@ C:\> appwiz.cpl
 
 The Python Software Foundation provides installers for Windows that include `pip`\.
 
-**To install Python 3 and pip \(Windows\)**
+**To install Python3 and pip \(Windows\)**
 
-1. Download the Python 3 Windows x86\-64 installer from the [downloads page](https://www.python.org/downloads/windows/) of [Python\.org](https://www.python.org)\.
+1. Download the Python3 Windows x86\-64 installer from the [downloads page](https://www.python.org/downloads/windows/) of [Python\.org](https://www.python.org)\.
 
 1. Run the installer\.
 
@@ -90,7 +90,7 @@ The installer installs Python in your user folder and adds its program folders t
 
    ```
    C:\Windows\System32> aws --version
-   aws-cli/1.16.67 Python/3.7.1 Windows/10 botocore/1.12.57
+   aws-cli/1.16.71 Python/3.6.5 Windows/10 botocore/1.12.61
    ```
 
 To upgrade to the latest version, run the installation command again:
@@ -101,11 +101,23 @@ C:\Windows\System32> pip install --user --upgrade awscli
 
 ## Adding the AWS CLI Executable to your Command Line Path<a name="awscli-install-windows-path"></a>
 
-After installing with `pip`, add the `aws` program to your OS's `PATH` environment variable\. With an MSI installation, this should happen automatically, but you might need to set it manually if the `aws` command isn't working\.
+After installing with `pip`, add the `aws` program to your OS's `PATH` environment variable\. With an MSI installation, this should happen automatically, but you might need to set it manually if the `aws` command doesn't run after you install it\.
+
+You can find where the aws program is installed by running the following command:
+
+```
+C:\> where aws
+C:\Program Files\Python37\Scripts\aws
+```
+
+Typical paths include:
 + **Python 3 and pip** – `C:\Program Files\Python37\Scripts\`
 + **Python 3 and pip \-\-user option** – `%USERPROFILE%\AppData\Local\Programs\Python\Python37\Scripts`
 + **MSI installer \(64\-bit\)** – `C:\Program Files\Amazon\AWSCLI`
 + **MSI installer \(32\-bit\)** – `C:\Program Files (x86)\Amazon\AWSCLI`
+
+**Note**  
+Folder names that include version numbers can vary\.
 
 **To modify your PATH variable \(Windows\)**
 

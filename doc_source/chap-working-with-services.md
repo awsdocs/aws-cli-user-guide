@@ -2,7 +2,7 @@
 
 This section provides examples of using the AWS Command Line Interface to access AWS services\. These examples are intended to demonstrate how to use the AWS CLI to perform administrative tasks\.
 
-For a complete reference to all of the available commands for each service, see the [AWS CLI Command Reference](https://docs.aws.amazon.com/cli/latest/reference/) or use the built\-in command line help\. For more information, see [Getting Help with the AWS Command Line Interface](getting-help.md)\.
+For a complete reference to all of the available commands for each service, see the [AWS CLI Command Reference](https://docs.aws.amazon.com/cli/latest/reference/) or use the built\-in command line help\. For more information, see [Getting Help with the AWS Command Line Interface](cli-usage-help.md)\.
 
 **Topics**
 + [Using Amazon DynamoDB with the AWS Command Line Interface](cli-dynamodb.md)

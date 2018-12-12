@@ -1,15 +1,15 @@
 # Using the AWS Command Line Interface<a name="cli-chap-using"></a>
 
-This section introduces the common features and calling patterns used throughout the AWS Command Line Interface\.
+This section introduces you to many of the common features and options available in the AWS Command Line Interface\.
 
 **Note**  
-The AWS CLI makes API calls to services over HTTPS\. Outbound connections on TCP port 443 must be enabled in order to perform calls\.
+By default, the AWS CLI sends requests to AWS services by using HTTPS on TCP port 443\. To use the AWS CLI successfully, you must be able to make outbound connections on TCP port 443\.
 
 **Topics**
-+ [Getting Help with the AWS Command Line Interface](getting-help.md)
-+ [Command Structure in the AWS Command Line Interface](command-structure.md)
-+ [Specifying Parameter Values for the AWS Command Line Interface](cli-using-param.md)
-+ [Generate CLI Skeleton and CLI Input JSON Parameters](generate-cli-skeleton.md)
-+ [Controlling Command Output from the AWS Command Line Interface](controlling-output.md)
-+ [Using Shorthand Syntax with the AWS Command Line Interface](shorthand-syntax.md)
-+ [Using the AWS Command Line Interface's Pagination Options](pagination.md)
++ [Getting Help with the AWS Command Line Interface](cli-usage-help.md)
++ [Command Structure in the AWS Command Line Interface](cli-usage-commandstructure.md)
++ [Specifying Parameter Values for the AWS Command Line Interface](cli-usage-parameters.md)
++ [Generate CLI Skeleton and CLI Input JSON Parameters](cli-usage-skeleton.md)
++ [Controlling Command Output from the AWS Command Line Interface](cli-usage-output.md)
++ [Using Shorthand Syntax with the AWS Command Line Interface](cli-usage-shorthand.md)
++ [Using the AWS Command Line Interface's Pagination Options](cli-usage-pagination.md)

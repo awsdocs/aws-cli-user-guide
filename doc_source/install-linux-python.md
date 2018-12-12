@@ -32,6 +32,6 @@ If your Linux distribution came with Python, you may need to install the Python 
 1. Open a command prompt or shell and run the following command to verify that Python installed correctly:
 
    ```
-   $ python3 --version
-   Python 3.7.1
+   $ python --version
+   Python 2.7.15
    ```
