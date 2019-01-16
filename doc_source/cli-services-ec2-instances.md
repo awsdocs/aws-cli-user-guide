@@ -1,32 +1,32 @@
-# Using Amazon EC2 Instances<a name="cli-ec2-launch"></a>
+# Launch, List, and Terminate Amazon EC2 Instances<a name="cli-services-ec2-instances"></a>
 
-You can use the AWS CLI to launch, list, and terminate instances\. You'll need a key pair and a security group; for information about creating these through the AWS CLI, see [Using Key Pairs](cli-ec2-keypairs.md) and [Using Security Groups](cli-ec2-sg.md)\. You'll also need to select an Amazon Machine Image \(AMI\) and note its AMI ID\. For more information, see [Finding a Suitable AMI](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/finding-an-ami.html) in the *Amazon EC2 User Guide for Linux Instances*\.
+You can use the AWS Command Line Interface \(AWS CLI\) to launch, list, and terminate Amazon Elastic Compute Cloud \(Amazon EC2\) instances\. You need a [key pair](cli-services-ec2-keypairs.md) and a [security group](cli-services-ec2-sg.md)\. You also need to select an Amazon Machine Image \(AMI\) and make a note of the AMI ID\. For more information, see [Finding a Suitable AMI](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/finding-an-ami.html) in the *Amazon EC2 User Guide for Linux Instances*\.
 
-If you launch an instance that is not within the AWS Free Tier, you are billed after you launch the instance and charged for the time that the instance is running, even if it remains idle\.
+If you launch an instance that isn't within the AWS Free Tier, you are billed after you launch the instance and charged for the time that the instance is running, even if it remains idle\.
 
 **Note**  
-Before you try the example command, set your default credentials\.
+The following examples assume that you have already [configured your default credentials](cli-services-ec2-keypairs.md)\.
 
 **Topics**
 + [Launching an Instance](#launching-instances)
-+ [Adding a Block Device Mapping to Your Instance](#block-device-mapping)
-+ [Adding a Name Tag to Your Instance](#tagging-instances)
++ [Adding a Block Device to Your Instance](#block-device-mapping)
++ [Adding a Tag to Your Instance](#tagging-instances)
 + [Connecting to Your Instance](#connecting-to-instances)
 + [Listing Your Instances](#listing-instances)
-+ [Terminating Your Instance](#terminating-instances)
++ [Terminating an Instance](#terminating-instances)
 
 ## Launching an Instance<a name="launching-instances"></a>
 
-To launch a single Amazon EC2 instance using the AMI you selected, use the [run\-instances](https://docs.aws.amazon.com/cli/latest/reference/ec2/run-instances.html) command\. Depending on the platforms that your account supports, you can launch the instance into EC2\-Classic or EC2\-VPC\.
+To launch an Amazon EC2 instance using the AMI you selected, use the [run\-instances](https://docs.aws.amazon.com/cli/latest/reference/ec2/run-instances.html) command\. You can launch the instance into a virtual private cloud \(VPC\), or if your account supports it, or into EC2\-Classic\.
 
-Initially, your instance is in the `pending` state, but will be in the `running` state in a few minutes\.
+Initially, your instance appears in the `pending` state, but changes to the `running` state after a few minutes\.
 
 ### EC2\-VPC<a name="run-ec2-vpc"></a>
 
-The following command launches a `t2.micro` instance in the specified subnet:
+The following example shows how to launch a `t2.micro` instance in the specified subnet of a VPC\. Replace the *italicized* parameter values with your own\.
 
 ```
-aws ec2 run-instances --image-id ami-xxxxxxxx --count 1 --instance-type t2.micro --key-name MyKeyPair --security-group-ids sg-xxxxxxxx --subnet-id subnet-xxxxxxxx
+$ aws ec2 run-instances --image-id ami-xxxxxxxx --count 1 --instance-type t2.micro --key-name MyKeyPair --security-group-ids sg-903004f8 --subnet-id subnet-6e7f829e
 {
     "OwnerId": "123456789012",
     "ReservationId": "r-5875ca20",
@@ -138,10 +138,10 @@ aws ec2 run-instances --image-id ami-xxxxxxxx --count 1 --instance-type t2.micro
 
 ### EC2\-Classic<a name="run-ec2-classic"></a>
 
-The following command launches a `t1.micro` instance in EC2\-Classic:
+If your account supports it, you can use the following command to launch a `t1.micro` instance in EC2\-Classic\. Replace the *italicized* parameter values with your own\.
 
 ```
-aws ec2 run-instances --image-id ami-xxxxxxxx --count 1 --instance-type t1.micro --key-name MyKeyPair --security-groups my-sg
+$ aws ec2 run-instances --image-id ami-173d747e --count 1 --instance-type t1.micro --key-name MyKeyPair --security-groups my-sg
 {
     "OwnerId": "123456789012",
     "ReservationId": "r-5875ca20",
@@ -215,31 +215,31 @@ aws ec2 run-instances --image-id ami-xxxxxxxx --count 1 --instance-type t1.micro
 }
 ```
 
-## Adding a Block Device Mapping to Your Instance<a name="block-device-mapping"></a>
+## Adding a Block Device to Your Instance<a name="block-device-mapping"></a>
 
-Each instance that you launch has an associated root device volume\. You can use block device mapping to specify additional EBS volumes or instance store volumes to attach to an instance when it's launched\.
+Each instance that you launch has an associated root device volume\. You can use block device mapping to specify additional Amazon Elastic Block Store \(Amazon EBS\) volumes or instance store volumes to attach to an instance when it's launched\.
 
-To add a block device mapping to your instance, specify the `--block-device-mappings` option when you use `run-instances`\.
+To add a block device to your instance, specify the `--block-device-mappings` option when you use `run-instances`\.
 
-The following example adds a standard Amazon EBS volume, mapped to `/dev/sdf`, that's 20 GB in size\.
+The following example parameter provisions a standard Amazon EBS volume that is 20 GB in size, and maps it to your instance using the identifier `/dev/sdf`\.
 
 ```
 --block-device-mappings "[{\"DeviceName\":\"/dev/sdf\",\"Ebs\":{\"VolumeSize\":20,\"DeleteOnTermination\":false}}]"
 ```
 
-The following example adds an Amazon EBS volume, mapped to `/dev/sdf`, based on a snapshot\. When you specify a snapshot, it isn't necessary to specify a volume size, but if you do, it must be greater than or equal to the size of the snapshot\.
+The following example adds an Amazon EBS volume, mapped to `/dev/sdf`, based on an existing snapshot\. A snapshot represents an image that is loaded onto the volume for you\. When you specify a snapshot, you don't have to specify a volume size; it will be large enough to hold your image\. However, if you do specify a size, it must be greater than or equal to the size of the snapshot\.
 
 ```
---block-device-mappings "[{\"DeviceName\":\"/dev/sdf\",\"Ebs\":{\"SnapshotId\":\"snap-xxxxxxxx\"}}]"
+--block-device-mappings "[{\"DeviceName\":\"/dev/sdf\",\"Ebs\":{\"SnapshotId\":\"snap-a1b2c3d4\"}}]"
 ```
 
-The following example adds two instance store volumes\. Note that the number of instance store volumes available to your instance depends on its instance type\.
+The following example adds two volumes to your instance\. The number of volumes available to your instance depends on its instance type\.
 
 ```
 --block-device-mappings "[{\"DeviceName\":\"/dev/sdf\",\"VirtualName\":\"ephemeral0\"},{\"DeviceName\":\"/dev/sdg\",\"VirtualName\":\"ephemeral1\"}]"
 ```
 
-The following example omits a mapping for a device specified by the AMI used to launch the instance \(`/dev/sdj`\):
+The following example creates the mapping \(`/dev/sdj`\), but doesn't provision a volume for the instance\.
 
 ```
 --block-device-mappings "[{\"DeviceName\":\"/dev/sdj\",\"NoDevice\":\"\"}]"
@@ -247,58 +247,57 @@ The following example omits a mapping for a device specified by the AMI used to 
 
 For more information, see [Block Device Mapping](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/block-device-mapping-concepts.html) in the *Amazon EC2 User Guide for Linux Instances*\.
 
-## Adding a Name Tag to Your Instance<a name="tagging-instances"></a>
+## Adding a Tag to Your Instance<a name="tagging-instances"></a>
 
-To add the tag `Name=MyInstance` to your instance, use the [create\-tags](https://docs.aws.amazon.com/cli/latest/reference/ec2/create-tags.html) command as follows:
+A tag is a label that you assign to an AWS resource\. It enables you to add metadata to your resources that you can use for a variety of purposes\. For more information, see [Tagging Your Resources](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html) in the *Amazon EC2 User Guide for Linux Instances*\.
+
+The following example shows how to add a tag with the key name "`Name` and the value "`MyInstance`" to the specified instance, by using the [create\-tags](https://docs.aws.amazon.com/cli/latest/reference/ec2/create-tags.html) command\.
 
 ```
-aws ec2 create-tags --resources i-xxxxxxxx --tags Key=Name,Value=MyInstance
+$ aws ec2 create-tags --resources i-5203422c --tags Key=Name,Value=MyInstance
 ```
-
-For more information, see [Tagging Your Resources](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html) in the *Amazon EC2 User Guide for Linux Instances*\.
 
 ## Connecting to Your Instance<a name="connecting-to-instances"></a>
 
-While your instance is running, you can connect to it and use it just as you'd use a computer sitting in front of you\. For more information, see [Connect to Your Amazon EC2 Instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstances.html) in the *Amazon EC2 User Guide for Linux Instances*\.
+When your instance is running, you can connect to it and use it just as you'd use a computer sitting in front of you\. For more information, see [Connect to Your Amazon EC2 Instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstances.html) in the *Amazon EC2 User Guide for Linux Instances*\.
 
 ## Listing Your Instances<a name="listing-instances"></a>
 
 You can use the AWS CLI to list your instances and view information about them\. You can list all your instances, or filter the results based on the instances that you're interested in\.
 
-**Note**  
-Before you try the example commands, set your default credentials\.
-
 The following examples show how to use the [describe\-instances](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-instances.html) command\.
 
-**Example 1: List the instances with the specified instance type**  
-The following command lists your `t2.micro` instances\.  
+The following command filters the list to only your `t2.micro` instances and outputs only the `InstanceId` values for each match\.
 
 ```
-aws ec2 describe-instances --filters "Name=instance-type,Values=t2.micro" --query Reservations[].Instances[].InstanceId
+$ aws ec2 describe-instances --filters "Name=instance-type,Values=t2.micro" --query "Reservations[].Instances[].InstanceId"
+[
+    "i-05e998023d9c69f9a"
+]
 ```
 
-**Example 2: List the instances with the specified tag**  
-The following command lists the instances with a tag Name=MyInstance\.  
+The following command lists any of your instances that have the tag Name=MyInstance\.
 
 ```
-aws ec2 describe-instances --filters "Name=tag:Name,Values=MyInstance"
+$ aws ec2 describe-instances --filters "Name=tag:Name,Values=MyInstance"
 ```
 
-**Example 3: List the instances launched using the specified images**  
-The following command lists your instances that were launched from the following AMIs: `ami-x0123456`, `ami-y0123456`, and `ami-z0123456`\.  
+The following command lists your instances that were launched using any of the following AMIs: `ami-x0123456`, `ami-y0123456`, and `ami-z0123456`\.
 
 ```
-aws ec2 describe-instances --filters "Name=image-id,Values=ami-x0123456,ami-y0123456,ami-z0123456"
+$ aws ec2 describe-instances --filters "Name=image-id,Values=ami-x0123456,ami-y0123456,ami-z0123456"
 ```
 
-## Terminating Your Instance<a name="terminating-instances"></a>
+## Terminating an Instance<a name="terminating-instances"></a>
 
-Terminating an instance effectively deletes it; you can't reconnect to an instance after you've terminated it\. As soon as the state of the instance changes to `shutting-down` or `terminated`, you stop incurring charges for that instance\.
+Terminating an instance deletes it\. You can't reconnect to an instance after you've terminated it\. 
 
-When you are finished with the instance, use the [terminate\-instances](https://docs.aws.amazon.com/cli/latest/reference/ec2/terminate-instances.html) command as follows:
+As soon as the state of the instance changes to `shutting-down` or `terminated`, you stop incurring charges for that instance\. If you want to reconnect to an instance later, use [stop\-instances](https://docs.aws.amazon.com/cli/latest/reference/ec2/stop-instances.html) instead of `terminate-instances`\. For more information, see [Terminate Your Instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/terminating-instances.html) in the *Amazon EC2 User Guide for Linux Instances*\.
+
+When you finish with an instance, you can use the command [terminate\-instances](https://docs.aws.amazon.com/cli/latest/reference/ec2/terminate-instances.html) to delete it\.
 
 ```
-aws ec2 terminate-instances --instance-ids i-5203422c
+$ aws ec2 terminate-instances --instance-ids i-5203422c
 {
     "TerminatingInstances": [
         {
@@ -315,5 +314,3 @@ aws ec2 terminate-instances --instance-ids i-5203422c
     ]
 }
 ```
-
-For more information, see [Terminate Your Instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/terminating-instances.html) in the *Amazon EC2 User Guide for Linux Instances*\.

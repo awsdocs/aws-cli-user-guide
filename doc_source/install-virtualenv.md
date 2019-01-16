@@ -1,6 +1,6 @@
-# Install the AWS Command Line Interface in a Virtual Environment<a name="install-virtualenv"></a>
+# Install the AWS CLI in a Virtual Environment<a name="install-virtualenv"></a>
 
-You can avoid requirement version conflicts with other pip packages by installing the AWS CLI in a virtual environment\.
+You can avoid requirement version conflicts with other `pip` packages by installing the AWS Command Line Interface \(AWS CLI\) in a virtual environment\.
 
 **To install the AWS CLI in a virtual environment**
 
@@ -10,7 +10,7 @@ You can avoid requirement version conflicts with other pip packages by installin
    $ pip install --user virtualenv
    ```
 
-1. Create a virtual environment and give it a name\.
+1. Create a virtual environment and name it\.
 
    ```
    $ virtualenv ~/cli-ve
@@ -49,9 +49,9 @@ You can avoid requirement version conflicts with other pip packages by installin
    aws-cli/1.16.71 Python/3.6.5 Linux/4.14.77-81.59-amzn2.x86_64 botocore/1.12.61
    ```
 
-You can use the `deactivate` command to exit the virtual environment\. Whenever you start a new session, you must activate the environment again\.
+You can use the `deactivate` command to exit the virtual environment\. Whenever you start a new session, you must reactivate the environment\.
 
-To upgrade to the latest version, run the installation command again:
+To upgrade to the latest version, run the installation command again\.
 
 ```
 (cli-ve)~$ pip install --upgrade awscli

@@ -1,12 +1,14 @@
-# Getting Help with the AWS Command Line Interface<a name="cli-usage-help"></a>
+# Getting Help with the AWS CLI<a name="cli-usage-help"></a>
 
-You can get help with any command when using the AWS CLI\. To do so, simply type `help` at the end of a command name\. For example, the following command displays help for the general AWS CLI options and the available top\-level commands\. 
+You can get help with any command when using the AWS Command Line Interface \(AWS CLI\)\. To do so, simply type `help` at the end of a command name\. 
+
+For example, the following command displays help for the general AWS CLI options and the available top\-level commands\. 
 
 ```
 $ aws help
 ```
 
-The following command displays the available Amazon EC2 specific commands\. 
+The following command displays the available Amazon Elastic Compute Cloud \(Amazon EC2\) specific commands\. 
 
 ```
 $ aws ec2 help
@@ -45,7 +47,7 @@ DESCRIPTION
 ```
 
 Synopsis  
-The basic syntax for using the command and its options\. If an option is shown in square brackets, it is either optional, has a default value, or has an alternative option that can be used instead\.  
+The basic syntax for using the command and its options\. If an option is shown in square brackets, it's either optional, has a default value, or has an alternative option that you can use instead\.  
 
 ```
 SYNOPSIS
@@ -59,7 +61,7 @@ SYNOPSIS
           [--max-items <value>]
           [--generate-cli-skeleton]
 ```
-For example, `describe-instances` has a default behavior that describes ***all*** instances in the current account and region\. You can optionally specify a list of `instance-ids` to describe one or more instances\. `dry-run` is an optional boolean flag that doesn't take a value\. To use a boolean flag, specify either shown value, in this case `--dry-run` or `--no-dry-run`\. Likewise, `--generate-cli-skeleton` does not take a value\. If there are conditions on an option's use, they are described in the `OPTIONS` section, or shown in the examples\.
+For example, `describe-instances` has a default behavior that describes ***all*** instances in the current account and AWS Region\. You can optionally specify a list of `instance-ids` to describe one or more instances\. `dry-run` is an optional boolean flag that doesn't take a value\. To use a boolean flag, specify either shown value, in this case `--dry-run` or `--no-dry-run`\. Likewise, `--generate-cli-skeleton` doesn't take a value\. If there are conditions on an option's use, they are described in the `OPTIONS` section, or shown in the examples\.
 
 Options  
 A description of each of the options shown in the synopsis\.  
@@ -80,7 +82,7 @@ OPTIONS
 ```
 
 Examples  
-Examples showing the usage of the command and its options\. If no example is available for a command or use case that you need, please request one using the feedback link on this page, or in the AWS CLI command reference on the help page for the command\.  
+Examples showing the usage of the command and its options\. If no example is available for a command or use case that you need, request one using the feedback link on this page, or in the AWS CLI command reference on the help page for the command\.  
 
 ```
     EXAMPLES
@@ -96,7 +98,7 @@ Examples showing the usage of the command and its options\. If no example is ava
     
     aws ec2 describe-instances --filters "Name=instance-type,Values=m1.small"
     
-    To describe all instances with a Owner tag
+    To describe all instances with an Owner tag
     
     Command:
     
@@ -106,7 +108,7 @@ Examples showing the usage of the command and its options\. If no example is ava
 
 Output  
 Descriptions of each of the fields and data types included in the response from AWS\.  
-For `describe-instances`, the output is a list of reservation objects, each of which contains several fields and objects that contain information about the instance\(s\) associated with it\. This information comes from the [API documentation for the reservation datatype](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_Reservation.html) used by Amazon EC2\.  
+For `describe-instances`, the output is a list of reservation objects, each of which contains several fields and objects that contain information about the instances associated with it\. This information comes from the [API documentation for the reservation data type](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_Reservation.html) used by Amazon EC2\.  
 
 ```
 OUTPUT
@@ -158,7 +160,7 @@ OUTPUT
                             is an opaque internal value and should be ignored.
 ...
 ```
-When the output is rendered into JSON by the AWS CLI, it becomes an array of reservation objects, similar to the following sample:  
+When the output is rendered into JSON by the AWS CLI, it becomes an array of reservation objects, similar to the following example\.  
 
 ```
 {
@@ -180,7 +182,7 @@ When the output is rendered into JSON by the AWS CLI, it becomes an array of res
                     },
 ...
 ```
-Each reservation object contains fields describing the reservation and an array of instance objects, each with its own fields \(e\.g\. `PublicDnsName`\) and objects \(e\.g\. `State`\) that describe it\.  
+Each reservation object contains fields describing the reservation and an array of instance objects, each with its own fields \(for example, `PublicDnsName`\) and objects \(for example, `State`\) that describe it\.  
 **Windows users**  
 You can *pipe* \(\|\) the output of the help command to the `more` command to view the help file one page at a time\. Press the space bar or **PgDn** to view more of the document, and **q** to quit\.   
 
@@ -193,11 +195,11 @@ C:\> aws ec2 describe-instances help | more
 The [AWS CLI Command Reference](https://docs.aws.amazon.com/cli/latest/reference/) also contains the help content for all AWS CLI commands\. The descriptions are presented for easy navigation and viewing on mobile, tablet, or desktop screens\. 
 
 **Note**  
-The help files contain links that cannot be viewed or navigated to from the command line\. You can view and interact with these links by using the online AWS CLI reference\. 
+The help files contain links that cannot be viewed or navigated to from the command line\. You can view and interact with these links by using the online [AWS CLI Command Reference](https://docs.aws.amazon.com/cli/latest/reference/)\. 
 
 ## API Documentation<a name="api-reference"></a>
 
-All commands in the AWS CLI correspond to requests made to an AWS service's public API\. Each service with a public API has an API Reference Guide that can be found on the service's homepage on the [AWS Documentation website](http://aws.amazon.com/documentation/)\. The content for an API Reference Guide varies based on how the API is constructed and which protocol is used\. Typically, an API Reference Guide contains detailed information about the actions supported by the API, the data sent to and from the service, and any error conditions that the service can report\. 
+All commands in the AWS CLI correspond to requests made to an AWS service's public API\. Each service with a public API has an API reference that can be found on the service's homepage on the [AWS Documentation website](http://aws.amazon.com/documentation/)\. The content for an API reference varies based on how the API is constructed and which protocol is used\. Typically, an API reference contains detailed information about the actions supported by the API, the data sent to and from the service, and any error conditions that the service can report\. 
 
 **API Documentation Sections**
 +  **Actions** – Detailed information on each action and its parameters \(including constraints on length or content, and default values\)\. It lists the errors that can occur for this action\. Each action corresponds to a subcommand in the AWS CLI\. 

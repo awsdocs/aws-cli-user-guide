@@ -1,15 +1,15 @@
 # What Is the AWS Command Line Interface?<a name="cli-chap-welcome"></a>
 
-The AWS CLI is an open source tool that enables you to interact with AWS services using commands in your command\-line shell\. With minimal configuration, you can start using functionality equivalent to that provided by the browser\-based AWS Management Console from the command prompt in your favorite terminal program\.
+The AWS Command Line Interface \(AWS CLI\) is an open source tool that enables you to interact with AWS services using commands in your command\-line shell\. With minimal configuration, you can start using functionality equivalent to that provided by the browser\-based AWS Management Console from the command prompt in your favorite terminal program:
 + **Linux shells** – Use common shell programs such as `bash`, `zsh`, and `tsch` to run commands in Linux, macOS, or Unix\.
-+ **Windows command line** – On Microsoft Windows, run commands in either PowerShell or at the Windows command prompt\.
-+ **Remotely** – Run commands on Amazon EC2 instances through a remote terminal such as PuTTY or SSH, or with Amazon EC2 systems manager\.
++ **Windows command line** – On Windows, run commands in PowerShell or at the Windows command prompt\.
++ **Remotely** – Run commands on Amazon Elastic Compute Cloud \(Amazon EC2\) instances through a remote terminal such as PuTTY or SSH, or with AWS Systems Manager\.
 
 All IaaS \(infrastructure as a service\) AWS administration, management, and access functions in the AWS Management Console are available in the AWS API and CLI\. New AWS IaaS features and services provide full AWS Management Console functionality through the API and CLI at launch or within 180 days of launch\. 
 
-The AWS CLI provides direct access to AWS services' public APIs\. You can explore a service's capabilities with the AWS CLI, and develop shell scripts to manage your resources\. Or, you can take what you learn to develop programs in other languages with the AWS SDKs\.
+The AWS CLI provides direct access to the public APIs of AWS services\. You can explore a service's capabilities with the AWS CLI, and develop shell scripts to manage your resources\. Or, you can take what you learn to develop programs in other languages by using the AWS SDKs\.
 
-In addition to the low level, API equivalent commands, several AWS services provide customizations for the AWS CLI\. Customizations can include higher level commands that simplify using a service with a complex API\. For example, the `aws s3` set of commands provide a familiar syntax for managing files in Amazon S3\.
+In addition to the low\-level, API\-equivalent commands, several AWS services provide customizations for the AWS CLI\. Customizations can include higher\-level commands that simplify using a service with a complex API\. For example, the `aws s3` set of commands provide a familiar syntax for managing files in Amazon Simple Storage Service \(Amazon S3\)\.
 
 **Example Upload a file to Amazon S3**  
 `aws s3 cp` provides a shell\-like copy command, and automatically performs a multipart upload to transfer large files quickly and resiliently\.  
@@ -18,10 +18,10 @@ In addition to the low level, API equivalent commands, several AWS services prov
 ~$ aws s3 cp myvideo.mp4 s3://mybucket/
 ```
 
-Performing the same task with the low level commands \(available under `aws s3api`\) would take a lot more effort\.
+Performing the same task with the low\-level commands \(available under `aws s3api`\) would take a lot more effort\.
 
-Depending on your use case, you may want to use the AWS SDK, a toolkit, or the AWS Tools for Windows PowerShell\.
-+ [AWS Tools for Windows PowerShell](https://docs.aws.amazon.com/powershell/latest/userguide/)
+Depending on your use case, you might want to use one of the AWS SDKs, or the AWS Tools for PowerShell:
++ [AWS Tools for PowerShell](https://docs.aws.amazon.com/powershell/latest/userguide/)
 + [AWS SDK for Java](https://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/)
 + [AWS SDK for \.NET](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide/)
 
@@ -30,8 +30,6 @@ Depending on your use case, you may want to use the AWS SDK, a toolkit, or the A
 + [AWS SDK for Python \(Boto\)](http://boto3.amazonaws.com/v1/documentation/api/latest/index.html)
 + [AWS SDK for PHP](https://docs.aws.amazon.com/aws-sdk-php/guide/latest/)
 + [AWS SDK for Go](https://docs.aws.amazon.com/sdk-for-go/api/)
-+ [AWS Toolkit for Eclipse](https://docs.aws.amazon.com/AWSToolkitEclipse/latest/GettingStartedGuide/)
-+ [AWS Toolkit for Visual Studio](https://docs.aws.amazon.com/AWSToolkitVS/latest/UserGuide/)
 + [AWS Mobile SDK for iOS](https://docs.aws.amazon.com/mobile/sdkforios/developerguide/)
 + [AWS Mobile SDK for Android](https://docs.aws.amazon.com/mobile/sdkforandroid/developerguide/)
 
@@ -39,14 +37,14 @@ You can view—and fork—the source code for the AWS CLI on GitHub in the [aws\
 
 ## Using the Examples in this Guide<a name="cli-using-examples"></a>
 
-The examples in this guide are formatted with the following conventions:
+The examples in this guide are formatted using the following conventions:
 + **Prompt** – The command prompt is displayed as a dollar sign followed by a space \('$ '\)\. Do not include the prompt when you type commands\.
 + **Directory** – When commands must be executed from a specific directory, the directory name is shown before the prompt symbol\.
-+ **User Input** – Command text that you should enter at the command line is formatted as **user input**\.
-+ **Replaceable Text** – Variable text, including names of resources that you choose, or IDs generated by AWS services that you must include in commands, is formatted as *replaceable text*\. In multiple line commands or commands where specific keyboard input is required, keyboard commands can also be shown as replaceable text\.
-+ **Output** – Output returned by AWS services is shown beneath user input formatted as computer output\.
++ **User input** – Command text that you should enter at the command line is formatted as **user input**\.
++ **Replaceable text** – Variable text, including names of resources that you choose, or IDs generated by AWS services that you must include in commands, is formatted as *replaceable text*\. In multiple\-line commands or commands where specific keyboard input is required, keyboard commands can also be shown as replaceable text\.
++ **Output** – Output returned by AWS services is shown under user input, and is formatted as computer output\.
 
-For example, the following command includes user input, replaceable text, and output:
+For example, the following command includes user input, replaceable text, and output\.
 
 ```
 $ aws configure
@@ -56,9 +54,9 @@ Default region name [None]: us-west-2
 Default output format [None]: ENTER
 ```
 
-To use this example, type **aws configure** at the command line and press **ENTER**\. **aws configure** is the command\. This command is interactive, so the AWS CLI outputs lines of texts, prompting you to enter additional information\. Enter each of your access keys in turn and press **ENTER**\. Then, enter a region name in the format shown, press **ENTER**, and press **ENTER** a final time to skip the output format setting\. The final **ENTER** command is shown as replaceable text because there is no user input for that line\. Otherwise, it would be implied\.
+To use this example, enter **aws configure** at the command line, and then press **Enter**\. **aws configure** is the command\. This command is interactive, so the AWS CLI outputs lines of texts, prompting you to enter additional information\. Enter each of your access keys in turn, and then press **Enter**\. Then, enter an AWS Region name in the format shown, press **Enter**, and then press **Enter** a final time to skip the output format setting\. The final **Enter** command is shown as replaceable text because there is no user input for that line\. Otherwise, it would be implied\.
 
-The following example shows a simple non\-interactive command with output from the service in [JSON](https://json.org) format:
+The following example shows a simple noninteractive command with output from the service in [JSON](https://json.org) format\.
 
 ```
 $ aws ec2 create-security-group --group-name my-sg --description "My security group"
@@ -67,10 +65,10 @@ $ aws ec2 create-security-group --group-name my-sg --description "My security gr
 }
 ```
 
-To use this example, enter the full text of the command \(the highlighted text after the prompt\) and press **ENTER**\. The name of the security group, *`my-sg`* is replaceable\. In this case, you can use the group name as shown, but you will probably want to use a more descriptive name\.
+To use this example, enter the full text of the command \(the highlighted text after the prompt\), and then press **Enter**\. The name of the security group, *`my-sg`*, is replaceable\. In this case, you can use the group name as shown, but you probably want to use a more descriptive name\.
 
 **Note**  
-Arguments that must be replaced \(such as AWS Access Key ID\), and those that should be replaced \(such as group name\), are both shown as *replaceable text*\. If an argument must be replaced, it will be noted in the text describing the example\.
+Arguments that must be replaced \(such as AWS Access Key ID\), and those that should be replaced \(such as group name\), are both shown as *replaceable text in italics*\. If an argument must be replaced, it's noted in the text that describes the example\.
 
 The JSON document, including the curly braces, is output\. If you configure your CLI to output in text or table format, the output will be formatted differently\. [JSON](https://json.org) is the default output format\.
 

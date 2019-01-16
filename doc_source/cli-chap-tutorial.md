@@ -1,14 +1,14 @@
-# Tutorial: Using the AWS Command Line Interface to Deploy an Amazon EC2 Development Environment<a name="cli-chap-tutorial"></a>
+# Tutorial: Using the AWS CLI to Deploy an Amazon EC2 Development Environment<a name="cli-chap-tutorial"></a>
 
-This tutorial describes how to use the AWS CLI to set up a development environment in Amazon EC2\. It includes a short version of the installation and configuration instructions\. It can be run start to finish on Windows, Linux, macOS, or Unix\.
+This tutorial describes how to use the AWS Command Line Interface \(AWS CLI\) to set up a development environment in Amazon Elastic Compute Cloud \(Amazon EC2\)\. It includes a short version of the installation and configuration instructions\. You can run it from start to finish on Windows, Linux, macOS, or Unix\.
 
 **Topics**
-+ [Install the AWS CLI](#tutorial-install-cli)
-+ [Configure the AWS CLI](#tutorial-configure-cli)
-+ [Create a Security Group and Key Pair for the EC2 Instance](#tutorial-configure-security)
-+ [Launch and Connect to the Instance](#tutorial-launch-and-connect)
++ [Step1: Install the AWS CLI](#tutorial-install-cli)
++ [Step 2: Configure the AWS CLI](#tutorial-configure-cli)
++ [Step 3: Create a Security Group and Key Pair for the Amazon EC2 Instance](#tutorial-configure-security)
++ [Step 4: Launch and Connect to the Instance](#tutorial-launch-and-connect)
 
-## Install the AWS CLI<a name="tutorial-install-cli"></a>
+## Step1: Install the AWS CLI<a name="tutorial-install-cli"></a>
 
 You can install the AWS CLI with an installer \(Windows\) or by using `pip`, a package manager for Python\.
 
@@ -26,7 +26,7 @@ You can install the AWS CLI with an installer \(Windows\) or by using `pip`, a p
 
 These steps require that you have a working installation of Python 2 version 2\.6\.5\+ or Python 3 version 3\.3\+\. If you encounter any issues using the following steps, see the full installation instructions in the [AWS Command Line Interface User Guide](https://docs.aws.amazon.com/cli/latest/userguide/installing.html)\. 
 
-1. If you have pip installed, skip to step 2\. If you don't already have pip installed, then download and run the installation script from the [pip website](https://pip.pypa.io/en/latest/installing.html):
+1. If you have `pip` installed, skip to step 2\. If you don't have `pip` installed, download and run the installation script from the [pip website](https://pip.pypa.io/en/latest/installing.html)\.
 
    ```
    $ curl "https://bootstrap.pypa.io/get-pip.py" -o "get-pip.py"
@@ -45,9 +45,9 @@ These steps require that you have a working installation of Python 2 version 2\.
      Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
    ```
 
-   The `--user` switch specifies that you want to install pip in your user's local home directory\. This is required if you don't have root/administrator permissions\. If you don't specify `--user`, then pip tries to install in a system folder for all users\.
+   The `--user` switch specifies that you want to install `pip` in your user's local home directory\. This is required if you don't have root/administrator permissions\. If you don't specify `--user`, `pip` tries to install in a system folder for all users\.
 
-1. Ensure that the pip installation folder is in your PATH environment variable\. The installer typically informs you if it is not, as shown in the previous example\. To address this, add a statement like the following at the end of your shell's RC script, which is appropriate if `pip` was installed into the `.local/bin` folder in your home directory\.
+1. Ensure that the `pip` installation folder is in your `PATH` environment variable\. The installer typically informs you if it's not, as shown in the previous example\. To address this, add a statement like the following at the end of your shell's RC script, which is appropriate if `pip` was installed into the `.local/bin` folder in your home directory\.
 
    ```
    export PATH=~/.local/bin:$PATH
@@ -59,9 +59,9 @@ These steps require that you have a working installation of Python 2 version 2\.
    $ pip install awscli --user
    ```
 
-   We again recommend that you use the `--user` switch to install the AWS CLI in your local home folder which does not require root/administrator permissions\.
+   We again recommend that you use the `--user` switch to install the AWS CLI in your local home folder, which doesn't require root/administrator permissions\.
 
-## Configure the AWS CLI<a name="tutorial-configure-cli"></a>
+## Step 2: Configure the AWS CLI<a name="tutorial-configure-cli"></a>
 
 First, configure the AWS CLI with your credentials and default settings\.
 
@@ -75,8 +75,8 @@ Default output format [None]: json
 
 The AWS CLI prompts you for the following information:
 + **AWS Access Key ID and AWS Secret Access Key** – These are your user or account credentials\. If you don't have keys, see [Access Keys \(Access Key ID and Secret Access Key\)](https://docs.aws.amazon.com/general/latest/gr/getting-aws-sec-creds.html) in the *Amazon Web Services General Reference*\.
-+ **Default region name** – This specifies the name of the region you want the CLI to send its requests to by default\.
-+ **Default output format** – This specifies the output format you want the CLI to use by default\. The value can be: `json`, `text`, or `table`\. If you don't specify an output format, `json` is used\.
++ **Default region name** – This specifies the name of the AWS Region you want the CLI to send its requests to by default\.
++ **Default output format** – This specifies the output format you want the CLI to use by default\. The value can be `json`, `text`, or `table`\. If you don't specify an output format, `json` is used\.
 
 Now try a simple command to verify that your credentials are configured correctly and that you can connect to AWS\.
 
@@ -108,17 +108,17 @@ $ aws ec2 describe-regions --output table
 |+-----------------------------------+------------------+|
 ```
 
-## Create a Security Group and Key Pair for the EC2 Instance<a name="tutorial-configure-security"></a>
+## Step 3: Create a Security Group and Key Pair for the Amazon EC2 Instance<a name="tutorial-configure-security"></a>
 
-Your next step is to set up the prerequisites for launching an Amazon EC2 instance that can be accessed with a terminal emulator connected using the [Secure Shell \(SSH\)](https://www.ssh.com/ssh/) protocol\. For more information about Amazon EC2 and its features, see the *[Amazon EC2 User Guide for Linux Instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/)*\.
+In this step, you set up the prerequisites for launching an Amazon EC2 instance that can be accessed with a terminal emulator connected using the [Secure Shell \(SSH\)](https://www.ssh.com/ssh/) protocol\. For more information about Amazon EC2 and its features, see the *[Amazon EC2 User Guide for Linux Instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/)*\.
 
 Amazon EC2 requires the following prerequisites to communicate with an EC2 instance:
-+ **[Security group](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html)** – a security group determines what network traffic is allowed to enter and leave your instance\. You can think of it as a virtual firewall\. A security group contains rules that control inbound and outbound network traffic\.
++ **[Security group](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html)** – Determines what network traffic is allowed to enter and leave your instance\. You can think of a security group as a virtual firewall around the instances that are attached to the group\. A security group contains rules that control inbound and outbound network traffic\.
 + **[Key pair](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html)** – Public–key cryptography uses a public key to encrypt a piece of data, such as a password, then the recipient uses the private key to decrypt the data\. Amazon EC2 uses the specified key pair to encrypt the credentials used to access the instance\. 
 
 **To create a security group and key pair**
 
-1. First, create a new security group for the VPC in which you'll launch the instance\. If you are using the default VPC for the region, you can omit the `--vpc-id` parameter; otherwise, specify the ID of the VPC in which you'll launch your instance\. The output shows the identifier of your new security group\.
+1. Create a security group for the VPC in which you'll launch the instance\. If you're using the default VPC for your account, you can omit the `--vpc-id` parameter; otherwise, specify the ID of the VPC in which you'll launch your instance\. The output shows the identifier of your new security group\.
 
    ```
    $ aws ec2 create-security-group --group-name devenv-sg --vpc-id vpc-xxxxxxxx --description "Security group for development environment"
@@ -127,7 +127,7 @@ Amazon EC2 requires the following prerequisites to communicate with an EC2 insta
    }
    ```
 
-1. Next, create a rule for your security group that enables inbound network traffic on port 22 from the CIDR network address range that you'll use to connect to the instance\.
+1. Create a rule for your security group that enables inbound network traffic on port 22 from the CIDR network address range that you'll use to connect to the instance\.
 **Important**  
 This example shows the `0.0.0.0/0` CIDR range which enables inbound traffic from anywhere on the internet\. We strongly recommend that you replace this with the *public* CIDR range of the network \(as seen by AWS\) from which you'll connect to your instance\. 
 
@@ -137,15 +137,15 @@ This example shows the `0.0.0.0/0` CIDR range which enables inbound traffic from
 
    Make a note of the security group ID\. You'll need it later when you launch the instance\.
 
-1. Next, create the SSH cryptographic key pair that you'll use to connect to the instance\. This example command shows how to save the contents of the key to a file named `devenv-key.pem`\.
+1. Create the SSH cryptographic key pair that you'll use to connect to the instance\. This example command shows how to save the contents of the key to a file named `devenv-key.pem`\.
 
    ```
    $ aws ec2 create-key-pair --key-name devenv-key --query "KeyMaterial" --output text > devenv-key.pem
    ```
 
-   The `--query "KeyMaterial"` parameter extracts only the part of the output that you need in the \.pem file\.
-**Double quotes for the `--query` parameter**  
-All of the examples in this topic that include the `--query` parameter use double\-quotes\. Although Linux lets you use single quotes for the `--query` parameter, the Windows Command prompt requires you to use double quotes instead of single quotes\.
+   The `--query "KeyMaterial"` parameter extracts only the part of the output that you need in the `.pem` file\.
+**Double quotation marks for the `--query` parameter**  
+All of the examples in this topic that include the `--query` parameter use double quotation marks \. Although Linux lets you use single quotation marks for the `--query` parameter, the Windows command prompt requires you to use double quotation marks instead of single quotation marks\.
 
 1. On Linux, change the access for the new key file so that only you have access to it\. 
 
@@ -153,13 +153,13 @@ All of the examples in this topic that include the `--query` parameter use doubl
    $ chmod 400 devenv-key.pem
    ```
 
-## Launch and Connect to the Instance<a name="tutorial-launch-and-connect"></a>
+## Step 4: Launch and Connect to the Instance<a name="tutorial-launch-and-connect"></a>
 
 You are now ready to launch an instance and connect to it\. 
 
 **To launch and connect to the instance**
 
-1. Run the following command, using the ID of the security group that you created in the previous step\. The `--image-id` parameter specifies the Amazon Machine Image \(AMI\) that Amazon EC2 uses to bootstrap the instance\. You can find an image ID for your region and operating system using the [Amazon EC2 console](https://console.aws.amazon.com/ec2/)\. If you are using the default subnet for a default VPC, you can omit the `--subnet-id` parameter; otherwise, specify the ID of the subnet in which you'll launch your instance\. 
+1. Run the following command, using the ID of the security group that you created in the previous step\. The `--image-id` parameter specifies the Amazon Machine Image \(AMI\) that Amazon EC2 uses to bootstrap the instance\. You can find an image ID for your AWS Region and operating system using the [Amazon EC2 console](https://console.aws.amazon.com/ec2/)\. If you're are using the default subnet for a default VPC, you can omit the `--subnet-id` parameter; otherwise, specify the ID of the subnet in which you'll launch your instance\. 
 **Note**  
 This example shows the command split across multiple lines with the Linux '\\' line continuation character\. You can, of course, submit it all as a single line\. For the Windows command line, replace the '\\' with a '^'\.
 
@@ -174,14 +174,14 @@ This example shows the command split across multiple lines with the Linux '\\' l
    "i-0787e4282810ef9cf"
    ```
 
-1. The instance takes a few moments to launch\. After the instance is up and running, you can retrieve the public IP address of the instance that you'll need to connect it with the following command:
+1. The instance takes a few moments to launch\. After the instance is up and running, you can retrieve the public IP address of the instance that you'll need to connect to it by using the following command\.
 
    ```
    $ aws ec2 describe-instances --instance-ids i-0787e4282810ef9cf --query "Reservations[0].Instances[0].PublicIpAddress"
    "54.183.22.255"
    ```
 
-1. To connect to the instance, use the public IP address and private key \.pem file with your preferred terminal program\. On Linux, macOS, or Unix, you can do this from the command line using the following command: 
+1. To connect to the instance, use the public IP address and private key `.pem` file with your preferred terminal program\. On Linux, macOS, or Unix, you can do this from the command line using the following command\. 
 
    ```
    $ ssh -i devenv-key.pem user@54.183.22.255
@@ -189,14 +189,14 @@ This example shows the command split across multiple lines with the Linux '\\' l
 
    If you get an error like *Permission denied \(publickey\)* when attempting to connect to your instance, check that the following are correct:
    + **Key** – The key specified must be at the path indicated and must be the private key, not the public one\. Permissions on the key must be restricted to the owner\.
-   + **User** – The user name must match the default user name associated with the AMI you used to launch the instance\. For an Ubuntu AMI, this is `ubuntu`\. For an Amazon Linux AMI, it is `ec2-user`\.
+   + **User** – The user name must match the default user name associated with the AMI you used to launch the instance\. For an Ubuntu AMI, this is `ubuntu`\. For an Amazon Linux AMI, it's `ec2-user`\.
    + **Instance** – The public IP address or DNS name of the instance\. Verify that the address is public and that port 22 is open to your local machine on the instance's security group\.
 
    You can also use the `-v` option to view additional information related to the error\.
 **SSH on Windows**  
 On Windows, you can use the PuTTY terminal application available [here](http://www.chiark.greenend.org.uk/~sgtatham/putty/)\. Get `putty.exe` and `puttygen.exe` from the downloads page\.   
 Use `puttygen.exe` to convert your private key to a `.ppk` file required by PuTTY\. Launch `putty.exe`, enter the public IP address of the instance in the **Host Name** field, and set the connection type to SSH\.   
-In the **Category** panel, navigate to **Connection** > **SSH** > **Auth**, and click **Browse** to select your `.ppk` file, and then click **Open** to connect\. 
+In the **Category** panel, navigate to **Connection**, **SSH**, **Auth**, and then choose **Browse** to select your `.ppk` file\. Then choose **Open** to connect\. 
 
 1. The terminal prompts you to accept the server's public key\. Type `yes` and press **Enter** to complete the connection\. 
 

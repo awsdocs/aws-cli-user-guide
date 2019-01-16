@@ -1,8 +1,10 @@
-# Assuming an IAM Role<a name="cli-configure-role"></a>
+# Assuming an IAM Role in the AWS CLI<a name="cli-configure-role"></a>
 
-An [IAM role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html) is a authorization tool that lets an IAM user gain additional \(or different\) permissions, or get permissions to perform actions in a different AWS account\. 
+An [AWS Identity and Access Management \(IAM\) role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html) is an authorization tool that lets an IAM user gain additional \(or different\) permissions, or get permissions to perform actions in a different AWS account\. 
 
-You can configure the AWS Command Line Interface to use an IAM role by defining a profile for the role in the `~/.aws/config` file\. The following example shows a role profile named `marketingadmin` that is assumed when you run commands that specify the `marketingadmin` profile\.
+You can configure the AWS Command Line Interface \(AWS CLI\) to use an IAM role by defining a profile for the role in the `~/.aws/config` file\. 
+
+The following example shows a role profile named `marketingadmin` that is assumed when you run commands that specify the `marketingadmin` profile\.
 
 ```
 [profile marketingadmin]
@@ -10,12 +12,12 @@ role_arn = arn:aws:iam::123456789012:role/marketingadmin
 source_profile = user1
 ```
 
-The role must be linked to a separate named profile that contains IAM user credentials with permission to assume the role\. In the previous example, the `marketingadmin` profile is linked using the `source-profile` field to the `user1` profile\. When you specify that a AWS CLI command is to use the profile `marketingadmin`, the CLI automatically looks up the credentials for the linked `user1` profile and uses them to request temporary credentials for the specified IAM role\. Those temporary credentials are then used to run the CLI command\. The specified role must have attached IAM permission policies that allow the CLI command to run\.
+You must link the role to a separate named profile that contains IAM user credentials with permission to assume the role\. In the previous example, the `marketingadmin` profile is linked using the `source-profile` field to the `user1` profile\. When you specify that an AWS CLI command is to use the profile `marketingadmin`, the CLI automatically looks up the credentials for the linked `user1` profile and uses them to request temporary credentials for the specified IAM role\. Those temporary credentials are then used to run the CLI command\. The specified role must have attached IAM permission policies that allow the CLI command to run\.
 
 **Topics**
 + [Configuring and Using a Role](#cli-role-prepare)
 + [Using Multi\-Factor Authentication](#cli-configure-role-mfa)
-+ [Cross Account Roles](#cli-configure-role-xaccount)
++ [Cross\-Account Roles](#cli-configure-role-xaccount)
 + [Clearing Cached Credentials](#cli-configure-role-cache)
 
 ## Configuring and Using a Role<a name="cli-role-prepare"></a>
@@ -24,7 +26,9 @@ When you run commands using a profile that specifies an IAM role, the AWS CLI us
 
 You can create a new role in IAM with the permissions that you want users to assume by following the procedure under [Creating a Role to Delegate Permissions to an IAM User](https://docs.aws.amazon.com/IAM/latest/UserGuide/roles-creatingrole-user.html) in the *AWS Identity and Access Management User Guide*\. If the role and the source profile's IAM user are in the same account, you can enter your own account ID when configuring the role's trust relationship\.
 
-After creating the role, modify the trust relationship to allow the IAM user \(or the users in the AWS account\) to assume it\. The following example shows a trust relationship that allows a role to be assumed by any IAM user in the account 123456789012, ***if*** the administrator of that account explicitly grants the `sts:assumerole` permission to the user:
+After creating the role, modify the trust relationship to allow the IAM user \(or the users in the AWS account\) to assume it\. 
+
+The following example shows a trust relationship that allows a role to be assumed by any IAM user in the account 123456789012, ***if*** the administrator of that account explicitly grants the `sts:assumerole` permission to the user\.
 
 ```
  1. {
@@ -41,7 +45,7 @@ After creating the role, modify the trust relationship to allow the IAM user \(o
 12. }
 ```
 
-The trust policy does not actually grant permissions\. The administrator of the account must delegate the permission to assume the role to individual users by attaching a policy with the appropriate permissions\. The following example allows the attached IAM user to assume only the `marketingadmin` role:
+The trust policy doesn't actually grant permissions\. The administrator of the account must delegate the permission to assume the role to individual users by attaching a policy with the appropriate permissions\. The following example allows the attached IAM user to assume only the `marketingadmin` role\.
 
 ```
 {
@@ -56,15 +60,15 @@ The trust policy does not actually grant permissions\. The administrator of the 
 }
 ```
 
-The IAM user doesn't need to have any additional permissions to run the CLI commands using the role profile\. Instead, the permissions needed to run the command come from those attached to the *role*\. However, if you want your users to be able to access AWS resources *without* using a role, then you must attach additional inline or managed policies to the IAM user that grants permissions for those resources\.
+The IAM user doesn't need to have any additional permissions to run the CLI commands using the role profile\. Instead, the permissions needed to run the command come from those attached to the *role*\. However, to enable your users to access AWS resources *without* using a role, you must attach additional inline or managed policies to the IAM user that grants permissions for those resources\.
 
-Now that you have the role profile, role permissions, role trust relationship, and user permissions properly configured, you can use the role at the command line by invoking the `--profile` option\. For example, the following command calls the Amazon S3 `ls` command using the permissions attached to the `marketingadmin` role as defined by the example at the beginning of this topic:
+Now that you have the role profile, role permissions, role trust relationship, and user permissions properly configured, you can use the role at the command line by invoking the `--profile` option\. For example, the following command calls the Amazon S3 `ls` command using the permissions attached to the `marketingadmin` role as defined by the example at the beginning of this topic\.
 
 ```
 $ aws s3 ls --profile marketingadmin
 ```
 
-If you want to use the role for several calls, you can set the `AWS_PROFILE` environment variable for the current session from the command line\. While that environment variable is defined, you don't have to specify the `--profile` option on each command\. 
+To use the role for several calls, you can set the `AWS_PROFILE` environment variable for the current session from the command line\. While that environment variable is defined, you don't have to specify the `--profile` option on each command\. 
 
 **Linux, macOS, or Unix**
 
@@ -82,9 +86,9 @@ For more information on configuring IAM users and roles, see [Users and Groups](
 
 ## Using Multi\-Factor Authentication<a name="cli-configure-role-mfa"></a>
 
-For additional security, you can require that users provide a one time key generated from a multi\-factor authentication device, a U2F device, or mobile app when they attempt to make a call using the role profile\.
+For additional security, you can require that users provide a one\-time key generated from a multi\-factor authentication \(MFA\) device, a U2F device, or mobile app when they attempt to make a call using the role profile\.
 
-First, modify the trust relationship on the IAM role to require multi\-factor authentication\. For an example, see the `Condition` line in the following sample:
+First, modify the trust relationship on the IAM role to require MFA\. For an example, see the `Condition` line in the following example\.
 
 ```
 {
@@ -101,7 +105,7 @@ First, modify the trust relationship on the IAM role to require multi\-factor au
 }
 ```
 
-Next, add a line to the role profile that specifies the ARN of the user's MFA device:
+Next, add a line to the role profile that specifies the ARN of the user's MFA device\.
 
 ```
 [profile marketingadmin]
@@ -112,11 +116,11 @@ mfa_serial = arn:aws:iam::123456789012:mfa/saanvi
 
 The `mfa_serial` setting can take an ARN, as shown, or the serial number of a hardware MFA token\.
 
-## Cross Account Roles<a name="cli-configure-role-xaccount"></a>
+## Cross\-Account Roles<a name="cli-configure-role-xaccount"></a>
 
-You can enable IAM users to assume roles that belong to different accounts by configuring the role as a cross account role\. During role creation, set the role type to **Another AWS account**, as described in **[Creating a Role to Delegate Permissions to an IAM user](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user.html)** and optionally select **Require MFA**\. The **Require MFA** option configures the appropriate condition in the trust relationship as described in [Using Multi\-Factor Authentication](#cli-configure-role-mfa)\.
+You can enable IAM users to assume roles that belong to different accounts by configuring the role as a cross\-account role\. During role creation, set the role type to **Another AWS account**, as described in [Creating a Role to Delegate Permissions to an IAM user](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user.html)\. Optionally, select **Require MFA**\. The **Require MFA** option configures the appropriate condition in the trust relationship, as described in [Using Multi\-Factor Authentication](#cli-configure-role-mfa)\.
 
-If you use an [external ID](https://docs.aws.amazon.com/STS/latest/UsingSTS/sts-delegating-externalid.html) to provide additional control over who can assume a role across accounts, you must also add the `external_id` parameter to the role profile\. You typically use this only when the other account is controlled by someone outside your company or organization\.
+If you use an [external ID](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html) to provide additional control over who can assume a role across accounts, you must also add the `external_id` parameter to the role profile\. You typically use this only when the other account is controlled by someone outside your company or organization\.
 
 ```
 [profile crossaccountrole]
