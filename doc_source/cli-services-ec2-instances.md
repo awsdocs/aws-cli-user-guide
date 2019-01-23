@@ -10,6 +10,7 @@ The following examples assume that you have already [configured your default cre
 **Topics**
 + [Launching an Instance](#launching-instances)
 + [Adding a Block Device to Your Instance](#block-device-mapping)
++ [Modifying Block Device Mappings During Launch](#modify-block-device.title)
 + [Adding a Tag to Your Instance](#tagging-instances)
 + [Connecting to Your Instance](#connecting-to-instances)
 + [Listing Your Instances](#listing-instances)
@@ -219,33 +220,93 @@ $ aws ec2 run-instances --image-id ami-173d747e --count 1 --instance-type t1.mic
 
 Each instance that you launch has an associated root device volume\. You can use block device mapping to specify additional Amazon Elastic Block Store \(Amazon EBS\) volumes or instance store volumes to attach to an instance when it's launched\.
 
-To add a block device to your instance, specify the `--block-device-mappings` option when you use `run-instances`\.
+To add a block device to your instance, specify the `--block-device-mappings` option when you use `run-instances`\. In each of the examples that follow, you can supply a text file containing the JSON block as an argument to `--block-device-mappings`, for example, `--block-device-mappings file://mapping.json`\.
 
-The following example parameter provisions a standard Amazon EBS volume that is 20 GB in size, and maps it to your instance using the identifier `/dev/sdf`\.
+The following example provisions a standard Amazon EBS volume that is 20 GB in size, and maps it to your instance using the identifier `/dev/sdf`\. 
 
 ```
---block-device-mappings "[{\"DeviceName\":\"/dev/sdf\",\"Ebs\":{\"VolumeSize\":20,\"DeleteOnTermination\":false}}]"
+[
+   {
+      "DeviceName":"/dev/sdf",
+      "Ebs":{
+         "VolumeSize":20,
+         "DeleteOnTermination":false
+      }
+   }
+]
 ```
 
 The following example adds an Amazon EBS volume, mapped to `/dev/sdf`, based on an existing snapshot\. A snapshot represents an image that is loaded onto the volume for you\. When you specify a snapshot, you don't have to specify a volume size; it will be large enough to hold your image\. However, if you do specify a size, it must be greater than or equal to the size of the snapshot\.
 
 ```
---block-device-mappings "[{\"DeviceName\":\"/dev/sdf\",\"Ebs\":{\"SnapshotId\":\"snap-a1b2c3d4\"}}]"
+[
+   {
+      "DeviceName":"/dev/sdf",
+      "Ebs":{
+         "SnapshotId":"snap-a1b2c3d4"
+      }
+   }
+]
 ```
 
 The following example adds two volumes to your instance\. The number of volumes available to your instance depends on its instance type\.
 
 ```
---block-device-mappings "[{\"DeviceName\":\"/dev/sdf\",\"VirtualName\":\"ephemeral0\"},{\"DeviceName\":\"/dev/sdg\",\"VirtualName\":\"ephemeral1\"}]"
+[
+   {
+      "DeviceName":"/dev/sdf",
+      "VirtualName":"ephemeral0"
+   },
+   {
+      "DeviceName":"/dev/sdg",
+      "VirtualName":"ephemeral1"
+   }
+]
 ```
 
 The following example creates the mapping \(`/dev/sdj`\), but doesn't provision a volume for the instance\.
 
 ```
---block-device-mappings "[{\"DeviceName\":\"/dev/sdj\",\"NoDevice\":\"\"}]"
+[{"DeviceName":"/dev/sdj","NoDevice":""}]
+
+[
+   {
+      "DeviceName":"/dev/sdj",
+      "NoDevice":""
+   }
+]
 ```
 
 For more information, see [Block Device Mapping](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/block-device-mapping-concepts.html) in the *Amazon EC2 User Guide for Linux Instances*\.
+
+## Modifying Block Device Mappings During Launch<a name="modify-block-device.title"></a>
+
+When you launch an instance from an AMI, you can specify block\-device\-mapping parameters for the resulting Amazon EBS volume that differ from the parameters in the AMI's original backing snapshots\. 
+
+To change the block\-device\-mapping parameters for one or more volumes, specify the `--block-device-mappings` option when you use `run-instances`\. In the example that follows, you can supply a text file containing the JSON block as an argument to `--block-device-mappings`, for example, `--block-device-mappings file://mapping.json`\.
+
+This example shows how to specify a new encryption state for two Amazon EBS volumes\. The root volume, `/dev/xvda`, is based on an unencrypted backing snapshot in the AMI\. Setting the `Encrypted` parameter to `true`, without specifying a Customer Master Key \(CMK\), causes the volume to be encrypted to your default CMK while leaving unchanged its other block\-device\-mapping settings\. The 100 GiB `gp2` data volume, `/dev/sdb`, is entirely new, that is, not based on a backing snapshot in the AMI\. With both the `Encrypted` and `KmsKeyId` parameters set, it will be encrypted to a custom CMK identified by the provided ARN\.
+
+```
+[
+   {
+      "DeviceName":"/dev/xvda",
+      "Ebs":{
+         "Encrypted":"true"
+      }
+   },
+   {
+      "DeviceName":"/dev/sdb",
+      "Ebs":{
+         "DeleteOnTermination":true,
+         "VolumeSize":100,
+         "VolumeType":"gp2",
+         "Encrypted":true,
+         "KmsKeyId":"arn:aws:kms:us-east-1:012345678910:key/a48a521f-3aff-4b34-a159-example37812"
+      }
+   }
+]
+```
 
 ## Adding a Tag to Your Instance<a name="tagging-instances"></a>
 

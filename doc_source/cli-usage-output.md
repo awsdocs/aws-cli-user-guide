@@ -92,7 +92,7 @@ $ aws ec2 describe-volumes
 }
 ```
 
-We can choose to display only the first volume from the `Volumes` list by using the following command that [indexes the first volume](http://jmespath.org/specification.html#index-expressions)\.
+We can choose to display only the first volume from the `Volumes` list by using the following command that [indexes the first volume in the array](http://jmespath.org/specification.html#index-expressions)\.
 
 ```
 $ aws ec2 describe-volumes --query 'Volumes[0]'
@@ -183,6 +183,94 @@ $ aws ec2 describe-volumes --query 'Volumes[?AvailabilityZone==`us-west-2a`]'
 
 **Note**  
 When specifying a literal value such as "us\-west\-2" above in a JMESPath query expression, you must surround the value in backticks \(` `\) for it to be read properly\.
+
+Here are some additional examples that illustrate how you can get only the details you want from the output of your commands\.
+
+The following example lists Amazon EC2 volumes\. The service produces a list of all in\-use volumes in the `us-west-2a` Availability Zone\. The `--query` parameter further limits the output to only those volumes with a `Size` value that is larger than 50, and shows only the specified fields with user\-defined names\.
+
+```
+$ aws ec2 describe-volumes \                                                                                                                           ~/workplace/awscli/src/AWSUnifiedCLIDocs
+--filter "Name=availability-zone,Values=us-west-2a" "Name=status,Values=attached" \
+--query 'Volumes[?Size > `50`].{Id:VolumeId,Size:Size,Type:VolumeType}'
+[
+    {
+        "Id": "vol-0be9bb0bf12345678",
+        "Size": 80,
+        "Type": "gp2"
+    }
+]
+```
+
+The following example retrieves a list of images that meet several criteria\. It then uses the `--query` parameter to sort the output by `CreationDate`, selecting only the most recent\. It then displays the `ImageId` of that one image\.
+
+```
+$ aws ec2 describe-images \
+--owners amazon \
+--filters "Name=name,Values=amzn*gp2" "Name=virtualization-type,Values=hvm" "Name=root-device-type,Values=ebs" \
+--query "sort_by(Images, &CreationDate)[-1].ImageId" \
+--output text
+ami-00ced3122871a4921
+```
+
+The \-\-query parameter also enables you to count items in the output\. The following example displays the number of available volumes that are more than 1000 IOPS\.
+
+```
+$ aws ec2 describe-volumes \                                                                                                                           ~/workplace/awscli/src/AWSUnifiedCLIDocs
+--filter "Name=status,Values=available" \
+--query 'length(Volumes[?Iops > `1000`])'
+3
+```
+
+The following example shows how to list all of your snapshots that were created after a specified date, including only a few of the available fields in the output\.
+
+```
+$ aws ec2 describe-snapshots --owner self --output json \                                                                                         ~/workplace/awscli/src/AWSUnifiedCLIDocs
+--query 'Snapshots[?StartTime>=`2018-02-07`].{Id:SnapshotId,VId:VolumeId,Size:VolumeSize}' \
+[
+    {
+        "id": "snap-0effb42b7a1b2c3d4",
+        "vid": "vol-0be9bb0bf12345678",
+        "Size": 8
+    }
+]
+```
+
+The following example lists the five most recent AMIs that you created, sorted from most recent to oldest\.
+
+```
+$ aws ec2 describe-images --owners self \                                                                                                              ~/workplace/awscli/src/AWSUnifiedCLIDocs
+--query 'reverse(sort_by(Images,&CreationDate))[:5].{id:ImageId,date:CreationDate}'
+[
+    {
+        "id": "ami-0a1b2c3d4e5f60001",
+        "date": "2018-11-28T17:16:38.000Z"
+    },
+    {
+        "id": "ami-0a1b2c3d4e5f60002",
+        "date": "2018-09-15T13:51:22.000Z"
+    },
+    {
+        "id": "ami-0a1b2c3d4e5f60003",
+        "date": "2018-08-19T10:22:45.000Z"
+    },
+    {
+        "id": "ami-0a1b2c3d4e5f60004",
+        "date": "2018-05-03T12:04:02.000Z"
+    },
+    {
+        "id": "ami-0a1b2c3d4e5f60005",
+        "date": "2017-12-13T17:16:38.000Z"
+    }
+
+]
+```
+
+This final example shows only the `InstanceId` for any unhealthy instances in the specified AutoScaling Group\.
+
+```
+$ aws autoscaling describe-auto-scaling-groups --auto-scaling-group-name My-AutoScaling-Group-Name --output text\
+--query 'AutoScalingGroups[*].Instances[?HealthStatus==`Unhealthy`].InstanceId'
+```
 
 Combined with the three output formats that are explained in more detail in the following sections, the `--query` option is a powerful tool you can use to customize the content and style of outputs\. 
 
