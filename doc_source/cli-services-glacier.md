@@ -119,7 +119,7 @@ You must specify the byte range of each part when you upload it so that Glacier 
 
 Amazon S3 Glacier requires a tree hash of the original file to confirm that all of the uploaded pieces reached AWS intact\. 
 
-To calculate a tree hash, you split the file into 1 MiB parts and calculate a binary SHA\-256 hash of each piece\. Then you split the list of hashes into pairs, combine the two binary hashes in each pair, and take hashes of the results\. Repeat this process until there is only one hash left\. If there is an odd number of hashes at any level, promote it to the next level without modifying it\.
+To calculate a tree hash, you must split the file into 1 MiB parts and calculate a binary SHA\-256 hash of each piece\. Then you split the list of hashes into pairs, combine the two binary hashes in each pair, and take hashes of the results\. Repeat this process until there is only one hash left\. If there is an odd number of hashes at any level, promote it to the next level without modifying it\.
 
 The key to calculating a tree hash correctly when using command line utilities is to store each hash in binary format and convert to hexadecimal only at the last step\. Combining or hashing the hexadecimal version of any hash in the tree will cause an incorrect result\.
 

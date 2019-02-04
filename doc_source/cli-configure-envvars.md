@@ -2,8 +2,11 @@
 
 Environment variables provide another way to specify configuration options and credentials, and can be useful for scripting or temporarily setting a named profile as the default\.
 
-**Important**  
-Setting one of the following environment variables overrides all other ways of specifying that option *except* specifying the option as a command line parameter\.
+**Precedence of options**
++ If you specify an option by using one of the environment variables described in this topic, it overrides any value loaded from a profile in the configuration file\. 
++ If you specify an option by using a parameter on the CLI command line, it overrides any value from either the corresponding environment variable or a profile in the configuration file\.
+
+**Supported environment variables**
 
 The AWS CLI supports the following environment variables:
 + `AWS_ACCESS_KEY_ID` – Specifies an AWS access key associated with an IAM user or role\.
@@ -11,7 +14,7 @@ The AWS CLI supports the following environment variables:
 + `AWS_SESSION_TOKEN` – Specifies the session token value that is required if you are using temporary security credentials\. For more information, see the [Output section of the assume\-role command](https://docs.aws.amazon.com/cli/latest/reference/sts/assume-role.html#output) in the *AWS CLI Command Reference*\.
 + `AWS_DEFAULT_REGION` – Specifies the [AWS Region](cli-chap-configure.md#cli-quick-configuration-region) to send the request to\.
 + `AWS_DEFAULT_OUTPUT` – Specifies the output format to use\.
-+ `AWS_PROFILE` – Specifies the name of the [CLI profile](cli-configure-profiles.md) with the credentials and options to use\. This can be the name of a profile stored in a `credentials` or `config` file, or the value `default` to use the default profile\.
++ `AWS_PROFILE` – Specifies the name of the [CLI profile](cli-configure-profiles.md) with the credentials and options to use\. This can be the name of a profile stored in a `credentials` or `config` file, or the value `default` to use the default profile\. If you specify this environment variable, it overrides the behavior of using the profile named `[default]` in the configuration file\.
 + `AWS_CA_BUNDLE` – Specifies the path to a certificate bundle to use for HTTPS certificate validation\.
 + `AWS_SHARED_CREDENTIALS_FILE` – Specifies the location of the file that the AWS CLI uses to store access keys \(the default is `~/.aws/credentials`\)\.
 + `AWS_CONFIG_FILE` – Specifies the location of the file that the AWS CLI uses to store configuration profiles \(the default is `~/.aws/config`\)\.

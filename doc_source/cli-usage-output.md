@@ -4,10 +4,10 @@ This section describes the different ways that you can control the output from t
 
 **Topics**
 + [How to Select the Output Format](#cli-usage-output-format)
-+ [How to Filter the Output with the `--query` Option](#cli-usage-output-filter)
 + [JSON Output Format](#cli-usage-output-json)
 + [Text Output Format](#text-output)
 + [Table Output Format](#table-output)
++ [How to Filter the Output with the `--query` Option](#cli-usage-output-filter)
 
 ## How to Select the Output Format<a name="cli-usage-output-format"></a>
 
@@ -41,6 +41,159 @@ The `json` option is best for handling the output programmatically via various l
 The `table` format is easy to read\.
 
 The `text` format works well with traditional Unix text processing tools, such as `sed`, `grep`, and `awk`, as well as in PowerShell scripts\.
+
+The results in any format can be customized and filtered by using the \-\-query parameter\. For more information, see [How to Filter the Output with the `--query` Option](#cli-usage-output-filter)\. 
+
+## JSON Output Format<a name="cli-usage-output-json"></a>
+
+JSON is the default output format of the AWS CLI\. Most languages can easily decode JSON strings using built\-in functions or with publicly available libraries\. As shown in the previous topic along with output examples, the `--query` option provides powerful ways to filter and format the AWS CLI's JSON\-formatted output\. 
+
+If you need more advanced features that might not be possible with `--query`, you can check out `jq`, a command line JSON processor\. You can download it and find the official tutorial at [http://stedolan\.github\.io/jq/](http://stedolan.github.io/jq/)\.
+
+## Text Output Format<a name="text-output"></a>
+
+The *text* format organizes the AWS CLI's output into tab\-delimited lines\. It works well with traditional Unix text tools such as `grep`, `sed`, and `awk`, as well as the text processing performed by PowerShell\. 
+
+The text output format follows the basic structure shown below\. The columns are sorted alphabetically by the corresponding key names of the underlying JSON object\.
+
+```
+IDENTIFIER  sorted-column1 sorted-column2
+IDENTIFIER2 sorted-column1 sorted-column2
+```
+
+The following is an example of a text output\.
+
+```
+$ aws ec2 describe-volumes --output text
+VOLUMES us-west-2a      2013-09-17T00:55:03.000Z        30      snap-f23ec1c8   in-use  vol-e11a5288    standard
+ATTACHMENTS     2013-09-17T00:55:03.000Z        True    /dev/sda1       i-a071c394      attached        vol-e11a5288
+VOLUMES us-west-2a      2013-09-18T20:26:15.000Z        8       snap-708e8348   in-use  vol-2e410a47    standard
+ATTACHMENTS     2013-09-18T20:26:16.000Z        True    /dev/sda1       i-4b41a37c      attached        vol-2e410a47
+```
+
+**Important**  
+*We strongly recommend that if you specify `text` output, you also always use the `--query` option to ensure consistent behavior*\. This is because the text format alphabetically orders output columns by the key name of the underlying JSON object, and similar resources might not have the same key names\. For example, the JSON representation of a Linux\-based EC2 instance might have elements that are not present in the JSON representation of a Windows\-based instance, or vice versa\. Also, resources might have key\-value elements added or removed in future updates, altering the column ordering\. This is where `--query` augments the functionality of the text output to provide you with complete control over the output format\. In the following example, the command specifies which elements to display and *defines the ordering* of the columns with the list notation `[key1, key2, ...]`\. This gives you full confidence that the correct key values are always displayed in the expected column\. Finally, notice how the AWS CLI outputs None as values for keys that don't exist\.
+
+```
+$ aws ec2 describe-volumes --query 'Volumes[*].[VolumeId, Attachments[0].InstanceId, AvailabilityZone, Size, FakeKey]' --output text
+vol-e11a5288    i-a071c394      us-west-2a      30      None
+vol-2e410a47    i-4b41a37c      us-west-2a      8       None
+```
+
+The following example show how you can use `grep` and `awk` with the text output from the `aws ec2 describe-instances` command\. The first command displays the Availability Zone, current state, and the instance ID of each instance in text output\. The second command processes that output to display only the instance IDs of all running instances in the `us-west-2a` Availability Zone\.
+
+```
+$ aws ec2 describe-instances --query 'Reservations[*].Instances[*].[Placement.AvailabilityZone, State.Name, InstanceId]' --output text
+us-west-2a      running i-4b41a37c
+us-west-2a      stopped i-a071c394
+us-west-2b      stopped i-97a217a0
+us-west-2a      running i-3045b007
+us-west-2a      running i-6fc67758
+
+$ aws ec2 describe-instances --query 'Reservations[*].Instances[*].[Placement.AvailabilityZone, State.Name, InstanceId]' --output text | grep us-west-2a | grep running | awk '{print $3}'
+i-4b41a37c
+i-3045b007
+i-6fc67758
+```
+
+The following example goes a step further and shows not only how to filter the output, but how to use that output to automate changing instance types for each stopped instance\.
+
+```
+$ aws ec2 describe-instances --query 'Reservations[*].Instances[*].[State.Name, InstanceId]' --output text |
+> grep stopped |
+> awk '{print $2}' |
+> while read line;
+> do aws ec2 modify-instance-attribute --instance-id $line --instance-type '{"Value": "m1.medium"}';
+> done
+```
+
+The text output can also be useful in PowerShell\. Because the columns in `text` output is tab\-delimited, it's easily split into an array by using PowerShell's ``t` delimiter\. The following command displays the value of the third column \(`InstanceId`\) if the first column \(`AvailabilityZone`\) matches the string `us-west-2a`\.
+
+```
+PS C:\>aws ec2 describe-instances --query 'Reservations[*].Instances[*].[Placement.AvailabilityZone, State.Name, InstanceId]' --output text |
+%{if ($_.split("`t")[0] -match "us-west-2a") { $_.split("`t")[2]; } }
+i-4b41a37c
+i-a071c394
+i-3045b007
+i-6fc67758
+```
+
+**Tip**  
+If you text output, and filter the output to a single field using the \-\-query parameter, the output is a single line of tab separated values\. To get each value onto a separate line, you can put the output field in brackets as shown in the following examples:
+
+Tab separated, single\-line output:
+
+```
+$ aws iam list-groups-for-user --user-name susan  --output text --query "Groups[].GroupName"
+HRDepartment    Developers      SpreadsheetUsers  LocalAdmins
+```
+
+Each value on its own line by putting `[GroupName]` in brackets:
+
+```
+$ aws iam list-groups-for-user --user-name susan  --output text --query "Groups[].[GroupName]"
+HRDepartment
+Developers
+SpreadsheetUsers
+LocalAdmins
+```
+
+## Table Output Format<a name="table-output"></a>
+
+The `table` format produces human\-readable representations of complex AWS CLI output in a tabular form\.
+
+```
+$ aws ec2 describe-volumes --output table
+---------------------------------------------------------------------------------------------------------------------
+|                                                  DescribeVolumes                                                  |
++-------------------------------------------------------------------------------------------------------------------+
+||                                                     Volumes                                                     ||
+|+------------------+---------------------------+-------+----------------+---------+----------------+--------------+|
+|| AvailabilityZone |        CreateTime         | Size  |  SnapshotId    |  State  |   VolumeId     | VolumeType   ||
+|+------------------+---------------------------+-------+----------------+---------+----------------+--------------+|
+||  us-west-2a      |  2013-09-17T00:55:03.000Z |  30   |  snap-f23ec1c8 |  in-use |  vol-e11a5288  |  standard    ||
+|+------------------+---------------------------+-------+----------------+---------+----------------+--------------+|
+|||                                                  Attachments                                                  |||
+||+---------------------------+------------------------+-------------+--------------+------------+----------------+||
+|||        AttachTime         |  DeleteOnTermination   |   Device    | InstanceId   |   State    |   VolumeId     |||
+||+---------------------------+------------------------+-------------+--------------+------------+----------------+||
+|||  2013-09-17T00:55:03.000Z |  True                  |  /dev/sda1  |  i-a071c394  |  attached  |  vol-e11a5288  |||
+||+---------------------------+------------------------+-------------+--------------+------------+----------------+||
+||                                                     Volumes                                                     ||
+|+------------------+---------------------------+-------+----------------+---------+----------------+--------------+|
+|| AvailabilityZone |        CreateTime         | Size  |  SnapshotId    |  State  |   VolumeId     | VolumeType   ||
+|+------------------+---------------------------+-------+----------------+---------+----------------+--------------+|
+||  us-west-2a      |  2013-09-18T20:26:15.000Z |  8    |  snap-708e8348 |  in-use |  vol-2e410a47  |  standard    ||
+|+------------------+---------------------------+-------+----------------+---------+----------------+--------------+|
+|||                                                  Attachments                                                  |||
+||+---------------------------+------------------------+-------------+--------------+------------+----------------+||
+|||        AttachTime         |  DeleteOnTermination   |   Device    | InstanceId   |   State    |   VolumeId     |||
+||+---------------------------+------------------------+-------------+--------------+------------+----------------+||
+|||  2013-09-18T20:26:16.000Z |  True                  |  /dev/sda1  |  i-4b41a37c  |  attached  |  vol-2e410a47  |||
+||+---------------------------+------------------------+-------------+--------------+------------+----------------+||
+```
+
+You can combine the `--query` option with the table format to display a set of elements preselected from the raw output\. Notice the output differences between dictionary and list notations: column names are alphabetically ordered in the first example, and unnamed columns are ordered as defined by the user in the second example\. For more information about the `--query` option, see [How to Filter the Output with the `--query` Option](#cli-usage-output-filter)\.
+
+```
+$ aws ec2 describe-volumes --query 'Volumes[*].{ID:VolumeId,InstanceId:Attachments[0].InstanceId,AZ:AvailabilityZone,Size:Size}' --output table
+------------------------------------------------------
+|                   DescribeVolumes                  | 
++------------+----------------+--------------+-------+
+|     AZ     |      ID        | InstanceId   | Size  |
++------------+----------------+--------------+-------+
+|  us-west-2a|  vol-e11a5288  |  i-a071c394  |  30   |
+|  us-west-2a|  vol-2e410a47  |  i-4b41a37c  |  8    |
++------------+----------------+--------------+-------+
+
+$ aws ec2 describe-volumes --query 'Volumes[*].[VolumeId,Attachments[0].InstanceId,AvailabilityZone,Size]' --output table
+----------------------------------------------------
+|                  DescribeVolumes                 |
++--------------+--------------+--------------+-----+
+|  vol-e11a5288|  i-a071c394  |  us-west-2a  |  30 |
+|  vol-2e410a47|  i-4b41a37c  |  us-west-2a  |  8  |
++--------------+--------------+--------------+-----+
+```
 
 ## How to Filter the Output with the `--query` Option<a name="cli-usage-output-filter"></a>
 
@@ -265,7 +418,7 @@ $ aws ec2 describe-images --owners self \                                       
 ]
 ```
 
-This final example shows only the `InstanceId` for any unhealthy instances in the specified AutoScaling Group\.
+This following example shows only the `InstanceId` for any unhealthy instances in the specified AutoScaling Group\.
 
 ```
 $ aws autoscaling describe-auto-scaling-groups --auto-scaling-group-name My-AutoScaling-Group-Name --output text\
@@ -275,134 +428,3 @@ $ aws autoscaling describe-auto-scaling-groups --auto-scaling-group-name My-Auto
 Combined with the three output formats that are explained in more detail in the following sections, the `--query` option is a powerful tool you can use to customize the content and style of outputs\. 
 
 For more examples and the full spec of JMESPath, the underlying JSON\-processing library, see [http://jmespath\.org/specification\.html](http://jmespath.org/specification.html)\.
-
-## JSON Output Format<a name="cli-usage-output-json"></a>
-
-JSON is the default output format of the AWS CLI\. Most languages can easily decode JSON strings using built\-in functions or with publicly available libraries\. As shown in the previous topic along with output examples, the `--query` option provides powerful ways to filter and format the AWS CLI's JSON\-formatted output\. 
-
-If you need more advanced features that might not be possible with `--query`, you can check out `jq`, a command line JSON processor\. You can download it and find the official tutorial at [http://stedolan\.github\.io/jq/](http://stedolan.github.io/jq/)\.
-
-## Text Output Format<a name="text-output"></a>
-
-The *text* format organizes the AWS CLI's output into tab\-delimited lines\. It works well with traditional Unix text tools such as `grep`, `sed`, and `awk`, as well as the text processing performed by PowerShell\. 
-
-The text output format follows the basic structure shown below\. The columns are sorted alphabetically by the corresponding key names of the underlying JSON object\.
-
-```
-IDENTIFIER  sorted-column1 sorted-column2
-IDENTIFIER2 sorted-column1 sorted-column2
-```
-
-The following is an example of a text output\.
-
-```
-$ aws ec2 describe-volumes --output text
-VOLUMES us-west-2a      2013-09-17T00:55:03.000Z        30      snap-f23ec1c8   in-use  vol-e11a5288    standard
-ATTACHMENTS     2013-09-17T00:55:03.000Z        True    /dev/sda1       i-a071c394      attached        vol-e11a5288
-VOLUMES us-west-2a      2013-09-18T20:26:15.000Z        8       snap-708e8348   in-use  vol-2e410a47    standard
-ATTACHMENTS     2013-09-18T20:26:16.000Z        True    /dev/sda1       i-4b41a37c      attached        vol-2e410a47
-```
-
-**Important**  
-*We strongly recommend that if you specify `text` output, you also always use the `--query` option to ensure consistent behavior*\. This is because the text format alphabetically orders output columns by the key name of the underlying JSON object, and similar resources might not have the same key names\. For example, the JSON representation of a Linux\-based EC2 instance might have elements that are not present in the JSON representation of a Windows\-based instance, or vice versa\. Also, resources might have key\-value elements added or removed in future updates, altering the column ordering\. This is where `--query` augments the functionality of the text output to provide you with complete control over the output format\. In the following example, the command specifies which elements to display and *defines the ordering* of the columns with the list notation `[key1, key2, ...]`\. This gives you full confidence that the correct key values are always displayed in the expected column\. Finally, notice how the AWS CLI outputs None as values for keys that don't exist\.
-
-```
-$ aws ec2 describe-volumes --query 'Volumes[*].[VolumeId, Attachments[0].InstanceId, AvailabilityZone, Size, FakeKey]' --output text
-vol-e11a5288    i-a071c394      us-west-2a      30      None
-vol-2e410a47    i-4b41a37c      us-west-2a      8       None
-```
-
-The following example show how you can use `grep` and `awk` with the text output from the `aws ec2 describe-instances` command\. The first command displays the Availability Zone, current state, and the instance ID of each instance in text output\. The second command processes that output to display only the instance IDs of all running instances in the `us-west-2a` Availability Zone\.
-
-```
-$ aws ec2 describe-instances --query 'Reservations[*].Instances[*].[Placement.AvailabilityZone, State.Name, InstanceId]' --output text
-us-west-2a      running i-4b41a37c
-us-west-2a      stopped i-a071c394
-us-west-2b      stopped i-97a217a0
-us-west-2a      running i-3045b007
-us-west-2a      running i-6fc67758
-
-$ aws ec2 describe-instances --query 'Reservations[*].Instances[*].[Placement.AvailabilityZone, State.Name, InstanceId]' --output text | grep us-west-2a | grep running | awk '{print $3}'
-i-4b41a37c
-i-3045b007
-i-6fc67758
-```
-
-The following example goes a step further and shows not only how to filter the output, but how to use that output to automate changing instance types for each stopped instance\.
-
-```
-$ aws ec2 describe-instances --query 'Reservations[*].Instances[*].[State.Name, InstanceId]' --output text |
-> grep stopped |
-> awk '{print $2}' |
-> while read line;
-> do aws ec2 modify-instance-attribute --instance-id $line --instance-type '{"Value": "m1.medium"}';
-> done
-```
-
-The text output can also be useful in PowerShell\. Because the columns in `text` output is tab\-delimited, it's easily split into an array by using PowerShell's ``t` delimiter\. The following command displays the value of the third column \(`InstanceId`\) if the first column \(`AvailabilityZone`\) matches the string `us-west-2a`\.
-
-```
-PS C:\>aws ec2 describe-instances --query 'Reservations[*].Instances[*].[Placement.AvailabilityZone, State.Name, InstanceId]' --output text |
-%{if ($_.split("`t")[0] -match "us-west-2a") { $_.split("`t")[2]; } }
-i-4b41a37c
-i-a071c394
-i-3045b007
-i-6fc67758
-```
-
-## Table Output Format<a name="table-output"></a>
-
-The `table` format produces human\-readable representations of complex AWS CLI output in a tabular form\.
-
-```
-$ aws ec2 describe-volumes --output table
----------------------------------------------------------------------------------------------------------------------
-|                                                  DescribeVolumes                                                  |
-+-------------------------------------------------------------------------------------------------------------------+
-||                                                     Volumes                                                     ||
-|+------------------+---------------------------+-------+----------------+---------+----------------+--------------+|
-|| AvailabilityZone |        CreateTime         | Size  |  SnapshotId    |  State  |   VolumeId     | VolumeType   ||
-|+------------------+---------------------------+-------+----------------+---------+----------------+--------------+|
-||  us-west-2a      |  2013-09-17T00:55:03.000Z |  30   |  snap-f23ec1c8 |  in-use |  vol-e11a5288  |  standard    ||
-|+------------------+---------------------------+-------+----------------+---------+----------------+--------------+|
-|||                                                  Attachments                                                  |||
-||+---------------------------+------------------------+-------------+--------------+------------+----------------+||
-|||        AttachTime         |  DeleteOnTermination   |   Device    | InstanceId   |   State    |   VolumeId     |||
-||+---------------------------+------------------------+-------------+--------------+------------+----------------+||
-|||  2013-09-17T00:55:03.000Z |  True                  |  /dev/sda1  |  i-a071c394  |  attached  |  vol-e11a5288  |||
-||+---------------------------+------------------------+-------------+--------------+------------+----------------+||
-||                                                     Volumes                                                     ||
-|+------------------+---------------------------+-------+----------------+---------+----------------+--------------+|
-|| AvailabilityZone |        CreateTime         | Size  |  SnapshotId    |  State  |   VolumeId     | VolumeType   ||
-|+------------------+---------------------------+-------+----------------+---------+----------------+--------------+|
-||  us-west-2a      |  2013-09-18T20:26:15.000Z |  8    |  snap-708e8348 |  in-use |  vol-2e410a47  |  standard    ||
-|+------------------+---------------------------+-------+----------------+---------+----------------+--------------+|
-|||                                                  Attachments                                                  |||
-||+---------------------------+------------------------+-------------+--------------+------------+----------------+||
-|||        AttachTime         |  DeleteOnTermination   |   Device    | InstanceId   |   State    |   VolumeId     |||
-||+---------------------------+------------------------+-------------+--------------+------------+----------------+||
-|||  2013-09-18T20:26:16.000Z |  True                  |  /dev/sda1  |  i-4b41a37c  |  attached  |  vol-2e410a47  |||
-||+---------------------------+------------------------+-------------+--------------+------------+----------------+||
-```
-
-You can combine the `--query` option with the table format to display a set of elements preselected from the raw output\. Notice the output differences between dictionary and list notations: column names are alphabetically ordered in the first example, and unnamed columns are ordered as defined by the user in the second example\.
-
-```
-$ aws ec2 describe-volumes --query 'Volumes[*].{ID:VolumeId,InstanceId:Attachments[0].InstanceId,AZ:AvailabilityZone,Size:Size}' --output table
-------------------------------------------------------
-|                   DescribeVolumes                  | 
-+------------+----------------+--------------+-------+
-|     AZ     |      ID        | InstanceId   | Size  |
-+------------+----------------+--------------+-------+
-|  us-west-2a|  vol-e11a5288  |  i-a071c394  |  30   |
-|  us-west-2a|  vol-2e410a47  |  i-4b41a37c  |  8    |
-+------------+----------------+--------------+-------+
-
-$ aws ec2 describe-volumes --query 'Volumes[*].[VolumeId,Attachments[0].InstanceId,AvailabilityZone,Size]' --output table
-----------------------------------------------------
-|                  DescribeVolumes                 |
-+--------------+--------------+--------------+-----+
-|  vol-e11a5288|  i-a071c394  |  us-west-2a  |  30 |
-|  vol-2e410a47|  i-4b41a37c  |  us-west-2a  |  8  |
-+--------------+--------------+--------------+-----+
-```

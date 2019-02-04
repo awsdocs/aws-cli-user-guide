@@ -25,5 +25,5 @@ When operations such as these can be performed completely in the cloud, only the
 For examples of Amazon S3 usage, see the following topics in this section\.
 
 **Topics**
-+ [Using High\-Level \(`s3`\) Commands with the AWS CLI](using-s3-commands.md)
++ [Using High\-Level \(`s3`\) Commands with the AWS CLI](cli-services-s3-commands.md)
 + [Using API\-Level \(`s3api`\) Commands with the AWS CLI](cli-services-s3-apicommands.md)

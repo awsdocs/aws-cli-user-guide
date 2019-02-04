@@ -110,14 +110,15 @@ C:\> where aws
 C:\Program Files\Python37\Scripts\aws
 ```
 
-Typical paths include:
+If that command does not return any results, then you must add the path manually\. Use the command line or Windows Explorer to discover where it is installed on your computer\. Typical paths include:
 + **Python 3 and `pip`** – `C:\Program Files\Python37\Scripts\`
-+ **Python 3 and `pip` \-\-user option** – `%USERPROFILE%\AppData\Local\Programs\Python\Python37\Scripts`
++ **Python 3 and `pip` \-\-user option on earlier versions of Windows** – `%USERPROFILE%\AppData\Local\Programs\Python\Python37\Scripts`
++ **Python 3 and `pip` \-\-user option on Windows 10** – `%USERPROFILE%\AppData\Roaming\Python\Python37\Scripts`
 + **MSI installer \(64\-bit\)** – `C:\Program Files\Amazon\AWSCLI`
 + **MSI installer \(32\-bit\)** – `C:\Program Files (x86)\Amazon\AWSCLI`
 
 **Note**  
-Folder names that include version numbers can vary\.
+Folder names that include version numbers can vary\. The examples above show Python37\. Replace as needed with the version number you are using\.
 
 **To modify your PATH variable \(Windows\)**
 
@@ -127,7 +128,7 @@ Folder names that include version numbers can vary\.
 
 1. Choose **PATH**, and then choose **Edit**\.
 
-1. Add paths to the **Variable value** field, separated by semicolons\. For example: `C:\existing\path;C:\new\path`
+1. Add the path to the **Variable value** field\. For example: ***C:\\new\\path***
 
 1. Choose **OK** twice to apply the new settings\.
 

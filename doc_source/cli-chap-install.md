@@ -51,7 +51,7 @@ $ aws --version
 aws-cli/1.16.71 Python/3.6.5 Linux/4.14.77-81.59-amzn2.x86_64 botocore/1.12.61
 ```
 
-The AWS CLI is updated regularly to add support for new services and commands\. To update to the latest version of the AWS CLI, run the installation command again\. For detials about the latest version of the AWS CLI, see the [ AWS CLI release notes](https://github.com/aws/aws-cli/blob/develop/CHANGELOG.rst)\.
+The AWS CLI is updated regularly to add support for new services and commands\. To update to the latest version of the AWS CLI, run the installation command again\. For details about the latest version of the AWS CLI, see the [ AWS CLI release notes](https://github.com/aws/aws-cli/blob/develop/CHANGELOG.rst)\.
 
 ```
 $ pip install awscli --upgrade --user
@@ -68,6 +68,6 @@ If you don't have Python and `pip`, use the procedure for your environment\.
 ## Detailed Instructions for Each Environment<a name="install-sections"></a>
 + [Install the AWS CLI on Linux](install-linux.md)
 + [Install the AWS CLI on Windows](install-windows.md)
-+ [Install the AWS CLIon macOS](install-macos.md)
++ [Install the AWS CLI on macOS](install-macos.md)
 + [Install the AWS CLI in a Virtual Environment](install-virtualenv.md)
 + [Install the AWS CLI Using the Bundled Installer \(Linux, macOS, or Unix\)](install-bundle.md)

@@ -11,7 +11,7 @@ If you already have `pip`, follow the instructions in the main [installation top
 $ pip --version
 ```
 
-If you don't alreaady have `pip` installed, see which version of Python is installed\.
+If you don't already have `pip` installed, check which version of Python is installed\.
 
 ```
 $ python --version

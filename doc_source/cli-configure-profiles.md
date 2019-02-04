@@ -4,7 +4,7 @@
 
 The following example shows a `credentials` file with two profiles\. The first is used when you run a CLI command with no profile\. The second is used when you run a CLI command with the `--profile user1` parameter\.
 
-**`~/.aws/credentials`**
+**`~/.aws/credentials`** \(Linux & Mac\) or **`%USERPROFILE%\.aws\credentials`** \(Windows\)
 
 ```
 [default]
@@ -18,7 +18,7 @@ aws_secret_access_key=je7MtGbClwBF/2Zp9Utk/h3yCo8nvbEXAMPLEKEY
 
 Each profile uses different credentials—perhaps from different IAM users—and can also use different AWS Regions and output formats\.
 
-**`~/.aws/config`**
+**`~/.aws/config`** \(Linux & Mac\) or **`%USERPROFILE%\.aws\config`** \(Windows\)
 
 ```
 [default]

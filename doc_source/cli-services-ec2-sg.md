@@ -70,7 +70,7 @@ $ aws ec2 create-security-group --group-name my-sg --description "My security gr
 To view the initial information for `my-sg`, run the [describe\-security\-groups](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-security-groups.html) command\. For an EC2\-Classic security group, you can reference it by its name\.
 
 ```
-aws ec2 describe-security-groups --group-names my-sg
+$ aws ec2 describe-security-groups --group-names my-sg
 {
     "SecurityGroups": [
         {

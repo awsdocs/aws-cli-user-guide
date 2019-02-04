@@ -1,4 +1,4 @@
-# Install the AWS CLIon macOS<a name="install-macos"></a>
+# Install the AWS CLI on macOS<a name="install-macos"></a>
 
 The recommended way to install the AWS Command Line Interface \(AWS CLI\) on macOS is to use the bundled installer\. The bundled installer includes all dependencies and you can use it offline\.
 
