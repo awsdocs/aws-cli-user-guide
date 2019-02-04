@@ -14,6 +14,21 @@ source_profile = user1
 
 You must link the role to a separate named profile that contains IAM user credentials with permission to assume the role\. In the previous example, the `marketingadmin` profile is linked using the `source-profile` field to the `user1` profile\. When you specify that an AWS CLI command is to use the profile `marketingadmin`, the CLI automatically looks up the credentials for the linked `user1` profile and uses them to request temporary credentials for the specified IAM role\. Those temporary credentials are then used to run the CLI command\. The specified role must have attached IAM permission policies that allow the CLI command to run\.
 
+If you want to run a CLI command from within an Amazon EC2 instance, you can use an IAM role attached to an Amazon EC2 instance profile or an Amazon ECS container role\. This enables you to avoid storing long\-lived access keys on your instances\. In that case you could replace the `source_profile` attribute with `credential_source` and specify how to find the credentials\. This attribute supports the following values:
++ `Environment` – to retrieve the credentials from environment variables\.
++ `Ec2InstanceMetadata` – to use the attached Amazon EC2 instance role\.
++ `EcsContainer` – to use the Amazon ECS container credentials\.
+
+The following example shows the same `marketingadmin` role assumed by referencing an Amazon EC2 instance profile:
+
+```
+[profile marketingadmin]
+role_arn = arn:aws:iam::123456789012:role/marketingadmin
+credential_source = Ec2InstanceMetadata
+```
+
+For more information, see [AWS CLI Configuration Variables](https://docs.aws.amazon.com/cli/latest/topic/config-vars.html)\. 
+
 **Topics**
 + [Configuring and Using a Role](#cli-role-prepare)
 + [Using Multi\-Factor Authentication](#cli-configure-role-mfa)
@@ -129,6 +144,8 @@ source_profile = default
 mfa_serial = arn:aws:iam::123456789012:mfa/saanvi
 external_id = 123456
 ```
+
+For more information, see [AWS CLI Configuration Variables](https://docs.aws.amazon.com/cli/latest/topic/config-vars.html)\. 
 
 ## Clearing Cached Credentials<a name="cli-configure-role-cache"></a>
 

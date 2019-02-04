@@ -21,7 +21,7 @@ If your Linux distribution came with Python, you might need to install the Pytho
    + On Red Hat and derivatives, use `yum`\.
 
      ```
-     $ sudo yum install python
+     $ sudo yum install python3
      ```
    + On SUSE and derivatives, use `zypper`\.
 

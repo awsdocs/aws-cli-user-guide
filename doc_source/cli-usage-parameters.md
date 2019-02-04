@@ -211,7 +211,17 @@ $ aws sqs create-queue --queue-name my-queue --attributes '{ "RedrivePolicy":"{\
 
 ## Loading Parameters from a File<a name="cli-usage-parameters-file"></a>
 
-To avoid the need to escape JSON strings at the command line, load the JSON from a file\. Load parameters from a local file by providing the path to the file using the `file://` prefix, as in the following examples\. The file paths are interpreted to be relative to the current working directory\.
+Sometimes it's convenient to load a parameter value from a file instead of trying to type it all as a command line parameter value, such as when the parameter is a complex JSON string\. To specify a file that contains the value, specify a file URI\. The URL provides the path to the file that contains the actual parameter content\. 
+
+**Note**  
+This behaviour is disabled automatically for parameters that already expect a URI, such as parameter that identifies a AWS CloudFormation template URI\.  
+You can also disable this behaviour yourself by adding the following line to your CLI configuration file:  
+
+```
+cli_follow_urlparam = false
+```
+
+The file paths in the following examples are interpreted to be relative to the current working directory\.
 
 **Linux, macOS, or Unix**
 
