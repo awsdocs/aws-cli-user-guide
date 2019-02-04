@@ -1,6 +1,9 @@
 # Using an HTTP Proxy<a name="cli-configure-proxy"></a>
 
- To access AWS through proxy servers, you can configure the `HTTP_PROXY` and `HTTPS_PROXY` environment variables with the IP addresses and port numbers used by your proxy servers\. 
+ To access AWS through proxy servers, you can configure the `HTTP_PROXY` and `HTTPS_PROXY` environment variables with the IP addresses and port numbers used by your proxy servers\.
+
+**Note**  
+The examples below show the environment variable name in all upper\-case letters\. However, if you specify a variable twice \- once with upper\-case letters and once with lower\-case letters, the one with lower\-case letters wins\. We recommend that you have only one defined to avoid confusion and unexpected behavior\.
 
 **Linux, macOS, or Unix**
 
