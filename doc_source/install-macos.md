@@ -72,7 +72,7 @@ $ pip --version
 
 **To install the AWS CLI on macOS**
 
-1. Download and install Python 3\.6 from the [downloads page](https://www.python.org/downloads/mac-osx/) of [Python\.org](https://www.python.org)\.
+1. Download and install the latest version of Python from the [downloads page](https://www.python.org/downloads/mac-osx/) of [Python\.org](https://www.python.org)\.
 
 1. Download and run the `pip` installation script provided by the Python Packaging Authority\.
 

@@ -9,6 +9,12 @@ If your distribution didn't come with Python, or came with an earlier version, i
    ```
    $ python --version
    ```
+
+   or
+
+   ```
+   $ python3 --version
+   ```
 **Note**  
 If your Linux distribution came with Python, you might need to install the Python developer package to get the headers and libraries required to compile extensions, and install the AWS CLI\. Use your package manager to install the developer package \(typically named `python-dev` or `python-devel`\)\.
 
@@ -32,6 +38,6 @@ If your Linux distribution came with Python, you might need to install the Pytho
 1. Open a command prompt or shell and run the following command to verify that Python installed correctly\.
 
    ```
-   $ python --version
+   $ python3 --version
    Python 3.6.1
    ```

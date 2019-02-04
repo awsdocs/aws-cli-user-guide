@@ -50,9 +50,15 @@ If you don't already have `pip` installed, you can install it by using the scrip
    $ python get-pip.py --user
    ```
 
+   or
+
+   ```
+   $ python3 get-pip.py --user
+   ```
+
    When you include the `--user` switch, the script installs `pip` to the path `~/.local/bin`\.
 
-1. Ensure the path with `pip` is part of your `PATH` variable\.
+1. Ensure the folder that contains `pip` is part of your `PATH` variable\.
 
    1. Find your shell's profile script in your user folder\. If you're not sure which shell you have, run `echo $SHELL`\.
 
