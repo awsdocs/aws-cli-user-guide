@@ -157,15 +157,15 @@ MyFile1.txt
 MyFile2.rtf
 MyFile88.txt
 '''
-$ aws s3 sync . s3://my-bucket/path --exclude '*.txt'
+$ aws s3 sync . s3://my-bucket/path --exclude "*.txt"
 upload: MyFile2.rtf to s3://my-bucket/path/MyFile2.rtf
 '''
-$ aws s3 sync . s3://my-bucket/path --exclude '*.txt' --include 'MyFile*.txt'
+$ aws s3 sync . s3://my-bucket/path --exclude "*.txt" --include "MyFile*.txt"
 upload: MyFile1.txt to s3://my-bucket/path/MyFile1.txt
 upload: MyFile88.txt to s3://my-bucket/path/MyFile88.txt
 upload: MyFile2.rtf to s3://my-bucket/path/MyFile2.rtf
 '''
-$ aws s3 sync . s3://my-bucket/path --exclude '*.txt' --include 'MyFile*.txt' --exclude 'MyFile?.txt'
+$ aws s3 sync . s3://my-bucket/path --exclude "*.txt" --include "MyFile*.txt" --exclude "MyFile?.txt"
 upload: MyFile2.rtf to s3://my-bucket/path/MyFile2.rtf
 upload: MyFile88.txt to s3://my-bucket/path/MyFile88.txt
 ```
@@ -182,14 +182,14 @@ MyFile88.txt
 $ rm *.txt
 
 // Sync with delete, excluding files that match a pattern. MyFile88.txt is deleted, while remote MyFile1.txt is not.
-$ aws s3 sync . s3://my-bucket/path --delete --exclude 'my-bucket/path/MyFile?.txt'
+$ aws s3 sync . s3://my-bucket/path --delete --exclude "my-bucket/path/MyFile?.txt"
 delete: s3://my-bucket/path/MyFile88.txt
 '''
 // Delete MyFile2.rtf
 $ aws s3 rm s3://my-bucket/path/MyFile2.rtf
 
 // Sync with delete, excluding MyFile2.rtf - local file is NOT deleted
-$ aws s3 sync s3://my-bucket/path . --delete --exclude './MyFile2.rtf'
+$ aws s3 sync s3://my-bucket/path . --delete --exclude "./MyFile2.rtf"
 download: s3://my-bucket/path/MyFile1.txt to MyFile1.txt
 '''
 // Sync with delete, local copy of MyFile2.rtf is deleted
@@ -210,7 +210,7 @@ As previously mentioned, the `s3` command set includes `cp`, `mv`, `ls`, and `rm
 $ aws s3 cp MyFile.txt s3://my-bucket/path/
 
 // Move all .jpg files in s3://my-bucket/path to ./MyDirectory
-$ aws s3 mv s3://my-bucket/path ./MyDirectory --exclude '*' --include '*.jpg' --recursive
+$ aws s3 mv s3://my-bucket/path ./MyDirectory --exclude "*" --include "*.jpg" --recursive
 
 // List the contents of my-bucket
 $ aws s3 ls s3://my-bucket

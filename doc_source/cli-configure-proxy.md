@@ -1,25 +1,29 @@
 # Using an HTTP Proxy<a name="cli-configure-proxy"></a>
 
- To access AWS through proxy servers, you can configure the `HTTP_PROXY` and `HTTPS_PROXY` environment variables with the IP addresses and port numbers used by your proxy servers\.
+ To access AWS through proxy servers, you can configure the `HTTP_PROXY` and `HTTPS_PROXY` environment variables with either the DNS domain names or IP addresses and port numbers used by your proxy servers\.
 
 **Note**  
-The examples below show the environment variable name in all upper\-case letters\. However, if you specify a variable twice \- once with upper\-case letters and once with lower\-case letters, the one with lower\-case letters wins\. We recommend that you have only one defined to avoid confusion and unexpected behavior\.
+The examples below show the environment variable name in all upper\-case letters\. However, if you specify a variable twice \- once with upper\-case letters and once with lower\-case letters, the one with lower\-case letters wins\. We recommend that you define each variable only once to avoid confusion and unexpected behavior\.
+
+The following examples show how you can use either the explicit IP address of your proxy or a DNS name that resolves to the IP address of your proxy\. Either can be followed by a colon and the port number to which queries should be sent\.
 
 **Linux, macOS, or Unix**
 
 ```
-$ export HTTP_PROXY=http://a.b.c.d:n
-$ export HTTPS_PROXY=http://w.x.y.z:m
+$ export HTTP_PROXY=http://10.15.20.25:1234
+$ export HTTP_PROXY=http://proxy.example.com:1234
+$ export HTTPS_PROXY=http://10.15.20.25:5678
+$ export HTTPS_PROXY=http://proxy.example.com:5678
 ```
 
 **Windows**
 
 ```
-C:\> set HTTP_PROXY=http://a.b.c.d:n
-C:\> set HTTPS_PROXY=http://w.x.y.z:m
+C:\> set HTTP_PROXY=http://10.15.20.25:1234
+C:\> set HTTP_PROXY=http://proxy.example.com:1234
+C:\> set HTTPS_PROXY=http://10.15.20.25:5678
+C:\> set HTTPS_PROXY=http://proxy.example.com:5678
 ```
-
- In these examples, `http://a.b.c.d:n` and `http://w.x.y.z:m` are the IP addresses and port numbers for the HTTP and HTTPS proxies\. 
 
 ## Authenticating to a Proxy<a name="cli-configure-proxy-auth"></a>
 
@@ -28,15 +32,15 @@ The AWS CLI supports HTTP Basic authentication\. Specify the user name and passw
 **Linux, macOS, or Unix**
 
 ```
-$ export HTTP_PROXY=http://username:password@a.b.c.d:n
-$ export HTTPS_PROXY=http://username:password@w.x.y.z:m
+$ export HTTP_PROXY=http://username:password@proxy.example.com:1234
+$ export HTTPS_PROXY=http://username:password@proxy.example.com:5678
 ```
 
 **Windows**
 
 ```
-C:\> set HTTP_PROXY=http://username:password@a.b.c.d:n
-C:\> set HTTPS_PROXY=http://username:password@w.x.y.z:m
+C:\> set HTTP_PROXY=http://username:password@proxy.example.com:1234
+C:\> set HTTPS_PROXY=http://username:password@proxy.example.com:5678
 ```
 
 **Note**  
@@ -44,7 +48,7 @@ The AWS CLI doesn't support NTLM proxies\. If you use an NTLM or Kerberos protoc
 
 ## Using a Proxy on Amazon EC2 Instances<a name="cli-configure-proxy-ec2"></a>
 
-If you configure a proxy on an Amazon EC2 instance launched with an attached IAM role, ensure that you exempt the address used to access the [instance metadata](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html)\. To do this, set the `NO_PROXY` environment variable to the IP address of the instance metadata service, 169\.254\.169\.254\. 
+If you configure a proxy on an Amazon EC2 instance launched with an attached IAM role, ensure that you exempt the address used to access the [instance metadata](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html)\. To do this, set the `NO_PROXY` environment variable to the IP address of the instance metadata service, 169\.254\.169\.254\. This address does not vary\.
 
 **Linux, macOS, or Unix**
 

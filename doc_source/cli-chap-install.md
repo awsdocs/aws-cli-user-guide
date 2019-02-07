@@ -12,6 +12,8 @@
 **Note**  
 Earlier versions of Python might not work with all AWS services\. If you see `InsecurePlatformWarning` or deprecation notices when you install or use the AWS CLI, update to a newer version\.
 
+You can find the version number of the most recent CLI at: [https://github.com/aws/aws-cli/blob/master/CHANGELOG.rst](https://github.com/aws/aws-cli/blob/master/CHANGELOG.rst)\.
+
 ## Installing the AWS CLI Using pip<a name="install-tool-pip"></a>
 
 The primary distribution method for the AWS CLI on Linux, Windows, and macOS is `pip`\. This is a package manager for Python that provides an easy way to install, upgrade, and remove Python packages and their dependencies\.

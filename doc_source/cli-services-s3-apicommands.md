@@ -25,7 +25,7 @@ The API command `put-bucket-logging` configures bucket logging policy\.
 In the following example, the AWS user *user@example\.com* is granted full control over the log files, and all users have read access to them\. Notice that the `put-bucket-acl` command is also required to grant the Amazon S3 log delivery system \(specified by a URI\) the permissions needed to read and write the logs to the bucket\.
 
 ```
-$ aws s3api put-bucket-acl --bucket MyBucket --grant-read-acp 'URI="http://acs.amazonaws.com/groups/s3/LogDelivery"' --grant-write 'URI="http://acs.amazonaws.com/groups/s3/LogDelivery"'
+$ aws s3api put-bucket-acl --bucket MyBucket --grant-read-acp 'URI="http://acs.amazonaws.com/groups/s3/LogDelivery"' --grant-write "URI="http://acs.amazonaws.com/groups/s3/LogDelivery"'
 $ aws s3api put-bucket-logging --bucket MyBucket --bucket-logging-status file://logging.json
 ```
 
