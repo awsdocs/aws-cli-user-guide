@@ -74,29 +74,29 @@ The installer installs Python in your user folder and adds its program folders t
 1. Use the following commands to verify that Python and `pip` are both installed correctly\.
 
    ```
-   C:\Windows\System32> python --version
+   C:\> python --version
    Python 3.7.1
-   C:\Windows\System32> pip --version
+   C:\> pip --version
    pip 18.1 from c:\program files\python37\lib\site-packages\pip (python 3.7)
    ```
 
 1. Install the AWS CLI using `pip`\.
 
    ```
-   C:\Windows\System32> pip install awscli
+   C:\> pip install awscli
    ```
 
 1. Verify that the AWS CLI is installed correctly\.
 
    ```
-   C:\Windows\System32> aws --version
+   C:\> aws --version
    aws-cli/1.16.71 Python/3.6.5 Windows/10 botocore/1.12.61
    ```
 
 To upgrade to the latest version, run the installation command again\.
 
 ```
-C:\Windows\System32> pip install --user --upgrade awscli
+C:\> pip install --user --upgrade awscli
 ```
 
 ## Add the AWS CLI Executable to Your Command Line Path<a name="awscli-install-windows-path"></a>

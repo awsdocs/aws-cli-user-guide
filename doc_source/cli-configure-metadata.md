@@ -4,6 +4,20 @@ When you run the AWS CLI from within an Amazon EC2 instance, you can simplify pr
 
 Launch the instance and check to see if the AWS CLI is already installed \(it comes preinstalled on Amazon Linux\)\. If necessary, install the AWS CLI\. You must still configure a default Region to avoid having to specify it in every command\. 
 
+To specify in a named profile that you want to use the credentials available in the hosting Amazon EC2 instance profile, specify the following line in the configuration file: 
+
+```
+credential_source = Ec2InstanceMetadata 
+```
+
+The following example shows how to assume the `marketingadminrole` role by referencing it in an Amazon EC2 instance profile:
+
+```
+[profile marketingadmin]
+role_arn = arn:aws:iam::123456789012:role/marketingadminrole
+credential_source = Ec2InstanceMetadata
+```
+
 You can set the Region and default output format by running `aws configure` without specifying credentials by pressing **Enter** twice to skip the first two prompts\. 
 
 ```

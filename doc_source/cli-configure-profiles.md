@@ -49,10 +49,12 @@ To use a named profile for multiple commands, you can avoid specifying the profi
 $ export AWS_DEFAULT_PROFILE=user2
 ```
 
+Setting the environment variable changes the default profile until the end of your shell session, or until you set the variable to a different value\. You can make environment variables persistent across future sessions by putting them in your shell's startup script\. For more information, see [Environment Variables](cli-configure-envvars.md)\.
+
 **Windows**
 
 ```
-C:\> set AWS_DEFAULT_PROFILE=user2
+C:\> setx AWS_DEFAULT_PROFILE=user2
 ```
 
-Setting the environment variable changes the default profile until the end of your shell session, or until you set the variable to a different value\. For more information, see [Environment Variables](cli-configure-envvars.md)\.
+Using `[set](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/set_1)` to set an environment variable changes the value used until the end of the current command prompt session, or until you set the variable to a different value\. Using [https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/setx](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/setx) to set an environment variable changes the value used in both the current command shell and all command shells that you create after running the command\. It does ***not*** affect other command shells that are already running at the time you run the command\.
