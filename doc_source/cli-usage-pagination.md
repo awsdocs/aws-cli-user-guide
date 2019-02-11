@@ -25,6 +25,9 @@ $ aws s3api list-objects --bucket my-bucket --max-items 100
 
 If the number of items output \(`--max-items`\) is fewer than the total number of items returned by the underlying API calls, the output includes a `NextToken` that you can pass to a subsequent command to retrieve the next set of items\. The following example shows how to use the `NextToken` value returned by the previous example, and enables you to retrieve the second 100 items\.
 
+**Note**  
+The parameter `--starting-token` cannot be null or empty\. If the previous command does not return a `NextToken` value, then there are no more items to return and you do not need to call the command again\.
+
 ```
 $ aws s3api list-objects --bucket my-bucket --max-items 100 --starting-token eyJNYXJrZXIiOiBudWxsLCAiYm90b190cnVuY2F0ZV9hbW91bnQiOiAxfQ==
 {

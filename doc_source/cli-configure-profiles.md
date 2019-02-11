@@ -16,7 +16,7 @@ aws_access_key_id=AKIAI44QH8DHBEXAMPLE
 aws_secret_access_key=je7MtGbClwBF/2Zp9Utk/h3yCo8nvbEXAMPLEKEY
 ```
 
-Each profile uses different credentials—perhaps from different IAM users—and can also use different AWS Regions and output formats\.
+Each profile uses different credentials—perhaps from different IAM users—and can also specify different AWS Regions and output formats\.
 
 **`~/.aws/config`** \(Linux & Mac\) or **`%USERPROFILE%\.aws\config`** \(Windows\)
 

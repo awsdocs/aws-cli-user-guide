@@ -15,7 +15,7 @@ In addition to the low\-level, API\-equivalent commands, several AWS services pr
 `aws s3 cp` provides a shell\-like copy command, and automatically performs a multipart upload to transfer large files quickly and resiliently\.  
 
 ```
-~$ aws s3 cp myvideo.mp4 s3://mybucket/
+$ aws s3 cp myvideo.mp4 s3://mybucket/
 ```
 
 Performing the same task with the low\-level commands \(available under `aws s3api`\) would take a lot more effort\.
