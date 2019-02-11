@@ -67,7 +67,9 @@ The Python Software Foundation provides installers for Windows that include `pip
 
 The installer installs Python in your user folder and adds its program folders to your user path\.
 
-**To install the AWS CLI with `pip` \(Windows\)**
+**To install the AWS CLI with `pip3` \(Windows\)**
+
+If you use Python version 3\+, we recommend that you use the `pip3` command\.
 
 1. Open the **Command Prompt** from the **Start** menu\.
 
@@ -76,14 +78,14 @@ The installer installs Python in your user folder and adds its program folders t
    ```
    C:\> python --version
    Python 3.7.1
-   C:\> pip --version
+   C:\> pip3 --version
    pip 18.1 from c:\program files\python37\lib\site-packages\pip (python 3.7)
    ```
 
 1. Install the AWS CLI using `pip`\.
 
    ```
-   C:\> pip install awscli
+   C:\> pip3 install awscli
    ```
 
 1. Verify that the AWS CLI is installed correctly\.
@@ -96,7 +98,7 @@ The installer installs Python in your user folder and adds its program folders t
 To upgrade to the latest version, run the installation command again\.
 
 ```
-C:\> pip install --user --upgrade awscli
+C:\> pip3 install --user --upgrade awscli
 ```
 
 ## Add the AWS CLI Executable to Your Command Line Path<a name="awscli-install-windows-path"></a>
@@ -111,9 +113,9 @@ C:\Program Files\Python37\Scripts\aws
 ```
 
 If that command does not return any results, then you must add the path manually\. Use the command line or Windows Explorer to discover where it is installed on your computer\. Typical paths include:
-+ **Python 3 and `pip`** – `C:\Program Files\Python37\Scripts\`
-+ **Python 3 and `pip` \-\-user option on earlier versions of Windows** – `%USERPROFILE%\AppData\Local\Programs\Python\Python37\Scripts`
-+ **Python 3 and `pip` \-\-user option on Windows 10** – `%USERPROFILE%\AppData\Roaming\Python\Python37\Scripts`
++ **Python 3 and `pip3`** – `C:\Program Files\Python37\Scripts\`
++ **Python 3 and `pip3` \-\-user option on earlier versions of Windows** – `%USERPROFILE%\AppData\Local\Programs\Python\Python37\Scripts`
++ **Python 3 and `pip3` \-\-user option on Windows 10** – `%USERPROFILE%\AppData\Roaming\Python\Python37\Scripts`
 + **MSI installer \(64\-bit\)** – `C:\Program Files\Amazon\AWSCLI`
 + **MSI installer \(32\-bit\)** – `C:\Program Files (x86)\Amazon\AWSCLI`
 

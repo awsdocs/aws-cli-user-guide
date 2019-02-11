@@ -63,6 +63,14 @@ To see an explanation of the `-i` and `-b` options, use the `-h` option\.
 $ ./awscli-bundle/install -h
 ```
 
+Here are a summary of the installation commands that you can cut and paste to run as a single set of commands\.
+
+```
+curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
+unzip awscli-bundle.zip
+sudo ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
+```
+
 ## Install the AWS CLI without Sudo \(Linux, macOS, or Unix\)<a name="install-bundle-user"></a>
 
 If you don't have `sudo` permissions or want to install the AWS CLI only for the current user, you can use a modified version of the previous commands\.
@@ -81,7 +89,7 @@ $ export PATH=~/bin:$PATH     // Add ~/bin to $PATH if necessary
 ```
 
 **Tip**  
-To ensure that your `$PATH` settings are retained between sessions, add the `export` line to your shell profile \(\~/\.profile, \~/\.bash\_profile, and so on\)\.
+To ensure that your `$PATH` settings are retained between sessions, add the `export` line to your shell profile \(`~/.profile`, `~/.bash_profile`, and so on\)\.
 
 ## Uninstall the AWS CLI<a name="install-bundle-uninstall"></a>
 

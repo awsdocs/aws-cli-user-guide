@@ -14,6 +14,8 @@ Earlier versions of Python might not work with all AWS services\. If you see `In
 
 You can find the version number of the most recent CLI at: [https://github.com/aws/aws-cli/blob/master/CHANGELOG.rst](https://github.com/aws/aws-cli/blob/master/CHANGELOG.rst)\.
 
+In this guide, the commands shown assume you have Python v3 installed and the `pip` commands shown use the `pip3` version\.
+
 ## Installing the AWS CLI Using pip<a name="install-tool-pip"></a>
 
 The primary distribution method for the AWS CLI on Linux, Windows, and macOS is `pip`\. This is a package manager for Python that provides an easy way to install, upgrade, and remove Python packages and their dependencies\.
@@ -21,17 +23,17 @@ The primary distribution method for the AWS CLI on Linux, Windows, and macOS is 
 **Current AWS CLI Version**  
 The AWS CLI is updated frequently with support for new services and commands\. To determine whether you have the latest version, see the [releases page on GitHub](https://github.com/aws/aws-cli/releases)\.
 
-If you already have `pip` and a supported version of Python, you can install the AWS CLI by using the following command\.
+If you already have `pip` and a supported version of Python, you can install the AWS CLI by using the following command\. If you have Python version 3\+ installed, we recommend that you use the **pip3** command\.
 
 ```
-$ pip install awscli --upgrade --user
+$ pip3 install awscli --upgrade --user
 ```
 
-The `--upgrade` option tells `pip` to upgrade any requirements that are already installed\. The `--user` option tells `pip` to install the program to a subdirectory of your user directory to avoid modifying libraries used by your operating system\.
+The `--upgrade` option tells `pip3` to upgrade any requirements that are already installed\. The `--user` option tells `pip3` to install the program to a subdirectory of your user directory to avoid modifying libraries used by your operating system\.
 
 ## Installing the AWS CLI in a Virtual Environment<a name="install-tool-venv"></a>
 
-If you encounter issues when you attempt to install the AWS CLI with `pip`, you can [install the AWS CLI in a virtual environment](install-virtualenv.md) to isolate the tool and its dependencies\. Or you can use a different version of Python than you normally do\.
+If you encounter issues when you attempt to install the AWS CLI with `pip3`, you can [install the AWS CLI in a virtual environment](install-virtualenv.md) to isolate the tool and its dependencies\. Or you can use a different version of Python than you normally do\.
 
 ## Installing the AWS CLI Using an Installer<a name="install-tool-bundled"></a>
 
@@ -56,13 +58,13 @@ aws-cli/1.16.71 Python/3.6.5 Linux/4.14.77-81.59-amzn2.x86_64 botocore/1.12.61
 The AWS CLI is updated regularly to add support for new services and commands\. To update to the latest version of the AWS CLI, run the installation command again\. For details about the latest version of the AWS CLI, see the [ AWS CLI release notes](https://github.com/aws/aws-cli/blob/develop/CHANGELOG.rst)\.
 
 ```
-$ pip install awscli --upgrade --user
+$ pip3 install awscli --upgrade --user
 ```
 
 If you need to uninstall the AWS CLI, use `pip uninstall`\.
 
 ```
-$ pip uninstall awscli
+$ pip3 uninstall awscli
 ```
 
 If you don't have Python and `pip`, use the procedure for your environment\.

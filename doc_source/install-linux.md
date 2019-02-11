@@ -5,10 +5,10 @@ You can install the AWS Command Line Interface \(AWS CLI\) and its dependencies 
 **Important**  
 The `awscli` package is available in repositories for other package managers such as `apt` and `yum`, but you're not assured of getting the latest version unless you get it from `pip` or use the [bundled installer](install-bundle.md)\.
 
-If you already have `pip`, follow the instructions in the main [installation topic](cli-chap-install.md)\. Run `pip --version` to see if your version of Linux already includes Python and `pip`\.
+If you already have `pip`, follow the instructions in the main [installation topic](cli-chap-install.md)\. Run `pip --version` to see if your version of Linux already includes Python and `pip`\. We recommend that if you have Python version 3\+ installed, that you use the `pip3` command\.
 
 ```
-$ pip --version
+$ pip3 --version
 ```
 
 If you don't already have `pip` installed, check which version of Python is installed\.
@@ -87,7 +87,7 @@ If you don't already have `pip` installed, you can install it by using the scrip
 1. Now you can test to verify that `pip` is installed correctly\.
 
    ```
-   $ pip --version
+   $ pip3 --version
    pip 18.1 from ~/.local/lib/python3.7/site-packages (python 3.7)
    ```
 
@@ -96,7 +96,7 @@ If you don't already have `pip` installed, you can install it by using the scrip
 Use `pip` to install the AWS CLI\.
 
 ```
-$ pip install awscli --upgrade --user
+$ pip3 install awscli --upgrade --user
 ```
 
 When you use the `--user` switch, `pip` installs the AWS CLI to `~/.local/bin`\. 
@@ -113,7 +113,7 @@ If you get an error, see [Troubleshooting AWS CLI Errors](cli-chap-troubleshooti
 To upgrade to the latest version, run the installation command again\.
 
 ```
-$ pip install awscli --upgrade --user
+$ pip3 install awscli --upgrade --user
 ```
 
 ## Add the AWS CLI Executable to Your Command Line Path<a name="install-linux-path"></a>

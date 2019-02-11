@@ -62,29 +62,37 @@ To see an explanation of the `-i` and `-b` options, use the `-h` option\.
 $ ./awscli-bundle/install -h
 ```
 
-## Install the AWS CLI on macOS Using pip<a name="awscli-install-osx-pip"></a>
-
-You can also use `pip` directly to install the AWS CLI\. If you don't have `pip`, follow the instructions in the main [installation topic](cli-chap-install.md)\. Run `pip --version` to see if your version of macOS already includes Python and `pip`\.
+Here are the commands summarized for easy cut and paste at the command line\.
 
 ```
-$ pip --version
+curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
+unzip awscli-bundle.zip
+sudo ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
+```
+
+## Install the AWS CLI on macOS Using pip<a name="awscli-install-osx-pip"></a>
+
+You can also use `pip` directly to install the AWS CLI\. If you don't have `pip`, follow the instructions in the main [installation topic](cli-chap-install.md)\. Run `pip3 --version` to see if your version of macOS already includes Python and `pip3`\.
+
+```
+$ pip3 --version
 ```
 
 **To install the AWS CLI on macOS**
 
 1. Download and install the latest version of Python from the [downloads page](https://www.python.org/downloads/mac-osx/) of [Python\.org](https://www.python.org)\.
 
-1. Download and run the `pip` installation script provided by the Python Packaging Authority\.
+1. Download and run the `pip3` installation script provided by the Python Packaging Authority\.
 
    ```
    $ curl -O https://bootstrap.pypa.io/get-pip.py
    $ python3 get-pip.py --user
    ```
 
-1. Use your newly installed `pip` to install the AWS CLI\.
+1. Use your newly installed `pip3` to install the AWS CLI\. We recommend that if you use Python version 3\+, that you use the `pip3` command\.
 
    ```
-   $ pip install awscli --upgrade --user
+   $ pip3 install awscli --upgrade --user
    ```
 
 1. Verify that the AWS CLI is installed correctly\.
@@ -99,7 +107,7 @@ $ pip --version
 To upgrade to the latest version, run the installation command again\.
 
 ```
-$ pip install awscli --upgrade --user
+$ pip3 install awscli --upgrade --user
 ```
 
 ## Add the AWS CLI Executable to Your Command Line Path<a name="awscli-install-osx-path"></a>
