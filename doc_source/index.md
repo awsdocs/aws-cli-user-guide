@@ -32,7 +32,6 @@ Amazon's trademarks and trade dress may not be used in
    + [Using an HTTP Proxy](cli-configure-proxy.md)
    + [Assuming an IAM Role in the AWS CLI](cli-configure-role.md)
    + [Command Completion](cli-configure-completion.md)
-+ [Tutorial: Using the AWS CLI to Deploy an Amazon EC2 Development Environment](cli-chap-tutorial.md)
 + [Using the AWS CLI](cli-chap-using.md)
    + [Getting Help with the AWS CLI](cli-usage-help.md)
    + [Command Structure in the AWS CLI](cli-usage-commandstructure.md)
