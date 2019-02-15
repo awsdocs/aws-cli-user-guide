@@ -10,6 +10,7 @@ Command completion is automatically configured and enabled by default on Amazon 
 **Topics**
 + [Identify Your Shell](#cli-command-completion-shell)
 + [Locate the AWS Completer](#cli-command-completion-completer)
++ [Add the Completer's Folder to Your Path](#cli-command-completion-path)
 + [Enable Command Completion](#cli-command-completion-enable)
 + [Test Command Completion](#cli-command-completion-test)
 
@@ -74,9 +75,35 @@ $ find / -name aws_completer
 /usr/local/aws/bin/aws_completer
 ```
 
+## Add the Completer's Folder to Your Path<a name="cli-command-completion-path"></a>
+
+For the AWS completer to work successfully, you must first add it to your computer's path\.
+
+1. Find your shell's profile script in your user folder\. If you're not sure which shell you have, run echo $SHELL\.
+
+   ```
+   $ ls -a ~
+   .  ..  .bash_logout  .bash_profile  .bashrc  Desktop  Documents  Downloads
+   ```
+   + **Bash**– `.bash_profile`, `.profile`, or `.bash_login`
+   + **Zsh**– `.zshrc`
+   + **Tcsh**– `.tcshrc`, `.cshrc`, or `.login`
+
+1. Add an export command at the end of your profile script that's similar to the following example\. Replace *`/usr/local/aws/bin`* with the folder that you discovered in the previous section\.
+
+   ```
+   export PATH=/usr/local/aws/bin:$PATH
+   ```
+
+1. Reload the profile into the current session to put those changes into effect\. Replace `.bash_profile` with the name of the shell script you discovered in the first section\.
+
+   ```
+   $ source ~/.bash_profile
+   ```
+
 ## Enable Command Completion<a name="cli-command-completion-enable"></a>
 
-Run a command to enable command completion\. The command that you use to enable completion depends on the shell that you're using\. You can add the command to your shell's RC file to run it each time you open a new shell\. In each command, replace the path `/usr/local/bin` with the one found on your system in the previous section\.
+Run a command to enable command completion\. The command that you use to enable completion depends on the shell that you're using\. You can add the command to your shell's RC file to run it each time you open a new shell\. In each command, replace the path `/usr/local/aws/bin` with the one found on your system in the previous section\.
 + **`bash`** – Use the built\-in command `complete`\.
 
   ```
