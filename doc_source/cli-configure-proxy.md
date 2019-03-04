@@ -19,7 +19,7 @@ $ export HTTPS_PROXY=http://proxy.example.com:5678
 **Windows**
 
 ```
-C:\> setx HTTP_PROXY=http://10.15.20.25:1234
+C:\> setx HTTP_PROXY http://10.15.20.25:1234
 C:\> set HTTP_PROXY=http://proxy.example.com:1234
 C:\> set HTTPS_PROXY=http://10.15.20.25:5678
 C:\> set HTTPS_PROXY=http://proxy.example.com:5678
@@ -39,7 +39,7 @@ $ export HTTPS_PROXY=http://username:password@proxy.example.com:5678
 **Windows**
 
 ```
-C:\> setx HTTP_PROXY=http://username:password@proxy.example.com:1234
+C:\> setx HTTP_PROXY http://username:password@proxy.example.com:1234
 C:\> set HTTPS_PROXY=http://username:password@proxy.example.com:5678
 ```
 
@@ -59,5 +59,5 @@ $ export NO_PROXY=169.254.169.254
 **Windows**
 
 ```
-C:\> setx NO_PROXY=169.254.169.254
+C:\> setx NO_PROXY 169.254.169.254
 ```
