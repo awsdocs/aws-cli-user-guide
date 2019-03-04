@@ -4,7 +4,7 @@ An [AWS Identity and Access Management \(IAM\) role](https://docs.aws.amazon.com
 
 You can configure the AWS Command Line Interface \(AWS CLI\) to use an IAM role by defining a profile for the role in the `~/.aws/config` file\. 
 
-The following example shows a role profile named `marketingadmin`\. If you run commands with `--profile marketingadmin` \(or specify it with the [AWS\_DEFAULT\_PROFILE environment variable](cli-configure-envvars.md)\), then the uses the permissions assigned to the profile `user1` to assume the role with the Amazon Resource Name \(ARN\) `arn:aws:iam::123456789012:role/marketingadminrole`\. You can run any operations that are allowed by the permissions assigned to that role\.
+The following example shows a role profile named `marketingadmin`\. If you run commands with `--profile marketingadmin` \(or specify it with the [AWS\_DEFAULT\_PROFILE environment variable](cli-configure-envvars.md)\), then the CLI uses the permissions assigned to the profile `user1` to assume the role with the Amazon Resource Name \(ARN\) `arn:aws:iam::123456789012:role/marketingadminrole`\. You can run any operations that are allowed by the permissions assigned to that role\.
 
 ```
 [profile marketingadmin]

@@ -88,7 +88,7 @@ If you don't already have `pip` installed, you can install it by using the scrip
 
    ```
    $ pip3 --version
-   pip 18.1 from ~/.local/lib/python3.7/site-packages (python 3.7)
+   pip 19.0.3 from ~/.local/lib/python3.7/site-packages (python 3.7)
    ```
 
 ## Install the AWS CLI with `pip`<a name="install-linux-awscli"></a>
@@ -105,7 +105,7 @@ Verify that the AWS CLI installed correctly\.
 
 ```
 $ aws --version
-aws-cli/1.16.71 Python/3.6.5 Linux/4.14.77-81.59-amzn2.x86_64 botocore/1.12.61
+aws-cli/1.16.116 Python/3.6.8 Linux/4.14.77-81.59-amzn2.x86_64 botocore/1.12.106
 ```
 
 If you get an error, see [Troubleshooting AWS CLI Errors](cli-chap-troubleshooting.md)\.
@@ -140,7 +140,7 @@ The output might be the path to a symlink, not to the actual executable\. Run `l
 
 ```
 $ ls -al /usr/local/bin/python
-/usr/local/bin/python -> ~/.local/Python/3.7/bin/python3.7
+/usr/local/bin/python -> ~/.local/Python/3.6/bin/python3.6
 ```
 
 If this is the same folder you added to the path in step 3 in [Install `pip`](#install-linux-pip), you're done\. Otherwise, perform those same steps 3a–3c again, adding this additional folder to the path\.

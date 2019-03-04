@@ -4,7 +4,7 @@ The AWS Command Line Interface \(AWS CLI\) comes preinstalled on Amazon Linux an
 
 ```
 $ aws --version
-aws-cli/1.16.71 Python/3.6.5 Linux/4.14.77-81.59.amzn2.x86_64 botocore/1.12.61
+aws-cli/1.16.116 Python/3.6.8 Linux/4.14.77-81.59.amzn2.x86_64 botocore/1.12.106
 ```
 
 You can use `sudo yum update` to get the latest version available in the `yum` repository, but this might not be the latest version\. Instead, we recommend that you use `pip` to get the latest version\.
@@ -24,7 +24,7 @@ Verify that Python and `pip` are already installed\. For more information, see [
 
    ```
    $ aws --version
-   aws-cli/1.16.71 Python/3.6.5 Linux/4.14.77-81.59.amzn2.x86_64 botocore/1.12.61
+   aws-cli/1.16.116 Python/3.6.8 Linux/4.14.77-81.59.amzn2.x86_64 botocore/1.12.106
    ```
 
 If you don't have root privileges, install the AWS CLI in user mode\.
@@ -49,5 +49,5 @@ If you don't have root privileges, install the AWS CLI in user mode\.
 
    ```
    $ aws --version
-   aws-cli/1.16.71 Python/3.6.5 Linux/4.14.77-81.59.amzn2.x86_64 botocore/1.12.61
+   aws-cli/1.16.116 Python/3.6.8 Linux/4.14.77-81.59.amzn2.x86_64 botocore/1.12.106
    ```

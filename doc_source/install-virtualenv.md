@@ -46,7 +46,7 @@ You can avoid requirement version conflicts with other `pip` packages by install
 
    ```
    $ aws --version
-   aws-cli/1.16.71 Python/3.6.5 Linux/4.14.77-81.59-amzn2.x86_64 botocore/1.12.61
+   aws-cli/1.16.116 Python/3.6.8 Linux/4.14.77-81.59-amzn2.x86_64 botocore/1.12.106
    ```
 
 You can use the `deactivate` command to exit the virtual environment\. Whenever you start a new session, you must reactivate the environment\.

@@ -99,7 +99,7 @@ $ pip3 --version
 
    ```
    $ aws --version
-   AWS CLI 1.16.71 (Python 3.7.1)
+   AWS CLI 1.16.116 (Python 3.6.8)
    ```
 
    If the program isn't found, [add it to your command line path](#awscli-install-osx-path)\.
@@ -117,7 +117,7 @@ After installing with `pip`, you might need to add the `aws` program to your ope
 **Example AWS CLI install location \- macOS with Python 3\.7 and `pip` \(user mode\)**  
 
 ```
-~/Library/Python/3.7/bin
+~/Library/Python/3.6/bin
 ```
 
 If you don't know where Python is installed, run `which python`\.

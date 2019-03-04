@@ -30,7 +30,7 @@ By default, the CLI installs to `C:\Program Files\Amazon\AWSCLI` \(64\-bit versi
 
 ```
 C:\> aws --version
-aws-cli/1.16.71 Python/3.6.5 Windows/10 botocore/1.12.61
+aws-cli/1.16.116 Python/3.6.8 Windows/10 botocore/1.12.106
 ```
 
 Don't include the prompt symbol \(`C:\>`, shown above\) when you type a command\. These are included in program listings to differentiate commands that you type from output returned by the CLI\. The rest of this guide uses the generic prompt symbol, `$` , except in cases where a command is Windows\-specific\.
@@ -92,7 +92,7 @@ If you use Python version 3\+, we recommend that you use the `pip3` command\.
 
    ```
    C:\> aws --version
-   aws-cli/1.16.71 Python/3.6.5 Windows/10 botocore/1.12.61
+   aws-cli/1.16.116 Python/3.6.8 Windows/10 botocore/1.12.106
    ```
 
 To upgrade to the latest version, run the installation command again\.

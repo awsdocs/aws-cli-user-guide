@@ -39,5 +39,5 @@ If your Linux distribution came with Python, you might need to install the Pytho
 
    ```
    $ python3 --version
-   Python 3.6.1
+   Python 3.6.8
    ```
