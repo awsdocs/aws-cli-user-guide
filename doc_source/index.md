@@ -28,6 +28,7 @@ Amazon's trademarks and trade dress may not be used in
    + [Named Profiles](cli-configure-profiles.md)
    + [Environment Variables](cli-configure-envvars.md)
    + [Command Line Options](cli-configure-options.md)
+   + [Sourcing Credentials with an External Process](cli-configure-sourcing-external.md)
    + [Instance Metadata](cli-configure-metadata.md)
    + [Using an HTTP Proxy](cli-configure-proxy.md)
    + [Assuming an IAM Role in the AWS CLI](cli-configure-role.md)
