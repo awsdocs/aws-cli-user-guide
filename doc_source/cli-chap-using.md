@@ -13,3 +13,4 @@ By default, the AWS CLI sends requests to AWS services by using HTTPS on TCP por
 + [Controlling Command Output from the AWS CLI](cli-usage-output.md)
 + [Using Shorthand Syntax with the AWS Command Line Interface](cli-usage-shorthand.md)
 + [Using AWS CLI Pagination Options](cli-usage-pagination.md)
++ [Understanding Return Codes from the AWS CLI](cli-usage-returncodes.md)

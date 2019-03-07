@@ -41,6 +41,7 @@ Amazon's trademarks and trade dress may not be used in
    + [Controlling Command Output from the AWS CLI](cli-usage-output.md)
    + [Using Shorthand Syntax with the AWS Command Line Interface](cli-usage-shorthand.md)
    + [Using AWS CLI Pagination Options](cli-usage-pagination.md)
+   + [Understanding Return Codes from the AWS CLI](cli-usage-returncodes.md)
 + [Using the AWS CLI to Work with AWS Services](cli-chap-services.md)
    + [Using Amazon DynamoDB with the AWS CLI](cli-services-dynamodb.md)
    + [Using Amazon EC2 with the AWS CLI](cli-services-ec2.md)
