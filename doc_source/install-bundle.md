@@ -29,7 +29,7 @@ Follow these steps from the command line to install the AWS CLI using the bundle
 
 **To install the AWS CLI using the bundled installer**
 
-1. Download the [AWS CLI Bundled Installer](https://s3.amazonaws.com/aws-cli/awscli-bundle.zip)\.
+1. Download the AWS CLI Bundled Installer using the following command:
 
    ```
    $ curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
