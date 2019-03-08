@@ -54,6 +54,10 @@ The preceding examples show the files with a single, default profile\. For examp
 
 ## Supported `config` File Settings<a name="cli-configure-files-settings"></a>
 
+**Topics**
++ [Global Settings](#cli-configure-files-global)
++ [S3 Custom Command Settings](#cli-configure-files-s3)
+
 The following settings are supported in the `config` file\. The values listed in the specified \(or default\) profile are used unless they are overridden by the presence of an environment variable with the same name, or a command line option with the same name\.
 
 You can configure these settings by editing the config file directly with a text editor, or by using the `aws configure set` command\. Specify the profile that you want to modify with the `--profile` setting\. For example, the following command sets the `region` setting in the profile named `integ`\.
