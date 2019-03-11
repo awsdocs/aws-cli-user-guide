@@ -114,11 +114,12 @@ $ pip3 install awscli --upgrade --user
 
 After installing with `pip`, you might need to add the `aws` program to your operating system's `PATH` environment variable\. The location of the program depends on where Python is installed\.
 
-**Example AWS CLI install location \- macOS with Python 3\.7 and `pip` \(user mode\)**  
+**Example AWS CLI install location \- macOS with Python 3\.6 and `pip` \(user mode\)**  
 
 ```
 ~/Library/Python/3.6/bin
 ```
+Substitute the version of Python that you have for the version in the example above\.
 
 If you don't know where Python is installed, run `which python`\.
 
@@ -131,7 +132,7 @@ The output might be the path to a symlink, not the actual program\. Run `ls -al`
 
 ```
 $ ls -al /usr/local/bin/python
-~/Library/Python/3.7/bin/python3.7
+~/Library/Python/3.7/bin/python3.6
 ```
 
 `pip` installs programs in the same folder that contains the Python application\. Add this folder to your PATH variable\.
