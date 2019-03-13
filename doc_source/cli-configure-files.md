@@ -78,7 +78,7 @@ If the output is empty, then the setting is not explicitly set and uses the defa
 ### Global Settings<a name="cli-configure-files-global"></a>
 
 * [aws\_access\_key\_id](cli-chap-configure.md#cli-quick-configuration-creds) *  
-Specifies the AWS access key used as part of the credentials to authenticate the command request\. Although this can be stored in the `config` file, we recommend that you store this in the `configuration` file\.   
+Specifies the AWS access key used as part of the credentials to authenticate the command request\. Although this can be stored in the `config` file, we recommend that you store this in the `credentials` file\.   
 Can be overridden by the `AWS_ACCESS_KEY_ID` environment variable\. You can't specify the access key ID as a command line option\.  
 
 ```
@@ -86,7 +86,7 @@ aws_access_key_id = 123456789012
 ```
 
 *[aws\_secret\_access\_key](cli-chap-configure.md#cli-quick-configuration-creds)*  
-Specifies the AWS secret key used as part of the credentials to authenticate the command request\. Although this can be stored in the `config` file, we recommend that you store this in the `configuration` file\.   
+Specifies the AWS secret key used as part of the credentials to authenticate the command request\. Although this can be stored in the `config` file, we recommend that you store this in the `credentials` file\.   
 Can be overridden by the `AWS_SECRET_ACCESS_KEY` environment variable\. You can't specify the secret access key as a command line option\.  
 
 ```
@@ -94,7 +94,7 @@ aws_secret_access_key = wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
 ```
 
 *aws\_session\_token*  
-Specifies an AWS session token\. A session token is required only if you are using temporary security credentials\. Although this can be stored in the `config` file, we recommend that you store this in the `configuration` file\.   
+Specifies an AWS session token\. A session token is required only if you are using temporary security credentials\. Although this can be stored in the `config` file, we recommend that you store this in the `credentials` file\.   
 Can be overridden by the `AWS_SESSION_TOKEN` environment variable\. You can't specify the session token as a command line option\.  
 
 ```
