@@ -150,7 +150,7 @@ output = table
 
 *parameter\_validation*  
 Specifies whether the CLI client attempts to validate parameters before sending them to the AWS service endpoint\.  
-+ **true**: This is the default value\. When configured, the CLI disables local validation of command line parameters\.
++ **true**: This is the default value\. When configured, the CLI performs local validation of command line parameters\.
 + **false**: When configured, the CLI does not validate command line parameters before sending them to the AWS service endpoint\.
 This entry does not have an equivalent environment variable or command line option\.  
 

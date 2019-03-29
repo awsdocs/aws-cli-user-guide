@@ -18,7 +18,7 @@ The AWS CLI runs the command exactly as specified in the profile then reads data
 {
   "Version": 1,
   "AccessKeyId": "an AWS access key",
-  "SecreteAccessKey": "your AWS secret access key",
+  "SecretAccessKey": "your AWS secret access key",
   "SessionToken": "the AWS session token for temporary credentials", 
   "Expiration": "ISO8601 timestamp when the credentials expire"
 }

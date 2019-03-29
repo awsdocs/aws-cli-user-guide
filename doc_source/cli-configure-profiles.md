@@ -54,7 +54,7 @@ Setting the environment variable changes the default profile until the end of yo
 **Windows**
 
 ```
-C:\> setx AWS_DEFAULT_PROFILE=user1
+C:\> setx AWS_DEFAULT_PROFILE user1
 ```
 
 Using `[set](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/set_1)` to set an environment variable changes the value used until the end of the current command prompt session, or until you set the variable to a different value\. Using [https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/setx](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/setx) to set an environment variable changes the value used in both the current command shell and all command shells that you create after running the command\. It does ***not*** affect other command shells that are already running at the time you run the command\.
