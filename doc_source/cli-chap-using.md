@@ -9,7 +9,7 @@ By default, the AWS CLI sends requests to AWS services by using HTTPS on TCP por
 + [Getting Help with the AWS CLI](cli-usage-help.md)
 + [Command Structure in the AWS CLI](cli-usage-commandstructure.md)
 + [Specifying Parameter Values for the AWS CLI](cli-usage-parameters.md)
-+ [Generate the CLI Skeleton and CLI Input JSON Parameters](cli-usage-skeleton.md)
++ [Generate the CLI Skeleton and Input Parameters from a JSON Input File](cli-usage-skeleton.md)
 + [Controlling Command Output from the AWS CLI](cli-usage-output.md)
 + [Using Shorthand Syntax with the AWS Command Line Interface](cli-usage-shorthand.md)
 + [Using AWS CLI Pagination Options](cli-usage-pagination.md)

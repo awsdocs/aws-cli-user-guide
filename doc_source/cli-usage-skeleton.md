@@ -1,8 +1,16 @@
-# Generate the CLI Skeleton and CLI Input JSON Parameters<a name="cli-usage-skeleton"></a>
+# Generate the CLI Skeleton and Input Parameters from a JSON Input File<a name="cli-usage-skeleton"></a>
 
 Most of the AWS Command Line Interface \(AWS CLI\) commands support the ability to accept all of the parameter input from a file using the `--cli-input-json` parameter\.
 
 Those same commands helpfully provide the `--generate-cli-skeleton` to generate a file with all of the parameters that you can edit and fill in\. Then you can run the command with the `--cli-input-json` parameter and point to the filled\-in file\.
+
+**Important**  
+There are several AWS CLI commands that don't map directly to individual AWS API operations, such as the [`aws s3` commands](https://docs.aws.amazon.com/cli/latest/reference/s3/index.html)\. Such commands don't support either the `--generate-cli-skeleton` or `--cli-input-json` parameters that are discussed on this page\. If you have any question about whether a specific command supports these parameters, run the following command, replacing the *service* and *command* names with the ones you're interested in:  
+
+```
+$ aws service command help
+```
+The output includes a `Synopsis` section that shows the parameters that the specified command supports\.
 
 The `--generate-cli-skeleton` parameter causes the command not to run, but instead to generate and display a parameter template that you can customize and then use as input on a later command\. The generated template includes all of the parameters supported by the command\.
 
