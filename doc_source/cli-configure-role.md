@@ -94,7 +94,7 @@ $ export AWS_DEFAULT_PROFILE=marketingadmin
 **Windows**
 
 ```
-C:\> setx AWS_DEFAULT_PROFILE=marketingadmin
+C:\> setx AWS_DEFAULT_PROFILE marketingadmin
 ```
 
 For more information on configuring IAM users and roles, see [Users and Groups](https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_WorkingWithGroupsAndUsers.html) and [Roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/roles-toplevel.html) in the *IAM User Guide*\.
