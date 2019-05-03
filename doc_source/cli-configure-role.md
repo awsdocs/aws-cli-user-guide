@@ -103,7 +103,7 @@ For more information on configuring IAM users and roles, see [Users and Groups](
 
 For additional security, you can require that users provide a one\-time key generated from a multi\-factor authentication \(MFA\) device, a U2F device, or mobile app when they attempt to make a call using the role profile\.
 
-First, modify the trust relationship on the IAM role to require MFA\. For an example, see the `Condition` line in the following example\.
+First, you can choose to modify the trust relationship on the IAM role to require MFA\. This prevents anyone from using the role without first authenticating by using MFA\. For an example, see the `Condition` line in the following example\. This policy allows the IAM user named `anika` to assume the role the policy is attached to, but only if she authenticates by using MFA\. 
 
 ```
 {
@@ -112,7 +112,7 @@ First, modify the trust relationship on the IAM role to require MFA\. For an exa
     {
       "Sid": "",
       "Effect": "Allow",
-      "Principal": { "AWS": "arn:aws:iam::123456789012:user/jonsmith" },
+      "Principal": { "AWS": "arn:aws:iam::123456789012:user/anika" },
       "Action": "sts:AssumeRole",
       "Condition": { "Bool": { "aws:multifactorAuthPresent": true } }
     }
@@ -120,16 +120,45 @@ First, modify the trust relationship on the IAM role to require MFA\. For an exa
 }
 ```
 
-Next, add a line to the role profile that specifies the ARN of the user's MFA device\.
+Next, add a line to the role profile that specifies the ARN of the user's MFA device\. The following sample `config` file entries show two role profiles that both use the access keys for the IAM user `anika` to request temporary credentials for the role `cli-role`\. The user `anika` has permissions to assume the role, granted by the role's trust policy\.
 
 ```
-[profile marketingadmin]
-role_arn = arn:aws:iam::123456789012:role/marketingadmin
-source_profile = default
-mfa_serial = arn:aws:iam::123456789012:mfa/saanvi
+[profile role-without-mfa]
+region = us-west-2
+role_arn= arn:aws:iam::128716708097:role/cli-role
+source_profile=cli-user
+
+[profile role-with-mfa]
+region = us-west-2
+role_arn= arn:aws:iam::128716708097:role/cli-role
+source_profile = cli-user
+mfa_serial = arn:aws:iam::128716708097:mfa/cli-user
+
+[profile anika]
+region = us-west-2
+output = json
 ```
 
 The `mfa_serial` setting can take an ARN, as shown, or the serial number of a hardware MFA token\.
+
+The first profile, `role-without-mfa`, doesn't require MFA\. However, because the previous example trust policy attached to the role requires MFA, any attempt to run a command with this profile fails\.
+
+```
+$ aws iam list-users --profile cli-role
+
+An error occurred (AccessDenied) when calling the AssumeRole operation: Access denied
+```
+
+The second profile entry, `role-with-mfa`, identifies an MFA device to use\. When the user attempts to run a CLI command with this profile, the CLI prompts the user to enter the one\-time password \(OTP\) provided by the MFA device\. If the MFA authentication is succesful, the command then performs the requested operation\. The OTP is not displayed on the screen\.
+
+```
+$ aws iam list-users --profile cli-role-mfa
+Enter MFA code for arn:aws:iam::123456789012:mfa/cli-user:
+{
+    "Users": [
+        {
+            ...
+```
 
 ## Cross\-Account Roles<a name="cli-configure-role-xaccount"></a>
 
