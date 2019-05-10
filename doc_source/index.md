@@ -62,3 +62,4 @@ Amazon's trademarks and trade dress may not be used in
       + [List of Amazon SWF Commands by Category](cli-services-swf-commands.md)
       + [Working with Amazon SWF Domains Using the AWS CLI](cli-services-swf-domains.md)
 + [Troubleshooting AWS CLI Errors](cli-chap-troubleshooting.md)
++ [AWS CLI User Guide Document History](document-history.md)

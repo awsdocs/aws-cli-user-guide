@@ -342,7 +342,7 @@ Here are some additional examples that illustrate how you can get only the detai
 The following example lists Amazon EC2 volumes\. The service produces a list of all in\-use volumes in the `us-west-2a` Availability Zone\. The `--query` parameter further limits the output to only those volumes with a `Size` value that is larger than 50, and shows only the specified fields with user\-defined names\.
 
 ```
-$ aws ec2 describe-volumes \                                                                                                                           ~/workplace/awscli/src/AWSUnifiedCLIDocs
+$ aws ec2 describe-volumes \
 --filter "Name=availability-zone,Values=us-west-2a" "Name=status,Values=attached" \
 --query 'Volumes[?Size > `50`].{Id:VolumeId,Size:Size,Type:VolumeType}'
 [
@@ -368,7 +368,7 @@ ami-00ced3122871a4921
 The \-\-query parameter also enables you to count items in the output\. The following example displays the number of available volumes that are more than 1000 IOPS\.
 
 ```
-$ aws ec2 describe-volumes \                                                                                                                           ~/workplace/awscli/src/AWSUnifiedCLIDocs
+$ aws ec2 describe-volumes \
 --filter "Name=status,Values=available" \
 --query 'length(Volumes[?Iops > `1000`])'
 3
@@ -377,7 +377,7 @@ $ aws ec2 describe-volumes \                                                    
 The following example shows how to list all of your snapshots that were created after a specified date, including only a few of the available fields in the output\.
 
 ```
-$ aws ec2 describe-snapshots --owner self --output json \                                                                                         ~/workplace/awscli/src/AWSUnifiedCLIDocs
+$ aws ec2 describe-snapshots --owner self --output json \
 --query 'Snapshots[?StartTime>=`2018-02-07`].{Id:SnapshotId,VId:VolumeId,Size:VolumeSize}' \
 [
     {
@@ -391,7 +391,7 @@ $ aws ec2 describe-snapshots --owner self --output json \                       
 The following example lists the five most recent AMIs that you created, sorted from most recent to oldest\.
 
 ```
-$ aws ec2 describe-images --owners self \                                                                                                              ~/workplace/awscli/src/AWSUnifiedCLIDocs
+$ aws ec2 describe-images --owners self \
 --query 'reverse(sort_by(Images,&CreationDate))[:5].{id:ImageId,date:CreationDate}'
 [
     {
