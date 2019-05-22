@@ -105,22 +105,49 @@ C:\> pip3 install --user --upgrade awscli
 
 After installing the AWS CLI with `pip`, add the `aws` program to your operating system's `PATH` environment variable\. With an MSI installation, this should happen automatically, but you might need to set it manually if the `aws` command doesn't run after you install it\.
 
-You can find where the aws program is installed by running the following command\.
+If this command returns a response, then you should be ready to run the tool\. The where command, by default, shows where in the system PATH it found the specified program:
 
 ```
 C:\> where aws
+C:\Program Files\Amazon\AWSCLI\bin\aws.exe
+```
+
+You can find where the aws program is installed by running the following command\.
+
+```
+C:\> where c:\ aws
 C:\Program Files\Python37\Scripts\aws
 ```
 
-If that command does not return any results, then you must add the path manually\. Use the command line or Windows Explorer to discover where it is installed on your computer\. Typical paths include:
+If instead, the `where` command returns the following error, then it is not in the system PATH and you can't run it by simply typing its name\.
+
+```
+C:\> where c:\ aws
+INFO: Could not find files for the given pattern(s).
+```
+
+In that case, run the where command with the `/R path` parameter to tell it to search all folders, and look then you must add the path manually\. Use the command line or Windows Explorer to discover where it is installed on your computer\. 
+
+```
+C:\> where /R c:\ aws
+c:\Program Files\Amazon\AWSCLI\bin\aws.exe
+c:\Program Files\Amazon\AWSCLI\bincompat\aws.cmd
+c:\Program Files\Amazon\AWSCLI\runtime\Scripts\aws
+c:\Program Files\Amazon\AWSCLI\runtime\Scripts\aws.cmd
+...
+```
+
+The paths that show up depend on which method you used to install the AWS CLI\. 
+
+Typical paths include:
 + **Python 3 and `pip3`** – `C:\Program Files\Python37\Scripts\`
 + **Python 3 and `pip3` \-\-user option on earlier versions of Windows** – `%USERPROFILE%\AppData\Local\Programs\Python\Python37\Scripts`
 + **Python 3 and `pip3` \-\-user option on Windows 10** – `%USERPROFILE%\AppData\Roaming\Python\Python37\Scripts`
-+ **MSI installer \(64\-bit\)** – `C:\Program Files\Amazon\AWSCLI`
-+ **MSI installer \(32\-bit\)** – `C:\Program Files (x86)\Amazon\AWSCLI`
++ **MSI installer \(64\-bit\)** – `C:\Program Files\Amazon\AWSCLI\bin`
++ **MSI installer \(32\-bit\)** – `C:\Program Files (x86)\Amazon\AWSCLI\bin`
 
 **Note**  
-Folder names that include version numbers can vary\. The examples above show Python37\. Replace as needed with the version number you are using\.
+Folder names that include version numbers can vary\. The examples above reflect the use of Python version 3\.7\. Replace as needed with the version number you are using\.
 
 **To modify your PATH variable \(Windows\)**
 
