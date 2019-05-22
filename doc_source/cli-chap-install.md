@@ -42,6 +42,12 @@ For offline or automated installations on Linux, macOS, or Unix, try the [bundle
 On Windows, you can also use the [MSI installer](install-windows.md#install-msi-on-windows)\. Both of these methods simplify the initial installation\. However, the tradeoff is that it's more difficult to upgrade when a new version of the AWS CLI is released\.
 
 ## Steps to Take after Installation<a name="install-post"></a>
++ [Setting the Path to Include the AWS CLI](#post-install-path)
++ [Configure the AWS CLI with Your Credentials](#post-install-configure)
++ [Upgrading to the Latest Version of the AWS CLI](#post-install-upgrade)
++ [Uninstalling the AWS CLI](#post-install-uninstall)
+
+### Setting the Path to Include the AWS CLI<a name="post-install-path"></a>
 
 After you install the AWS CLI, you might need to add the path to the executable file to your `PATH` variable\. For platform\-specific instructions, see the following topics:
 + **Linux** – [Add the AWS CLI Executable to Your Command Line Path](install-linux.md#install-linux-path)
@@ -55,11 +61,24 @@ $ aws --version
 aws-cli/1.16.116 Python/3.6.8 Linux/4.14.77-81.59-amzn2.x86_64 botocore/1.12.106
 ```
 
+### Configure the AWS CLI with Your Credentials<a name="post-install-configure"></a>
+
+Before you can run a CLI command, you must configure the AWS CLI with your credentials\.
+
+You store credential information locally by defining [profiles](cli-configure-profiles.md) in the [AWS CLI configuration files](cli-configure-files.md), which are stored by default in your user's home directory\. For more information, see [Configuring the AWS CLI](cli-chap-configure.md)\.
+
+**Note**  
+If you are running in an Amazon EC2 instance, credentials can be automatically retrieved from the instance metadata\. For more information, see [Instance Metadata](cli-configure-metadata.md)\.
+
+### Upgrading to the Latest Version of the AWS CLI<a name="post-install-upgrade"></a>
+
 The AWS CLI is updated regularly to add support for new services and commands\. To update to the latest version of the AWS CLI, run the installation command again\. For details about the latest version of the AWS CLI, see the [ AWS CLI release notes](https://github.com/aws/aws-cli/blob/develop/CHANGELOG.rst)\.
 
 ```
 $ pip3 install awscli --upgrade --user
 ```
+
+### Uninstalling the AWS CLI<a name="post-install-uninstall"></a>
 
 If you need to uninstall the AWS CLI, use `pip uninstall`\.
 
