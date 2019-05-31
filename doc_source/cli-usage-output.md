@@ -365,7 +365,23 @@ $ aws ec2 describe-images \
 ami-00ced3122871a4921
 ```
 
-The \-\-query parameter also enables you to count items in the output\. The following example displays the number of available volumes that are more than 1000 IOPS\.
+The following example uses the `--query` parameter to find a specific item in a list and then extracts information from that item\. The example lists all of the availability zones associated with the specified service endpoint\. It extracts the item from the `ServiceDetails` list that has the specified `ServiceName`, then outputs the `AvailabilityZones` field from that selected item\. 
+
+```
+$ aws --region us-east-1 ec2 describe-vpc-endpoint-services --query 'ServiceDetails[?ServiceName==`com.amazonaws.us-east-1.ecs`].AvailabilityZones'
+[
+    [
+        "us-east-1a",
+        "us-east-1b",
+        "us-east-1c",
+        "us-east-1d",
+        "us-east-1e",
+        "us-east-1f"
+    ]
+]
+```
+
+The `--query` parameter also enables you to count items in the output\. The following example displays the number of available volumes that are more than 1000 IOPS\.
 
 ```
 $ aws ec2 describe-volumes \
