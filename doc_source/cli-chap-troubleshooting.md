@@ -8,7 +8,7 @@ If you use `pip` to install the AWS Command Line Interface \(AWS CLI\), you migh
 
 You might need to add the `aws` executable to your operating system's `PATH` environment variable\.
 + **Windows** – [Add the AWS CLI Executable to Your Command Line Path](install-windows.md#awscli-install-windows-path)
-+ **macOS** – [Add the AWS CLI Executable to Your Command Line Path](install-macos.md#awscli-install-osx-path)
++ **macOS** – [Add the AWS CLI Executable to Your macOS Command Line Path](install-macos.md#awscli-install-osx-path)
 + **Linux** – [Add the AWS CLI Executable to Your Command Line Path](install-linux.md#install-linux-path)
 
 If `aws` is in your `PATH` and you still see this error, it might not have the right file mode\. Try running it directly\.

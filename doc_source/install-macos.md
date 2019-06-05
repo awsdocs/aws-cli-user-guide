@@ -9,7 +9,7 @@ The bundled installer doesn't support installing to paths that contain spaces\.
 + [Prerequisites](#install-bundle-macos-os-prereq)
 + [Install the AWS CLI Using the Bundled Installer](#install-bundle-macos)
 + [Install the AWS CLI on macOS Using pip](#awscli-install-osx-pip)
-+ [Add the AWS CLI Executable to Your Command Line Path](#awscli-install-osx-path)
++ [Add the AWS CLI Executable to Your macOS Command Line Path](#awscli-install-osx-path)
 
 ## Prerequisites<a name="install-bundle-macos-os-prereq"></a>
 + Python 2 version 2\.6\.5\+ or Python 3 version 3\.3\+
@@ -40,7 +40,7 @@ Follow these steps from the command line to install the AWS CLI using the bundle
    $ unzip awscli-bundle.zip
    ```
 **Note**  
-If you don't have `unzip`, use your Linux distribution's built\-in package manager to install it\.
+If you don't have `unzip`, use your favorite package manager to install it or an equivalent\.
 
 1. Run the install program\.
 
@@ -51,7 +51,7 @@ If you don't have `unzip`, use your Linux distribution's built\-in package manag
 By default, the install script runs under the system's default version of Python\. If you have installed an alternative version of Python and want to use that to install the AWS CLI, run the install script and specify that version by including the absolute path to the Python application\. For example:  
 
    ```
-   $ sudo /usr/local/bin/python3.6 awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
+   $ sudo /usr/local/bin/python3.7 awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
    ```
 
 This command installs the AWS CLI to `/usr/local/aws` and creates the symlink `aws` in the `/usr/local/bin` directory\. Using the `-b` option to create a symlink eliminates the need to specify the install directory in the user's `$PATH` variable\. This should enable all users to call the AWS CLI by typing `aws` from any directory\.
@@ -110,14 +110,14 @@ To upgrade to the latest version, run the installation command again\.
 $ pip3 install awscli --upgrade --user
 ```
 
-## Add the AWS CLI Executable to Your Command Line Path<a name="awscli-install-osx-path"></a>
+## Add the AWS CLI Executable to Your macOS Command Line Path<a name="awscli-install-osx-path"></a>
 
 After installing with `pip`, you might need to add the `aws` program to your operating system's `PATH` environment variable\. The location of the program depends on where Python is installed\.
 
 **Example AWS CLI install location \- macOS with Python 3\.6 and `pip` \(user mode\)**  
 
 ```
-~/Library/Python/3.6/bin
+~/Library/Python/3.7/bin
 ```
 Substitute the version of Python that you have for the version in the example above\.
 
@@ -157,7 +157,7 @@ $ ls -al /usr/local/bin/python
 
    This command adds a path, `~/.local/bin` in this example, to the current `PATH` variable\.
 
-1. Load the profile into your current session\.
+1. Load the updated profile into your current session\.
 
    ```
    $ source ~/.bash_profile

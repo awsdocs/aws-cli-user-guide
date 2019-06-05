@@ -52,7 +52,7 @@ On Windows, you can also use the [MSI installer](install-windows.md#install-msi-
 After you install the AWS CLI, you might need to add the path to the executable file to your `PATH` variable\. For platform\-specific instructions, see the following topics:
 + **Linux** – [Add the AWS CLI Executable to Your Command Line Path](install-linux.md#install-linux-path)
 + **Windows** – [Add the AWS CLI Executable to Your Command Line Path](install-windows.md#awscli-install-windows-path)
-+ **macOS** – [Add the AWS CLI Executable to Your Command Line Path](install-macos.md#awscli-install-osx-path)
++ **macOS** – [Add the AWS CLI Executable to Your macOS Command Line Path](install-macos.md#awscli-install-osx-path)
 
 Verify that the AWS CLI installed correctly by running `aws --version`\.
 
