@@ -20,7 +20,7 @@ In this guide, the commands shown assume you have Python v3 installed and the `p
 
 The primary distribution method for the AWS CLI on Linux, Windows, and macOS is `pip`\. This is a package manager for Python that provides an easy way to install, upgrade, and remove Python packages and their dependencies\.
 
-**Current AWS CLI Version**  
+**Installing the current AWS CLI Version**  
 The AWS CLI is updated frequently with support for new services and commands\. To determine whether you have the latest version, see the [releases page on GitHub](https://github.com/aws/aws-cli/releases)\.
 
 If you already have `pip` and a supported version of Python, you can install the AWS CLI by using the following command\. If you have Python version 3\+ installed, we recommend that you use the **pip3** command\.
@@ -30,6 +30,52 @@ $ pip3 install awscli --upgrade --user
 ```
 
 The `--upgrade` option tells `pip3` to upgrade any requirements that are already installed\. The `--user` option tells `pip3` to install the program to a subdirectory of your user directory to avoid modifying libraries used by your operating system\.
+
+**Upgrading to the latest version of the AWS CLI**
+
+We recommend that you regularly check to see if there is a new version of the AWS CLI and upgrade to it when you can\.
+
+Use the `pip list -o` command to check which packages are "outdated':
+
+```
+$ aws --version
+aws-cli/1.16.170 Python/3.7.3 Linux/4.14.123-111.109.amzn2.x86_64 botocore/1.12.160
+
+$ pip3 list -o
+Package    Version  Latest   Type 
+---------- -------- -------- -----
+awscli     1.16.170 1.16.198 wheel
+botocore   1.12.160 1.12.188 wheel
+```
+
+Because the previous command shows that there is a newer version of the AWS CLI available, you can run `pip install --upgrade` to get the latest version:
+
+```
+$ pip3 install --upgrade --user awscli
+Collecting awscli
+  Downloading https://files.pythonhosted.org/packages/dc/70/b32e9534c32fe9331801449e1f7eacba6a1992c2e4af9c82ac9116661d3b/awscli-1.16.198-py2.py3-none-any.whl (1.7MB)
+     |████████████████████████████████| 1.7MB 1.6MB/s 
+Collecting botocore==1.12.188 (from awscli)
+  Using cached https://files.pythonhosted.org/packages/10/cb/8dcfb3e035a419f228df7d3a0eea5d52b528bde7ca162f62f3096a930472/botocore-1.12.188-py2.py3-none-any.whl
+Requirement already satisfied, skipping upgrade: docutils>=0.10 in ./venv/lib/python3.7/site-packages (from awscli) (0.14)
+Requirement already satisfied, skipping upgrade: rsa<=3.5.0,>=3.1.2 in ./venv/lib/python3.7/site-packages (from awscli) (3.4.2)
+Requirement already satisfied, skipping upgrade: colorama<=0.3.9,>=0.2.5 in ./venv/lib/python3.7/site-packages (from awscli) (0.3.9)
+Requirement already satisfied, skipping upgrade: PyYAML<=5.1,>=3.10; python_version != "2.6" in ./venv/lib/python3.7/site-packages (from awscli) (3.13)
+Requirement already satisfied, skipping upgrade: s3transfer<0.3.0,>=0.2.0 in ./venv/lib/python3.7/site-packages (from awscli) (0.2.0)
+Requirement already satisfied, skipping upgrade: jmespath<1.0.0,>=0.7.1 in ./venv/lib/python3.7/site-packages (from botocore==1.12.188->awscli) (0.9.4)
+Requirement already satisfied, skipping upgrade: urllib3<1.26,>=1.20; python_version >= "3.4" in ./venv/lib/python3.7/site-packages (from botocore==1.12.188->awscli) (1.24.3)
+Requirement already satisfied, skipping upgrade: python-dateutil<3.0.0,>=2.1; python_version >= "2.7" in ./venv/lib/python3.7/site-packages (from botocore==1.12.188->awscli) (2.8.0)
+Requirement already satisfied, skipping upgrade: pyasn1>=0.1.3 in ./venv/lib/python3.7/site-packages (from rsa<=3.5.0,>=3.1.2->awscli) (0.4.5)
+Requirement already satisfied, skipping upgrade: six>=1.5 in ./venv/lib/python3.7/site-packages (from python-dateutil<3.0.0,>=2.1; python_version >= "2.7"->botocore==1.12.188->awscli) (1.12.0)
+Installing collected packages: botocore, awscli
+  Found existing installation: botocore 1.12.160
+    Uninstalling botocore-1.12.160:
+      Successfully uninstalled botocore-1.12.160
+  Found existing installation: awscli 1.16.170
+    Uninstalling awscli-1.16.170:
+      Successfully uninstalled awscli-1.16.170
+Successfully installed awscli-1.16.198 botocore-1.12.188
+```
 
 ## Installing the AWS CLI in a Virtual Environment<a name="install-tool-venv"></a>
 
