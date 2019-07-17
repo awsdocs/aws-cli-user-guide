@@ -119,7 +119,7 @@ i-6fc67758
 ```
 
 **Tip**  
-If you text output, and filter the output to a single field using the \-\-query parameter, the output is a single line of tab separated values\. To get each value onto a separate line, you can put the output field in brackets as shown in the following examples:
+If you output text, and filter the output to a single field using the \-\-query parameter, the output is a single line of tab separated values\. To get each value onto a separate line, you can put the output field in brackets as shown in the following examples:
 
 Tab separated, single\-line output:
 
@@ -197,7 +197,15 @@ $ aws ec2 describe-volumes --query 'Volumes[*].[VolumeId,Attachments[0].Instance
 
 ## How to Filter the Output with the `--query` Option<a name="cli-usage-output-filter"></a>
 
-The AWS CLI provides built\-in JSON\-based output filtering capabilities with the `--query` option\. The \-\-query parameter accepts strings that are compliant with the [JMESPath specification](http://jmespath.org/)\. To demonstrate how it works, we first start with the default JSON output below, which describes two Amazon Elastic Block Store \(Amazon EBS\) volumes attached to separate Amazon EC2 instances\.
+The AWS CLI provides built\-in JSON\-based output filtering capabilities with the `--query` option\. The \-\-query parameter accepts strings that are compliant with the [JMESPath specification](http://jmespath.org/)\. 
+
+**Important**  
+The output type you specify \(`json`, `text`, or `table`\) impacts how the `--query` option operates\.  
+If you specify `--output text`, the output is paginated *before* the `--query` filter is applied and the AWS CLI runs the query once on *each page* of the output\. This can result in unexpected extra output, especially if your filter specifies an array element using something like \[0\], because the output then includes the first matching element on each page\.
+If you specify `--output json`, the output is completely processed and converted into a JSON structure before the `--query` filter is applied\. The AWS CLI runs the query only once against the entire output\.
+To work around the extra output that can be produced if you use `--output text`, you can specify `--no-paginate`\. This causes the filter to apply only to the complete set of results, but it does remove any pagination, so could result in long output\. You could also use other command line tools such as `head` or `tail` to additionally filter the output to only the values you want\. 
+
+To demonstrate how `--query` works, we first start with the default JSON output below, which describes two Amazon Elastic Block Store \(Amazon EBS\) volumes attached to separate Amazon EC2 instances\.
 
 ```
 $ aws ec2 describe-volumes
