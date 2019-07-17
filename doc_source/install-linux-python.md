@@ -35,6 +35,8 @@ If your Linux distribution came with Python, you might need to install the Pytho
      $ sudo zypper install python3
      ```
 
+   See the documentation for your system's package manager and for [Python](https://www.python.org/doc/) for more information about where it is installed and how to use it\.
+
 1. Open a command prompt or shell and run the following command to verify that Python installed correctly\.
 
    ```
