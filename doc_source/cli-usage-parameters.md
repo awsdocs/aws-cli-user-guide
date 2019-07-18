@@ -230,7 +230,7 @@ The file paths in the following examples are interpreted to be relative to the c
 $ aws ec2 describe-instances --filters file://filter.json
 
 // Read from a file in /tmp
-$ aws ec2 describe-instances --filters
+$ aws ec2 describe-instances --filters file:///tmp/filter.json
 ```
 
 **Windows**
