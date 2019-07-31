@@ -7,6 +7,7 @@ AWS requires that all incoming requests are cryptographically signed\. The AWS C
 
 **Topics**
 + [Quickly Configuring the AWS CLI](#cli-quick-configuration)
++ [Creating Multiple Profiles](#cli-quick-configuration-multi-profiles)
 + [Configuration Settings and Precedence](#config-settings-and-precedence)
 + [Configuration and Credential Files](cli-configure-files.md)
 + [Named Profiles](cli-configure-profiles.md)
@@ -15,12 +16,12 @@ AWS requires that all incoming requests are cryptographically signed\. The AWS C
 + [Sourcing Credentials with an External Process](cli-configure-sourcing-external.md)
 + [Instance Metadata](cli-configure-metadata.md)
 + [Using an HTTP Proxy](cli-configure-proxy.md)
-+ [Assuming an IAM Role in the AWS CLI](cli-configure-role.md)
++ [Using an IAM Role in the AWS CLI](cli-configure-role.md)
 + [Command Completion](cli-configure-completion.md)
 
 ## Quickly Configuring the AWS CLI<a name="cli-quick-configuration"></a>
 
- For general use, the `aws configure` command is the fastest way to set up your AWS CLI installation\. 
+ For general use, the `aws configure` command is the fastest way to set up your AWS CLI installation\.
 
 ```
 $ aws configure
@@ -30,7 +31,7 @@ Default region name [None]: us-west-2
 Default output format [None]: json
 ```
 
-When you type this command, the AWS CLI prompts you for four pieces of information \(access key, secret access key, AWS Region, and output format\), and stores them in a *profile* \(a collection of settings\) named `default`\. This profile is then used any time you run an AWS CLI command that doesn't explicitly specify a profile to use\.
+When you type this command, the AWS CLI prompts you for four pieces of information \(access key, secret access key, AWS Region, and output format – all describe in the following sections\), and stores them in a *profile* \(a collection of settings\) named `default`\. This profile is then used any time you run an AWS CLI command that doesn't explicitly specify a profile to use\.
 
 ### Access Key and Secret Access Key<a name="cli-quick-configuration-creds"></a>
 
@@ -78,9 +79,9 @@ The `Default output format` specifies how the results are formatted\. The value 
 + **`text`**: The output is formatted as multiple lines of tab\-separated string values, which can be useful if you want to pass the output to a text processor, like `grep`, `sed`, or `awk`\.
 + **`table`**: The output is formatted as a table using the characters \+\|\- to form the cell borders\. It typically presents the information in a "human\-friendly" format that is much easier to read than the others, but not as programmatically useful\.
 
-### Quick Configuration and Multiple Profiles<a name="cli-quick-configuration-multi-profiles"></a>
+## Creating Multiple Profiles<a name="cli-quick-configuration-multi-profiles"></a>
 
-If you use the command shown previously, the result is a single profile named `default`\. You can also create additional configurations by specifying the name of a profile using the `--profile` option\.
+If you use the command shown in the previous section, the result is a single profile named `default`\. You can create additional configurations by specifying the name of a profile using the `--profile` option\.
 
 ```
 $ aws configure --profile user2

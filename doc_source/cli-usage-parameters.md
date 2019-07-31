@@ -211,10 +211,23 @@ $ aws sqs create-queue --queue-name my-queue --attributes '{ "RedrivePolicy":"{\
 
 ## Loading Parameters from a File<a name="cli-usage-parameters-file"></a>
 
-Sometimes it's convenient to load a parameter value from a file instead of trying to type it all as a command line parameter value, such as when the parameter is a complex JSON string\. To specify a file that contains the value, specify a file URI\. The URL provides the path to the file that contains the actual parameter content\. 
+Some parameters expect file names as arguments, from which the AWS CLI loads the data\. Other parameters enable you to specify the parameter value as either text typed on the command line or read from a file\. Whether a file is required or optional, the file must be encoded correctly to be understood by the AWS CLI\. The file's encoding must match the reading system's default locale\. This can be determined by using the Python `locale.getpreferredencoding()` method\.
 
 **Note**  
-This behaviour is disabled automatically for parameters that already expect a URI, such as parameter that identifies a AWS CloudFormation template URI\.  
+By default, Windows PowerShell outputs text as UTF\-16, which conflicts with the UTF\-8 encoding used by many Linux systems\. We recommend that you use `-Encoding ascii` with your PowerShell `Out-File` commands to ensure the resulting file can be read by the AWS CLI\. 
+
+Sometimes it's convenient to load a parameter value from a file instead of trying to type it all as a command line parameter value, such as when the parameter is a complex JSON string\. To specify a file that contains the value, specify a file URL in the following format:
+
+```
+file://complete/path/to/file
+```
+
+The first two slash '/' characters are part of the specification\. If the required path begins with a '/', then the result is three slash characters: `file:///folder/file`\.
+
+The URL provides the path to the file that contains the actual parameter content\. 
+
+**Note**  
+This behaviour is disabled automatically for parameters that already expect a URL, such as parameter that identifies a AWS CloudFormation template URL\.  
 You can also disable this behaviour yourself by adding the following line to your CLI configuration file:  
 
 ```

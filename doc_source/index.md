@@ -31,7 +31,7 @@ Amazon's trademarks and trade dress may not be used in
    + [Sourcing Credentials with an External Process](cli-configure-sourcing-external.md)
    + [Instance Metadata](cli-configure-metadata.md)
    + [Using an HTTP Proxy](cli-configure-proxy.md)
-   + [Assuming an IAM Role in the AWS CLI](cli-configure-role.md)
+   + [Using an IAM Role in the AWS CLI](cli-configure-role.md)
    + [Command Completion](cli-configure-completion.md)
 + [Using the AWS CLI](cli-chap-using.md)
    + [Getting Help with the AWS CLI](cli-usage-help.md)
