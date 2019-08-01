@@ -4,7 +4,7 @@ An [AWS Identity and Access Management \(IAM\) role](https://docs.aws.amazon.com
 
 You can configure the AWS Command Line Interface \(AWS CLI\) to use an IAM role by defining a profile for the role in the `~/.aws/config` file\. 
 
-The following example shows a role profile named `marketingadmin`\. If you run commands with `--profile marketingadmin` \(or specify it with the [AWS\_DEFAULT\_PROFILE environment variable](cli-configure-envvars.md)\), then the CLI uses the permissions assigned to the profile `user1` to use the role with the Amazon Resource Name \(ARN\) `arn:aws:iam::123456789012:role/marketingadminrole`\. You can run any operations that are allowed by the permissions assigned to that role\.
+The following example shows a role profile named `marketingadmin`\. If you run commands with `--profile marketingadmin` \(or specify it with the [AWS\_PROFILE environment variable](cli-configure-envvars.md)\), then the CLI uses the permissions assigned to the profile `user1` to use the role with the Amazon Resource Name \(ARN\) `arn:aws:iam::123456789012:role/marketingadminrole`\. You can run any operations that are allowed by the permissions assigned to that role\.
 
 ```
 [profile marketingadmin]
@@ -88,13 +88,13 @@ To use the role for several calls, you can set the `AWS_DEFAULT_PROFILE` environ
 **Linux, macOS, or Unix**
 
 ```
-$ export AWS_DEFAULT_PROFILE=marketingadmin
+$ export AWS_PROFILE=marketingadmin
 ```
 
 **Windows**
 
 ```
-C:\> setx AWS_DEFAULT_PROFILE marketingadmin
+C:\> setx AWS_PROFILE marketingadmin
 ```
 
 For more information on configuring IAM users and roles, see [Users and Groups](https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_WorkingWithGroupsAndUsers.html) and [Roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/roles-toplevel.html) in the *IAM User Guide*\.
