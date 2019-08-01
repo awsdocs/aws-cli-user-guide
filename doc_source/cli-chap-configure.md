@@ -31,7 +31,7 @@ Default region name [None]: us-west-2
 Default output format [None]: json
 ```
 
-When you type this command, the AWS CLI prompts you for four pieces of information \(access key, secret access key, AWS Region, and output format – all describe in the following sections\), and stores them in a *profile* \(a collection of settings\) named `default`\. This profile is then used any time you run an AWS CLI command that doesn't explicitly specify a profile to use\.
+When you type this command, the AWS CLI prompts you for four pieces of information \(access key, secret access key, AWS Region, and output format\)\. These are described in the following sections\. The AWS CLI stores this information in a *profile* \(a collection of settings\) named `default`\. The information in the `default` profile is used any time you run an AWS CLI command that doesn't explicitly specify a profile to use\.
 
 ### Access Key and Secret Access Key<a name="cli-quick-configuration-creds"></a>
 
@@ -81,26 +81,26 @@ The `Default output format` specifies how the results are formatted\. The value 
 
 ## Creating Multiple Profiles<a name="cli-quick-configuration-multi-profiles"></a>
 
-If you use the command shown in the previous section, the result is a single profile named `default`\. You can create additional configurations by specifying the name of a profile using the `--profile` option\.
+If you use the command shown in the previous section, the result is a single profile named `default`\. You can create additional configurations that you can refer to with a name by specifying the `--profile` option and assigning a name\. The following example creates a profile named `produser`\. You can specify credentials from a completely different account and region than the other profiles\.
 
 ```
-$ aws configure --profile user2
+$ aws configure --profile produser
 AWS Access Key ID [None]: AKIAI44QH8DHBEXAMPLE
 AWS Secret Access Key [None]: je7MtGbClwBF/2Zp9Utk/h3yCo8nvbEXAMPLEKEY
 Default region name [None]: us-east-1
 Default output format [None]: text
 ```
 
-Then, when you run a command, you can omit the `--profile` option and use the settings stored in the `default` profile\.
+Then, when you run a command, you can omit the `--profile` option and use the credentials and settings stored in the `default` profile\.
 
 ```
 $ aws s3 ls
 ```
 
-Or you can specify a `--profile profilename` and use the settings stored under that name\.
+Or you can specify a `--profile profilename` and use the credentials and settings stored under that name\.
 
 ```
-$ aws s3 ls --profile myuser
+$ aws s3 ls --profile produser
 ```
 
 To update any of your settings, simply run `aws configure` again \(with or without the `--profile` parameter, depending on which profile you want to update\) and enter new values as appropriate\. The next sections contain more information about the files that `aws configure` creates, additional settings, and named profiles\.
