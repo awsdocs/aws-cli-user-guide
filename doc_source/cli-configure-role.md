@@ -2,9 +2,9 @@
 
 An [AWS Identity and Access Management \(IAM\) role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html) is an authorization tool that lets an IAM user gain additional \(or different\) permissions, or get permissions to perform actions in a different AWS account\. 
 
-You can configure the AWS Command Line Interface \(AWS CLI\) to use an IAM role by defining a profile for the role in the `~/.aws/config` file\. 
+You can configure the AWS Command Line Interface \(AWS CLI\) to use an IAM role by defining a profile for the role in the `~/.aws/credentials` file\. 
 
-The following example shows a role profile named `marketingadmin`\. If you run commands with `--profile marketingadmin` \(or specify it with the [AWS\_PROFILE environment variable](cli-configure-envvars.md)\), then the CLI uses the permissions assigned to the profile `user1` to use the role with the Amazon Resource Name \(ARN\) `arn:aws:iam::123456789012:role/marketingadminrole`\. You can run any operations that are allowed by the permissions assigned to that role\.
+The following example shows a role profile named `marketingadmin`\. If you run commands with `--profile marketingadmin` \(or specify it with the [AWS\_PROFILE environment variable](cli-configure-envvars.md)\), then the CLI uses the permissions assigned to the profile `user1` to assume the role with the Amazon Resource Name \(ARN\) `arn:aws:iam::123456789012:role/marketingadminrole`\. You can run any operations that are allowed by the permissions assigned to that role\.
 
 ```
 [marketingadmin]
@@ -14,7 +14,7 @@ source_profile = user1
 
 You must specify a `source_profile` that points to a separate named profile that contains IAM user credentials with permission to use the role\. In the previous example, the `marketingadmin` profile uses the credentials in the `user1` profile\. When you specify that an AWS CLI command is to use the profile `marketingadmin`, the CLI automatically looks up the credentials for the linked `user1` profile and uses them to request temporary credentials for the specified IAM role\. The CLI uses the [sts:AssumeRole](https://docs.aws.amazon.com/STS/latest/APIReference/API_AssumeRole.html) operation in the background to accomplish this\. Those temporary credentials are then used to run the requested CLI command\. The specified role must have attached IAM permission policies that allow the requested CLI command to run\.
 
-If you want to run a CLI command from within an Amazon EC2 instance, you can use an IAM role attached to an Amazon EC2 instance profile or an Amazon ECS container role\. This enables you to avoid storing long\-lived access keys on your instances\. To do this, you use `credential_source` \(instead of `source_profile`\) to specify how to find the credentials\. The `credential_source` attribute supports the following values:
+If you want to run a CLI command from within an Amazon EC2 instance, you can use an IAM role attached to an Amazon EC2 instance profile or a role attached to an Amazon ECS container\. This enables you to avoid storing long\-lived access keys on your instances\. To do this, you use `credential_source` \(instead of `source_profile`\) to specify how to find the credentials\. The `credential_source` attribute supports the following values:
 + `Environment` – to retrieve the credentials from environment variables\.
 + `Ec2InstanceMetadata` – to use the IAM role attached to the Amazon EC2 instance profile\.
 + `EcsContainer` – to use the IAM role attached to the Amazon ECS container\.
