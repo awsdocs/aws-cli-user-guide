@@ -122,14 +122,14 @@ This parameter can have one of three values:
 credential_source = Ec2InstanceMetadata
 ```
 
-*role\_session\_name*  
+*[role\_session\_name](cli-configure-role.md#cli-configure-role-session-name)*  
 Specifies the name to attach to the role session\. This value is provided to the `RoleSessionName` parameter when the AWS CLI calls the `AssumeRole` operation, and becomes part of the assumed role user ARN: ` arn:aws:sts::123456789012:assumed-role/role_name/role_session_name`\. This is an optional parameter\. If you do not provide this value, a session name is generated automatically\. This name appears in AWS CloudTrail logs for entries associated with this session\.  
 
 ```
 role_session_name = maria_garcia_role
 ```
 
-*mfa\_serial*  
+*[mfa\_serial](cli-configure-role.md#cli-configure-role-mfa)*  
 The identification number of an MFA device to use when assuming a role\. This is mandatory only if the trust policy of the role being assumed includes a condition that requires MFA authentication\. The value can be either a serial number for a hardware device \(such as `GAHT12345678`\) or an Amazon Resource Name \(ARN\) for a virtual MFA device \(such as `arn:aws:iam::123456789012:mfa/user`\)\.
 
 *duration\_seconds*  
@@ -143,7 +143,7 @@ Can be overridden by the `AWS_SESSION_TOKEN` environment variable\. You can't sp
 aws_session_token = AQoEXAMPLEH4aoAH0gNCAPyJxz4BlCFFxWNE1OPTgk5TthT+FvwqnKwRcOIfrRh3c/LTo6UDdyJwOOvEVPvLXCrrrUtdnniCEXAMPLE/IvU1dYUg2RVAJBanLiHb4IgRmpRV3zrkuWJOgQs8IZZaIv2BXIa2R4Olgk
 ```
 
-*external\_id*  
+*[external\_id](cli-configure-role.md#cli-configure-role-xaccount)*  
 A unique identifier that is used by third parties to assume a role in their customers' accounts\. This maps to the `ExternalId` parameter in the `AssumeRole` operation\. This parameter is optional unless the trust policy for the role specifies that `ExternalId` must be a specific value\.
 
 *ca\_bundle*  
@@ -174,13 +174,16 @@ This entry does not have an equivalent environment variable or command line opti
 cli_timestamp_format = iso8601
 ```
 
-*credential\_process*  
+*[credential\_process](cli-configure-sourcing-external.md)*  
 Specifies an external command that the CLI runs to generate or retrieve authentication credentials to use for this command\. The command must return the credentials in a specific format\. For more information about how to use this setting, see [Sourcing Credentials with an External Process](cli-configure-sourcing-external.md)\.  
 This entry does not have an equivalent environment variable or command line option\.  
 
 ```
 credential_process = /opt/bin/awscreds-retriever --username susan
 ```
+
+*[web\_identity\_token\_file](cli-configure-role.md#cli-configure-role-oidc)*  
+Specifies the path to a file which contains an OAuth 2\.0 access token or OpenID Connect ID token that is provided by an identity provider\. The AWS CLI loads the contents of this file and passes it as the `WebIdentityToken` argument to the `AssumeRoleWithWebIdentity` operation\.
 
 *[output](cli-chap-configure.md#cli-quick-configuration-format)*  
 Specifies the default output format for commands requested using this profile\. You can specify any of the following values:  

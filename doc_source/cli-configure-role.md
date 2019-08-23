@@ -34,6 +34,7 @@ When you invoke a role, you have additional options that you can require, such a
 + [Using Multi\-Factor Authentication](#cli-configure-role-mfa)
 + [Cross\-Account Roles & External ID](#cli-configure-role-xaccount)
 + [Specifying a Role Session Name for Easier Auditing](#cli-configure-role-session-name)
++ [Assume Role With Web Identity](#cli-configure-role-oidc)
 + [Clearing Cached Credentials](#cli-configure-role-cache)
 
 ## Configuring and Using a Role<a name="cli-role-prepare"></a>
@@ -197,6 +198,49 @@ arn:aws:iam::234567890123:assumed-role/SomeRole/Session_Maria_Garcia
 ```
 
 Also, all AWS CloudTrail logs include the role session name in the information captured for each operation\.
+
+## Assume Role With Web Identity<a name="cli-configure-role-oidc"></a>
+
+You can configure a profile to indicate that the AWS CLI should assume a role using [web identity federation and Open ID Connect \(OIDC\)](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_oidc.html)\. When you specify this in a profile, the AWS CLI automatically makes the corresponding AWS STS `AssumeRoleWithWebIdentity` call for you\.
+
+**Note**  
+When you specify a profile that uses an IAM role, the AWS CLI makes the appropriate calls to retrieve temporary credentials\. These credentials are then stored in `~/.aws/cli/cache`\. Subsequent AWS CLI commands that specify the same profile use the cached temporary credentials until they expire\. At that point, the AWS CLI automatically refreshes the credentials\.
+
+To retrieve and use temporary credentials using web identity federation, you can specify the following configuration values in a shared profile:
+
+[role\_arn](#cli-configure-role)  
+Specifies the ARN of the role you want to assume\.
+
+web\_identity\_token\_file  
+Specifies the path to a file which contains an OAuth 2\.0 access token or OpenID Connect ID token that is provided by the identity provider\. The AWS CLI loads this file and passes its content as the `WebIdentityToken` argument of the `AssumeRoleWithWebIdentity` operation\.
+
+[role\_session\_name](#cli-configure-role-session-name)  
+Specifies an optional name applied to this assume\-role session\.
+
+Below is an example configuration for the minimal amount of configuration needed to configure an assume role with web identity profile:
+
+```
+# In ~/.aws/config
+
+[profile web-identity]
+role_arn=arn:aws:iam:123456789012:role/RoleNameToAssume
+web_identity_token_file=/path/to/a/token
+```
+
+You can also provide this configuration by using [environment variables](cli-configure-envvars.md):
+
+AWS\_ROLE\_ARN  
+The ARN of the role you want to assume\.
+
+AWS\_WEB\_IDENTITY\_TOKEN\_FILE  
+The path to the web identity token file\.
+
+AWS\_ROLE\_SESSION\_NAME  
+The name applied to this assume\-role session\.
+
+Note
+
+These environment variables currently only apply to the assume role with web identity provider and do not apply to the general assume role provider configuration\.
 
 ## Clearing Cached Credentials<a name="cli-configure-role-cache"></a>
 
