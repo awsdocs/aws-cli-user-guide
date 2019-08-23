@@ -4,7 +4,7 @@ An [AWS Identity and Access Management \(IAM\) role](https://docs.aws.amazon.com
 
 You can configure the AWS Command Line Interface \(AWS CLI\) to use an IAM role by defining a profile for the role in the `~/.aws/credentials` file\. 
 
-The following example shows a role profile named `marketingadmin`\. If you run commands with `--profile marketingadmin` \(or specify it with the [AWS\_PROFILE environment variable](cli-configure-envvars.md)\), then the CLI uses the permissions assigned to the profile `user1` to assume the role with the Amazon Resource Name \(ARN\) `arn:aws:iam::123456789012:role/marketingadminrole`\. You can run any operations that are allowed by the permissions assigned to that role\.
+The following example shows a role profile named `marketingadmin`\. If you run commands with `--profile marketingadmin` \(or specify it with the [AWS\_PROFILE environment variable](cli-configure-envvars.md)\), then the CLI uses the credentials defined in the profile `user1` to assume the role with the Amazon Resource Name \(ARN\) `arn:aws:iam::123456789012:role/marketingadminrole`\. You can run any operations that are allowed by the permissions assigned to that role\.
 
 ```
 [marketingadmin]
@@ -14,8 +14,8 @@ source_profile = user1
 
 You must specify a `source_profile` that points to a separate named profile that contains IAM user credentials with permission to use the role\. In the previous example, the `marketingadmin` profile uses the credentials in the `user1` profile\. When you specify that an AWS CLI command is to use the profile `marketingadmin`, the CLI automatically looks up the credentials for the linked `user1` profile and uses them to request temporary credentials for the specified IAM role\. The CLI uses the [sts:AssumeRole](https://docs.aws.amazon.com/STS/latest/APIReference/API_AssumeRole.html) operation in the background to accomplish this\. Those temporary credentials are then used to run the requested CLI command\. The specified role must have attached IAM permission policies that allow the requested CLI command to run\.
 
-If you want to run a CLI command from within an Amazon EC2 instance, you can use an IAM role attached to an Amazon EC2 instance profile or a role attached to an Amazon ECS container\. This enables you to avoid storing long\-lived access keys on your instances\. To do this, you use `credential_source` \(instead of `source_profile`\) to specify how to find the credentials\. The `credential_source` attribute supports the following values:
-+ `Environment` – to retrieve the credentials from environment variables\.
+If you want to run a CLI command from within an Amazon EC2 instance or an Amazon ECS container, you can use an IAM role attached to the instance profile or the container\. If you specify no profile or set no environment variables, that role is used directly\. This enables you to avoid storing long\-lived access keys on your instances\. You can also use those instance or container roles only to get credentials for another role\. To do this, you use `credential_source` \(instead of `source_profile`\) to specify how to find the credentials\. The `credential_source` attribute supports the following values:
++ `Environment` – to retrieve the source credentials from environment variables\.
 + `Ec2InstanceMetadata` – to use the IAM role attached to the Amazon EC2 instance profile\.
 + `EcsContainer` – to use the IAM role attached to the Amazon ECS container\.
 
@@ -27,12 +27,13 @@ role_arn = arn:aws:iam::123456789012:role/marketingadminrole
 credential_source = Ec2InstanceMetadata
 ```
 
-For more information, see [AWS CLI Configuration Variables](https://docs.aws.amazon.com/cli/latest/topic/config-vars.html)\. 
+When you invoke a role, you have additional options that you can require, such as the use of multi\-factor authentication, an External ID \(used by third party companies to access their clients' resources\), and specify unique role session names that can be more easily audited in AWS CloudTrail logs\.
 
 **Topics**
 + [Configuring and Using a Role](#cli-role-prepare)
 + [Using Multi\-Factor Authentication](#cli-configure-role-mfa)
-+ [Cross\-Account Roles](#cli-configure-role-xaccount)
++ [Cross\-Account Roles & External ID](#cli-configure-role-xaccount)
++ [Specifying a Role Session Name for Easier Auditing](#cli-configure-role-session-name)
 + [Clearing Cached Credentials](#cli-configure-role-cache)
 
 ## Configuring and Using a Role<a name="cli-role-prepare"></a>
@@ -160,7 +161,7 @@ Enter MFA code for arn:aws:iam::123456789012:mfa/cli-user:
             ...
 ```
 
-## Cross\-Account Roles<a name="cli-configure-role-xaccount"></a>
+## Cross\-Account Roles & External ID<a name="cli-configure-role-xaccount"></a>
 
 You can enable IAM users to use roles that belong to different accounts by configuring the role as a cross\-account role\. During role creation, set the role type to **Another AWS account**, as described in [Creating a Role to Delegate Permissions to an IAM user](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user.html)\. Optionally, select **Require MFA**\. The **Require MFA** option configures the appropriate condition in the trust relationship, as described in [Using Multi\-Factor Authentication](#cli-configure-role-mfa)\.
 
@@ -174,11 +175,34 @@ mfa_serial = arn:aws:iam::123456789012:mfa/saanvi
 external_id = 123456
 ```
 
-For more information, see [AWS CLI Configuration Variables](https://docs.aws.amazon.com/cli/latest/topic/config-vars.html)\. 
+## Specifying a Role Session Name for Easier Auditing<a name="cli-configure-role-session-name"></a>
+
+When a role is shared by many individuals, auditing becomes more of a challenge\. You want to associate each operation invoked with the individual who invoked the action\. However, when the individual uses a role, the assumption of the role by the individual is a separate action from the invoking of an operation, and you must manually correlate the two\.
+
+You can simplify this by specifying unique role session names when users assume a role\. You do this by adding a `role_session_name` parameter to each named profile in the `config` file that specifies a role\. The `role_session_name` value is passed to the `AssumeRole` operation and becomes part of the ARN for the role session\. It is also included in the AWS CloudTrail logs for all logged operations\.
+
+For example, you could create a role\-based profile as follows: 
+
+```
+[profile namedsessionrole]
+role_arn = arn:aws:iam::234567890123:role/SomeRole
+source_profile = default
+role_session_name = Session_Maria_Garcia
+```
+
+This results in the role session having the following ARN:
+
+```
+arn:aws:iam::234567890123:assumed-role/SomeRole/Session_Maria_Garcia
+```
+
+Also, all AWS CloudTrail logs include the role session name in the information captured for each operation\.
 
 ## Clearing Cached Credentials<a name="cli-configure-role-cache"></a>
 
-When you use a role, the AWS CLI caches the temporary credentials locally until they expire\. If your role's temporary credentials are [revoked](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_revoke-sessions.html), you can delete the cache to force the AWS CLI to retrieve new credentials\.
+When you use a role, the AWS CLI caches the temporary credentials locally until they expire\. The next time you try to use them, the AWS CLI attempts to renew them on your behalf\. 
+
+If your role's temporary credentials are [revoked](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_revoke-sessions.html), they are not renewed automatically, and attempts to use them fail\. However, you can delete the cache to force the AWS CLI to retrieve new credentials\.
 
 **Linux, macOS, or Unix**
 

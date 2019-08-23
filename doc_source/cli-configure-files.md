@@ -52,6 +52,8 @@ output=json
 **Note**  
 The preceding examples show the files with a single, default profile\. For examples of the files with multiple named profiles, see [Named Profiles](cli-configure-profiles.md)\.
 
+When you use a shared profile that specifies an IAM role, the AWS CLI calls the AWS STS AssumeRole operation to retrieve temporary credentials\. These credentials are then stored \(in `~/.aws/cli/cache`\)\. Subsequent AWS CLI commands use the cached temporary credentials until they expire, and at that point the AWS CLI automatically refreshes the credentials\.
+
 ## Supported `config` File Settings<a name="cli-configure-files-settings"></a>
 
 **Topics**
@@ -79,7 +81,7 @@ If the output is empty, then the setting is not explicitly set and uses the defa
 
 * [aws\_access\_key\_id](cli-chap-configure.md#cli-quick-configuration-creds) *  
 Specifies the AWS access key used as part of the credentials to authenticate the command request\. Although this can be stored in the `config` file, we recommend that you store this in the `credentials` file\.   
-Can be overridden by the `AWS_ACCESS_KEY_ID` environment variable\. You can't specify the access key ID as a command line option\.  
+Can be overridden by the `AWS_ACCESS_KEY_ID` environment variable\. Note that you can't specify the access key ID as a command line option\.  
 
 ```
 aws_access_key_id = 123456789012
@@ -87,19 +89,62 @@ aws_access_key_id = 123456789012
 
 *[aws\_secret\_access\_key](cli-chap-configure.md#cli-quick-configuration-creds)*  
 Specifies the AWS secret key used as part of the credentials to authenticate the command request\. Although this can be stored in the `config` file, we recommend that you store this in the `credentials` file\.   
-Can be overridden by the `AWS_SECRET_ACCESS_KEY` environment variable\. You can't specify the secret access key as a command line option\.  
+Can be overridden by the `AWS_SECRET_ACCESS_KEY` environment variable\. Note that you can't specify the secret access key as a command line option\.  
 
 ```
 aws_secret_access_key = wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
 ```
 
+*[role\_arn](cli-configure-role.md)*  
+Specifies the Amazon Resource Name \(ARN\) of an IAM role that you want to use to run the AWS CLI commands\. You must also specify one of the following parameters to identify the credentials that have permission to assume this role:  
++ source\_profile
++ credential\_source
+
+```
+role_arn = arn:aws:iam::123456789012:role/role-name
+```
+
+*[source\_profile](cli-configure-role.md)*  
+Specifies a named profile with long\-term credentials that the AWS CLI can use to assume a role that you specified with the `role_arn` parameter\. You cannot specify both `source_profile` and `credential_source` in the same profile\.  
+
+```
+source_profile = production-profile
+```
+
+*[credential\_source](cli-configure-role.md)*  
+Used within EC2 instances or EC2 containers to specify where the AWS CLI can find credentials to use to assume the role you specified with the `role_arn` parameter\. You cannot specify both `source_profile` and `credential_source` in the same profile\.  
+This parameter can have one of three values:  
++ **Environment**: to retrieve source credentials from environment variables\.
++ **Ec2InstanceMetadata**: to use the IAM role attached to the [EC2 instance profile](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2_instance-profiles.html) as source credentials\.
++ **EcsContainer**: to use the IAM role attached to the ECS container as source credentials\.
+
+```
+credential_source = Ec2InstanceMetadata
+```
+
+*role\_session\_name*  
+Specifies the name to attach to the role session\. This value is provided to the `RoleSessionName` parameter when the AWS CLI calls the `AssumeRole` operation, and becomes part of the assumed role user ARN: ` arn:aws:sts::123456789012:assumed-role/role_name/role_session_name`\. This is an optional parameter\. If you do not provide this value, a session name is generated automatically\. This name appears in AWS CloudTrail logs for entries associated with this session\.  
+
+```
+role_session_name = maria_garcia_role
+```
+
+*mfa\_serial*  
+The identification number of an MFA device to use when assuming a role\. This is mandatory only if the trust policy of the role being assumed includes a condition that requires MFA authentication\. The value can be either a serial number for a hardware device \(such as `GAHT12345678`\) or an Amazon Resource Name \(ARN\) for a virtual MFA device \(such as `arn:aws:iam::123456789012:mfa/user`\)\.
+
+*duration\_seconds*  
+Specifies the maximum duration of the role session, in seconds\. The value can range from 900 seconds \(15 minutes\) up to the maximum session duration setting for the role \(which can be a maximum of 43200\)\. This is an optional parameter and by default, the value is set to 3600 seconds\.
+
 *aws\_session\_token*  
-Specifies an AWS session token\. A session token is required only if you are using temporary security credentials\. Although this can be stored in the `config` file, we recommend that you store this in the `credentials` file\.   
+Specifies an AWS session token\. A session token is required only if you manually specify temporary security credentials\. Although this can be stored in the `config` file, we recommend that you store this in the `credentials` file\.   
 Can be overridden by the `AWS_SESSION_TOKEN` environment variable\. You can't specify the session token as a command line option\.  
 
 ```
 aws_session_token = AQoEXAMPLEH4aoAH0gNCAPyJxz4BlCFFxWNE1OPTgk5TthT+FvwqnKwRcOIfrRh3c/LTo6UDdyJwOOvEVPvLXCrrrUtdnniCEXAMPLE/IvU1dYUg2RVAJBanLiHb4IgRmpRV3zrkuWJOgQs8IZZaIv2BXIa2R4Olgk
 ```
+
+*external\_id*  
+A unique identifier that is used by third parties to assume a role in their customers' accounts\. This maps to the `ExternalId` parameter in the `AssumeRole` operation\. This parameter is optional unless the trust policy for the role specifies that `ExternalId` must be a specific value\.
 
 *ca\_bundle*  
 Specifies a CA certificate bundle \(a file with the `.pem` extension\) that is used to verify SSL certificates\.  

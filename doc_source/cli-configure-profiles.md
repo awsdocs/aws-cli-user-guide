@@ -16,7 +16,7 @@ aws_access_key_id=AKIAI44QH8DHBEXAMPLE
 aws_secret_access_key=je7MtGbClwBF/2Zp9Utk/h3yCo8nvbEXAMPLEKEY
 ```
 
-Each profile uses different credentials—perhaps from different IAM users—and can also specify different AWS Regions and output formats\.
+Each profile can specify different credentials—perhaps from different IAM users—and can also specify different AWS Regions and output formats\.
 
 **`~/.aws/config`** \(Linux & Mac\) or **`%USERPROFILE%\.aws\config`** \(Windows\)
 
@@ -31,11 +31,11 @@ output=text
 ```
 
 **Important**  
-The `credentials` file uses a different naming format than the CLI `config` file for named profiles\. Include the prefix "`profile`" only when configuring a named profile in the `config` file\. Do ***not*** use `profile` when configuring the `credentials` file\.
+The `credentials` file uses a different naming format than the CLI `config` file for named profiles\. Include the prefix word "`profile`" only when configuring a named profile in the `config` file\. Do ***not*** use the word `profile` when creating an entry in the `credentials` file\.
 
 ## Using Profiles with the AWS CLI<a name="using-profiles"></a>
 
-To use a named profile, add the `--profile profile-name` option to your command\. The following example lists all of your Amazon EC2 instances using the `user1` profile from the previous example files\.
+To use a named profile, add the `--profile profile-name` option to your command\. The following example lists all of your Amazon EC2 instances using the credentials and settings defined in the `user1` profile from the previous example files\.
 
 ```
 $ aws ec2 describe-instances --profile user1
