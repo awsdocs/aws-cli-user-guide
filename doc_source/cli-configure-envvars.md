@@ -15,18 +15,7 @@ The AWS CLI supports the following environment variables:
 + `AWS_DEFAULT_REGION` – Specifies the [AWS Region](cli-chap-configure.md#cli-quick-configuration-region) to send the request to\.
 + `AWS_DEFAULT_OUTPUT` – Specifies the output format to use\.
 + `AWS_PROFILE` – Specifies the name of the [CLI profile](cli-configure-profiles.md) with the credentials and options to use\. This can be the name of a profile stored in a `credentials` or `config` file, or the value `default` to use the default profile\. If you specify this environment variable, it overrides the behavior of using the profile named `[default]` in the configuration file\.
-+ `AWS_ROLE_SESSION_NAME` – Specifies a name to associate with the role session\. For more information, see [ Specifying a Role Session Name for Easier Auditing  When a role is shared by many individuals, auditing becomes more of a challenge\. You want to associate each operation invoked with the individual who invoked the action\. However, when the individual uses a role, the assumption of the role by the individual is a separate action from the invoking of an operation, and you must manually correlate the two\. You can simplify this by specifying unique role session names when users assume a role\. You do this by adding a `role_session_name` parameter to each named profile in the `config` file that specifies a role\. The `role_session_name` value is passed to the `AssumeRole` operation and becomes part of the ARN for the role session\. It is also included in the AWS CloudTrail logs for all logged operations\. For example, you could create a role\-based profile as follows:  
-
-```
-[profile namedsessionrole]
-role_arn = arn:aws:iam::234567890123:role/SomeRole
-source_profile = default
-role_session_name = Session_Maria_Garcia
-``` This results in the role session having the following ARN: 
-
-```
-arn:aws:iam::234567890123:assumed-role/SomeRole/Session_Maria_Garcia
-``` Also, all AWS CloudTrail logs include the role session name in the information captured for each operation\. ](cli-configure-role.md#cli-configure-role-session-name)\.
++ `AWS_ROLE_SESSION_NAME` – Specifies a name to associate with the role session\. For more information, see [Specifying a Role Session Name for Easier Auditing](cli-configure-role.md#cli-configure-role-session-name)\.
 + `AWS_CA_BUNDLE` – Specifies the path to a certificate bundle to use for HTTPS certificate validation\.
 + `AWS_SHARED_CREDENTIALS_FILE` – Specifies the location of the file that the AWS CLI uses to store access keys\. The default path is `~/.aws/credentials`\)\.
 + `AWS_CONFIG_FILE` – Specifies the location of the file that the AWS CLI uses to store configuration profiles\. The default path is `~/.aws/config`\)\.
