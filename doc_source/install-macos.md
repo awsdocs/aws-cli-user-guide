@@ -28,13 +28,21 @@ Follow these steps from the command line to install the AWS CLI using the bundle
 
 **To install the AWS CLI using the bundled installer**
 
-1. Download the [AWS CLI Bundled Installer](https://s3.amazonaws.com/aws-cli/awscli-bundle.zip)\.
+Here are the steps described below in one easy to copy\-and\-paste group\. See the descriptions of each line in the steps that follow\.
+
+```
+curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
+unzip awscli-bundle.zip
+sudo ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
+```
+
+1. Download the [AWS CLI Bundled Installer](https://s3.amazonaws.com/aws-cli/awscli-bundle.zip) to a file in your current working folder\.
 
    ```
    $ curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
    ```
 
-1. Unzip the package\.
+1. Unzip the package to a folder with the same name in your current working folder\.
 
    ```
    $ unzip awscli-bundle.zip
@@ -42,7 +50,7 @@ Follow these steps from the command line to install the AWS CLI using the bundle
 **Note**  
 If you don't have `unzip`, use your favorite package manager to install it or an equivalent\.
 
-1. Run the install program\.
+1. Run the install program\. This command installs the AWS CLI to `/usr/local/aws` and creates the symlink `aws` in the `/usr/local/bin` directory\. Using the `-b` option to create a symlink eliminates the need to specify the install directory in the user's `$PATH` variable\. This should enable all users to call the AWS CLI by typing `aws` from any directory\.
 
    ```
    $ sudo ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
@@ -54,20 +62,10 @@ By default, the install script runs under the system's default version of Python
    $ sudo /usr/local/bin/python3.7 awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
    ```
 
-This command installs the AWS CLI to `/usr/local/aws` and creates the symlink `aws` in the `/usr/local/bin` directory\. Using the `-b` option to create a symlink eliminates the need to specify the install directory in the user's `$PATH` variable\. This should enable all users to call the AWS CLI by typing `aws` from any directory\.
-
 To see an explanation of the `-i` and `-b` options, use the `-h` option\.
 
 ```
 $ ./awscli-bundle/install -h
-```
-
-Here are the commands summarized for easy cut and paste at the command line\.
-
-```
-curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
-unzip awscli-bundle.zip
-sudo ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
 ```
 
 ## Install the AWS CLI on macOS Using pip<a name="awscli-install-osx-pip"></a>
