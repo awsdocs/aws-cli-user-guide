@@ -25,6 +25,19 @@ If your computer doesn't already have Python installed, or you would like to ins
 
 ## Install the AWS CLI Using the Bundled Installer<a name="install-bundle-other"></a>
 
+The steps below enable you to install the AWS CLI from the command line on any build of Linux or macOS\.
+
+To download it directly \(without using curl\) use this link:
++ [https://s3.amazonaws.com/aws-cli/awscli-bundle.zip](https://s3.amazonaws.com/aws-cli/awscli-bundle.zip) 
+
+Here are a summary of the installation commands explained below that you can cut and paste to run as a single set of commands\.
+
+```
+curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
+unzip awscli-bundle.zip
+sudo ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
+```
+
 Follow these steps from the command line to install the AWS CLI using the bundled installer\.
 
 **To install the AWS CLI using the bundled installer**
@@ -61,14 +74,6 @@ To see an explanation of the `-i` and `-b` options, use the `-h` option\.
 
 ```
 $ ./awscli-bundle/install -h
-```
-
-Here are a summary of the installation commands that you can cut and paste to run as a single set of commands\.
-
-```
-curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
-unzip awscli-bundle.zip
-sudo ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
 ```
 
 ## Install the AWS CLI without Sudo \(Linux, macOS, or Unix\)<a name="install-bundle-user"></a>
