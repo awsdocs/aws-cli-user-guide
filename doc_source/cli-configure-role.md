@@ -146,7 +146,7 @@ The `mfa_serial` setting can take an ARN, as shown, or the serial number of a ha
 The first profile, `role-without-mfa`, doesn't require MFA\. However, because the previous example trust policy attached to the role requires MFA, any attempt to run a command with this profile fails\.
 
 ```
-$ aws iam list-users --profile cli-role
+$ aws iam list-users --profile role-without-mfa
 
 An error occurred (AccessDenied) when calling the AssumeRole operation: Access denied
 ```
@@ -154,7 +154,7 @@ An error occurred (AccessDenied) when calling the AssumeRole operation: Access d
 The second profile entry, `role-with-mfa`, identifies an MFA device to use\. When the user attempts to run a CLI command with this profile, the CLI prompts the user to enter the one\-time password \(OTP\) provided by the MFA device\. If the MFA authentication is succesful, the command then performs the requested operation\. The OTP is not displayed on the screen\.
 
 ```
-$ aws iam list-users --profile cli-role-mfa
+$ aws iam list-users --profile role-with-mfa
 Enter MFA code for arn:aws:iam::123456789012:mfa/cli-user:
 {
     "Users": [
