@@ -24,8 +24,7 @@ Depending on your use case, you might want to use one of the AWS SDKs, or the AW
 + [AWS Tools for PowerShell](https://docs.aws.amazon.com/powershell/latest/userguide/)
 + [AWS SDK for Java](https://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/)
 + [AWS SDK for \.NET](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide/)
-
-  [AWS SDK for JavaScript](https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/)
++ [AWS SDK for JavaScript](https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/)
 + [AWS SDK for Ruby](https://docs.aws.amazon.com/sdk-for-ruby/v3/developer-guide/)
 + [AWS SDK for Python \(Boto\)](http://boto3.amazonaws.com/v1/documentation/api/latest/index.html)
 + [AWS SDK for PHP](https://docs.aws.amazon.com/aws-sdk-php/guide/latest/)
