@@ -35,7 +35,7 @@ The `--upgrade` option tells `pip3` to upgrade any requirements that are already
 
 We recommend that you regularly check to see if there is a new version of the AWS CLI and upgrade to it when you can\.
 
-Use the `pip list -o` command to check which packages are "outdated':
+Use the `pip3 list -o` command to check which packages are "outdated':
 
 ```
 $ aws --version
@@ -48,7 +48,7 @@ awscli     1.16.170 1.16.198 wheel
 botocore   1.12.160 1.12.188 wheel
 ```
 
-Because the previous command shows that there is a newer version of the AWS CLI available, you can run `pip install --upgrade` to get the latest version:
+Because the previous command shows that there is a newer version of the AWS CLI available, you can run `pip3 install --upgrade` to get the latest version:
 
 ```
 $ pip3 install --upgrade --user awscli
