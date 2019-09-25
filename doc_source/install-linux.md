@@ -39,7 +39,7 @@ If you don't already have `pip` installed, you can install it by using the scrip
 
 **To install pip**
 
-1. Use the `curl` command to download the installation script\.
+1. Use the `curl` command to download the installation script\. The following command uses the `-O` \(capital letter O\) parameter to specify that the downloaded file is to be stored in the current folder using the same name it has on the remote host\.
 
    ```
    $ curl -O https://bootstrap.pypa.io/get-pip.py
