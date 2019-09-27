@@ -118,6 +118,12 @@ i-3045b007
 i-6fc67758
 ```
 
+Please note that although the previous example does show how to use the `--query` parameter to parse the underlying JSON objects and pull out the desired column, PowerShell has its own ability to handle JSON that you can use if cross\-platform compatibility is not a concern\. Instead of dealing with the output as text, as most command shells require, PowerShell lets you use the `ConvertFrom-JSON` cmdlet to produce a hierarchically structured object\. You can then directly access the desired member from that object\.
+
+```
+(aws ec2 describe-instances --output json | ConvertFrom-Json).Reservations.Instances.InstanceId
+```
+
 **Tip**  
 If you output text, and filter the output to a single field using the \-\-query parameter, the output is a single line of tab separated values\. To get each value onto a separate line, you can put the output field in brackets as shown in the following examples:
 
