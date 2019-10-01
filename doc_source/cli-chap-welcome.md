@@ -1,7 +1,7 @@
 # What Is the AWS Command Line Interface?<a name="cli-chap-welcome"></a>
 
 The AWS Command Line Interface \(AWS CLI\) is an open source tool that enables you to interact with AWS services using commands in your command\-line shell\. With minimal configuration, you can start using functionality equivalent to that provided by the browser\-based AWS Management Console from the command prompt in your favorite terminal program:
-+ **Linux shells** – Use common shell programs such as `bash`, `zsh`, and `tsch` to run commands in Linux, macOS, or Unix\.
++ **Linux shells** – Use common shell programs such as [https://www.gnu.org/software/bash/](https://www.gnu.org/software/bash/), [http://www.zsh.org/](http://www.zsh.org/), and [https://www.tcsh.org/](https://www.tcsh.org/)to run commands in Linux, macOS, or Unix\.
 + **Windows command line** – On Windows, run commands in PowerShell or at the Windows command prompt\.
 + **Remotely** – Run commands on Amazon Elastic Compute Cloud \(Amazon EC2\) instances through a remote terminal such as PuTTY or SSH, or with AWS Systems Manager\.
 
