@@ -1,5 +1,13 @@
 # Troubleshooting AWS CLI Errors<a name="cli-chap-troubleshooting"></a>
 
+## General troubleshooting tip: ensure you're running a recent version of the AWS CLI<a name="general-latest"></a>
+
+If you receive an error that indicates that a command does not exist, or that it doesn't recognize a parameter that the documentation says is available, then we recommend that the first thing you do \(after checking your command for spelling errors\!\) is to upgrade to the most recent version of the AWS CLI\. Updated versions of the AWS CLI are released almost every business day\. New AWS services, features, and parameters are introduced in those new versions of the AWS CLI\. The only way to get access to those new services, features, or parameters is to upgrade to a version that was released after that element was first introduced\.
+
+How you update your version of the AWS CLI depends on how you originally installed it\. For example, if you installed the AWS CLI using `pip`, then run pip install \-\-upgrade as described on [Upgrading to the latest version of the AWS CLI](install-linux.md#install-linux-awscli-upgrade)\.
+
+If you used one of the bundled installers, then you should remove the existing installation and then download and install the latest version of the bundled installer for your operating system\.
+
 ## General troubleshooting tip: use the `--debug` option<a name="general-debug"></a>
 
 One of the first things you should do when the CLI reports an error that you don't immediately understand, or produces results that you don't expect is get more detail about the error\. You can do this by running the command again and including the `--debug` option at the end of the command line\. This causes the AWS CLI to report details about every step it takes to process your command, send the request to the AWS servers, receive the response, and process the response into the output you see\. The details in the output can help you to determine in which step the error occurs and context that can provide clues about what triggered it\.
