@@ -3,6 +3,9 @@
 The recommended way to install the AWS Command Line Interface \(AWS CLI\) on macOS is to use the bundled installer\. The bundled installer includes all dependencies and you can use it offline\.
 
 **Important**  
+On January 10th, 2020, AWS CLI version 1\.17 and later will no longer support Python 2\.6 or Python 3\.3\. After this date, the installer for the AWS CLI will require Python 2\.7, Python 3\.4, or a later version to successfully install the AWS CLI\. For more information, see [Using the AWS CLI with Python 2\.6 or Python 3\.3](deprecate-python-26-33.md) in this guide, and the [deprecation announcement in this blog post](https://aws.amazon.com/blogs/developer/deprecation-of-python-2-6-and-python-3-3-in-botocore-boto3-and-the-aws-cli/)\.
+
+**Important**  
 The bundled installer doesn't support installing to paths that contain spaces\.
 
 **Topics**
@@ -12,7 +15,7 @@ The bundled installer doesn't support installing to paths that contain spaces\.
 + [Add the AWS CLI Executable to Your macOS Command Line Path](#awscli-install-osx-path)
 
 ## Prerequisites<a name="install-bundle-macos-os-prereq"></a>
-+ Python 2 version 2\.6\.5\+ or Python 3 version 3\.3\+
++ Python 2 version 2\.7\+ or Python 3 version 3\.4\+
 
 Check your Python installation\.
 
@@ -28,24 +31,12 @@ Follow these steps from the command line to install the AWS CLI using the bundle
 
 **To install the AWS CLI using the bundled installer**
 
-Here are the steps described below in one easy to copy\-and\-paste group\. See the descriptions of each line in the steps that follow\.
-
-```
-curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
-unzip awscli-bundle.zip
-sudo ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
-```
-
-1. Download the [AWS CLI Bundled Installer](https://s3.amazonaws.com/aws-cli/awscli-bundle.zip) to a file in your current working folder\.
+1. Here are the steps described below in one easy to copy\-and\-paste group\. See the descriptions of each line in the steps that follow\.
 
    ```
-   $ curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
-   ```
-
-1. Unzip the package to a folder with the same name in your current working folder\.
-
-   ```
-   $ unzip awscli-bundle.zip
+   curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
+   unzip awscli-bundle.zip
+   sudo ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
    ```
 **Note**  
 If you don't have `unzip`, use your favorite package manager to install it or an equivalent\.
@@ -97,7 +88,7 @@ $ pip3 --version
 
    ```
    $ aws --version
-   AWS CLI 1.16.116 (Python 3.6.8)
+   AWS CLI 1.16.246 (Python 3.7.4)
    ```
 
    If the program isn't found, [add it to your command line path](#awscli-install-osx-path)\.

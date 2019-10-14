@@ -1,12 +1,14 @@
 # Installing the AWS CLI<a name="cli-chap-install"></a>
 
 **Ways to install the AWS Command Line Interface \(AWS CLI\)**
-+ [`Using pip`](#install-tool-pip)
++ [Using `pip`](#install-tool-pip)
 + [Using a virtual environment](#install-tool-venv)
 + [Using a bundled installer](#install-tool-bundled)
 
 **Prerequisites**
-+ Python 2 version 2\.6\.5\+ or Python 3 version 3\.3\+
++ Python 2 version 2\.7\+ or Python 3 version 3\.4\+
+**Important**  
+On January 10th, 2020, AWS CLI version 1\.17 and later will no longer support Python 2\.6 or Python 3\.3\. After this date, the installer for the AWS CLI will require Python 2\.7, Python 3\.4, or a later version to successfully install the AWS CLI\. For more information, see [Using the AWS CLI with Python 2\.6 or Python 3\.3](deprecate-python-26-33.md) in this guide, and the [deprecation announcement in this blog post](https://aws.amazon.com/blogs/developer/deprecation-of-python-2-6-and-python-3-3-in-botocore-boto3-and-the-aws-cli/)\.
 + Windows, Linux, macOS, or Unix
 
 **Note**  
@@ -23,7 +25,7 @@ The primary distribution method for the AWS CLI on Linux, Windows, and macOS is 
 **Installing the current AWS CLI Version**  
 The AWS CLI is updated frequently with support for new services and commands\. To determine whether you have the latest version, see the [releases page on GitHub](https://github.com/aws/aws-cli/releases)\.
 
-If you already have `pip` and a supported version of Python, you can install the AWS CLI by using the following command\. If you have Python version 3\+ installed, we recommend that you use the **pip3** command\.
+If you already have `pip` and a supported version of Python, you can install the AWS CLI by using the following command\. If you have Python version 3 installed, we recommend that you use the **pip3** command\.
 
 ```
 $ pip3 install awscli --upgrade --user
@@ -39,7 +41,7 @@ Use the `pip3 list -o` command to check which packages are "outdated':
 
 ```
 $ aws --version
-aws-cli/1.16.170 Python/3.7.3 Linux/4.14.123-111.109.amzn2.x86_64 botocore/1.12.160
+aws-cli/1.16.246 Python/3.7.4 Linux/4.14.133-113.105.amzn2.x86_64 botocore/1.12.236
 
 $ pip3 list -o
 Package    Version  Latest   Type 
@@ -85,7 +87,7 @@ If you encounter issues when you attempt to install the AWS CLI with `pip3`, you
 
 For offline or automated installations on Linux, macOS, or Unix, try the [bundled installer](install-bundle.md)\. The bundled installer includes the AWS CLI, its dependencies, and a shell script that performs the installation for you\.
 
-On Windows, you can also use the [MSI installer](install-windows.md#install-msi-on-windows)\. Both of these methods simplify the initial installation\. However, the tradeoff is that it's more difficult to upgrade when a new version of the AWS CLI is released\.
+On Windows, you can use the [MSI installer](install-windows.md#install-msi-on-windows)\. Both of these methods simplify the initial installation\. However, the tradeoff is that it's more difficult to upgrade when a new version of the AWS CLI is released\.
 
 ## Steps to Take after Installation<a name="install-post"></a>
 + [Setting the Path to Include the AWS CLI](#post-install-path)
@@ -104,7 +106,7 @@ Verify that the AWS CLI installed correctly by running `aws --version`\.
 
 ```
 $ aws --version
-aws-cli/1.16.116 Python/3.6.8 Linux/4.14.77-81.59-amzn2.x86_64 botocore/1.12.106
+aws-cli/1.16.246 Python/3.7.4 Linux/4.14.133-113.105.amzn2.x86_64 botocore/1.12.236
 ```
 
 ### Configure the AWS CLI with Your Credentials<a name="post-install-configure"></a>
@@ -140,3 +142,4 @@ If you don't have Python and `pip`, use the procedure for your environment\.
 + [Install the AWS CLI on macOS](install-macos.md)
 + [Install the AWS CLI in a Virtual Environment](install-virtualenv.md)
 + [Install the AWS CLI Using the Bundled Installer \(Linux, macOS, or Unix\)](install-bundle.md)
++ [Using the AWS CLI with Python 2\.6 or Python 3\.3](deprecate-python-26-33.md)

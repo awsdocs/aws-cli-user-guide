@@ -2,6 +2,9 @@
 
 You can install the AWS Command Line Interface \(AWS CLI\) on Windows by using a standalone installer or `pip`, which is a package manager for Python\. If you already have `pip`, follow the instructions in the main [installation topic](cli-chap-install.md)\.
 
+**Important**  
+On January 10th, 2020, AWS CLI version 1\.17 and later will no longer support Python 2\.6 or Python 3\.3\. After this date, the installer for the AWS CLI will require Python 2\.7, Python 3\.4, or a later version to successfully install the AWS CLI\. For more information, see [Using the AWS CLI with Python 2\.6 or Python 3\.3](deprecate-python-26-33.md) in this guide, and the [deprecation announcement in this blog post](https://aws.amazon.com/blogs/developer/deprecation-of-python-2-6-and-python-3-3-in-botocore-boto3-and-the-aws-cli/)\.
+
 **Topics**
 + [Install the AWS CLI Using the MSI Installer](#install-msi-on-windows)
 + [Install the AWS CLI Using Python and `pip` on Windows](#awscli-install-windows-pip)
@@ -11,7 +14,7 @@ You can install the AWS Command Line Interface \(AWS CLI\) on Windows by using a
 
 The AWS CLI is supported on Microsoft Windows XP or later\. For Windows users, the MSI installation package offers a familiar and convenient way to install the AWS CLI without installing any other prerequisites\.
 
-When updates are released, you must repeat the installation process to get the latest version of the AWS CLI\. To update frequently, consider [using pip](#awscli-install-windows-pip) for easier updates\.
+When updates are released, you must repeat the installation process to get the latest version of the AWS CLI\. 
 
 **To install the AWS CLI using the MSI installer**
 
@@ -30,7 +33,7 @@ By default, the CLI installs to `C:\Program Files\Amazon\AWSCLI` \(64\-bit versi
 
 ```
 C:\> aws --version
-aws-cli/1.16.116 Python/3.6.8 Windows/10 botocore/1.12.106
+aws-cli/1.16.246 Python/3.7.4 Windows/10 botocore/1.12.236
 ```
 
 Don't include the prompt symbol \(`C:\>`, shown above\) when you type a command\. These are included in program listings to differentiate commands that you type from output returned by the CLI\. The rest of this guide uses the generic prompt symbol, `$` , except in cases where a command is Windows\-specific\.
@@ -79,7 +82,7 @@ If you use Python version 3\+, we recommend that you use the `pip3` command\.
    C:\> python --version
    Python 3.7.1
    C:\> pip3 --version
-   pip 18.1 from c:\program files\python37\lib\site-packages\pip (python 3.7)
+   pip 19.2.3 from c:\program files\python37\lib\site-packages\pip (python 3.7)
    ```
 
 1. Install the AWS CLI using `pip`\.
@@ -92,7 +95,7 @@ If you use Python version 3\+, we recommend that you use the `pip3` command\.
 
    ```
    C:\> aws --version
-   aws-cli/1.16.116 Python/3.6.8 Windows/10 botocore/1.12.106
+   aws-cli/1.16.246 Python/3.7.4 Windows/10 botocore/1.12.236
    ```
 
 To upgrade to the latest version, run the installation command again\.

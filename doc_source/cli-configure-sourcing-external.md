@@ -10,7 +10,7 @@ For example, you might include an entry similar to the following in the config f
 
 ```
 [profile developer]
-credential_process = "/opt/bin/awscreds-custom" "--username helen"
+credential_process = /opt/bin/awscreds-custom --username helen
 ```
 
 **Syntax**  

@@ -1,5 +1,8 @@
 # Install the AWS CLI on Linux<a name="install-linux"></a>
 
+**Important**  
+On January 10th, 2020, AWS CLI version 1\.17 and later will no longer support Python 2\.6 or Python 3\.3\. After this date, the installer for the AWS CLI will require Python 2\.7, Python 3\.4, or a later version to successfully install the AWS CLI\. For more information, see [Using the AWS CLI with Python 2\.6 or Python 3\.3](deprecate-python-26-33.md) in this guide, and the [deprecation announcement in this blog post](https://aws.amazon.com/blogs/developer/deprecation-of-python-2-6-and-python-3-3-in-botocore-boto3-and-the-aws-cli/)\.
+
 You can install the AWS Command Line Interface \(AWS CLI\) and its dependencies on most Linux distributions by using `pip`, a package manager for Python\.
 
 **Important**  
@@ -23,7 +26,7 @@ $ python --version
 $ python3 --version
 ```
 
-If you don't already have Python 2 version 2\.6\.5\+ or Python 3 version 3\.3\+, you must first [install Python](install-linux-python.md)\. If you do have Python installed, proceed to installing `pip` and the AWS CLI\.
+If you don't already have Python 2 version 2\.7\+ or Python 3 version 3\.4\+, you must first [install Python](install-linux-python.md)\. If you do have Python installed, proceed to installing `pip` and the AWS CLI\.
 
 **Topics**
 + [Install `pip`](#install-linux-pip)
@@ -89,7 +92,7 @@ If you don't already have `pip` installed, you can install it by using the scrip
 
    ```
    $ pip3 --version
-   pip 19.0.3 from ~/.local/lib/python3.7/site-packages (python 3.7)
+   pip 19.2.3 from ~/.local/lib/python3.7/site-packages (python 3.7)
    ```
 
 ## Install the AWS CLI with `pip`<a name="install-linux-awscli"></a>
@@ -106,7 +109,7 @@ Verify that the AWS CLI installed correctly\.
 
 ```
 $ aws --version
-aws-cli/1.16.116 Python/3.6.8 Linux/4.14.77-81.59-amzn2.x86_64 botocore/1.12.106
+aws-cli/1.16.246 Python/3.7.4 Linux/4.14.133-113.105.amzn2.x86_64 botocore/1.12.236
 ```
 
 If you get an error, see [Troubleshooting AWS CLI Errors](cli-chap-troubleshooting.md)\.

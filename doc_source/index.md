@@ -23,6 +23,7 @@ Amazon's trademarks and trade dress may not be used in
    + [Install the AWS CLI on macOS](install-macos.md)
    + [Install the AWS CLI in a Virtual Environment](install-virtualenv.md)
    + [Install the AWS CLI Using the Bundled Installer (Linux, macOS, or Unix)](install-bundle.md)
+   + [Using the AWS CLI with Python 2.6 or Python 3.3](deprecate-python-26-33.md)
 + [Configuring the AWS CLI](cli-chap-configure.md)
    + [Configuration and Credential Files](cli-configure-files.md)
    + [Named Profiles](cli-configure-profiles.md)

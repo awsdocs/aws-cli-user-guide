@@ -4,7 +4,7 @@ The AWS Command Line Interface \(AWS CLI\) comes preinstalled on Amazon Linux an
 
 ```
 $ aws --version
-aws-cli/1.16.116 Python/3.6.8 Linux/4.14.77-81.59.amzn2.x86_64 botocore/1.12.106
+aws-cli/1.16.246 Python/3.7.4 Linux/4.14.133-113.105.amzn2.x86_64 botocore/1.12.236
 ```
 
 **Important**  
@@ -38,5 +38,5 @@ Verify that Python and `pip` are already installed\. For more information, see [
 
    ```
    $ aws --version
-   aws-cli/1.16.116 Python/3.6.8 Linux/4.14.77-81.59.amzn2.x86_64 botocore/1.12.106
+   aws-cli/1.16.246 Python/3.7.4 Linux/4.14.133-113.105.amzn2.x86_64 botocore/1.12.236
    ```

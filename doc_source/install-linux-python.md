@@ -18,7 +18,7 @@ If your distribution didn't come with Python, or came with an earlier version, i
 **Note**  
 If your Linux distribution came with Python, you might need to install the Python developer package to get the headers and libraries required to compile extensions, and install the AWS CLI\. Use your package manager to install the developer package \(typically named `python-dev` or `python-devel`\)\.
 
-1. If Python 2\.7 or later is not installed, install Python with your distribution's package manager\. The command and package name varies:
+1. If Python 2 version 2\.7\+ or Python 3 version 3\.4\+ or later is not installed, install Python with your distribution's package manager\. The command and package name varies:
    + On Debian derivatives such as Ubuntu, use `apt`\. Check the apt repository for the versions of Python available to you\. Then, run a command similar to the following, substituting the correct package name:
 
      ```
@@ -41,5 +41,5 @@ If your Linux distribution came with Python, you might need to install the Pytho
 
    ```
    $ python3 --version
-   Python 3.6.8
+   Python 3.7.4
    ```
