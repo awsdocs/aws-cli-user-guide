@@ -14,6 +14,8 @@ The output includes a `Synopsis` section that shows the parameters that the spec
 
 The `--generate-cli-skeleton` parameter causes the command not to run, but instead to generate and display a parameter template that you can customize and then use as input on a later command\. The generated template includes all of the parameters supported by the command\.
 
+Because the AWS CLI is essentially a "wrapper" around the service's API, the skeleton file expects you to reference all parameters by their underlying API parameter name, which is likely different from the AWS CLI parameter name\. For example, an AWS CLI parameter called `user-name` might map to the AWS service's API parameter named `UserName` \(note the altered capitalization and missing dash\)\. We recommend that you use the `--generate-cli-skeleton` option to generate the template with the "correct" parameter names to avoid errors\. You can also reference the API Reference Guide for the service to see the expected parameter names\. You can delete any parameters from the template that are not required and for which you don't want to supply a value\.
+
 For example, if you run the following command, it generates the parameter template for the Amazon Elastic Compute Cloud \(Amazon EC2\) command run\-instances\.
 
 ```
@@ -100,7 +102,7 @@ $ aws ec2 run-instances --generate-cli-skeleton
    $ aws ec2 run-instances --generate-cli-skeleton > ec2runinst.json
    ```
 
-1. Open the parameter skeleton file in your text editor and remove any of the parameters that you don't need\. For example, you might strip it down to the following\.
+1. Open the parameter skeleton file in your text editor and remove any of the parameters that you don't need\. For example, you might strip it down to the following\. Be sure that the file is still valid JSON after you remove the elements you don't need\.
 
    ```
     1. {

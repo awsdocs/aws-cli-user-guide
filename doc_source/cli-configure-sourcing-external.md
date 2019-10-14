@@ -10,10 +10,31 @@ For example, you might include an entry similar to the following in the config f
 
 ```
 [profile developer]
-credential_process = /opt/bin/awscreds-custom --username helen
+credential_process = "/opt/bin/awscreds-custom" "--username helen"
 ```
 
-The AWS CLI runs the command exactly as specified in the profile then reads data from STDOUT\. The command you specify must then generate JSON output on STDOUT that matches the following syntax:
+**Syntax**  
+To create this string in a way that is compatible with any operating system, follow these rules:
++ If the path or file name contains a space, then the complete path and file name must be surrounded by double\-quotes\. The path and file name can consist of only the characters: A\-Z a\-z 0\-9 \- \_ \. space
++ If a parameter name or a parameter value contains a space, then that element must be surrounded by double\-quotes\. Surround only the name or value, not the pair\.
++ Do not include any environment variables in the strings\. For example, you can't include `$HOME` or `%USERPROFILE%`\.
++ Do not specify the home folder as `~`\. You must specify the full path\.
+
+**Example for Windows**
+
+```
+credential_process = "C:\Path\To\credentials.cmd" parameterWithoutSpaces "parameter with spaces"
+```
+
+**Example for Linux or macOS**
+
+```
+credential_process = "/Users/Dave/path/to/credentials.sh" parameterWithoutSpaces "parameter with spaces"
+```
+
+**Expected output from the Credentials program**
+
+The AWS CLI runs the command as specified in the profile and then reads data from STDOUT\. The command you specify must generate JSON output on STDOUT that matches the following syntax:
 
 ```
 {

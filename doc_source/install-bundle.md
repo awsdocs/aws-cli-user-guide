@@ -28,7 +28,7 @@ If your computer doesn't already have Python installed, or you would like to ins
 The steps below enable you to install the AWS CLI from the command line on any build of Linux or macOS\.
 
 To download it directly \(without using curl\) use this link:
-+ [https://s3.amazonaws.com/aws-cli/awscli-bundle.zip](https://s3.amazonaws.com/aws-cli/awscli-bundle.zip) 
++ [https://s3.amazonaws.com/aws-cli/awscli-bundle.zip](https://s3.amazonaws.com/aws-cli/awscli-bundle.zip)
 
 Here are a summary of the installation commands explained below that you can cut and paste to run as a single set of commands\.
 
