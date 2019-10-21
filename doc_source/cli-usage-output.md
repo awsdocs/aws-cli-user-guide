@@ -357,7 +357,7 @@ The following example lists Amazon EC2 volumes\. The service produces a list of 
 
 ```
 $ aws ec2 describe-volumes \
---filter "Name=availability-zone,Values=us-west-2a" "Name=status,Values=attached" \
+--filters "Name=availability-zone,Values=us-west-2a" "Name=status,Values=attached" \
 --query 'Volumes[?Size > `50`].{Id:VolumeId,Size:Size,Type:VolumeType}'
 [
     {
@@ -399,7 +399,7 @@ The `--query` parameter also enables you to count items in the output\. The foll
 
 ```
 $ aws ec2 describe-volumes \
---filter "Name=status,Values=available" \
+--filters "Name=status,Values=available" \
 --query 'length(Volumes[?Iops > `1000`])'
 3
 ```
