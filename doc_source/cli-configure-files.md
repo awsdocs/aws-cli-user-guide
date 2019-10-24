@@ -79,6 +79,17 @@ If the output is empty, then the setting is not explicitly set and uses the defa
 
 ### Global Settings<a name="cli-configure-files-global"></a>
 
+*api\_versions*  
+Some AWS services maintain multiple API versions to support backwards compatibility\. By default, CLI commands use the latest available API version\. You can specify an API version to use for a profile by including the `api_versions` setting in the `config` file\.   
+This is a "nested" setting that is followed by one or more indented lines that each identify one AWS service and the API version to use\. Refer to the documentation for each service to understand which API versions are available\.  
+The following example shows how to specify an API version for two AWS services\. These API versions are used only for commands that run under the profile that contains these settings\.  
+
+```
+api_versions =
+    ec2 = 2015-03-01
+    cloudfront = 2015-09-017
+```
+
 * [aws\_access\_key\_id](cli-chap-configure.md#cli-quick-configuration-creds) *  
 Specifies the AWS access key used as part of the credentials to authenticate the command request\. Although this can be stored in the `config` file, we recommend that you store this in the `credentials` file\.   
 Can be overridden by the `AWS_ACCESS_KEY_ID` environment variable\. Note that you can't specify the access key ID as a command line option\.  
@@ -95,46 +106,6 @@ Can be overridden by the `AWS_SECRET_ACCESS_KEY` environment variable\. Note tha
 aws_secret_access_key = wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
 ```
 
-*[role\_arn](cli-configure-role.md)*  
-Specifies the Amazon Resource Name \(ARN\) of an IAM role that you want to use to run the AWS CLI commands\. You must also specify one of the following parameters to identify the credentials that have permission to assume this role:  
-+ source\_profile
-+ credential\_source
-
-```
-role_arn = arn:aws:iam::123456789012:role/role-name
-```
-
-*[source\_profile](cli-configure-role.md)*  
-Specifies a named profile with long\-term credentials that the AWS CLI can use to assume a role that you specified with the `role_arn` parameter\. You cannot specify both `source_profile` and `credential_source` in the same profile\.  
-
-```
-source_profile = production-profile
-```
-
-*[credential\_source](cli-configure-role.md)*  
-Used within EC2 instances or EC2 containers to specify where the AWS CLI can find credentials to use to assume the role you specified with the `role_arn` parameter\. You cannot specify both `source_profile` and `credential_source` in the same profile\.  
-This parameter can have one of three values:  
-+ **Environment**: to retrieve source credentials from environment variables\.
-+ **Ec2InstanceMetadata**: to use the IAM role attached to the [EC2 instance profile](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2_instance-profiles.html) as source credentials\.
-+ **EcsContainer**: to use the IAM role attached to the ECS container as source credentials\.
-
-```
-credential_source = Ec2InstanceMetadata
-```
-
-*[role\_session\_name](cli-configure-role.md#cli-configure-role-session-name)*  
-Specifies the name to attach to the role session\. This value is provided to the `RoleSessionName` parameter when the AWS CLI calls the `AssumeRole` operation, and becomes part of the assumed role user ARN: ` arn:aws:sts::123456789012:assumed-role/role_name/role_session_name`\. This is an optional parameter\. If you do not provide this value, a session name is generated automatically\. This name appears in AWS CloudTrail logs for entries associated with this session\.  
-
-```
-role_session_name = maria_garcia_role
-```
-
-*[mfa\_serial](cli-configure-role.md#cli-configure-role-mfa)*  
-The identification number of an MFA device to use when assuming a role\. This is mandatory only if the trust policy of the role being assumed includes a condition that requires MFA authentication\. The value can be either a serial number for a hardware device \(such as `GAHT12345678`\) or an Amazon Resource Name \(ARN\) for a virtual MFA device \(such as `arn:aws:iam::123456789012:mfa/user`\)\.
-
-*duration\_seconds*  
-Specifies the maximum duration of the role session, in seconds\. The value can range from 900 seconds \(15 minutes\) up to the maximum session duration setting for the role \(which can be a maximum of 43200\)\. This is an optional parameter and by default, the value is set to 3600 seconds\.
-
 *aws\_session\_token*  
 Specifies an AWS session token\. A session token is required only if you manually specify temporary security credentials\. Although this can be stored in the `config` file, we recommend that you store this in the `credentials` file\.   
 Can be overridden by the `AWS_SESSION_TOKEN` environment variable\. You can't specify the session token as a command line option\.  
@@ -142,9 +113,6 @@ Can be overridden by the `AWS_SESSION_TOKEN` environment variable\. You can't sp
 ```
 aws_session_token = AQoEXAMPLEH4aoAH0gNCAPyJxz4BlCFFxWNE1OPTgk5TthT+FvwqnKwRcOIfrRh3c/LTo6UDdyJwOOvEVPvLXCrrrUtdnniCEXAMPLE/IvU1dYUg2RVAJBanLiHb4IgRmpRV3zrkuWJOgQs8IZZaIv2BXIa2R4Olgk
 ```
-
-*[external\_id](cli-configure-role.md#cli-configure-role-xaccount)*  
-A unique identifier that is used by third parties to assume a role in their customers' accounts\. This maps to the `ExternalId` parameter in the `AssumeRole` operation\. This parameter is optional unless the trust policy for the role specifies that `ExternalId` must be a specific value\.
 
 *ca\_bundle*  
 Specifies a CA certificate bundle \(a file with the `.pem` extension\) that is used to verify SSL certificates\.  
@@ -182,8 +150,25 @@ This entry does not have an equivalent environment variable or command line opti
 credential_process = /opt/bin/awscreds-retriever --username susan
 ```
 
-*[web\_identity\_token\_file](cli-configure-role.md#cli-configure-role-oidc)*  
-Specifies the path to a file which contains an OAuth 2\.0 access token or OpenID Connect ID token that is provided by an identity provider\. The AWS CLI loads the contents of this file and passes it as the `WebIdentityToken` argument to the `AssumeRoleWithWebIdentity` operation\.
+*[credential\_source](cli-configure-role.md)*  
+Used within EC2 instances or EC2 containers to specify where the AWS CLI can find credentials to use to assume the role you specified with the `role_arn` parameter\. You cannot specify both `source_profile` and `credential_source` in the same profile\.  
+This parameter can have one of three values:  
++ **Environment**: to retrieve source credentials from environment variables\.
++ **Ec2InstanceMetadata**: to use the IAM role attached to the [EC2 instance profile](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2_instance-profiles.html) as source credentials\.
++ **EcsContainer**: to use the IAM role attached to the ECS container as source credentials\.
+
+```
+credential_source = Ec2InstanceMetadata
+```
+
+*duration\_seconds*  
+Specifies the maximum duration of the role session, in seconds\. The value can range from 900 seconds \(15 minutes\) up to the maximum session duration setting for the role \(which can be a maximum of 43200\)\. This is an optional parameter and by default, the value is set to 3600 seconds\.
+
+*[external\_id](cli-configure-role.md#cli-configure-role-xaccount)*  
+A unique identifier that is used by third parties to assume a role in their customers' accounts\. This maps to the `ExternalId` parameter in the `AssumeRole` operation\. This parameter is optional unless the trust policy for the role specifies that `ExternalId` must be a specific value\.
+
+*[mfa\_serial](cli-configure-role.md#cli-configure-role-mfa)*  
+The identification number of an MFA device to use when assuming a role\. This is mandatory only if the trust policy of the role being assumed includes a condition that requires MFA authentication\. The value can be either a serial number for a hardware device \(such as `GAHT12345678`\) or an Amazon Resource Name \(ARN\) for a virtual MFA device \(such as `arn:aws:iam::123456789012:mfa/user`\)\.
 
 *[output](cli-chap-configure.md#cli-quick-configuration-format)*  
 Specifies the default output format for commands requested using this profile\. You can specify any of the following values:  
@@ -214,23 +199,43 @@ Can be overridden by the `AWS_DEFAULT_REGION` environment variable or the `--reg
 region = us-west-2
 ```
 
+*[role\_arn](cli-configure-role.md)*  
+Specifies the Amazon Resource Name \(ARN\) of an IAM role that you want to use to run the AWS CLI commands\. You must also specify one of the following parameters to identify the credentials that have permission to assume this role:  
++ source\_profile
++ credential\_source
+
+```
+role_arn = arn:aws:iam::123456789012:role/role-name
+```
+
+*[role\_session\_name](cli-configure-role.md#cli-configure-role-session-name)*  
+Specifies the name to attach to the role session\. This value is provided to the `RoleSessionName` parameter when the AWS CLI calls the `AssumeRole` operation, and becomes part of the assumed role user ARN: ` arn:aws:sts::123456789012:assumed-role/role_name/role_session_name`\. This is an optional parameter\. If you do not provide this value, a session name is generated automatically\. This name appears in AWS CloudTrail logs for entries associated with this session\.  
+
+```
+role_session_name = maria_garcia_role
+```
+
+*[source\_profile](cli-configure-role.md)*  
+Specifies a named profile with long\-term credentials that the AWS CLI can use to assume a role that you specified with the `role_arn` parameter\. You cannot specify both `source_profile` and `credential_source` in the same profile\.  
+
+```
+source_profile = production-profile
+```
+
+*sts\_regional\_endpoints*  
+Specifies the AWS service endpoint that the AWS CLI client uses to talk to the AWS Security Token Service \(AWS STS\)\. You can specify one of two values:  
++ `regional`: The AWS CLI uses the AWS STS endpoint that corresponds to the configured region\. For example, if the client is configured to use `us-west-2`, then all calls to AWS STS are made to the endpoint `sts.us-west-2.amazonaws.com` regional endpoint instead of the global `sts.amazonaws.com` endpoint\.
++ `legacy`: Uses the global STS endpoint, `sts.amazonaws.com`, for the following regions: `ap-northeast-1`, `ap-south-1`, `ap-southeast-1`, `ap-southeast-2`, `aws-global`, `ca-central-1`, `eu-central-1`, `eu-north-1`, `eu-west-1`, `eu-west-2`, `eu-west-3`, `sa-east-1`, `us-east-1`, `us-east-2`, `us-west-1`, and `us-west-2`\. All other regions use their respective regional endpoint\.
+
+*[web\_identity\_token\_file](cli-configure-role.md#cli-configure-role-oidc)*  
+Specifies the path to a file which contains an OAuth 2\.0 access token or OpenID Connect ID token that is provided by an identity provider\. The AWS CLI loads the contents of this file and passes it as the `WebIdentityToken` argument to the `AssumeRoleWithWebIdentity` operation\.
+
 *tcp\_keepalive*  
 Specifies whether the CLI client uses TCP keep\-alive packets\.  
 This entry does not have an equivalent environment variable or command line option\.  
 
 ```
 tcp_keepalive = false
-```
-
-*api\_versions*  
-Some AWS services maintain multiple API versions to support backwards compatibility\. By default, CLI commands use the latest available API version\. You can specify an API version to use for a profile by including the `api_versions` setting in the `config` file\.   
-This is a "nested" setting that is followed by one or more indented lines that each identify one AWS service and the API version to use\. Refer to the documentation for each service to understand which API versions are available\.  
-The following example shows how to specify an API version for two AWS services\. These API versions are used only for commands that run under the profile that contains these settings\.  
-
-```
-api_versions =
-    ec2 = 2015-03-01
-    cloudfront = 2015-09-017
 ```
 
 ### S3 Custom Command Settings<a name="cli-configure-files-s3"></a>
@@ -244,14 +249,6 @@ These settings are entirely optional\. You should be able to successfully use th
 
 The following settings apply to any S3 command in the `s3` or `s3api` namespaces\.
 
-use\_accelerate\_endpoint  
-Use the Amazon S3 Accelerate endpoint for all `s3` and `s3api` commands\. The default value is false\. This is mutually exclusive with the `use_dualstack_endpoint` setting\.   
-If set to true, the CLI directs all Amazon S3 requests to the S3 Accelerate endpoint at `s3-accelerate.amazonaws.com`\. To use this endpoint, you must enable your bucket to use S3 Accelerate\. All requests are sent using the virtual style of bucket addressing: `my-bucket.s3-accelerate.amazonaws.com`\. Any `ListBuckets`, `CreateBucket`, and `DeleteBucket `requests aren't sent to the Accelerate endpoint as that endpoint doesn't support those operations\. This behavior can also be set if the `--endpoint-url` parameter is set to `https://s3-accelerate.amazonaws.com` or `http://s3-accelerate.amazonaws.com` for any `s3` or `s3api` command\.
-
-use\_dualstack\_endpoint  
-Use the Amazon S3 dual IPv4 / IPv6 endpoint for all `s3` and `s3api` commands\. The default value is false\. This is mutually exclusive with the `use_accelerate_endpoint` setting\.  
-If set to true, the CLI directs all Amazon S3 requests to the dual IPv4 / IPv6 endpoint for the configured region\. 
-
 addressing\_style  
 Specifies which addressing style to use\. This controls if the bucket name is in the hostname or part of the URL\. Value values are: `path`, `virtual`, and `auto`\. The default value is `auto`\.  
 There are two styles of constructing an S3 endpoint\. The first is called `virtual` and includes the bucket name as part of the hostname\. For example: `https://bucketname.s3.amazonaws.com`\. Alternatively, with the `path` style, you treat the bucket name as if it was a path in the URI\. For example: `https://s3.amazonaws.com/bucketname`\. The default value in the CLI is to use `auto`, which attempts to use the `virtual` style where it can, but will fall back to `path` style when required\. For example, if your bucket name is not DNS compatible, the bucket name cannot be part of the hostname and must be in the path\. With `auto`, the CLI will detect this condition and automatically switch to `path` style for you\. If you set the addressing style to `path`, you must then ensure that the AWS Region you configured in the AWS CLI matches the region of your bucket\.
@@ -260,7 +257,22 @@ payload\_sigining\_enabled
 Specifies whether to SHA256 sign sigv4 payloads\. By default, this is disabled for streaming uploads \(`UploadPart` and `PutObject`\) when using https\. By default, this is set to `false` for streaming uploads \(`UploadPart` and `PutObject`\), but only if a `ContentMD5` is present \(it is generated by default\) and the endpoint uses HTTPS\.  
 If set to true, S3 requests receive additional content validation in the form of a SHA256 checksum which is calculated for you and included in the request signature\. If set to false, the checksum isn't calculated\. Disabling this can be useful to reduce the performance overhead created by the checksum calculation\. 
 
+use\_dualstack\_endpoint  
+Use the Amazon S3 dual IPv4 / IPv6 endpoint for all `s3` and `s3api` commands\. The default value is false\. This is mutually exclusive with the `use_accelerate_endpoint` setting\.  
+If set to true, the CLI directs all Amazon S3 requests to the dual IPv4 / IPv6 endpoint for the configured region\. 
+
+use\_accelerate\_endpoint  
+Use the Amazon S3 Accelerate endpoint for all `s3` and `s3api` commands\. The default value is false\. This is mutually exclusive with the `use_dualstack_endpoint` setting\.   
+If set to true, the CLI directs all Amazon S3 requests to the S3 Accelerate endpoint at `s3-accelerate.amazonaws.com`\. To use this endpoint, you must enable your bucket to use S3 Accelerate\. All requests are sent using the virtual style of bucket addressing: `my-bucket.s3-accelerate.amazonaws.com`\. Any `ListBuckets`, `CreateBucket`, and `DeleteBucket `requests aren't sent to the Accelerate endpoint as that endpoint doesn't support those operations\. This behavior can also be set if the `--endpoint-url` parameter is set to `https://s3-accelerate.amazonaws.com` or `http://s3-accelerate.amazonaws.com` for any `s3` or `s3api` command\.
+
 The following settings apply only to commands in the `s3` namespace command set:
+
+max\_bandwidth  
+Specifies the maximum bandwidth that can be consumed for uploading and downloading data to and from Amazon S3\. The default is no limit\.  
+This limits the maximum bandwidth that the S3 commands can use to transfer data to and from S3\. This value applies to only uploads and downloads; it doesn't apply to copies or deletes\. The value is expressed as bytes per second\. The value can be specified as:  
++ An integer\. For example, `1048576` sets the maximum bandwidth usage to 1 megabyte per second\. 
++ An integer followed by a rate suffix\. You can specify rate suffixes using: `KB/s`, `MB/s`, or `GB/s`\. For example: `300KB/s`, `10MB/s`\. 
+In general, we recommend that you first try to lower bandwidth consumption by lowering `max_concurrent_requests`\. If that doesn't adequate limit bandwidth consumption to the desired rate, then you can use the `max_bandwidth` setting can then be used to further limit bandwidth consumption\. This is because `max_concurrent_requests` controls how many threads are currently running\. If you instead first lower `max_bandwidth` but leave a high `max_concurrent_requests` setting, it can result in threads having to wait unnecessarily, which can lead to excess resource consumption and connection timeouts\.
 
 max\_concurrent\_requests  
 Specifies the maximum number of concurrent requests\. The default value is 10\.  
@@ -274,6 +286,10 @@ Specifies the maximum number of tasks in the task queue\. The default value is 1
 The AWS CLI internally uses a model where it queues up S3 tasks that are then executed by consumers whose numbers are limited by `max_concurrent_requests`\. A task generally maps to a single S3 operation\. For example, as task could be a `PutObjectTask`, or a `GetObjectTask`, or an `UploadPartTask`\. The rate at which tasks are added to the queue can be much faster than the rate at which consumers finish the tasks\. To avoid unbounded growth, the task queue size is capped to a specific size\. This setting changes the value of that maximum number\.  
 You generally don't need to change this setting\. This setting also corresponds to the number of tasks that the CLI is aware of that need to be run\. This means that by default the CLI can only see 1000 tasks ahead\. Until the S3 command knows the total number of tasks executed, the progress line shows a total of \.\.\.\. Increasing this value means that the CLI can more quickly know the total number of tasks needed, assuming that the queuing rate is quicker than the rate of task completion\. The tradeoff is that a larger max queue size requires more memory\.
 
+multipart\_chunksize  
+Specifies the chunk size that the CLI uses for multipart transfers of individual files\. The default value is 8MB, with a minimum of 5MB\.  
+When a file transfer exceeds the `multipart_threshold`, the CLI divides the file into chunks of this size\. This value can specified using the same syntax as `multipart_threshold`, either as the number of bytes as an integer, or by using a size and a suffix\.
+
 multipart\_threshold  
 Specifies the size threshold the CLI uses for multipart transfers of individual files\. The default value is 8MB\.  
 When uploading, downloading, or copying a file, the S3 commands switch to multipart operations if the file exceeds this size\. You can specify this value in one of two ways:  
@@ -281,17 +297,6 @@ When uploading, downloading, or copying a file, the S3 commands switch to multip
 + The file size with a size suffix\. You can use `KB`, `MB`, `GB`, or `TB`\. For example: `10MB`, `1GB`\. 
 **Note**  
 S3 can impose constraints on valid values that can be used for multipart operations\. For more information, see the [S3 Multipart Upload documentation](https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuoverview.html) in the *Amazon Simple Storage Service Developer Guide*\.
-
-multipart\_chunksize  
-Specifies the chunk size that the CLI uses for multipart transfers of individual files\. The default value is 8MB, with a minimum of 5MB\.  
-When a file transfer exceeds the `multipart_threshold`, the CLI divides the file into chunks of this size\. This value can specified using the same syntax as `multipart_threshold`, either as the number of bytes as an integer, or by using a size and a suffix\.
-
-max\_bandwidth  
-Specifies the maximum bandwidth that can be consumed for uploading and downloading data to and from Amazon S3\. The default is no limit\.  
-This limits the maximum bandwidth that the S3 commands can use to transfer data to and from S3\. This value applies to only uploads and downloads; it doesn't apply to copies or deletes\. The value is expressed as bytes per second\. The value can be specified as:  
-+ An integer\. For example, `1048576` sets the maximum bandwidth usage to 1 megabyte per second\. 
-+ An integer followed by a rate suffix\. You can specify rate suffixes using: `KB/s`, `MB/s`, or `GB/s`\. For example: `300KB/s`, `10MB/s`\. 
-In general, we recommend that you first try to lower bandwidth consumption by lowering `max_concurrent_requests`\. If that doesn't adequate limit bandwidth consumption to the desired rate, then you can use the `max_bandwidth` setting can then be used to further limit bandwidth consumption\. This is because `max_concurrent_requests` controls how many threads are currently running\. If you instead first lower `max_bandwidth` but leave a high `max_concurrent_requests` setting, it can result in threads having to wait unnecessarily, which can lead to excess resource consumption and connection timeouts\.
 
 These settings are all set under a top level `s3` key in the `config` file, as shown in the following example for the `development` profile:
 
