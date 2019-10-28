@@ -17,7 +17,7 @@ The following examples assume that you have already [configured your default cre
 
 ## Launching an Instance<a name="launching-instances"></a>
 
-To launch an Amazon EC2 instance using the AMI you selected, use the [run\-instances](https://docs.aws.amazon.com/cli/latest/reference/ec2/run-instances.html) command\. You can launch the instance into a virtual private cloud \(VPC\), or if your account supports it, or into EC2\-Classic\.
+To launch an Amazon EC2 instance using the AMI you selected, use the [run\-instances](https://docs.aws.amazon.com/cli/latest/reference/ec2/run-instances.html) command\. You can launch the instance into a virtual private cloud \(VPC\), or if your account supports it, into EC2\-Classic\.
 
 Initially, your instance appears in the `pending` state, but changes to the `running` state after a few minutes\.
 
