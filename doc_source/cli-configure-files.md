@@ -1,4 +1,4 @@
-# Configuration and Credential Files<a name="cli-configure-files"></a>
+# Configuration and Credential File Settings<a name="cli-configure-files"></a>
 
 You can save your frequently used configuration settings and credentials in files that are maintained by the AWS CLI\. The files are divided into sections that can be referenced by name\. These are called "profiles"\. Unless you specify otherwise, the CLI uses the settings found in the profile named `default`\. To use alternate settings, you can create and reference additional profiles\. You can also override an individual setting by either setting one of the supported environment variables, or by using a command line parameter\.
 + [Where Are Configuration Settings Stored?](#cli-configure-files-where)
@@ -89,10 +89,11 @@ api_versions =
     ec2 = 2015-03-01
     cloudfront = 2015-09-017
 ```
+This setting does not have an environment variable or command line parameter equivalent\.
 
 * [aws\_access\_key\_id](cli-chap-configure.md#cli-quick-configuration-creds) *  
 Specifies the AWS access key used as part of the credentials to authenticate the command request\. Although this can be stored in the `config` file, we recommend that you store this in the `credentials` file\.   
-Can be overridden by the `AWS_ACCESS_KEY_ID` environment variable\. Note that you can't specify the access key ID as a command line option\.  
+Can be overridden by the `AWS_ACCESS_KEY_ID` environment variable\. You can't specify the access key ID as a command line option\.  
 
 ```
 aws_access_key_id = 123456789012
@@ -100,7 +101,7 @@ aws_access_key_id = 123456789012
 
 *[aws\_secret\_access\_key](cli-chap-configure.md#cli-quick-configuration-creds)*  
 Specifies the AWS secret key used as part of the credentials to authenticate the command request\. Although this can be stored in the `config` file, we recommend that you store this in the `credentials` file\.   
-Can be overridden by the `AWS_SECRET_ACCESS_KEY` environment variable\. Note that you can't specify the secret access key as a command line option\.  
+Can be overridden by the `AWS_SECRET_ACCESS_KEY` environment variable\. You can't specify the secret access key as a command line option\.  
 
 ```
 aws_secret_access_key = wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
@@ -134,8 +135,8 @@ cli_follow_urlparam = false
 
 *cli\_timestamp\_format*  
 Specifies the format of timestamp values included in the output\. You can specify either of the following values:  
-+ **none**: This is the default value\. Displays the timestamp value exactly how received in the HTTP query response\. 
-+ **iso8601**: Reformat the timestamp as specified by [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html)\.
++ **iso8601**: This is the default value for AWS CLI version 2\. The AWS CLI reformats all timestamps according to [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html)\.
++ **wire**: This is the default value for AWS CLI version 1\. The AWS CLI displays all timestamp values exactly as received in the HTTP query response\. 
 This entry does not have an equivalent environment variable or command line option\.  
 
 ```
@@ -220,6 +221,38 @@ Specifies a named profile with long\-term credentials that the AWS CLI can use t
 
 ```
 source_profile = production-profile
+```
+
+*[sso\_account\_id](cli-configure-sso.md)*  
+The AWS account ID that contains the IAM role with the permission that your want to grant to the associated AWS SSO user\.  
+This setting does not have an environment variable or command\-line option\.  
+
+```
+sso_account_id = 123456789012
+```
+
+*[sso\_region](cli-configure-sso.md)*  
+The AWS Region that contains the AWS SSO portal host\. This is separate from, and can be a different region than the default CLI `region` parameter\.  
+This setting does not have an environment variable or command\-line option\.  
+
+```
+aws_sso_region = us_west-2
+```
+
+*[sso\_role\_name](cli-configure-sso.md)*  
+The friendly name of the IAM role that defines the user's permissions when using this profile\.   
+This setting does not have an environment variable or command\-line option\.  
+
+```
+sso_role_name = ReadAccess
+```
+
+*[sso\_start\_url](cli-configure-sso.md)*  
+The URL that points to the organization's AWS SSO user portal\. The AWS CLI uses this URL to establish a session with the AWS SSO service to authenticate its users\.  
+This setting does not have an environment variable or command\-line option\.   
+
+```
+sso_start_url = https://my-sso-portal.awsapps.com/start
 ```
 
 *sts\_regional\_endpoints*  

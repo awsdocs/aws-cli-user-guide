@@ -4,7 +4,7 @@
 
 If you receive an error that indicates that a command does not exist, or that it doesn't recognize a parameter that the documentation says is available, then we recommend that the first thing you do \(after checking your command for spelling errors\!\) is to upgrade to the most recent version of the AWS CLI\. Updated versions of the AWS CLI are released almost every business day\. New AWS services, features, and parameters are introduced in those new versions of the AWS CLI\. The only way to get access to those new services, features, or parameters is to upgrade to a version that was released after that element was first introduced\.
 
-How you update your version of the AWS CLI depends on how you originally installed it\. For example, if you installed the AWS CLI using `pip`, then run pip install \-\-upgrade as described on [Upgrading to the latest version of the AWS CLI](install-linux.md#install-linux-awscli-upgrade)\.
+How you update your version of the AWS CLI depends on how you originally installed it\. For example, if you installed the AWS CLI using `pip`, then run pip install \-\-upgrade as described on [Upgrading to the latest version of the AWS CLI version 1](install-linux.md#install-linux-awscli-upgrade)\.
 
 If you used one of the bundled installers, then you should remove the existing installation and then download and install the latest version of the bundled installer for your operating system\.
 
@@ -137,9 +137,9 @@ This error means that the operating system can't find the AWS CLI program\. The 
 If you use `pip` to install the AWS Command Line Interface \(AWS CLI\), you might need to add the folder that contains the `aws` program to your operating system's `PATH` environment variable, or change its mode to make it executable\.
 
 You might need to add the `aws` executable to your operating system's `PATH` environment variable\. Follow the steps in the appropriate procedure:
-+ **Windows** – [Add the AWS CLI Executable to Your Command Line Path](install-windows.md#awscli-install-windows-path)
-+ **macOS** – [Add the AWS CLI Executable to Your macOS Command Line Path](install-macos.md#awscli-install-osx-path)
-+ **Linux** – [Add the AWS CLI Executable to Your Command Line Path](install-linux.md#install-linux-path)
++ **Windows** – [Add the AWS CLI version 1 Executable to Your Command Line Path](install-windows.md#awscli-install-windows-path)
++ **macOS** – [Add the AWS CLI version 1 Executable to Your macOS Command Line Path](install-macos.md#awscli-install-osx-path)
++ **Linux** – [Add the AWS CLI version 1 Executable to Your Command Line Path](install-linux.md#install-linux-path)
 
 ## I get "access denied" errors<a name="tshoot-access-denied"></a>
 

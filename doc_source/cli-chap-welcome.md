@@ -1,12 +1,20 @@
 # What Is the AWS Command Line Interface?<a name="cli-chap-welcome"></a>
 
 **Important**  
-On January 10th, 2020, AWS CLI version 1\.17 and later will no longer support Python 2\.6 or Python 3\.3\. After this date, the installer for the AWS CLI will require Python 2\.7, Python 3\.4, or a later version to successfully install the AWS CLI\. For more information, see [Using the AWS CLI with Python 2\.6 or Python 3\.3](deprecate-python-26-33.md) in this guide, and the [deprecation announcement in this blog post](https://aws.amazon.com/blogs/developer/deprecation-of-python-2-6-and-python-3-3-in-botocore-boto3-and-the-aws-cli/)\.
+On January 10th, 2020, AWS CLI version 1\.17 and later will no longer support Python 2\.6 or Python 3\.3\. After this date, the installer for the AWS CLI will require Python 2\.7, Python 3\.4, or a later version to successfully install the AWS CLI\. For more information, see [Using the AWS CLI version 1 with Python 2\.6 or Python 3\.3](deprecate-python-26-33.md) in this guide, and the [deprecation announcement in this blog post](https://aws.amazon.com/blogs/developer/deprecation-of-python-2-6-and-python-3-3-in-botocore-boto3-and-the-aws-cli/)\.
 
-The AWS Command Line Interface \(AWS CLI\) is an open source tool that enables you to interact with AWS services using commands in your command\-line shell\. With minimal configuration, you can start using functionality equivalent to that provided by the browser\-based AWS Management Console from the command prompt in your favorite terminal program:
+The AWS Command Line Interface \(AWS CLI\) is an open source tool that enables you to interact with AWS services using commands in your command\-line shell\. 
+
+The AWS CLI is available in two versions:
++ **Version 1\.x** – The generally available version of the AWS CLI that is suitable for use in production environments\.
++ **Version 2\.x** – A preview version of the AWS CLI that is intended for testing and evaluation\. This version does include some "breaking" changes that can require changes to your scripts for them to continue to operate as intended\. For a list of new features and breaking changes in version 2, see [Migrating from AWS CLI version 1 to version 2](cliv2-migration.md)\.
+
+Information in this guide applies to both versions unless it specifically states that it applies to only one version or the other\.
+
+With minimal configuration, you can start running commands that implement functionality equivalent to that provided by the browser\-based AWS Management Console from the command prompt in your favorite terminal program:
 + **Linux shells** – Use common shell programs such as [https://www.gnu.org/software/bash/](https://www.gnu.org/software/bash/), [http://www.zsh.org/](http://www.zsh.org/), and [https://www.tcsh.org/](https://www.tcsh.org/) to run commands in Linux, macOS, or Unix\.
-+ **Windows command line** – On Windows, run commands in PowerShell or at the Windows command prompt\.
-+ **Remotely** – Run commands on Amazon Elastic Compute Cloud \(Amazon EC2\) instances through a remote terminal such as PuTTY or SSH, or with AWS Systems Manager\.
++ **Windows command line** – On Windows, run commands at the Windows command prompt or in PowerShell\.
++ **Remotely** – Run commands on Amazon Elastic Compute Cloud \(Amazon EC2\) instances through a remote terminal program such as PuTTY or SSH, or with AWS Systems Manager\.
 
 All IaaS \(infrastructure as a service\) AWS administration, management, and access functions in the AWS Management Console are available in the AWS API and CLI\. New AWS IaaS features and services provide full AWS Management Console functionality through the API and CLI at launch or within 180 days of launch\. 
 

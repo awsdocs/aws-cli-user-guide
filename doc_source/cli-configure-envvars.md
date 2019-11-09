@@ -4,21 +4,52 @@ Environment variables provide another way to specify configuration options and c
 
 **Precedence of options**
 + If you specify an option by using one of the environment variables described in this topic, it overrides any value loaded from a profile in the configuration file\. 
-+ If you specify an option by using a parameter on the CLI command line, it overrides any value from either the corresponding environment variable or a profile in the configuration file\.
-
-**Supported environment variables**
++ If you specify an option by using a parameter on the CLI command line, it overrides any value from either the corresponding environment variable or a profile in the configuration file\.Supported environment variables
 
 The AWS CLI supports the following environment variables:
-+ `AWS_ACCESS_KEY_ID` – Specifies an AWS access key associated with an IAM user or role\.
-+ `AWS_SECRET_ACCESS_KEY` – Specifies the secret key associated with the access key\. This is essentially the "password" for the access key\.
-+ `AWS_SESSION_TOKEN` – Specifies the session token value that is required if you are using temporary security credentials\. For more information, see the [Output section of the assume\-role command](https://docs.aws.amazon.com/cli/latest/reference/sts/assume-role.html#output) in the *AWS CLI Command Reference*\.
-+ `AWS_DEFAULT_REGION` – Specifies the [AWS Region](cli-chap-configure.md#cli-quick-configuration-region) to send the request to\.
-+ `AWS_DEFAULT_OUTPUT` – Specifies the [output format](cli-usage-output.md) to use\.
-+ `AWS_PROFILE` – Specifies the name of the [CLI profile](cli-configure-profiles.md) with the credentials and options to use\. This can be the name of a profile stored in a `credentials` or `config` file, or the value `default` to use the default profile\. If you specify this environment variable, it overrides the behavior of using the profile named `[default]` in the configuration file\.
-+ `AWS_ROLE_SESSION_NAME` – Specifies a name to associate with the role session\. For more information, see [Specifying a Role Session Name for Easier Auditing](cli-configure-role.md#cli-configure-role-session-name)\.
-+ `AWS_CA_BUNDLE` – Specifies the path to a certificate bundle to use for HTTPS certificate validation\.
-+ `AWS_SHARED_CREDENTIALS_FILE` – Specifies the location of the file that the AWS CLI uses to store access keys\. The default path is `~/.aws/credentials`\)\.
-+ `AWS_CONFIG_FILE` – Specifies the location of the file that the AWS CLI uses to store configuration profiles\. The default path is `~/.aws/config`\)\.
+
+`AWS_ACCESS_KEY_ID`  
+Specifies an AWS access key associated with an IAM user or role\.  
+If defined, this environment variable overrides the value for the profile setting `aws_access_key_id`\. You can't specify the access key ID by using a command line option\.
+
+`AWS_CA_BUNDLE`  
+Specifies the path to a certificate bundle to use for HTTPS certificate validation\.  
+If defined, this environment variable overrides the value for the profile setting `ca_bundle`\. You can override this environment variable by using the `--ca-bundle` command line parameter\.
+
+`AWS_CONFIG_FILE`  
+Specifies the location of the file that the AWS CLI uses to store configuration profiles\. The default path is `~/.aws/config`\)\.  
+You can't specify this value in a named profile setting or by using a command line parameter\.
+
+[`AWS_DEFAULT_OUTPUT`](cli-chap-configure.md#cli-quick-configuration-format)  
+Specifies the [output format](cli-usage-output.md) to use\.  
+If defined, this environment variable overrides the value for the profile setting `output`\. You can override this environment variable by using the `--output` command line parameter\.
+
+[`AWS_DEFAULT_REGION`](cli-chap-configure.md#cli-quick-configuration-region)  
+Specifies the AWS Region to send the request to\.  
+If defined, this environment variable overrides the value for the profile setting `region`\. You can override this environment variable by using the `--region` command line parameter\.
+
+[`AWS_PROFILE`](cli-configure-profiles.md)  
+Specifies the name of the CLI profile with the credentials and options to use\. This can be the name of a profile stored in a `credentials` or `config` file, or the value `default` to use the default profile\.   
+If defined, this environment variable overrides the behavior of using the profile named `[default]` in the configuration file\. You can override this environment variable by using the `--profile` command line parameter\.
+
+[`AWS_ROLE_SESSION_NAME`](cli-configure-role.md#cli-configure-role-session-name)  
+Specifies a name to associate with the role session\. This value appears in CloudTrail logs for commands performed by the user of this profile\.  
+If defined, this environment variable overrides the value for the profile setting `role_session_name`\. You can't specify a role session name as a command line parameter\.
+
+`AWS_SECRET_ACCESS_KEY`  
+Specifies the secret key associated with the access key\. This is essentially the "password" for the access key\.  
+If defined, this environment variable overrides the value for the profile setting `aws_secret_access_key`\. You can't specify the access key ID as a command line option\.
+
+`AWS_SESSION_TOKEN`  
+Specifies the session token value that is required if you are using temporary security credentials that you retrieved directly from AWS STS operations\. For more information, see the [Output section of the assume\-role command](https://docs.aws.amazon.com/cli/latest/reference/sts/assume-role.html#output) in the *AWS CLI Command Reference*\.  
+If defined, this environment variable overrides the value for the profile setting `aws_session_token`\. You can't specify the session token as a command line option\.
+
+`AWS_SHARED_CREDENTIALS_FILE`  
+Specifies the location of the file that the AWS CLI uses to store access keys\. The default path is `~/.aws/credentials`\)\.  
+You can't specify this value in a named profile setting or by using a command line parameter\.
+
+**Note**  
+You can't specify AWS Single Sign\-On \(AWS SSO\) authentication by using environment variables\. Instead, you must use a named profile in the shared configuration file `.aws/config`\. For more information, see [Configuring the AWS CLI to use AWS Single Sign\-On \(AWS SSO\)](cli-configure-sso.md)\. 
 
 The following example shows how you could configure environment variables for the default user\. These values would override any values found in a named profile, or instance metadata\. Once set, you can override these values by specifying a parameter on the CLI command line, or by changing or removing the environment variable\. For more information about precedence and how the AWS CLI determines which credentials to use, see [Configuration Settings and Precedence](cli-chap-configure.md#config-settings-and-precedence)\.
 

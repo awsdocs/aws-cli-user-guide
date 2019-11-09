@@ -1,18 +1,18 @@
-# Install the AWS CLI on macOS<a name="install-macos"></a>
+# Install the AWS CLI version 1 on macOS<a name="install-macos"></a>
 
-The recommended way to install the AWS Command Line Interface \(AWS CLI\) on macOS is to use the bundled installer\. The bundled installer includes all dependencies and you can use it offline\.
+The recommended way to install version 1 of the AWS Command Line Interface \(AWS CLI\) on macOS is to use the bundled installer\. The bundled installer includes all dependencies and you can use it offline\.
 
 **Important**  
-On January 10th, 2020, AWS CLI version 1\.17 and later will no longer support Python 2\.6 or Python 3\.3\. After this date, the installer for the AWS CLI will require Python 2\.7, Python 3\.4, or a later version to successfully install the AWS CLI\. For more information, see [Using the AWS CLI with Python 2\.6 or Python 3\.3](deprecate-python-26-33.md) in this guide, and the [deprecation announcement in this blog post](https://aws.amazon.com/blogs/developer/deprecation-of-python-2-6-and-python-3-3-in-botocore-boto3-and-the-aws-cli/)\.
+On January 10th, 2020, AWS CLI version 1\.17 and later will no longer support Python 2\.6 or Python 3\.3\. After this date, the installer for the AWS CLI will require Python 2\.7, Python 3\.4, or a later version to successfully install the AWS CLI\. For more information, see [Using the AWS CLI version 1 with Python 2\.6 or Python 3\.3](deprecate-python-26-33.md) in this guide, and the [deprecation announcement in this blog post](https://aws.amazon.com/blogs/developer/deprecation-of-python-2-6-and-python-3-3-in-botocore-boto3-and-the-aws-cli/)\.
 
 **Important**  
 The bundled installer doesn't support installing to paths that contain spaces\.
 
 **Topics**
 + [Prerequisites](#install-bundle-macos-os-prereq)
-+ [Install the AWS CLI Using the Bundled Installer](#install-bundle-macos)
-+ [Install the AWS CLI on macOS Using pip](#awscli-install-osx-pip)
-+ [Add the AWS CLI Executable to Your macOS Command Line Path](#awscli-install-osx-path)
++ [Install the AWS CLI version 1 Using the Bundled Installer](#install-bundle-macos)
++ [Install the AWS CLI version 1 on macOS Using pip](#awscli-install-osx-pip)
++ [Add the AWS CLI version 1 Executable to Your macOS Command Line Path](#awscli-install-osx-path)
 
 ## Prerequisites<a name="install-bundle-macos-os-prereq"></a>
 + Python 2 version 2\.7\+ or Python 3 version 3\.4\+
@@ -23,13 +23,13 @@ Check your Python installation\.
 $ python --version
 ```
 
-If your computer doesn't already have Python installed, or if you want to install a different version of Python, follow the procedure in [Install the AWS CLI on Linux](install-linux.md)\.
+If your computer doesn't already have Python installed, or if you want to install a different version of Python, follow the procedure in [Install the AWS CLI version 1 on Linux](install-linux.md)\.
 
-## Install the AWS CLI Using the Bundled Installer<a name="install-bundle-macos"></a>
+## Install the AWS CLI version 1 Using the Bundled Installer<a name="install-bundle-macos"></a>
 
-Follow these steps from the command line to install the AWS CLI using the bundled installer\.
+Follow these steps from the command line to install the AWS CLI version 1 using the bundled installer\.
 
-**To install the AWS CLI using the bundled installer**
+**To install the AWS CLI version 1 using the bundled installer**
 
 1. Here are the steps described below in one easy to copy\-and\-paste group\. See the descriptions of each line in the steps that follow\.
 
@@ -59,7 +59,7 @@ To see an explanation of the `-i` and `-b` options, use the `-h` option\.
 $ ./awscli-bundle/install -h
 ```
 
-## Install the AWS CLI on macOS Using pip<a name="awscli-install-osx-pip"></a>
+## Install the AWS CLI version 1 on macOS Using pip<a name="awscli-install-osx-pip"></a>
 
 You can also use `pip` directly to install the AWS CLI\. If you don't have `pip`, follow the instructions in the main [installation topic](cli-chap-install.md)\. Run `pip3 --version` to see if your version of macOS already includes Python and `pip3`\.
 
@@ -88,7 +88,7 @@ $ pip3 --version
 
    ```
    $ aws --version
-   AWS CLI 1.16.246 (Python 3.7.4)
+   AWS CLI 1.16.273 (Python 3.7.3)
    ```
 
    If the program isn't found, [add it to your command line path](#awscli-install-osx-path)\.
@@ -99,7 +99,7 @@ To upgrade to the latest version, run the installation command again\.
 $ pip3 install awscli --upgrade --user
 ```
 
-## Add the AWS CLI Executable to Your macOS Command Line Path<a name="awscli-install-osx-path"></a>
+## Add the AWS CLI version 1 Executable to Your macOS Command Line Path<a name="awscli-install-osx-path"></a>
 
 After installing with `pip`, you might need to add the `aws` program to your operating system's `PATH` environment variable\. The location of the program depends on where Python is installed\.
 

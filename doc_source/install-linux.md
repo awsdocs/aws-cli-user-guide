@@ -1,9 +1,9 @@
-# Install the AWS CLI on Linux<a name="install-linux"></a>
+# Install the AWS CLI version 1 on Linux<a name="install-linux"></a>
 
 **Important**  
-On January 10th, 2020, AWS CLI version 1\.17 and later will no longer support Python 2\.6 or Python 3\.3\. After this date, the installer for the AWS CLI will require Python 2\.7, Python 3\.4, or a later version to successfully install the AWS CLI\. For more information, see [Using the AWS CLI with Python 2\.6 or Python 3\.3](deprecate-python-26-33.md) in this guide, and the [deprecation announcement in this blog post](https://aws.amazon.com/blogs/developer/deprecation-of-python-2-6-and-python-3-3-in-botocore-boto3-and-the-aws-cli/)\.
+On January 10th, 2020, AWS CLI version 1\.17 and later will no longer support Python 2\.6 or Python 3\.3\. After this date, the installer for the AWS CLI will require Python 2\.7, Python 3\.4, or a later version to successfully install the AWS CLI\. For more information, see [Using the AWS CLI version 1 with Python 2\.6 or Python 3\.3](deprecate-python-26-33.md) in this guide, and the [deprecation announcement in this blog post](https://aws.amazon.com/blogs/developer/deprecation-of-python-2-6-and-python-3-3-in-botocore-boto3-and-the-aws-cli/)\.
 
-You can install the AWS Command Line Interface \(AWS CLI\) and its dependencies on most Linux distributions by using `pip`, a package manager for Python\.
+You can install version 1 of the AWS Command Line Interface \(AWS CLI\) and its dependencies on most Linux distributions by using `pip`, a package manager for Python\.
 
 **Important**  
 The `awscli` package is available in repositories for other package managers such as `apt` and `yum`, but you're not assured of getting the latest version unless you get it from `pip` or use the [bundled installer](install-bundle.md)\.
@@ -30,11 +30,11 @@ If you don't already have Python 2 version 2\.7\+ or Python 3 version 3\.4\+, yo
 
 **Topics**
 + [Install `pip`](#install-linux-pip)
-+ [Install the AWS CLI with `pip`](#install-linux-awscli)
-+ [Upgrading to the latest version of the AWS CLI](#install-linux-awscli-upgrade)
-+ [Add the AWS CLI Executable to Your Command Line Path](#install-linux-path)
++ [Install the AWS CLI version 1 with `pip`](#install-linux-awscli)
++ [Upgrading to the latest version of the AWS CLI version 1](#install-linux-awscli-upgrade)
++ [Add the AWS CLI version 1 Executable to Your Command Line Path](#install-linux-path)
 + [Installing Python on Linux](install-linux-python.md)
-+ [Install the AWS CLI on Amazon Linux](install-linux-al2017.md)
++ [Install the AWS CLI version 1 on Amazon Linux](install-linux-al2017.md)
 
 ## Install `pip`<a name="install-linux-pip"></a>
 
@@ -95,7 +95,7 @@ If you don't already have `pip` installed, you can install it by using the scrip
    pip 19.2.3 from ~/.local/lib/python3.7/site-packages (python 3.7)
    ```
 
-## Install the AWS CLI with `pip`<a name="install-linux-awscli"></a>
+## Install the AWS CLI version 1 with `pip`<a name="install-linux-awscli"></a>
 
 Use `pip` to install the AWS CLI\.
 
@@ -109,12 +109,12 @@ Verify that the AWS CLI installed correctly\.
 
 ```
 $ aws --version
-aws-cli/1.16.246 Python/3.7.4 Linux/4.14.133-113.105.amzn2.x86_64 botocore/1.12.236
+aws-cli/1.16.273 Python/3.7.3 Linux/4.14.133-113.105.amzn2.x86_64 botocore/1.13.0
 ```
 
 If you get an error, see [Troubleshooting AWS CLI Errors](cli-chap-troubleshooting.md)\.
 
-## Upgrading to the latest version of the AWS CLI<a name="install-linux-awscli-upgrade"></a>
+## Upgrading to the latest version of the AWS CLI version 1<a name="install-linux-awscli-upgrade"></a>
 
 We recommend that you regularly check to see if there is a new version of the AWS CLI and upgrade to it when you can\.
 
@@ -131,7 +131,7 @@ awscli     1.16.170 1.16.198 wheel
 botocore   1.12.160 1.12.188 wheel
 ```
 
-Because the previous command shows that there is a newer version of the AWS CLI available, you can run `pip install --upgrade` to get the latest version:
+Because the previous command shows that there is a newer version of the AWS CLI version 1 available, you can run `pip install --upgrade` to get the latest version:
 
 ```
 $ pip3 install --upgrade --user awscli
@@ -160,7 +160,7 @@ Installing collected packages: botocore, awscli
 Successfully installed awscli-1.16.198 botocore-1.12.188
 ```
 
-## Add the AWS CLI Executable to Your Command Line Path<a name="install-linux-path"></a>
+## Add the AWS CLI version 1 Executable to Your Command Line Path<a name="install-linux-path"></a>
 
 After installing with `pip`, you might need to add the `aws` executable to your operating system' `PATH` environment variable\.
 
