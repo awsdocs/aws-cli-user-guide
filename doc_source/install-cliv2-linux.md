@@ -212,7 +212,7 @@ Steps 1, 2, and 3 are prerequisites and need to be performed only once\. Steps 4
 1. Download the AWS CLI signature file for the package you downloaded\. It has the same path and name as the zip file it corresponds to, but has the extension `.sig`\.
 
    ```
-   $ curl -o awscliv2.sig [https://d1vvhvl2y92vvt\.cloudfront\.net/awscli\-exe\-linux\-x86\_64\.zip\.sig]()
+   $ curl -o awscliv2.sig [https://d1vvhvl2y92vvt.cloudfront.net/awscli-exe-linux-x86_64.zip.sig](https://d1vvhvl2y92vvt.cloudfront.net/awscli-exe-linux-x86_64.zip.sig)
    ```
 
 1. Verify the signature, passing both the \.sig and \.zip file names as parameters to the `gpg` command\.
