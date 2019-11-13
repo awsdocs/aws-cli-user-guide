@@ -29,7 +29,7 @@ For Windows users, the MSI installation package offers a familiar and convenient
 **Note**  
 The preview release of AWS CLI version 2 names the program `aws2` to enable AWS CLI version 1 and version 2 to coexist side\-by\-side\. Future releases of AWS CLI version 2 might change this command name\.
 
-1. To confirm the installation, use the `aws --version` command at a command prompt \(open the **Start** menu and search for `cmd` to start a command prompt\)\.
+1. To confirm the installation, use the `aws2 --version` command at a command prompt \(open the **Start** menu and search for `cmd` to start a command prompt\)\.
 
    ```
    C:\> aws2 --version
