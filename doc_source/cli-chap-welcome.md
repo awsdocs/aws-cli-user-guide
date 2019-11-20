@@ -12,7 +12,7 @@ The AWS CLI is available in two versions:
 Information in this guide applies to both versions unless it specifically states that it applies to only one version or the other\.
 
 With minimal configuration, you can start running commands that implement functionality equivalent to that provided by the browser\-based AWS Management Console from the command prompt in your favorite terminal program:
-+ **Linux shells** – Use common shell programs such as [https://www.gnu.org/software/bash/](https://www.gnu.org/software/bash/), [http://www.zsh.org/](http://www.zsh.org/), and [https://www.tcsh.org/](https://www.tcsh.org/) to run commands in Linux, macOS, or Unix\.
++ **Linux shells** – Use common shell programs such as [https://www.gnu.org/software/bash/](https://www.gnu.org/software/bash/), [http://www.zsh.org/](http://www.zsh.org/), and [https://www.tcsh.org/](https://www.tcsh.org/) to run commands in Linux or macOS\.
 + **Windows command line** – On Windows, run commands at the Windows command prompt or in PowerShell\.
 + **Remotely** – Run commands on Amazon Elastic Compute Cloud \(Amazon EC2\) instances through a remote terminal program such as PuTTY or SSH, or with AWS Systems Manager\.
 

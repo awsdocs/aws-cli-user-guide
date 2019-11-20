@@ -27,7 +27,7 @@ On January 10th, 2020, AWS CLI version 1\.17 and later will no longer support Py
 
 1. Activate your new virtual environment\.
 
-   **Linux, macOS, or Unix**
+   **Linux or macOS**
 
    ```
    $ source ~/cli-ve/bin/activate

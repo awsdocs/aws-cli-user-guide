@@ -114,9 +114,9 @@ The AWS CLI uses a set of *credential providers* to look for AWS credentials\. E
 
 1. **[Environment variables](cli-configure-envvars.md)** – You can store values in the environment variables: `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, and `AWS_SESSION_TOKEN`\. If they are present, they are used\.
 
-1. **[The CLI credentials file](cli-configure-files.md)** – This is one of the files that is updated when you run the command `aws configure`\. The file is located at `~/.aws/credentials` on Linux, macOS, or Unix, or at `C:\Users\USERNAME\.aws\credentials` on Windows\. This file can contain the credential details for the `default` profile and any named profiles\.
+1. **[The CLI credentials file](cli-configure-files.md)** – This is one of the files that is updated when you run the command `aws configure`\. The file is located at `~/.aws/credentials` on Linux or macOS, or at `C:\Users\USERNAME\.aws\credentials` on Windows\. This file can contain the credential details for the `default` profile and any named profiles\.
 
-1. **[The CLI configuration file](cli-configure-files.md)** – This is another file that is updated when you run the command `aws configure`\. The file is located at `~/.aws/config` on Linux, macOS, or Unix, or at `C:\Users\USERNAME\.aws\config` on Windows\. This file contains the configuration settings for the default profile and any named profiles\. 
+1. **[The CLI configuration file](cli-configure-files.md)** – This is another file that is updated when you run the command `aws configure`\. The file is located at `~/.aws/config` on Linux or macOS, or at `C:\Users\USERNAME\.aws\config` on Windows\. This file contains the configuration settings for the default profile and any named profiles\. 
 
 1. **[Container credentials](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-iam-roles.html)** – You can associate an IAM role with each of your Amazon Elastic Container Service \(Amazon ECS\) task definitions\. Temporary credentials for that role are then available to that task's containers\. For more information see [IAM Roles for Tasks](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-iam-roles.html) in the *Amazon Elastic Container Service Developer Guide*\.
 

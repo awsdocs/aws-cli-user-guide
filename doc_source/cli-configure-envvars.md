@@ -53,7 +53,7 @@ You can't specify AWS Single Sign\-On \(AWS SSO\) authentication by using enviro
 
 The following example shows how you could configure environment variables for the default user\. These values would override any values found in a named profile, or instance metadata\. Once set, you can override these values by specifying a parameter on the CLI command line, or by changing or removing the environment variable\. For more information about precedence and how the AWS CLI determines which credentials to use, see [Configuration Settings and Precedence](cli-chap-configure.md#config-settings-and-precedence)\.
 
-**Linux, macOS, or Unix**
+**Linux or macOS**
 
 ```
 $ export AWS_ACCESS_KEY_ID=AKIAIOSFODNN7EXAMPLE

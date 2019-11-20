@@ -37,7 +37,7 @@ All S3 Glacier commands require an account ID parameter\. Use the hyphen charact
 
 Create a file for the test upload\. The following commands create a file named *largefile* that contains exactly 3 MiB of random data\.
 
-**Linux, macOS, or Unix**
+**Linux or macOS**
 
 ```
 $ dd if=/dev/urandom of=largefile bs=3145728 count=1
@@ -81,7 +81,7 @@ $ aws glacier initiate-multipart-upload --account-id - --archive-description "mu
 
 S3 Glacier requires the size of each part in bytes \(1 MiB in this example\), your vault name, and an account ID to configure the multipart upload\. The AWS CLI outputs an upload ID when the operation is complete\. Save the upload ID to a shell variable for later use\.
 
-**Linux, macOS, or Unix**
+**Linux or macOS**
 
 ```
 $ UPLOADID="19gaRezEXAMPLES6Ry5YYdqthHOC_kGRCT03L9yetr220UmPtBYKk-OssZtLqyFu7sY1_lR7vgFuJV6NtcV5zpsJ"

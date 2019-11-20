@@ -11,7 +11,7 @@ You can install the AWS CLI version 1 using any of the following techniques:
 + Python 2 version 2\.7\+ or Python 3 version 3\.4\+
 **Important**  
 On January 10th, 2020, AWS CLI version 1\.17 and later will no longer support Python 2\.6 or Python 3\.3\. After this date, the installer for the AWS CLI will require Python 2\.7, Python 3\.4, or a later version to successfully install the AWS CLI\. For more information, see [Using the AWS CLI version 1 with Python 2\.6 or Python 3\.3](deprecate-python-26-33.md) in this guide, and the [deprecation announcement in this blog post](https://aws.amazon.com/blogs/developer/deprecation-of-python-2-6-and-python-3-3-in-botocore-boto3-and-the-aws-cli/)\.
-+ Windows, Linux, macOS, or Unix
++ Windows, Linux or macOS
 
 You can find the version number of the most recent CLI at: [https://github.com/aws/aws-cli/blob/master/CHANGELOG.rst](https://github.com/aws/aws-cli/blob/master/CHANGELOG.rst)\.
 
@@ -19,7 +19,7 @@ In this guide, the commands shown assume you have Python v3 installed and the `p
 
 ## Installing the AWS CLI Using the bundled installer<a name="install-tool-bundled"></a>
 
-For offline or automated installations on Linux, macOS, or Unix, we recommend that you try the [bundled installer](install-bundle.md)\. The bundled installer includes the AWS CLI, its dependencies, and a shell script that performs the installation for you\.
+For offline or automated installations on Linux or macOS, we recommend that you try the [bundled installer](install-bundle.md)\. The bundled installer includes the AWS CLI, its dependencies, and a shell script that performs the installation for you\.
 
 On Windows, the bundled installer is in the form of an [MSI installer](install-windows.md#install-msi-on-windows)\.
 
@@ -140,5 +140,5 @@ If you don't have Python and `pip`, use the procedure for your environment\.
 + [Install the AWS CLI version 1 on Windows](install-windows.md)
 + [Install the AWS CLI version 1 on macOS](install-macos.md)
 + [Install the AWS CLI version 1 in a Virtual Environment](install-virtualenv.md)
-+ [Install the AWS CLI version 1 Using the Bundled Installer \(Linux, macOS, or Unix\)](install-bundle.md)
++ [Install the AWS CLI version 1 Using the Bundled Installer \(Linux or macOS\)](install-bundle.md)
 + [Using the AWS CLI version 1 with Python 2\.6 or Python 3\.3](deprecate-python-26-33.md)

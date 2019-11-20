@@ -43,7 +43,7 @@ $ aws ec2 describe-instances --profile user1
 
 To use a named profile for multiple commands, you can avoid specifying the profile in every command by setting the `AWS_PROFILE` environment variable at the command line\.
 
-**Linux, macOS, or Unix**
+**Linux or macOS**
 
 ```
 $ export AWS_PROFILE=user1

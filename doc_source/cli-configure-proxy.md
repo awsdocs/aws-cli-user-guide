@@ -7,7 +7,7 @@ The examples below show the environment variable name in all upper\-case letters
 
 The following examples show how you can use either the explicit IP address of your proxy or a DNS name that resolves to the IP address of your proxy\. Either can be followed by a colon and the port number to which queries should be sent\.
 
-**Linux, macOS, or Unix**
+**Linux or macOS**
 
 ```
 $ export HTTP_PROXY=http://10.15.20.25:1234
@@ -29,7 +29,7 @@ C:\> setx HTTPS_PROXY=http://proxy.example.com:5678
 
 The AWS CLI supports HTTP Basic authentication\. Specify the user name and password in the proxy URL, as follows\. 
 
-**Linux, macOS, or Unix**
+**Linux or macOS**
 
 ```
 $ export HTTP_PROXY=http://username:password@proxy.example.com:1234
@@ -50,7 +50,7 @@ The AWS CLI doesn't support NTLM proxies\. If you use an NTLM or Kerberos protoc
 
 If you configure a proxy on an Amazon EC2 instance launched with an attached IAM role, ensure that you exempt the address used to access the [instance metadata](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html)\. To do this, set the `NO_PROXY` environment variable to the IP address of the instance metadata service, 169\.254\.169\.254\. This address does not vary\.
 
-**Linux, macOS, or Unix**
+**Linux or macOS**
 
 ```
 $ export NO_PROXY=169.254.169.254

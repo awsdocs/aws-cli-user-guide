@@ -8,7 +8,7 @@ $ aws ec2 create-key-pair --key-name my-key-pair
 
 Strings without any space characters can be surrounded with quotation marks or not\. However, you must use quotation marks around strings that include one or more space characters\. Use single quotation marks \(' '\) in Linux, macOS, Unix, or PowerShell\. Use double quotation marks \(" "\) in the Windows command prompt, as shown in the following examples\. 
 
-**PowerShell, Linux, macOS, or Unix**
+**PowerShell, Linux or macOS**
 
 ```
 $ aws ec2 create-key-pair --key-name 'my key pair'
@@ -20,7 +20,7 @@ $ aws ec2 create-key-pair --key-name 'my key pair'
 C:\> aws ec2 create-key-pair --key-name "my key pair"
 ```
 
-Optionally, you can optionally separate the parameter name from the value with an equals sign \(=\) instead of a space\. This is typically necessary only if the value of the parameter starts with a hyphen\.
+Optionally, you can separate the parameter name from the value with an equals sign \(=\) instead of a space\. This is typically necessary only if the value of the parameter starts with a hyphen\.
 
 ```
 $ aws ec2 delete-key-pair --key-name=-mykey
@@ -86,7 +86,7 @@ For example, the `--body` parameter for `aws s3api put-object` is a blob\.
 $ aws s3api put-object --bucket my-bucket --key testimage.png --body /tmp/image.png
 ```
 
- **Map** – A set of key\-value pairs specified in JSON or by using the CLI's [shorthand syntax](cli-usage-shorthand.md)\. The following JSON example reads an item from an Amazon DynamoDB table named *my\-table* with a map parameter, `--key`\. The parameter specifies the primary key named *id* with a number value of *1* in a nested JSON structure\. 
+ **Map** – A set of key\-value pairs specified in [JSON](#cli-usage-parameters-json) or by using the CLI's [shorthand syntax](cli-usage-shorthand.md)\. The following JSON example reads an item from an Amazon DynamoDB table named *my\-table* with a map parameter, `--key`\. The parameter specifies the primary key named *id* with a number value of *1* in a nested JSON structure\. 
 
 ```
 $ aws dynamodb get-item --table-name my-table --key '{"id": {"N":"1"}}'
@@ -104,13 +104,13 @@ $ aws dynamodb get-item --table-name my-table --key '{"id": {"N":"1"}}'
 
 ## Using JSON for Parameters<a name="cli-usage-parameters-json"></a>
 
-JSON is useful for specifying complex command line parameters\. For example, the following command lists all Amazon EC2 instances that have an instance type of `m1.small` or `m1.medium` that are also in the `us-west-2c` Availability Zone\. 
+JSON is useful for specifying complex command line parameters\. For example, the following command uses shorthand notation to list all Amazon EC2 instances that have an instance type of `m1.small` or `m1.medium` that are also in the `us-west-2c` Availability Zone\. 
 
 ```
 $ aws ec2 describe-instances --filters "Name=instance-type,Values=t2.micro,m1.medium" "Name=availability-zone,Values=us-west-2c"
 ```
 
-Alternatively, you can specify the equivalent list of filters as a JSON array\. Square brackets are used to create an array of JSON objects separated by commas\. Each object is a comma\-separated list of key\-value pairs \(in this example, "Name" and "Values" are both keys\)\. 
+Instead, you can specify the equivalent list of filters as a JSON array\. Square brackets are used to create an array of JSON objects separated by commas\. Each object is a comma\-separated list of key\-value pairs \(in this example, "Name" and "Values" are both keys\)\.
 
 The value to the right of the "Values" key is itself an array\. This is required, even if the array contains only one value string\. 
 
@@ -134,6 +134,8 @@ $ aws ec2 describe-instances --filters '{"Name": "instance-type", "Values": ["t2
 ```
 
 For some operations, you *must* format the data as JSON\. For example, to pass parameters to the `--block-device-mappings` parameter in the `ec2 run-instances` command, you need to format the block device information as JSON\. 
+
+Because every value is surrounded by double\-quotes, JSON might also be required when values that are part of the parameter contain embedded or leading spaces\.
 
 This example shows the JSON to specify a single 20 GiB Amazon Elastic Block Store \(Amazon EBS\) device to be mapped at `/dev/sdb` on the launching instance\. 
 
@@ -236,7 +238,7 @@ cli_follow_urlparam = false
 
 The file paths in the following examples are interpreted to be relative to the current working directory\.
 
-**Linux, macOS, or Unix**
+**Linux or macOS**
 
 ```
 // Read from a file in the current directory

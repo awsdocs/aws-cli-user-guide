@@ -126,7 +126,7 @@ $ ls -al /usr/local/bin/python
 
 `pip` installs programs in the same folder that contains the Python application\. Add this folder to your PATH variable\.
 
-**To modify your `PATH` variable \(Linux, macOS, or Unix\)**
+**To modify your `PATH` variable \(Linux or macOS\)**
 
 1. Find your shell's profile script in your user folder\. If you're not sure which shell you have, run `echo $SHELL`\.
 

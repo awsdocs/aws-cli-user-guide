@@ -40,7 +40,7 @@ For example, the following command downloads the AWS CLI version 1\.16\.188\.
 $ curl [https://s3\.amazonaws\.com/aws\-cli/awscli\-bundle\-1\.16\.188\.zip](https://s3.amazonaws.com/aws-cli/awscli-bundle-1.16.188.zip) -o awscli-bundle.zip 
 ```
 
-From here, you can continue to follow the installation instructions in [Install the AWS CLI version 1 Using the Bundled Installer \(Linux, macOS, or Unix\)](install-bundle.md), starting with step 2\.
+From here, you can continue to follow the installation instructions in [Install the AWS CLI version 1 Using the Bundled Installer \(Linux or macOS\)](install-bundle.md), starting with step 2\.
 
 **MSI installer on Windows** 
 

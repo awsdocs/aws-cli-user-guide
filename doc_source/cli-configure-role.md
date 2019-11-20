@@ -87,7 +87,7 @@ $ aws s3 ls --profile marketingadmin
 
 To use the role for several calls, you can set the `AWS_DEFAULT_PROFILE` environment variable for the current session from the command line\. While that environment variable is defined, you don't have to specify the `--profile` option on each command\. 
 
-**Linux, macOS, or Unix**
+**Linux or macOS**
 
 ```
 $ export AWS_PROFILE=marketingadmin
@@ -248,7 +248,7 @@ When you use a role, the AWS CLI caches the temporary credentials locally until 
 
 If your role's temporary credentials are [revoked](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_revoke-sessions.html), they are not renewed automatically, and attempts to use them fail\. However, you can delete the cache to force the AWS CLI to retrieve new credentials\.
 
-**Linux, macOS, or Unix**
+**Linux or macOS**
 
 ```
 $ rm -r ~/.aws/cli/cache

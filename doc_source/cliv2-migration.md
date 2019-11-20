@@ -4,7 +4,7 @@ This topic describes the changes in behavior between AWS CLI version 1 and AWS C
 
 ## AWS CLI version 2 no longer automatically retrieves `http://` or `https://` URLs for parameters<a name="cliv2-migration-paramfile"></a>
 
-AWS CLI version 2 no longer performs a GET operation when a parameter value begins with `http://` or `https://` and then using the returned content as the value of the parameter\. If you need to retrieve a URL and pass the contents read from that URL as the value of a parameter, then we recommend that you use curl or a similar tool to down the contents of the URL to a local file and then use the file:// syntax to read the contents of that file and use it as the parameter's value\. For example, the following command no longer tries to retrieve the contents of the page found at `http://www.google.com` and pass those contents as the parameter\. Instead, it passes the literal text string `https://google.com` as the parameter\.
+AWS CLI version 2 no longer performs a GET operation when a parameter value begins with `http://` or `https://` and then using the returned content as the value of the parameter\. If you need to retrieve a URL and pass the contents read from that URL as the value of a parameter, then we recommend that you use curl or a similar tool to download the content pointed to by the URL to a local file\. Then, use the `file://` syntax to pass the content of that file as the parameter's value\. For example, the following command no longer tries to retrieve the contents of the page found at `http://www.google.com` and pass that content as the parameter\. Instead, it passes the literal text string `https://google.com` as the parameter\.
 
 ```
 $ aws2 ssm put-parameter --value http://www.google.com --name prod.microservice1.db.secret --type String 2
@@ -17,7 +17,7 @@ $ curl https://my.example.com/mypolicyfile.json -o mypolicyfile.json
 $ aws iam put-role-policy --policy-document file://./mypolicyfile.json --role-name MyRole --policy-name MyReadOnlyPolicy
 ```
 
-In the previous example, the `-o` parameter tells `curl` to save the file in the current folder with the same name as the source file\. The second command retrieves the contents of that downloaded file and passes the contents as the value of `--policy-document`\.
+In the previous example, the `-o` parameter tells `curl` to save the file in the current folder with the same name as the source file\. The second command retrieves the content of that downloaded file and passes the content as the value of `--policy-document`\.
 
 ## AWS CLI version 2 now returns all timestamp output values in ISO 8601 format\.<a name="cliv2-migration-timestamp"></a>
 

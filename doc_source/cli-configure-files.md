@@ -11,7 +11,7 @@ The AWS CLI stores the credentials that you specify with `aws configure` in a lo
 
  For example, the following commands list the contents of the `.aws` folder\. 
 
-**Linux, macOS, or Unix**
+**Linux or macOS**
 
 ```
 $ ls  ~/.aws

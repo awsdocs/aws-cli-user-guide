@@ -195,7 +195,7 @@ secret_key         **************** shared-credentials-file
 
 ### Possible cause: your computer's clock is out of sync<a name="tshoot-perms-time"></a>
 
-If you are using valid credentials, your clock may be out of sync\. On Linux, macOS, or Unix, run `date` to check the time\.
+If you are using valid credentials, your clock may be out of sync\. On Linux or macOS, run `date` to check the time\.
 
 ```
 $ date
@@ -220,7 +220,7 @@ When the AWS CLI runs a command, it sends an encrypted request to the AWS server
 
 To help protect against [replay attacks](https://wikipedia.org/wiki/Replay_attack), the current time can be used during the encryption/decryption process\. If the time of the client and server disagree by more than the allowed amount, then the process can fail and the request is rejected\. This can also happen when you run a command in a virtual machine whose clock is out of sync with the host machine's clock\. One possible cause is when the virtual machine hibernates and takes some time after waking up to resync the clock with the host machine\.
 
-On Linux, macOS, or Unix, run `date` to check the time\.
+On Linux or macOS, run `date` to check the time\.
 
 ```
 $ date

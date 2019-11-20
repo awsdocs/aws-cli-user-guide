@@ -1,12 +1,15 @@
 # Using Shorthand Syntax with the AWS Command Line Interface<a name="cli-usage-shorthand"></a>
 
-The AWS Command Line Interface \(AWS CLI\) can accept many of its option parameters in JSON format\. However, it can be tedious to enter large JSON lists or structures on the command line\. To make this easier, the AWS CLI also supports a shorthand syntax that enables a simpler representation of your option parameters than using the full JSON format\.
+The AWS Command Line Interface \(AWS CLI\) can accept many of its option parameters in JSON format\. However, it can be tedious to enter large JSON lists or structures on the command line\. To make this easier, the AWS CLI also supports a shorthand syntax that enables a simpler representation of your option parameters than using the full JSON format\. 
+
+**Note**  
+Because shorthand syntax does not require quotes around individual values, it might not be the best choice when a value contains a leading or an embedded space\. In that case, we recommend that you use [JSON syntax](cli-usage-parameters.md#cli-usage-parameters-json), where every value is surrounded by quotes and the spaces can't be misinterpreted\. 
 
 ## Structure Parameters<a name="shorthand-structure-parameters"></a>
 
 The shorthand syntax in the AWS CLI makes it easier for users to input parameters that are flat \(non\-nested structures\)\. The format is a comma\-separated list of key\-value pairs\.
 
-**Linux, macOS, or Unix**
+**Linux or macOS**
 
 ```
 --option key1=value1,key2=value2,key3=value3

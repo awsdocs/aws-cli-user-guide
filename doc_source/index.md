@@ -27,7 +27,7 @@ Amazon's trademarks and trade dress may not be used in
       + [Install the AWS CLI version 1 on Windows](install-windows.md)
       + [Install the AWS CLI version 1 on macOS](install-macos.md)
       + [Install the AWS CLI version 1 in a Virtual Environment](install-virtualenv.md)
-      + [Install the AWS CLI version 1 Using the Bundled Installer (Linux, macOS, or Unix)](install-bundle.md)
+      + [Install the AWS CLI version 1 Using the Bundled Installer (Linux or macOS)](install-bundle.md)
       + [Using the AWS CLI version 1 with Python 2.6 or Python 3.3](deprecate-python-26-33.md)
    + [Migrating from AWS CLI version 1 to version 2](cliv2-migration.md)
 + [Configuring the AWS CLI](cli-chap-configure.md)
