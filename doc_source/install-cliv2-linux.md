@@ -199,7 +199,7 @@ Steps 1, 2, and 3 are prerequisites and need to be performed only once\. Steps 4
    Key fingerprint:  FB5D B77F D5C1 18B8 0511  ADA8 A631 0ACC 4672 475C
    ```
 
-1. Import the &CLI; public key with the following command, substituting *public\-key\-file\-name* with whatever you named the file in step 2\.
+1. Import the AWS CLI public key with the following command, substituting *public\-key\-file\-name* with whatever you named the file in step 2\.
 
    ```
    $ gpg --import public-key-file-name

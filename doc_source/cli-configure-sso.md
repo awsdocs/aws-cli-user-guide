@@ -45,7 +45,7 @@ and enter the following code:
 QCFK-N451
 ```
 
-AWS SSO uses the code to associate the AWS SSO session with your current AWS CLI session\. The AWS SSO browser page prompts you to sign in with your AWS SSO account credentials\. This enables the AWS CLI \(thru the permissions associated with your AWS SSO account\) to retrieve and display the AWS accounts and roles that you are authorized to use with AWS SSO\.
+AWS SSO uses the code to associate the AWS SSO session with your current AWS CLI session\. The AWS SSO browser page prompts you to sign in with your AWS SSO account credentials\. This enables the AWS CLI \(through the permissions associated with your AWS SSO account\) to retrieve and display the AWS accounts and roles that you are authorized to use with AWS SSO\.
 
 Next, you the AWS CLI displays the AWS accounts available for you to use\. If you are authorized to use only one account, then the AWS CLI selects that account for you automatically and skips the prompt\. The AWS accounts that are available for you to use are determined by your user configuration in AWS SSO\.
 
