@@ -224,7 +224,7 @@ source_profile = production-profile
 ```
 
 *[sso\_account\_id](cli-configure-sso.md)*  
-The AWS account ID that contains the IAM role with the permission that your want to grant to the associated AWS SSO user\.  
+The AWS account ID that contains the IAM role with the permission that you want to grant to the associated AWS SSO user\.  
 This setting does not have an environment variable or command\-line option\.  
 
 ```
