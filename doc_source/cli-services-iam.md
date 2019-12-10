@@ -12,6 +12,6 @@ Before you run any commands, set your default credentials\. For more information
 
 **Topics**
 + [Creating IAM Users and Groups](cli-services-iam-new-user-group.md)
-+ [Attach an IAM Managed Policy to an IAM User](cli-services-iam-policy.md)
-+ [Set an Initial Password for an IAM User](cli-services-iam-set-pw.md)
++ [Attaching an IAM Managed Policy to an IAM User](cli-services-iam-policy.md)
++ [Setting an Initial Password for an IAM User](cli-services-iam-set-pw.md)
 + [Create an Access Key for an IAM User](cli-services-iam-create-creds.md)

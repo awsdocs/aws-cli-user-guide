@@ -1,9 +1,9 @@
 # Configuring the AWS CLI<a name="cli-chap-configure"></a>
 
-This section explains how to configure the settings that the AWS Command Line Interface \(AWS CLI\) uses to interact with AWS, including your security credentials, the default output format, and the default AWS Region\.
+This section explains how to configure the settings that the AWS Command Line Interface \(AWS CLI\) uses to interact with AWS\. These include your security credentials, the default output format, and the default AWS Region\.
 
 **Note**  
-AWS requires that all incoming requests are cryptographically signed\. The AWS CLI does this for you\. The "signature" includes a date/time stamp\. Therefore, you must ensure that your computer's date and time are set correctly\. If you don't, and the date/time in the signature is too far off of the date/time recognized by the AWS service, then AWS rejects the request\.
+AWS requires that all incoming requests are cryptographically signed\. The AWS CLI does this for you\. The "signature" includes a date/time stamp\. Therefore, you must ensure that your computer's date and time are set correctly\. If you don't, and the date/time in the signature is too far off of the date/time recognized by the AWS service, AWS rejects the request\.
 
 **Topics**
 + [Quickly Configuring the AWS CLI](#cli-quick-configuration)
@@ -11,18 +11,18 @@ AWS requires that all incoming requests are cryptographically signed\. The AWS C
 + [Configuration Settings and Precedence](#config-settings-and-precedence)
 + [Configuration and Credential File Settings](cli-configure-files.md)
 + [Named Profiles](cli-configure-profiles.md)
-+ [Configuring the AWS CLI to use AWS Single Sign\-On \(AWS SSO\)](cli-configure-sso.md)
-+ [Environment Variables](cli-configure-envvars.md)
++ [Configuring the AWS CLI to use AWS Single Sign\-On](cli-configure-sso.md)
++ [Environment Variables To Configure the AWS CLI](cli-configure-envvars.md)
 + [Command Line Options](cli-configure-options.md)
 + [Sourcing Credentials with an External Process](cli-configure-sourcing-external.md)
-+ [Instance Metadata](cli-configure-metadata.md)
++ [Getting Credentials from EC2 Instance Metadata](cli-configure-metadata.md)
 + [Using an HTTP Proxy](cli-configure-proxy.md)
 + [Using an IAM Role in the AWS CLI](cli-configure-role.md)
 + [Command Completion](cli-configure-completion.md)
 
 ## Quickly Configuring the AWS CLI<a name="cli-quick-configuration"></a>
 
- For general use, the `aws configure` command is the fastest way to set up your AWS CLI installation\.
+ For general use, the `aws configure` command is the fastest way to set up your AWS CLI installation\. The following example shows sample values\. Replace them with your own values as described in the following sections\.
 
 ```
 $ aws configure
@@ -32,7 +32,7 @@ Default region name [None]: us-west-2
 Default output format [None]: json
 ```
 
-When you type this command, the AWS CLI prompts you for four pieces of information \(access key, secret access key, AWS Region, and output format\)\. These are described in the following sections\. The AWS CLI stores this information in a *profile* \(a collection of settings\) named `default`\. The information in the `default` profile is used any time you run an AWS CLI command that doesn't explicitly specify a profile to use\.
+When you enter this command, the AWS CLI prompts you for four pieces of information \(access key, secret access key, AWS Region, and output format\)\. These are described in the following sections\. The AWS CLI stores this information in a *profile* \(a collection of settings\) named `default`\. The information in the `default` profile is used any time you run an AWS CLI command that doesn't explicitly specify a profile to use\.
 
 ### Access Key and Secret Access Key<a name="cli-quick-configuration-creds"></a>
 
@@ -76,13 +76,14 @@ You must specify an AWS Region when using the AWS CLI, either explicitly or by s
 ### Output Format<a name="cli-quick-configuration-format"></a>
 
 The `Default output format` specifies how the results are formatted\. The value can be any of the values in the following list\. If you don't specify an output format, `json` is used as the default\.
-+ **`json`**: The output is formatted as a [JSON](https://json.org/) string\.
-+ **`text`**: The output is formatted as multiple lines of tab\-separated string values, which can be useful if you want to pass the output to a text processor, like `grep`, `sed`, or `awk`\.
-+ **`table`**: The output is formatted as a table using the characters \+\|\- to form the cell borders\. It typically presents the information in a "human\-friendly" format that is much easier to read than the others, but not as programmatically useful\.
++ [**`json`**](cli-usage-output.md#json-output): The output is formatted as a [JSON](https://json.org/) string\.
++ [**`yaml`**](cli-usage-output.md#yaml-output): The output is formatted as a [YAML](https://yaml.org/) string\. *\(available in AWS CLI version 2 only\)*
++ [**`text`**](cli-usage-output.md#text-output): The output is formatted as multiple lines of tab\-separated string values, which can be useful if you want to pass the output to a text processor, like `grep`, `sed`, or `awk`\.
++ [**`table`**](cli-usage-output.md#table-output): The output is formatted as a table using the characters \+\|\- to form the cell borders\. It typically presents the information in a "human\-friendly" format that is much easier to read than the others, but not as programmatically useful\.
 
 ## Creating Multiple Profiles<a name="cli-quick-configuration-multi-profiles"></a>
 
-If you use the command shown in the previous section, the result is a single profile named `default`\. You can create additional configurations that you can refer to with a name by specifying the `--profile` option and assigning a name\. The following example creates a profile named `produser`\. You can specify credentials from a completely different account and region than the other profiles\.
+If you use the command shown in the previous section, the result is a single profile named `default`\. You can create additional configurations that you can refer to with a name by specifying the `--profile` option and assigning a name\. The following example creates a profile named `produser`\. You can specify credentials from a completely different account and Region than the other profiles\.
 
 ```
 $ aws configure --profile produser
@@ -114,10 +115,10 @@ The AWS CLI uses a set of *credential providers* to look for AWS credentials\. E
 
 1. **[Environment variables](cli-configure-envvars.md)** – You can store values in the environment variables: `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, and `AWS_SESSION_TOKEN`\. If they are present, they are used\.
 
-1. **[The CLI credentials file](cli-configure-files.md)** – This is one of the files that is updated when you run the command `aws configure`\. The file is located at `~/.aws/credentials` on Linux or macOS, or at `C:\Users\USERNAME\.aws\credentials` on Windows\. This file can contain the credential details for the `default` profile and any named profiles\.
+1. **[CLI credentials file](cli-configure-files.md)** – This is one of the files that is updated when you run the command `aws configure`\. The file is located at `~/.aws/credentials` on Linux or macOS, or at `C:\Users\USERNAME\.aws\credentials` on Windows\. This file can contain the credential details for the `default` profile and any named profiles\.
 
-1. **[The CLI configuration file](cli-configure-files.md)** – This is another file that is updated when you run the command `aws configure`\. The file is located at `~/.aws/config` on Linux or macOS, or at `C:\Users\USERNAME\.aws\config` on Windows\. This file contains the configuration settings for the default profile and any named profiles\. 
+1. **[CLI configuration file](cli-configure-files.md)** – This is another file that is updated when you run the command `aws configure`\. The file is located at `~/.aws/config` on Linux or macOS, or at `C:\Users\USERNAME\.aws\config` on Windows\. This file contains the configuration settings for the default profile and any named profiles\. 
 
-1. **[Container credentials](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-iam-roles.html)** – You can associate an IAM role with each of your Amazon Elastic Container Service \(Amazon ECS\) task definitions\. Temporary credentials for that role are then available to that task's containers\. For more information see [IAM Roles for Tasks](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-iam-roles.html) in the *Amazon Elastic Container Service Developer Guide*\.
+1. **[Container credentials](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-iam-roles.html)** – You can associate an IAM role with each of your Amazon Elastic Container Service \(Amazon ECS\) task definitions\. Temporary credentials for that role are then available to that task's containers\. For more information, see [IAM Roles for Tasks](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-iam-roles.html) in the *Amazon Elastic Container Service Developer Guide*\.
 
 1. **[Instance profile credentials](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/iam-roles-for-amazon-ec2.html)** – You can associate an IAM role with each of your Amazon Elastic Compute Cloud \(Amazon EC2\) instances\. Temporary credentials for that role are then available to code running in the instance\. The credentials are delivered through the Amazon EC2 metadata service\. For more information, see [IAM Roles for Amazon EC2](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/iam-roles-for-amazon-ec2.html) in the *Amazon EC2 User Guide for Linux Instances* and [Using Instance Profiles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2_instance-profiles.html) in the *IAM User Guide*\.

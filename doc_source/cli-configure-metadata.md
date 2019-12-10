@@ -1,16 +1,16 @@
-# Instance Metadata<a name="cli-configure-metadata"></a>
+# Getting Credentials from EC2 Instance Metadata<a name="cli-configure-metadata"></a>
 
-When you run the AWS CLI from within an Amazon EC2 instance, you can simplify providing credentials to your commands\. Each Amazon EC2 instance contains metadata that the AWS CLI can directly query for temporary credentials\. To provide these, create an AWS Identity and Access Management \(IAM\) role that has access to the resources needed, and attach that role to the Amazon EC2 instance when you launch it\.
+When you run the AWS CLI from within an Amazon Elastic Compute Cloud \(Amazon EC2\) instance, you can simplify providing credentials to your commands\. Each Amazon EC2 instance contains metadata that the AWS CLI can directly query for temporary credentials\. To provide these, create an AWS Identity and Access Management \(IAM\) role that has access to the resources needed, and attach that role to the Amazon EC2 instance when you launch it\.
 
-Launch the instance and check to see if the AWS CLI is already installed \(it comes preinstalled on Amazon Linux\)\. If necessary, install the AWS CLI\. You must still configure a default Region to avoid having to specify it in every command\. 
+Launch the instance and check to see if the AWS CLI is already installed \(it comes preinstalled on Amazon Linux\)\. If necessary, install the AWS CLI\. You must still configure a default AWS Region to avoid having to specify it in every command\. 
 
-To specify in a named profile that you want to use the credentials available in the hosting Amazon EC2 instance profile, specify the following line in the configuration file: 
+In a named profile, to specify that you want to use the credentials available in the hosting Amazon EC2 instance profile, use the following line in the configuration file\. 
 
 ```
 credential_source = Ec2InstanceMetadata 
 ```
 
-The following example shows how to assume the `marketingadminrole` role by referencing it in an Amazon EC2 instance profile:
+The following example shows how to assume the `marketingadminrole` role by referencing it in an Amazon EC2 instance profile\.
 
 ```
 [profile marketingadmin]
@@ -18,7 +18,7 @@ role_arn = arn:aws:iam::123456789012:role/marketingadminrole
 credential_source = Ec2InstanceMetadata
 ```
 
-You can set the Region and default output format by running `aws configure` without specifying credentials by pressing **Enter** twice to skip the first two prompts\. 
+To set the Region and default output format by running `aws configure` without specifying credentials, press **Enter** twice to skip the first two prompts\. 
 
 ```
 $ aws configure

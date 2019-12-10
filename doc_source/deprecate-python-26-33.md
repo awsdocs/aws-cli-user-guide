@@ -3,7 +3,7 @@
 **Important**  
 On January 10th, 2020, AWS CLI version 1\.17 and later will no longer support Python 2\.6 or Python 3\.3\. After this date, the installer for the AWS CLI will require Python 2\.7, Python 3\.4, or a later version to successfully install the AWS CLI\. For more information, see [Using the AWS CLI version 1 with Python 2\.6 or Python 3\.3](#deprecate-python-26-33) in this guide, and the [deprecation announcement in this blog post](https://aws.amazon.com/blogs/developer/deprecation-of-python-2-6-and-python-3-3-in-botocore-boto3-and-the-aws-cli/)\.
 
-AWS CLI version 1 requires that you have a version of Python installed\. This Python installation can be any supported version of Python\. Because Python 2\.6 and Python 3\.3 are no longer supported and are no longer receiving security updates, we are deprecating support for Python 2\.6 and Python 3\.3 with the AWS CLI version 1\. We strongly recommend that you to upgrade to a later version of Python\. 
+AWS CLI version 1 requires that you have a version of Python installed\. This Python installation can be any supported version of Python\. Because Python 2\.6 and Python 3\.3 are no longer supported and are no longer receiving security updates, we are deprecating support for Python 2\.6 and Python 3\.3 with the AWS CLI version 1\. We strongly recommend that you upgrade to a later version of Python\. 
 
 Starting on January 10th, 2020, AWS CLI releases version 1\.17 and later will work only with later versions of Python\.
 
@@ -28,7 +28,7 @@ awscli<1.17
 
 **Bundled installer on Linux or macOS**
 
-You can pin your installation to a specific earlier version with the bundled installer\. To do this, download and save a copy of the bundled installer that includes a version of the AWS CLI version 1 that is compatible with the version of Python that you want to use\. You can use the following URL format to download the file, replacing *\{VERSION\}* with the version number that you want to use, as shown\. Version numbers less than 1\.17 support the older Python releases\.
+You can pin your installation to a specific earlier version with the bundled installer\. To do this, download and save a copy of the bundled installer that includes a version of the AWS CLI version 1 that is compatible with the version of Python that you want to use\. You can use the following URL format to download the file, replacing *\{VERSION\}* with the version number that you want to use, as shown\. Version numbers less than 1\.17 support the earlier Python releases\.
 
 ```
 https://s3.amazonaws.com/aws-cli/awscli-bundle-{VERSION}.zip

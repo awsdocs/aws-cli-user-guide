@@ -1,18 +1,20 @@
-# Create, Configure, and Delete Security Groups for Amazon EC2<a name="cli-services-ec2-sg"></a>
+# Creating, Configuring, and Deleting Security Groups for Amazon EC2<a name="cli-services-ec2-sg"></a>
 
-You can create a security group for your Amazon Elastic Compute Cloud \(Amazon EC2\) instances that essentially operates as a firewall, with rules that determine what network traffic can enter and leave\. You can create security groups to use in a virtual private cloud \(VPC\), or in the EC2\-Classic shared flat network\. For more information about the differences between EC2\-Classic and EC2\-VPC, see [Supported Platforms](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html) in the *Amazon EC2 User Guide for Linux Instances*\.
+You can create a security group for your Amazon Elastic Compute Cloud \(Amazon EC2\) instances that essentially operates as a firewall, with rules that determine what network traffic can enter and leave\. 
 
-You can use the AWS Command Line Interface \(AWS CLI\) to create a security group, add rules to existing security groups, and delete security groups\. 
+You can create security groups to use in a virtual private cloud \(VPC\), or in the EC2\-Classic shared flat network\. For more information about the differences between EC2\-Classic and EC2\-VPC, see [Supported Platforms](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html) in the *Amazon EC2 User Guide for Linux Instances*\.
+
+Use the AWS Command Line Interface \(AWS CLI\) to create a security group, add rules to existing security groups, and delete security groups\. 
 
 **Note**  
-The examples shown below assume that you have already [configured your default credentials](cli-services-ec2-keypairs.md)\.
+The following examples assume that you have already [configured your default credentials](cli-services-ec2-keypairs.md)\.
 
 **Topics**
-+ [Creating a Security Group](#creating-a-security-group)
-+ [Adding Rules to Your Security Group](#configuring-a-security-group)
-+ [Deleting Your Security Group](#deleting-a-security-group)
++ [Create a Security Group](#creating-a-security-group)
++ [Add Rules to Your Security Group](#configuring-a-security-group)
++ [Delete Your Security Group](#deleting-a-security-group)
 
-## Creating a Security Group<a name="creating-a-security-group"></a>
+## Create a Security Group<a name="creating-a-security-group"></a>
 
 You can create security groups associated with VPCs or for EC2\-Classic\.
 
@@ -85,9 +87,9 @@ $ aws ec2 describe-security-groups --group-names my-sg
 }
 ```
 
-## Adding Rules to Your Security Group<a name="configuring-a-security-group"></a>
+## Add Rules to Your Security Group<a name="configuring-a-security-group"></a>
 
-When you run an Amazon EC2 instance, you must enable rules in the security group to enable incoming network traffic for your means of connecting to the image\. 
+When you run an Amazon EC2 instance, you must enable rules in the security group to allow incoming network traffic for your means of connecting to the image\. 
 
 For example, if you're launching a Windows instance, you typically add a rule to allow inbound traffic on TCP port 3389 to support Remote Desktop Protocol \(RDP\)\. If you're launching a Linux instance, you typically add a rule to allow inbound traffic on TCP port 22 to support SSH connections\. 
 
@@ -203,7 +205,7 @@ $ aws ec2 describe-security-groups --group-names my-sg
 }
 ```
 
-## Deleting Your Security Group<a name="deleting-a-security-group"></a>
+## Delete Your Security Group<a name="deleting-a-security-group"></a>
 
 To delete a security group, run the [delete\-security\-group](https://docs.aws.amazon.com/cli/latest/reference/ec2/delete-security-group.html) command\. 
 

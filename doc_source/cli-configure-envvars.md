@@ -1,4 +1,4 @@
-# Environment Variables<a name="cli-configure-envvars"></a>
+# Environment Variables To Configure the AWS CLI<a name="cli-configure-envvars"></a>
 
 Environment variables provide another way to specify configuration options and credentials, and can be useful for scripting or temporarily setting a named profile as the default\.
 
@@ -6,7 +6,7 @@ Environment variables provide another way to specify configuration options and c
 + If you specify an option by using one of the environment variables described in this topic, it overrides any value loaded from a profile in the configuration file\. 
 + If you specify an option by using a parameter on the CLI command line, it overrides any value from either the corresponding environment variable or a profile in the configuration file\.Supported environment variables
 
-The AWS CLI supports the following environment variables:
+The AWS CLI supports the following environment variables\.
 
 `AWS_ACCESS_KEY_ID`  
 Specifies an AWS access key associated with an IAM user or role\.  
@@ -49,7 +49,7 @@ Specifies the location of the file that the AWS CLI uses to store access keys\. 
 You can't specify this value in a named profile setting or by using a command line parameter\.
 
 **Note**  
-You can't specify AWS Single Sign\-On \(AWS SSO\) authentication by using environment variables\. Instead, you must use a named profile in the shared configuration file `.aws/config`\. For more information, see [Configuring the AWS CLI to use AWS Single Sign\-On \(AWS SSO\)](cli-configure-sso.md)\. 
+You can't specify AWS Single Sign\-On \(AWS SSO\) authentication by using environment variables\. Instead, you must use a named profile in the shared configuration file `.aws/config`\. For more information, see [Configuring the AWS CLI to use AWS Single Sign\-On ](cli-configure-sso.md)\. 
 
 The following example shows how you could configure environment variables for the default user\. These values would override any values found in a named profile, or instance metadata\. Once set, you can override these values by specifying a parameter on the CLI command line, or by changing or removing the environment variable\. For more information about precedence and how the AWS CLI determines which credentials to use, see [Configuration Settings and Precedence](cli-chap-configure.md#config-settings-and-precedence)\.
 

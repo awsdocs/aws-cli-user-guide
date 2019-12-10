@@ -39,7 +39,7 @@ On January 10th, 2020, AWS CLI version 1\.17 and later will no longer support Py
    $ %USERPROFILE%\cli-ve\Scripts\activate
    ```
 
-   The prompt changes to show that your virtual environment is active:
+   The prompt changes to show that your virtual environment is active\.
 
    ```
    (cli-ve)~$

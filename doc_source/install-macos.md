@@ -39,7 +39,7 @@ Follow these steps from the command line to install the AWS CLI version 1 using 
    sudo ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
    ```
 **Note**  
-If you don't have `unzip`, use your favorite package manager to install it or an equivalent\.
+If you don't have `unzip`, use your favorite package manager or an equivalent to install it\.
 
 1. Run the install program\. This command installs the AWS CLI to `/usr/local/aws` and creates the symlink `aws` in the `/usr/local/bin` directory\. Using the `-b` option to create a symlink eliminates the need to specify the install directory in the user's `$PATH` variable\. This should enable all users to call the AWS CLI by typing `aws` from any directory\.
 
@@ -47,7 +47,7 @@ If you don't have `unzip`, use your favorite package manager to install it or an
    $ sudo ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
    ```
 **Note**  
-By default, the install script runs under the system's default version of Python\. If you have installed an alternative version of Python and want to use that to install the AWS CLI, run the install script and specify that version by including the absolute path to the Python application\. For example:  
+By default, the install script runs under the system's default version of Python\. If you have installed an alternative version of Python and want to use that to install the AWS CLI, run the install script and specify that version by including the absolute path to the Python application, as shown in the following example\.  
 
    ```
    $ sudo /usr/local/bin/python3.7 awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
@@ -124,7 +124,7 @@ $ ls -al /usr/local/bin/python
 ~/Library/Python/3.7/bin/python3.6
 ```
 
-`pip` installs programs in the same folder that contains the Python application\. Add this folder to your PATH variable\.
+`pip` installs programs in the same folder that contains the Python application\. Add this folder to your `PATH` variable\.
 
 **To modify your `PATH` variable \(Linux or macOS\)**
 

@@ -1,20 +1,20 @@
 # Troubleshooting AWS CLI Errors<a name="cli-chap-troubleshooting"></a>
 
-## General troubleshooting tip: ensure you're running a recent version of the AWS CLI<a name="general-latest"></a>
+## General: Ensure you're running a recent version of the AWS CLI\.<a name="general-latest"></a>
 
-If you receive an error that indicates that a command does not exist, or that it doesn't recognize a parameter that the documentation says is available, then we recommend that the first thing you do \(after checking your command for spelling errors\!\) is to upgrade to the most recent version of the AWS CLI\. Updated versions of the AWS CLI are released almost every business day\. New AWS services, features, and parameters are introduced in those new versions of the AWS CLI\. The only way to get access to those new services, features, or parameters is to upgrade to a version that was released after that element was first introduced\.
+If you receive an error that indicates that a command doesn't exist, or that it doesn't recognize a parameter that the documentation says is available, we recommend that the first thing you do \(after checking your command for spelling errors\!\) is to upgrade to the most recent version of the AWS CLI\. Updated versions of the AWS CLI are released almost every business day\. New AWS services, features, and parameters are introduced in those new versions of the AWS CLI\. The only way to get access to those new services, features, or parameters is to upgrade to a version that was released after that element was first introduced\.
 
-How you update your version of the AWS CLI depends on how you originally installed it\. For example, if you installed the AWS CLI using `pip`, then run pip install \-\-upgrade as described on [Upgrading to the latest version of the AWS CLI version 1](install-linux.md#install-linux-awscli-upgrade)\.
+How you update your version of the AWS CLI depends on how you originally installed it\. For example, if you installed the AWS CLI using `pip`, run `pip install --upgrade`, as described in [Upgrading to the Latest Version of the AWS CLI version 1](install-linux.md#install-linux-awscli-upgrade)\.
 
-If you used one of the bundled installers, then you should remove the existing installation and then download and install the latest version of the bundled installer for your operating system\.
+If you used one of the bundled installers, you should remove the existing installation and download and install the latest version of the bundled installer for your operating system\.
 
-## General troubleshooting tip: use the `--debug` option<a name="general-debug"></a>
+## General: Use the `--debug` option\.<a name="general-debug"></a>
 
-One of the first things you should do when the CLI reports an error that you don't immediately understand, or produces results that you don't expect is get more detail about the error\. You can do this by running the command again and including the `--debug` option at the end of the command line\. This causes the AWS CLI to report details about every step it takes to process your command, send the request to the AWS servers, receive the response, and process the response into the output you see\. The details in the output can help you to determine in which step the error occurs and context that can provide clues about what triggered it\.
+One of the first things you should do when the AWS CLI reports an error that you don't immediately understand, or produces results that you don't expect, is get more detail about the error\. You can do this by running the command again and including the `--debug` option at the end of the command line\. This causes the AWS CLI to report details about every step it takes to process your command, send the request to the AWS servers, receive the response, and process the response into the output you see\. The details in the output can help you to determine in which step the error occurs and to get context that can provide clues about what triggered it\.
 
 You can send the output to a text file to capture it for later review or to send it to AWS support when asked for it\.
 
-Here's an example of a command run with and without the `--debug` option:
+Here's an example of a command run with and without the `--debug` option\.
 
 ```
 $ aws iam list-groups --profile MyTestProfile
@@ -128,44 +128,44 @@ b'<ListGroupsResponse xmlns="https://iam.amazonaws.com/doc/2010-05-08/">\n  <Lis
 }
 ```
 
-## I get the error "command not found" when I run `aws`<a name="tshoot-command-not-found"></a>
+## I get the error "command not found" when I run `aws`\.<a name="tshoot-command-not-found"></a>
 
-### Possible cause: the operating system "path" was not updated during installation<a name="tshoot-command-not-found-bad-path"></a>
+### Possible cause: The operating system "path" was not updated during installation\.<a name="tshoot-command-not-found-bad-path"></a>
 
 This error means that the operating system can't find the AWS CLI program\. The installation might be incomplete\.
 
-If you use `pip` to install the AWS Command Line Interface \(AWS CLI\), you might need to add the folder that contains the `aws` program to your operating system's `PATH` environment variable, or change its mode to make it executable\.
+If you use `pip` to install the AWS CLI, you might need to add the folder that contains the `aws` program to your operating system's `PATH` environment variable, or change its mode to make it executable\.
 
 You might need to add the `aws` executable to your operating system's `PATH` environment variable\. Follow the steps in the appropriate procedure:
 + **Windows** – [Add the AWS CLI version 1 Executable to Your Command Line Path](install-windows.md#awscli-install-windows-path)
 + **macOS** – [Add the AWS CLI version 1 Executable to Your macOS Command Line Path](install-macos.md#awscli-install-osx-path)
 + **Linux** – [Add the AWS CLI version 1 Executable to Your Command Line Path](install-linux.md#install-linux-path)
 
-## I get "access denied" errors<a name="tshoot-access-denied"></a>
+## I get "access denied" errors\.<a name="tshoot-access-denied"></a>
 
-### Possible cause: the CLI program file doesn't have 'run' permission<a name="tshoot-permissions-filemode"></a>
+### Possible cause: The AWS CLI program file doesn't have "run" permission\.<a name="tshoot-permissions-filemode"></a>
 
-On Linux or MacOS, ensure that the `aws` program has run permissions for the calling user\. Typically, the permissions would be set to `755`\.
+On Linux or macOS, ensure that the `aws` program has run permissions for the calling user\. Typically, the permissions are set to `755`\.
 
-To add run permission for your user, run the following command, substituting *\~/\.local/bin/aws* with the path on your computer:
+To add run permission for your user, run the following command, substituting *\~/\.local/bin/aws* with the path to the program on your computer\.
 
 ```
 $ chmod +x ~/.local/bin/aws
 ```
 
-### Possible cause: your IAM identity doesn't have permission to perform the operation<a name="tshoot-permissions-userpolicy"></a>
+### Possible cause: Your IAM identity doesn't have permission to perform the operation\.<a name="tshoot-permissions-userpolicy"></a>
 
-When you run a CLI command, AWS operations are performed on your behalf, using credentials that associate you with an IAM user or role\. The policies attached to that IAM user or role must grant you permission to call the API actions that correspond to the commands that you run with the AWS CLI\. 
+When you run a AWS CLI command, AWS operations are performed on your behalf, using credentials that associate you with an IAM user or role\. The policies attached to that IAM user or role must grant you permission to call the API actions that correspond to the commands that you run with the AWS CLI\. 
 
-Most commands call a single action with a name that matches the command name; however, custom commands like `aws s3 sync` call multiple APIs\. You can see which APIs a command calls by using the `--debug` option\.
+Most commands call a single action with a name that matches the command name\. However, custom commands like `aws s3 sync` call multiple APIs\. You can see which APIs a command calls by using the `--debug` option\.
 
-If you are sure that the user or role has the proper permissions assigned by policy, then ensure that your CLI command is using the credentials you expect\. See the [next section about credentials](#tshoot-permissions-wrongcreds) to verify that the credentials the CLI is using are the ones you expect\.
+If you are sure that the user or role has the proper permissions assigned by policy, ensure that your AWS CLI command is using the credentials you expect\. See the [next section about credentials](#tshoot-permissions-wrongcreds) to verify that the credentials the AWS CLI is using are the ones you expect\.
 
 For information about assigning permissions to IAM users and roles, see [Overview of Access Management: Permissions and Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/introduction_access-management.html) in the *IAM User Guide*\.
 
-## I get an "invalid credentials" error<a name="tshoot-permissions-wrongcreds"></a>
+## I get an "invalid credentials" error\.<a name="tshoot-permissions-wrongcreds"></a>
 
-### Possible cause: the AWS CLI is reading credentials from an unexpected location<a name="tshoot-perms-creds"></a>
+### Possible cause: The AWS CLI is reading credentials from an unexpected location\.<a name="tshoot-perms-creds"></a>
 
 The AWS CLI might be reading credentials from a different location than you expect\. You can run `aws configure list` to confirm which credentials are used\. 
 
@@ -193,7 +193,7 @@ secret_key         **************** shared-credentials-file
     region                us-west-2      config-file    ~/.aws/config
 ```
 
-### Possible cause: your computer's clock is out of sync<a name="tshoot-perms-time"></a>
+### Possible cause: Your computer's clock is out of sync\.<a name="tshoot-perms-time"></a>
 
 If you are using valid credentials, your clock may be out of sync\. On Linux or macOS, run `date` to check the time\.
 
@@ -212,13 +212,13 @@ $ ntpstat
 
 On Windows, use the date and time options in the Control Panel to configure your system clock\.
 
-## I get a "signature does not match" error<a name="tshoot-signature-does-not-match"></a>
+## I get a "signature does not match" error\.<a name="tshoot-signature-does-not-match"></a>
 
-When the AWS CLI runs a command, it sends an encrypted request to the AWS servers to perform the appropriate AWS service operations\. Your credentials \(the access key and secret key\) are involved in the encryption and enable AWS to authenticate the person making the request\. There are several things that can interfere with the correct operation of this process:
+When the AWS CLI runs a command, it sends an encrypted request to the AWS servers to perform the appropriate AWS service operations\. Your credentials \(the access key and secret key\) are involved in the encryption and enable AWS to authenticate the person making the request\. There are several things that can interfere with the correct operation of this process, as follows\.
 
-### Possible cause: your clock is out of sync with the AWS servers<a name="tshoot-sig-time-off"></a>
+### Possible cause: Your clock is out of sync with the AWS servers\.<a name="tshoot-sig-time-off"></a>
 
-To help protect against [replay attacks](https://wikipedia.org/wiki/Replay_attack), the current time can be used during the encryption/decryption process\. If the time of the client and server disagree by more than the allowed amount, then the process can fail and the request is rejected\. This can also happen when you run a command in a virtual machine whose clock is out of sync with the host machine's clock\. One possible cause is when the virtual machine hibernates and takes some time after waking up to resync the clock with the host machine\.
+To help protect against [replay attacks](https://wikipedia.org/wiki/Replay_attack), the current time can be used during the encryption/decryption process\. If the time of the client and server disagree by more than the allowed amount, the process can fail and the request is rejected\. This can also happen when you run a command in a virtual machine whose clock is out of sync with the host machine's clock\. One possible cause is when the virtual machine hibernates and takes some time after waking up to resync the clock with the host machine\.
 
 On Linux or macOS, run `date` to check the time\.
 
@@ -237,7 +237,7 @@ $ ntpstat
 
 On Windows, use the date and time options in the Control Panel to configure your system clock\. 
 
-### Possible cause: your OS is mishandling AWS secret keys that contain certain special characters<a name="tshoot-sig-special-char-in-secret-key"></a>
+### Possible cause: Your operating system is mishandling AWS secret keys that contain certain special characters\.<a name="tshoot-sig-special-char-in-secret-key"></a>
 
 If your AWS secret key includes certain special characters, such as \-, \+, /, or %, some operating system variants process the string improperly and cause the secret key string to be interpreted incorrectly\.
 

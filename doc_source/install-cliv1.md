@@ -1,6 +1,6 @@
 # Installing the AWS CLI version 1<a name="install-cliv1"></a>
 
-This topic describes how to install version 1 of the AWS Command Line Interface\. For information about how to install version 2, see [Installing the AWS CLI version 2](install-cliv2.md)\.
+This topic describes how to install version 1 of the AWS Command Line Interface \(AWS CLI\)\. For information about how to install version 2, see [Installing the AWS CLI version 2](install-cliv2.md)\.
 
 You can install the AWS CLI version 1 using any of the following techniques:
 + [Using a bundled installer](#install-tool-bundled)
@@ -17,7 +17,7 @@ You can find the version number of the most recent CLI at: [https://github.com/a
 
 In this guide, the commands shown assume you have Python v3 installed and the `pip` commands shown use the `pip3` version\.
 
-## Installing the AWS CLI Using the bundled installer<a name="install-tool-bundled"></a>
+## Installing the AWS CLI Using the Bundled Installer<a name="install-tool-bundled"></a>
 
 For offline or automated installations on Linux or macOS, we recommend that you try the [bundled installer](install-bundle.md)\. The bundled installer includes the AWS CLI, its dependencies, and a shell script that performs the installation for you\.
 
@@ -25,12 +25,13 @@ On Windows, the bundled installer is in the form of an [MSI installer](install-w
 
 ## Installing the AWS CLI Using pip<a name="install-tool-pip"></a>
 
-This is a package manager for Python that provides an easy way to install, upgrade, and remove Python packages and their dependencies\.
+The `pip` package manager for Python provides an easy way to install, upgrade, and remove Python packages and their dependencies\.
 
-**Installing the current AWS CLI Version**  
+### Installing the current AWS CLI Version<a name="install-tool-pip-installing"></a>
+
 The AWS CLI is updated frequently with support for new services and commands\. To determine whether you have the latest version, see the [releases page on GitHub](https://github.com/aws/aws-cli/releases)\.
 
-If you already have `pip` and a supported version of Python, you can install the AWS CLI by using the following command\. If you have Python version 3 installed, we recommend that you use the **pip3** command\.
+If you already have `pip` and a supported version of Python, you can install the AWS CLI by using the following command\. If you have Python version 3 installed, we recommend that you use the `pip3` command\.
 
 ```
 $ pip3 install awscli --upgrade --user
@@ -38,11 +39,11 @@ $ pip3 install awscli --upgrade --user
 
 The `--upgrade` option tells `pip3` to upgrade any requirements that are already installed\. The `--user` option tells `pip3` to install the program to a subdirectory of your user directory to avoid modifying libraries used by your operating system\.
 
-**Upgrading to the latest version of the AWS CLI**
+### Upgrading to the latest version of the AWS CLI<a name="install-tool-pip-upgrading"></a>
 
 We recommend that you regularly check to see if there is a new version of the AWS CLI and upgrade to it when you can\.
 
-Use the `pip3 list -o` command to check which packages are "outdated':
+Use the `pip3 list -o` command to check which packages are "outdated"\.
 
 ```
 $ aws --version
@@ -55,7 +56,7 @@ awscli     1.16.170 1.16.198 wheel
 botocore   1.12.160 1.12.188 wheel
 ```
 
-Because the previous command shows that there is a newer version of the AWS CLI available, you can run `pip3 install --upgrade` to get the latest version:
+Because the previous command shows that there is a newer version of the AWS CLI available, you can run `pip3 install --upgrade` to get the latest version\.
 
 ```
 $ pip3 install --upgrade --user awscli
@@ -115,7 +116,7 @@ Before you can run a CLI command, you must configure the AWS CLI with your crede
 You store credential information locally by defining [profiles](cli-configure-profiles.md) in the [AWS CLI configuration files](cli-configure-files.md), which are stored by default in your user's home directory\. For more information, see [Configuring the AWS CLI](cli-chap-configure.md)\.
 
 **Note**  
-If you are running in an Amazon EC2 instance, credentials can be automatically retrieved from the instance metadata\. For more information, see [Instance Metadata](cli-configure-metadata.md)\.
+If you are running in an Amazon EC2 instance, credentials can be automatically retrieved from the instance metadata\. For more information, see [Getting Credentials from EC2 Instance Metadata](cli-configure-metadata.md)\.
 
 ### Upgrading to the Latest Version of the AWS CLI<a name="post-install-upgrade"></a>
 
@@ -137,8 +138,8 @@ If you don't have Python and `pip`, use the procedure for your environment\.
 
 ## Detailed Instructions for Each Environment<a name="install-sections"></a>
 + [Install the AWS CLI version 1 on Linux](install-linux.md)
-+ [Install the AWS CLI version 1 on Windows](install-windows.md)
 + [Install the AWS CLI version 1 on macOS](install-macos.md)
++ [Install the AWS CLI version 1 on Windows](install-windows.md)
 + [Install the AWS CLI version 1 in a Virtual Environment](install-virtualenv.md)
 + [Install the AWS CLI version 1 Using the Bundled Installer \(Linux or macOS\)](install-bundle.md)
 + [Using the AWS CLI version 1 with Python 2\.6 or Python 3\.3](deprecate-python-26-33.md)

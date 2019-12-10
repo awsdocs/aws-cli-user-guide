@@ -10,7 +10,7 @@ aws swf help
 
 Before you run any commands, set your default credentials\. For more information, see [Configuring the AWS CLI](cli-chap-configure.md)\.
 
-This topic shows examples of CLI commands that perform common tasks for Amazon SWF\.
+The following topics show examples of CLI commands that perform common tasks for Amazon SWF\.
 
 **Topics**
 + [List of Amazon SWF Commands by Category](cli-services-swf-commands.md)

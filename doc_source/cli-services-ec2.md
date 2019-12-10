@@ -11,6 +11,6 @@ Before you run any commands, set your default credentials\. For more information
 This topic shows examples of AWS CLI commands that perform common tasks for Amazon EC2\.
 
 **Topics**
-+ [Create, Display, and Delete Amazon EC2 Key Pairs](cli-services-ec2-keypairs.md)
-+ [Create, Configure, and Delete Security Groups for Amazon EC2](cli-services-ec2-sg.md)
-+ [Launch, List, and Terminate Amazon EC2 Instances](cli-services-ec2-instances.md)
++ [Creating, Displaying, and Deleting Amazon EC2 Key Pairs](cli-services-ec2-keypairs.md)
++ [Creating, Configuring, and Deleting Security Groups for Amazon EC2](cli-services-ec2-sg.md)
++ [Launching, Listing, and Terminating Amazon EC2 Instances](cli-services-ec2-instances.md)

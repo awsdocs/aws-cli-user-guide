@@ -1,13 +1,13 @@
-# Configuring the AWS CLI to use AWS Single Sign\-On \(AWS SSO\)<a name="cli-configure-sso"></a>
+# Configuring the AWS CLI to use AWS Single Sign\-On<a name="cli-configure-sso"></a>
 
-**This feature is available only with version 2 of the AWS CLI**  
+**This feature is available only with version 2 of the AWS CLI\.**  
 The following feature is available only if you use version 2 of the AWS CLI\. It isn't available if you run version 1\. For information about how to install the preview of version 2, see [Installing the AWS CLI version 2](install-cliv2.md)\.
 
-If your organization uses AWS SSO, then your users can sign in to Microsoft Active Directory or a built in AWS SSO directory and get mapped to an IAM role that enables you to run AWS CLI commands\. For more information about AWS SSO, see the [AWS Single Sign\-On User Guide](https://docs.aws.amazon.com/singlesignon/latest/userguide/)\. 
+If your organization uses AWS Single Sign\-On \(AWS SSO\), your users can sign in to Active Directory or a built\-in AWS SSO directory and get mapped to an AWS Identity and Access Management \(IAM\) role that enables you to run AWS CLI commands\. For more information about AWS SSO, see the [AWS Single Sign\-On User Guide](https://docs.aws.amazon.com/singlesignon/latest/userguide/)\. 
 
-This topic describes how to configure the AWS CLI to authenticate the user with AWS SSO to get short term credentials to run AWS CLI commands\. It includes the following sections:
-+ **[Configuring a Named Profile to Use AWS SSO](#sso-configure-profile)** \- how to create and configure profiles that use AWS SSO for authentication and mapping to an IAM role for AWS permissions\.
-+ **[Using an AWS SSO enabled named profile](#sso-using-profile)** \- how to login to AWS SSO from the CLI and use the provided AWS temporary credentials to run AWS CLI commands\. 
+This topic describes how to configure the AWS CLI to authenticate the user with AWS SSO to get short\-term credentials to run AWS CLI commands\. It includes the following sections:
++ **[Configuring a Named Profile to Use AWS SSO](#sso-configure-profile)** \- How to create and configure profiles that use AWS SSO for authentication and mapping to an IAM role for AWS permissions\.
++ **[Using an AWS SSO Enabled Named Profile](#sso-using-profile)** \- how to login to AWS SSO from the CLI and use the provided AWS temporary credentials to run AWS CLI commands\. 
 
 ## Configuring a Named Profile to Use AWS SSO<a name="sso-configure-profile"></a>
 
@@ -17,9 +17,9 @@ You can configure the profile in the following ways:
 + [Automatically](#sso-configure-profile-auto), using the command `aws2 configure sso`
 + [Manually](#sso-configure-profile-manual), by editing the \.aws/config file that stores the named profiles\.
 
-### Automatic configuration<a name="sso-configure-profile-auto"></a>
+### Automatic Configuration<a name="sso-configure-profile-auto"></a>
 
-You can add an AWS SSO enabled profile to your AWS CLI by running the following command, providing your AWS SSO start URL and the AWS region that hosts the AWS SSO directory\. 
+You can add an AWS SSO enabled profile to your AWS CLI by running the following command, providing your AWS SSO start URL and the AWS Region that hosts the AWS SSO directory\. 
 
 ```
 $ aws2 configure sso
@@ -47,7 +47,7 @@ QCFK-N451
 
 AWS SSO uses the code to associate the AWS SSO session with your current AWS CLI session\. The AWS SSO browser page prompts you to sign in with your AWS SSO account credentials\. This enables the AWS CLI \(through the permissions associated with your AWS SSO account\) to retrieve and display the AWS accounts and roles that you are authorized to use with AWS SSO\.
 
-Next, you the AWS CLI displays the AWS accounts available for you to use\. If you are authorized to use only one account, then the AWS CLI selects that account for you automatically and skips the prompt\. The AWS accounts that are available for you to use are determined by your user configuration in AWS SSO\.
+Next, the AWS CLI displays the AWS accounts available for you to use\. If you are authorized to use only one account, the AWS CLI selects that account for you automatically and skips the prompt\. The AWS accounts that are available for you to use are determined by your user configuration in AWS SSO\.
 
 ```
 There are 2 AWS accounts available to you.
@@ -55,9 +55,9 @@ There are 2 AWS accounts available to you.
   ProductionAccount, production-account-admin@example.com (123456789022)
 ```
 
-Use the arrow keys to select the account you want to use with this profile\. The '>' character on the left points to the current choice\. Press ENTER to make your selection\. 
+Use the arrow keys to select the account you want to use with this profile\. The ">" character on the left points to the current choice\. Press ENTER to make your selection\. 
 
-Next, the AWS CLI confirms your account choice, and displays the IAM roles that are available to you in the selected account\. If the selected account lists only one role, then the AWS CLI selects that role for you automatically and skips the prompt\. The roles that are available for you to use are determined by your user configuration in AWS SSO\.
+Next, the AWS CLI confirms your account choice, and displays the IAM roles that are available to you in the selected account\. If the selected account lists only one role, the AWS CLI selects that role for you automatically and skips the prompt\. The roles that are available for you to use are determined by your user configuration in AWS SSO\.
 
 ```
 Using the account ID 123456789011
@@ -66,7 +66,7 @@ There are 2 roles available to you.
   FullAccess
 ```
 
-As before, use the arrow keys to select the IAM role you want to use with this profile\. The '>' character on the left points to the current choice\. Press ENTER to make your selection\. 
+As before, use the arrow keys to select the IAM role you want to use with this profile\. The ">" character on the left points to the current choice\. Press <ENTER> to make your selection\. 
 
 The AWS CLI confirms your role selection\.
 
@@ -74,7 +74,7 @@ The AWS CLI confirms your role selection\.
 Using the role name "ReadOnly"
 ```
 
-Now you can finish the configuration of your profile, by specifying the [default output format](cli-configure-files.md#cli-config-output), the [default AWS Region](cli-configure-files.md#cli-config-region) to send commands to, and providing a [name for the profile](cli-chap-configure.md#cli-quick-configuration-multi-profiles) so you can reference this profile from among all those defined on the local computer\. In the example below, the user enters a default Region, default output format, and the name of the profile\. You can alternatively press `<ENTER>` to select any default values that are shown between the square brackets\. The suggested profile name is the account ID number followed by an underscore followed by the role name\.
+Now you can finish the configuration of your profile, by specifying the [default output format](cli-configure-files.md#cli-config-output), the [default AWS Region](cli-configure-files.md#cli-config-region) to send commands to, and providing a [name for the profile](cli-chap-configure.md#cli-quick-configuration-multi-profiles) so you can reference this profile from among all those defined on the local computer\. In the following example, the user enters a default Region, default output format, and the name of the profile\. You can alternatively press `<ENTER>` to select any default values that are shown between the square brackets\. The suggested profile name is the account ID number followed by an underscore followed by the role name\.
 
 ```
 CLI default client Region [None]: us-west-2<ENTER>
@@ -83,7 +83,7 @@ CLI profile name [123456789011_ReadOnly]: my-dev-profile<ENTER>
 ```
 
 **Note**  
-If you specify `default` as the profile name then this profile becomes the one used whenever you run an AWS CLI command and do not specify a profile name\.
+If you specify `default` as the profile name, this profile becomes the one used whenever you run an AWS CLI command and do not specify a profile name\.
 
 A final message describes the completed profile configuration\.
 
@@ -93,7 +93,7 @@ To use this profile, specify the profile name using --profile, as shown:
 aws2 s3 ls --profile my-dev-profile
 ```
 
-The previous example entries would result in a named profile in `~/.aws/config` that looks like the following example:
+The previous example entries would result in a named profile in `~/.aws/config` that looks like the following example\.
 
 ```
 [profile my-dev-profile]
@@ -105,12 +105,12 @@ region = us-west-2
 output = json
 ```
 
-At this point, you have a profile that you can use to request temporary credentials\. You must use the `aws sso login` command to actually request and retrieve the temporary credentials needed to run commands\. For instructions, see [Using an AWS SSO enabled named profile](#sso-using-profile)\.
+At this point, you have a profile that you can use to request temporary credentials\. You must use the `aws sso login` command to actually request and retrieve the temporary credentials needed to run commands\. For instructions, see [Using an AWS SSO Enabled Named Profile](#sso-using-profile)\.
 
 **Note**  
-You can also run an AWS CLI command using the specified profile\. If you are not currently signed\-in to the AWS SSO portal, then it starts the sign\-in process for you automatically, just as if you had manually ran the command `aws sso login` command\.
+You can also run an AWS CLI command using the specified profile\. If you are not currently logged in to the AWS SSO portal, it starts the login process for you automatically, just as if you had manually ran the command `aws sso login` command\.
 
-### Manual configuration<a name="sso-configure-profile-manual"></a>
+### Manual Configuration<a name="sso-configure-profile-manual"></a>
 
 To manually add AWS SSO support to a named profile, you must add the following keys and values to the profile definition in the file `~/.aws/config` \(Linux or macOS\) or `%USERPROFILE%/.aws/config` \(Windows\)\.
 
@@ -146,7 +146,7 @@ The presence of these keys identify this profile as one that uses AWS SSO to aut
 
 You can also include any other keys and values that are valid in the `.aws/config` file, such as `region`, `output`, or `s3`\. However, you can't include any credential related values, such as [role\_arn](cli-configure-files.md#cli-config-role_arn) or [aws\_secret\_access\_key](cli-configure-files.md#cli-config-aws_secret_access_key)\. If you do, the AWS CLI produces an error\.
 
-So a typical AWS SSO profile in `.aws/config` might look similar to the following example:
+So a typical AWS SSO profile in `.aws/config` might look similar to the following example\.
 
 ```
 [profile my-dev-profile]
@@ -158,13 +158,15 @@ region = us-west-2
 output = json
 ```
 
-At this point, you have a profile that you can use to request temporary credentials\. However, you can't yet run an AWS CLI service command\. You must first use the `aws sso login` command to actually request and retrieve the temporary credentials needed to run commands\. For instructions, see the next section, [Using an AWS SSO enabled named profile](#sso-using-profile)\.
+At this point, you have a profile that you can use to request temporary credentials\. However, you can't yet run an AWS CLI service command\. You must first use the `aws sso login` command to actually request and retrieve the temporary credentials needed to run commands\. For instructions, see the next section, [Using an AWS SSO Enabled Named Profile](#sso-using-profile)\.
 
-## Using an AWS SSO enabled named profile<a name="sso-using-profile"></a>
+## Using an AWS SSO Enabled Named Profile<a name="sso-using-profile"></a>
 
-### Signing in and getting temporary credentials<a name="sso-using-profile-sign-in"></a>
+This section describes how to use the AWS SSO profile you created in the previous section\.
 
-After you complete the steps in either of the preceding sections, you have a named profile that you can invoke to request temporary credentials from AWS\. Before you can run a AWS CLI service command, you must first retrieve and cache a set of temporary credentials\. To get these temporary credentials, run the following command:
+### Signing In and Getting Temporary Credentials<a name="sso-using-profile-sign-in"></a>
+
+After you configure a named profile automatically or manually, you can invoke it to request temporary credentials from AWS\. Before you can run an AWS CLI service command, you must retrieve and cache a set of temporary credentials\. To get these temporary credentials, run the following command\.
 
 ```
 $ aws2 sso login --profile my-dev-profile
@@ -178,9 +180,9 @@ Follow the instructions in the browser to complete this authorization request.
 Successully logged into Start URL: https://my-sso-portal.awsapps.com/start
 ```
 
-If you are not currently signed in to your AWS SSO account, then you must provide your AWS SSO user name and password\.
+If you are not currently signed in to your AWS SSO account, you must provide your AWS SSO user name and password\.
 
-If the AWS CLI can't open your browser, then you are prompted to open it yourself and enter the specified code\.
+If the AWS CLI can't open your browser, it prompts you to open it yourself and enter the specified code\.
 
 ```
 $ aws2 sso login --profile my-dev-profile
@@ -192,19 +194,19 @@ and enter the following code:
 QCFK-N451
 ```
 
-The AWS CLI opens your default browser \(or you manually open the browser of your choice\) to the specified page, and enter the provided code\. The web page then prompts you for your AWS SSO credentials\.
+The AWS CLI opens your default browser \(or you manually open the browser of your choice\) to the specified page, and enter the provided code\. The webpage then prompts you for your AWS SSO credentials\.
 
-Your AWS SSO session credentials are cached and include an expiration time stamp\. When the credentials expire, the AWS CLI requests you to sign in to AWS SSO again\.
+Your AWS SSO session credentials are cached and include an expiration timestamp\. When the credentials expire, the AWS CLI requests you to sign in to AWS SSO again\.
 
-If your AWS SSO credentials are valid then the AWS CLI uses them to securely retrieve AWS temporary credentials for the IAM role specified in the profile\. 
+If your AWS SSO credentials are valid, the AWS CLI uses them to securely retrieve AWS temporary credentials for the IAM role specified in the profile\. 
 
 ```
 Welcome, you have successfully signed-in to the AWS-CLI.
 ```
 
-### Running a command with your AWS SSO enabled profile<a name="sso-using-profile-running"></a>
+### Running a Command with Your AWS SSO Enabled Profile<a name="sso-using-profile-running"></a>
 
-You can use these temporary credentials to invoke a AWS CLI command with the associated named profile\. The following example shows that the command was run under an assumed role that is part of the specified account\.
+You can use these temporary credentials to invoke an AWS CLI command with the associated named profile\. The following example shows that the command was run under an assumed role that is part of the specified account\.
 
 ```
 $ aws2 sts get-caller-identity --profile my-dev-profile
@@ -215,7 +217,7 @@ $ aws2 sts get-caller-identity --profile my-dev-profile
 }
 ```
 
-As long as you signed in to AWS SSO and those cached credentials are not expired, the AWS CLI automatically renews expired AWS temporary credentials when needed\. However, if your AWS SSO credentials expire, then you must explicitly renew them by logging in to your AWS SSO account again\.
+As long as you signed in to AWS SSO and those cached credentials are not expired, the AWS CLI automatically renews expired AWS temporary credentials when needed\. However, if your AWS SSO credentials expire, you must explicitly renew them by logging in to your AWS SSO account again\.
 
 ```
 $ aws2 s3 ls --profile my-sso-profile
@@ -224,7 +226,7 @@ SSO authorization page has automatically been opened in your default browser.
 Follow the instructions in the browser to complete this authorization request.
 ```
 
-You can create multiple AWS SSO enabled named profiles that each point to a different AWS account or role\. You can also use the aws sso login command on more than one profile at a time\. If any of them share the same AWS SSO user account, you must login to that AWS SSO user account only once and then they all share a single set of AWS SSO cached credentials\. 
+You can create multiple AWS SSO enabled named profiles that each point to a different AWS account or role\. You can also use the aws sso login command on more than one profile at a time\. If any of them share the same AWS SSO user account, you must log in to that AWS SSO user account only once and then they all share a single set of AWS SSO cached credentials\. 
 
 ```
 # The following command retrieves temporary credentials for the AWS account and role 
@@ -252,13 +254,13 @@ $ aws2 ec2 describe-instances --profile my-first-sso-profile
 $ aws2 ec2 describe-instances --profile my-second-sso-profile
 ```
 
-### Signing out of your AWS SSO sessions<a name="sso-using-profile-sign-out"></a>
+### Signing Out of Your AWS SSO Sessions<a name="sso-using-profile-sign-out"></a>
 
-When you are done using your AWS SSO enabled profiles, you can choose to do nothing and let the AWS temporary credentials and your AWS SSO credentials expire\. However, you can also choose to run the following command to immediately delete all cached credentials in the SSO credential cache folder as well as all AWS temporary credentials that were based on the AWS SSO credentials\. This makes those credentials unavailable to be used for any future command\.
+When you are done using your AWS SSO enabled profiles, you can choose to do nothing and let the AWS temporary credentials and your AWS SSO credentials expire\. However, you can also choose to run the following command to immediately delete all cached credentials in the SSO credential cache folder and all AWS temporary credentials that were based on the AWS SSO credentials\. This makes those credentials unavailable to be used for any future command\.
 
 ```
 $ aws2 sso logout
 Successfully signed out of all SSO profiles.
 ```
 
-If you later want to run commands with one of your AWS SSO enabled profiles, you must again run the `aws sso login` command \(see the previous section\) and specify the profile you want to use\.
+If you later want to run commands with one of your AWS SSO enabled profiles, you must again run the `aws sso login` command \(see the previous section\) and specify the profile to use\.

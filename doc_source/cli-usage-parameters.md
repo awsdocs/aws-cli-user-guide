@@ -1,12 +1,12 @@
 # Specifying Parameter Values for the AWS CLI<a name="cli-usage-parameters"></a>
 
-Many parameters used in the AWS Command Line Interface \(AWS CLI\) are simple string or numeric values, such as the key pair name `my-key-pair` in the following example\. 
+Many parameters used in the AWS Command Line Interface \(AWS CLI\) are simple string or numeric values, such as the key\-pair name `my-key-pair` in the following example\. 
 
 ```
 $ aws ec2 create-key-pair --key-name my-key-pair
 ```
 
-Strings without any space characters can be surrounded with quotation marks or not\. However, you must use quotation marks around strings that include one or more space characters\. Use single quotation marks \(' '\) in Linux, macOS, Unix, or PowerShell\. Use double quotation marks \(" "\) in the Windows command prompt, as shown in the following examples\. 
+You can surround strings without any space characters with quotation marks or not\. However, you must use quotation marks around strings that include one or more space characters\. Use single quotation marks \(' '\) in Linux, macOS, Unix, or PowerShell\. Use double quotation marks \(" "\) in the Windows command prompt, as shown in the following examples\. 
 
 **PowerShell, Linux or macOS**
 
@@ -20,7 +20,7 @@ $ aws ec2 create-key-pair --key-name 'my key pair'
 C:\> aws ec2 create-key-pair --key-name "my key pair"
 ```
 
-Optionally, you can separate the parameter name from the value with an equals sign \(=\) instead of a space\. This is typically necessary only if the value of the parameter starts with a hyphen\.
+Optionally, you can optionally separate the parameter name from the value with an equals sign \(=\) instead of a space\. This is typically necessary only if the value of the parameter starts with a hyphen\.
 
 ```
 $ aws ec2 delete-key-pair --key-name=-mykey
@@ -34,7 +34,7 @@ $ aws ec2 delete-key-pair --key-name=-mykey
 
 ## Common Parameter Types<a name="parameter-types"></a>
 
-This section describes some of the common parameter types and the typical required format\. If you are having trouble formatting a parameter for a specific command, check the help by typing **help** after the command name, for example: 
+This section describes some of the common parameter types and the typical required format\. If you are having trouble formatting a parameter for a specific command, check the help by entering **help** after the command name, as shown\. 
 
 ```
 $ aws ec2 describe-spot-price-history help
@@ -56,7 +56,7 @@ Acceptable formats include:
 + *YYYY*\-*MM*\-*DD*T*hh*:*mm*:*ss\.sss**TZD \(UTC\)*, for example, 2014\-10\-01T20:30:00\.000Z
 + *YYYY*\-*MM*\-*DD*T*hh*:*mm*:*ss\.sss**TZD \(with offset\)*, for example, 2014\-10\-01T12:30:00\.000\-08:00
 + *YYYY*\-*MM*\-*DD*, for example, 2014\-10\-01
-+ Unix time in seconds, for example 1412195400\. This is sometimes referred to as [Unix Epoch Time](https://wikipedia.org/wiki/Unix_time) and represents the number of seconds since midnight, January 1, 1970 UTC\.
++ Unix time in seconds, for example, 1412195400\. This is sometimes referred to as [Unix Epoch time](https://wikipedia.org/wiki/Unix_time) and represents the number of seconds since midnight, January 1, 1970 UTC\.
 
  **List** – One or more strings separated by spaces\. If any of the string items contain a space, you must put quotation marks around that item\.
 
@@ -78,7 +78,7 @@ The output indicates whether the command was well formed\. This command also inc
 $ aws ec2 describe-spot-price-history --max-items 5
 ```
 
- **Blob** – Binary object\. Blob parameters take a path to a local file that contains the binary data\. The path should not contain any protocol identifier, such as `http://` or `file://`\. The specified path is interpreted as being relative to the current working directory\.
+ **Blob** – "Binary large object"\. Blob parameters take a path to a local file that contains the binary data\. The path should not contain any protocol identifier, such as `http://` or `file://`\. The specified path is interpreted as being relative to the current working directory\.
 
 For example, the `--body` parameter for `aws s3api put-object` is a blob\. 
 
@@ -86,10 +86,11 @@ For example, the `--body` parameter for `aws s3api put-object` is a blob\.
 $ aws s3api put-object --bucket my-bucket --key testimage.png --body /tmp/image.png
 ```
 
- **Map** – A set of key\-value pairs specified in [JSON](#cli-usage-parameters-json) or by using the CLI's [shorthand syntax](cli-usage-shorthand.md)\. The following JSON example reads an item from an Amazon DynamoDB table named *my\-table* with a map parameter, `--key`\. The parameter specifies the primary key named *id* with a number value of *1* in a nested JSON structure\. 
+ **Map** – A set of key\-value pairs specified in JSON or by using the CLI's [shorthand syntax](cli-usage-shorthand.md)\. The following JSON example reads an item from an Amazon DynamoDB table named *my\-table* with a map parameter, `--key`\. The parameter specifies the primary key named *id* with a number value of *1* in a nested JSON structure\. 
 
 ```
 $ aws dynamodb get-item --table-name my-table --key '{"id": {"N":"1"}}'
+
 {
     "Item": {
         "name": {
@@ -104,15 +105,15 @@ $ aws dynamodb get-item --table-name my-table --key '{"id": {"N":"1"}}'
 
 ## Using JSON for Parameters<a name="cli-usage-parameters-json"></a>
 
-JSON is useful for specifying complex command line parameters\. For example, the following command uses shorthand notation to list all Amazon EC2 instances that have an instance type of `m1.small` or `m1.medium` that are also in the `us-west-2c` Availability Zone\. 
+JavaScript Object Notation \(JSON\) is useful for specifying complex command line parameters\. For example, the following command uses shorthand notation to list all Amazon EC2 instances that have an instance type of `m1.small` or `m1.medium` that are also in the `us-west-2c` Availability Zone\. 
 
 ```
 $ aws ec2 describe-instances --filters "Name=instance-type,Values=t2.micro,m1.medium" "Name=availability-zone,Values=us-west-2c"
 ```
 
-Instead, you can specify the equivalent list of filters as a JSON array\. Square brackets are used to create an array of JSON objects separated by commas\. Each object is a comma\-separated list of key\-value pairs \(in this example, "Name" and "Values" are both keys\)\.
+Instead, you can also specify the equivalent list of filters as a JSON array\. Square brackets are used to create an array of JSON objects separated by commas\. Each object is a comma\-separated list of key\-value pairs \(in this example, `"Name"` and `"Values"` are both keys\)\.
 
-The value to the right of the "Values" key is itself an array\. This is required, even if the array contains only one value string\. 
+The value to the right of the `"Values"` key is itself an array\. This is required, even if the array contains only one value string\. 
 
 ```
 [
@@ -181,24 +182,24 @@ For more information about JSON, see [JSON\.org](https://json.org), [Wikipedia's
 
 ## Using Quotation Marks with Strings<a name="quoting-strings"></a>
 
-The way you enter JSON\-formatted parameters on the command line differs depending upon your operating system\. 
+The way you enter JSON\-formatted parameters on the command line differs depending on your operating system\. 
 
 Linux, macOS, or Unix  
-Use single quotation marks \(' '\) to enclose the JSON data structure, as in the following example:   
+Use single quotation marks \(' '\) to enclose the JSON data structure, as in the following example\.   
 
 ```
 $ aws ec2 run-instances --image-id ami-12345678 --block-device-mappings '[{"DeviceName":"/dev/sdb","Ebs":{"VolumeSize":20,"DeleteOnTermination":false,"VolumeType":"standard"}}]'
 ```
 
 PowerShell  
-PowerShell requires single quotation marks \(' '\) to enclose the JSON data structure, as well as a backslash \(\\\) to escape each double quotation mark \("\) within the JSON structure, as in the following example:   
+PowerShell requires single quotation marks \(' '\) to enclose the JSON data structure, and a backslash \(\\\) to escape each double quotation mark \("\) within the JSON structure, as in the following example\.  
 
 ```
 PS C:\> aws ec2 run-instances --image-id ami-12345678 --block-device-mappings '[{\"DeviceName\":\"/dev/sdb\",\"Ebs\":{\"VolumeSize\":20,\"DeleteOnTermination\":false,\"VolumeType\":\"standard\"}}]'
 ```
 
 Windows Command Prompt  
-The Windows command prompt requires double quotation marks \(" "\) to enclose the JSON data structure\. You must then escape \(precede with a backslash \[ \\ \] character\) each double quotation mark \("\) within the JSON data structure itself, as in the following example:   
+The Windows command prompt requires double quotation marks \(" "\) to enclose the JSON data structure\. You must then escape \(precede with a backslash \[ \\ \] character\) each double quotation mark \("\) within the JSON data structure itself, as in the following example\.   
 
 ```
 C:\> aws ec2 run-instances --image-id ami-12345678 --block-device-mappings "[{\"DeviceName\":\"/dev/sdb\",\"Ebs\":{\"VolumeSize\":20,\"DeleteOnTermination\":false,\"VolumeType\":\"standard\"}}]"
@@ -213,24 +214,24 @@ $ aws sqs create-queue --queue-name my-queue --attributes '{ "RedrivePolicy":"{\
 
 ## Loading Parameters from a File<a name="cli-usage-parameters-file"></a>
 
-Some parameters expect file names as arguments, from which the AWS CLI loads the data\. Other parameters enable you to specify the parameter value as either text typed on the command line or read from a file\. Whether a file is required or optional, the file must be encoded correctly to be understood by the AWS CLI\. The file's encoding must match the reading system's default locale\. This can be determined by using the Python `locale.getpreferredencoding()` method\.
+Some parameters expect file names as arguments, from which the AWS CLI loads the data\. Other parameters enable you to specify the parameter value as either text typed on the command line or read from a file\. Whether a file is required or optional, you must encode the file correctly so that the AWS CLI can understand it\. The file's encoding must match the reading system's default locale\. You can be determine this by using the Python `locale.getpreferredencoding()` method\.
 
 **Note**  
-By default, Windows PowerShell outputs text as UTF\-16, which conflicts with the UTF\-8 encoding used by many Linux systems\. We recommend that you use `-Encoding ascii` with your PowerShell `Out-File` commands to ensure the resulting file can be read by the AWS CLI\. 
+By default, Windows PowerShell outputs text as UTF\-16, which conflicts with the UTF\-8 encoding used by many Linux systems\. We recommend that you use `-Encoding ascii` with your PowerShell `Out-File` commands to ensure the AWS CLI can read the resulting file\. 
 
-Sometimes it's convenient to load a parameter value from a file instead of trying to type it all as a command line parameter value, such as when the parameter is a complex JSON string\. To specify a file that contains the value, specify a file URL in the following format:
+Sometimes it's convenient to load a parameter value from a file instead of trying to type it all as a command line parameter value, such as when the parameter is a complex JSON string\. To specify a file that contains the value, specify a file URL in the following format\.
 
 ```
 file://complete/path/to/file
 ```
 
-The first two slash '/' characters are part of the specification\. If the required path begins with a '/', then the result is three slash characters: `file:///folder/file`\.
+The first two slash '/' characters are part of the specification\. If the required path begins with a '/', the result is three slash characters: `file:///folder/file`\.
 
 The URL provides the path to the file that contains the actual parameter content\. 
 
 **Note**  
-This behaviour is disabled automatically for parameters that already expect a URL, such as parameter that identifies a AWS CloudFormation template URL\.  
-You can also disable this behaviour yourself by adding the following line to your CLI configuration file:  
+This behavior is disabled automatically for parameters that already expect a URL, such as parameter that identifies a AWS CloudFormation template URL\.  
+You can also disable this behavior by adding the following line to your CLI configuration file\.  
 
 ```
 cli_follow_urlparam = false
@@ -257,7 +258,7 @@ C:\> aws ec2 describe-instances --filters file://C:\temp\filter.json
 
 The `file://` prefix option supports Unix\-style expansions, including "`~/`", "`./`", and "`../`"\. On Windows, the "`~/`" expression expands to your user directory, stored in the `%USERPROFILE%` environment variable\. For example, on Windows 10 you would typically have a user directory under `C:\Users\User Name\`\.
 
-JSON documents that are embedded as the value of another JSON document must still be escaped\.
+You must still escape JSON documents that are embedded as the value of another JSON document\.
 
 ```
 $ aws sqs create-queue --queue-name my-queue --attributes file://attributes.json
@@ -316,4 +317,4 @@ The preceding example assumes that the file `filename.json` contains the followi
 ]
 ```
 
-For another example referencing a file containing more complex JSON\-formatted parameters, see [Attach an IAM Managed Policy to an IAM User](cli-services-iam-policy.md)\. 
+For another example referencing a file containing more complex JSON\-formatted parameters, see [Attaching an IAM Managed Policy to an IAM User](cli-services-iam-policy.md)\. 

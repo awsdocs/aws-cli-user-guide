@@ -16,7 +16,7 @@ Command completion is automatically configured and enabled by default on Amazon 
 
 ## Identify Your Shell<a name="cli-command-completion-shell"></a>
 
-If you're not sure which shell you're using, you can identify it with one of the following commands:
+If you're not sure which shell you're using, you can use one of the following commands to identify it\.
 
 **echo $SHELL** – Show the shell's program file name\. This usually matches the name of the in\-use shell, unless you launched a different shell after logging in\.
 
@@ -25,7 +25,7 @@ $ echo $SHELL
 /bin/bash
 ```
 
-**ps** – Show the processes running for the current user\. The shell will be one of them\.
+**ps** – Show the processes running for the current user\. One of them is the shell\.
 
 ```
 $ ps
@@ -47,7 +47,7 @@ $ which aws_completer
 /usr/local/aws/bin/aws_completer
 ```
 
-If you used the `--user` parameter on the pip install command, then the completer is typically found in the `local/bin` folder under your `$HOME` folder\.
+If you used the `--user` parameter on the `pip` install command, you can typically find the completer in the `local/bin` folder under your `$HOME` folder\.
 
 ```
 $ which aws_completer
@@ -103,14 +103,14 @@ For the AWS completer to work successfully, you must first add it to your comput
 
 ## Enable Command Completion<a name="cli-command-completion-enable"></a>
 
-Run a command to enable command completion\. The command that you use to enable completion depends on the shell that you're using\. You can add the command to your shell's RC file to run it each time you open a new shell\. In each command, replace the path `/usr/local/aws/bin` with the one found on your system in the previous section\.
+Run a command to enable command completion\. The command that you use depends on the shell that you're using\. You can add the command to your shell's RC file to run it each time you open a new shell\. In each command, replace the path `/usr/local/aws/bin` with the one found on your system in the previous section\.
 + **`bash`** – Use the built\-in command `complete`\.
 
   ```
   $ complete -C '/usr/local/aws/bin/aws_completer' aws
   ```
 
-  Add the command to `~/.bashrc` to run it each time you open a new shell\. Your `~/.bash_profile` should source `~/.bashrc` to ensure that the command is run in login shells as well\.
+  Add the command to `~/.bashrc` to run it each time you open a new shell\. Your `~/.bash_profile` should source `~/.bashrc` to ensure that the command is also run in login shells\.
 +  **`tcsh`** – Complete for `tcsh` takes a word type and pattern to define the completion behavior\. 
 
   ```
@@ -124,7 +124,7 @@ Run a command to enable command completion\. The command that you use to enable 
   % source /usr/local/aws/bin/aws_zsh_completer.sh
   ```
 
-  The AWS CLI uses bash compatibility autocompletion \(`bashcompinit`\) for `zsh` support\. For more details, see the top of `aws_zsh_completer.sh`\.
+  The AWS CLI uses `bash` compatibility autocompletion \(`bashcompinit`\) for `zsh` support\. For more details, see the top of `aws_zsh_completer.sh`\.
 
   Add the command to `~/.zshrc` to run it each time you open a new shell\.
 

@@ -22,8 +22,6 @@ $ aws s3api help
 The AWS CLI supports copying, moving, and syncing from Amazon S3 to Amazon S3 using the *server\-side* `COPY` operation provided by Amazon S3\. This means that your files are kept in the cloud, and are *not* downloaded to the client machine, then back up to Amazon S3\.  
 When operations such as these can be performed completely in the cloud, only the bandwidth necessary for the HTTP request and response is used\.
 
-For examples of Amazon S3 usage, see the following topics in this section\.
-
 **Topics**
 + [Using High\-Level \(`s3`\) Commands with the AWS CLI](cli-services-s3-commands.md)
 + [Using API\-Level \(`s3api`\) Commands with the AWS CLI](cli-services-s3-apicommands.md)

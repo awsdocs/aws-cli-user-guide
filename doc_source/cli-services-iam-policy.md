@@ -1,12 +1,12 @@
-# Attach an IAM Managed Policy to an IAM User<a name="cli-services-iam-policy"></a>
+# Attaching an IAM Managed Policy to an IAM User<a name="cli-services-iam-policy"></a>
 
-This topic describes how to use AWS Command Line Interface \(AWS CLI\) commands to attach an IAM policy to an IAM user\. The policy in this example provides the user with "Power User Access"\.
+This topic describes how to use AWS Command Line Interface \(AWS CLI\) commands to attach an AWS Identity and Access Management \(IAM\) policy to an IAM user\. The policy in this example provides the user with "Power User Access"\.
 
 Before you run any commands, set your default credentials\. For more information, see [Configuring the AWS CLI](cli-chap-configure.md)\.
 
 **To attach an IAM managed policy to an IAM user**
 
-1. Determine the ARN of the policy to attach\. The following command uses `list-policies` to find the ARN of the policy with the name `PowerUserAccess`\. It then stores that ARN in an environment variable\.
+1. Determine the Amazon Resource Name \(ARN\) of the policy to attach\. The following command uses `list-policies` to find the ARN of the policy with the name `PowerUserAccess`\. It then stores that ARN in an environment variable\.
 
    ```
    $ export POLICYARN=$(aws iam list-policies --query 'Policies[?PolicyName==`PowerUserAccess`].{ARN:Arn}' --output text)       ~
@@ -33,7 +33,5 @@ Before you run any commands, set your default credentials\. For more information
        ]
    }
    ```
-
-## Additional Resources<a name="cli-services-iam-addlresource"></a>
 
 For more information, see [Access Management Resources](https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-additional-resources.html)\. This topic provides links to an overview of permissions and policies, and links to examples of policies for accessing Amazon S3, Amazon EC2, and other services\.

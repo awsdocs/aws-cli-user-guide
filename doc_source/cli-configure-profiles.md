@@ -49,7 +49,7 @@ To use a named profile for multiple commands, you can avoid specifying the profi
 $ export AWS_PROFILE=user1
 ```
 
-Setting the environment variable changes the default profile until the end of your shell session, or until you set the variable to a different value\. You can make environment variables persistent across future sessions by putting them in your shell's startup script\. For more information, see [Environment Variables](cli-configure-envvars.md)\.
+Setting the environment variable changes the default profile until the end of your shell session, or until you set the variable to a different value\. You can make environment variables persistent across future sessions by putting them in your shell's startup script\. For more information, see [Environment Variables To Configure the AWS CLI](cli-configure-envvars.md)\.
 
 **Windows**
 

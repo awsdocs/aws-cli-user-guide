@@ -14,42 +14,43 @@ Specifies which AWS Region to send this command's AWS request to\. For a list of
 
 **\-\-output *<string>***  
 Specifies the output format to use for this command\. You can specify any of the following values:  
-+ **`json`**: The output is formatted as a [JSON](https://json.org/) string\.
-+ **`text`**: The output is formatted as multiple lines of tab\-separated string values, which can be useful if you want to pass the output to a text processor, like `grep`, `sed`, or `awk`\.
-+ **`table`**: The output is formatted as a table using the characters \+\|\- to form the cell borders\. It typically presents the information in a "human\-friendly" format that is much easier to read than the others, but not as programmatically useful\.
++ [**`json`**](cli-usage-output.md#json-output): The output is formatted as a [JSON](https://json.org/) string\.
++ [**`yaml`**](cli-usage-output.md#yaml-output): The output is formatted as a [YAML](https://yaml.org/) string\. *\(available in AWS CLI version 2 only\)*
++ [**`text`**](cli-usage-output.md#text-output): The output is formatted as multiple lines of tab\-separated string values, which can be useful if you want to pass the output to a text processor, like `grep`, `sed`, or `awk`\.
++ [**`table`**](cli-usage-output.md#table-output): The output is formatted as a table using the characters \+\|\- to form the cell borders\. It typically presents the information in a "human\-friendly" format that is much easier to read than the others, but not as programmatically useful\.
 
 **\-\-endpoint\-url *<string>***  
 Specifies the URL to send the request to\. For most commands, the AWS CLI automatically determines the URL based on the selected service and the specified AWS Region\. However, some commands require that you specify an account\-specific URL\. You can also configure some AWS services to [host an endpoint directly within your private VPC](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html#what-is-privatelink), which might then need to be specified\.   
 For a list of the standard service endpoints available in each Region, see [AWS Regions and Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html) in the *Amazon Web Services General Reference*\.
 
 **\-\-debug**  
-A boolean switch that specifies that you want to enable debug logging\. This includes additional diagnostic information about the operation of the command that can be useful when troubleshooting why a command provides unexpected results\.
+A Boolean switch that enables debug logging\. This includes additional diagnostic information about the operation of the command that can be useful when troubleshooting why a command provides unexpected results\.
 
 **\-\-no\-paginate**  
-A boolean switch that disables automatic pagination of the output\.
+A Boolean switch that disables automatic pagination of the output\.
 
 **\-\-query *<string>***  
 Specifies a [JMESPath query](http://jmespath.org/) to use in filtering the response data\. For more information, see [How to Filter the Output with the `--query` Option](cli-usage-output.md#cli-usage-output-filter)\.
 
 **\-\-version**  
-A boolean switch that displays the current version of the AWS CLI program that is running\.
+A Boolean switch that displays the current version of the AWS CLI program that is running\.
 
 **\-\-color *<string>***  
 Specifies support for color output\. Valid values are `on`, `off`, and `auto`\. The default value is `auto`\.
 
 **\-\-no\-sign\-request**  
-A boolean switch that disables signing the HTTP requests to the AWS service endpoint\. This prevents credentials from being loaded\.
+A Boolean switch that disables signing the HTTP requests to the AWS service endpoint\. This prevents credentials from being loaded\.
 
 **\-\-ca\-bundle *<string>***  
-Specifies the CA certificate bundle to use when verifying SSL certificates\.
+Specifies the certificate authority \(CA\) certificate bundle to use when verifying SSL certificates\.
 
 **\-\-cli\-read\-timeout *<integer>***  
-Specifies the maximum socket read time in seconds\. If the value is set to 0, the socket read waits indefinitely \(is blocking\) and doesn't timeout\.
+Specifies the maximum socket read time in seconds\. If the value is set to zero \(0\) the socket read waits indefinitely \(is blocking\) and doesn't timeout\.
 
 **\-\-cli\-connect\-timeout *<integer>***  
-Specifies the maximum socket connect time in seconds\. If the value is set to 0, the socket connect waits indefinitely \(is blocking\) and doesn't timeout\.
+Specifies the maximum socket connect time in seconds\. If the value is set to zero \(0\), the socket connect waits indefinitely \(is blocking\) and doesn't timeout\.
 
-When you provide one or more of these options as command line parameters, it overrides the default configuration or any corresponding profile setting for that single command\. 
+When you provide one or more of these options as command line parameters, they override the default configuration, any corresponding profile setting, or environment variable setting for that single command\. 
 
 Each option that takes an argument requires a space or equals sign \(=\) separating the argument from the option name\. If the argument value is a string that contains a space, you must use quotation marks around the argument\.
 

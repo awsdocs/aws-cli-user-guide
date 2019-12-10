@@ -47,7 +47,7 @@ DESCRIPTION
 ```
 
 Synopsis  
-The basic syntax for using the command and its options\. If an option is shown in square brackets, it's either optional, has a default value, or has an alternative option that you can use instead\.  
+The basic syntax for using the command and its options\. If an option is shown in square brackets, it's optional, has a default value, or has an alternative option that you can use\.  
 
 ```
 SYNOPSIS
@@ -61,7 +61,7 @@ SYNOPSIS
           [--max-items <value>]
           [--generate-cli-skeleton]
 ```
-For example, `describe-instances` has a default behavior that describes ***all*** instances in the current account and AWS Region\. You can optionally specify a list of `instance-ids` to describe one or more instances\. `dry-run` is an optional boolean flag that doesn't take a value\. To use a boolean flag, specify either shown value, in this case `--dry-run` or `--no-dry-run`\. Likewise, `--generate-cli-skeleton` doesn't take a value\. If there are conditions on an option's use, they are described in the `OPTIONS` section, or shown in the examples\.
+For example, `describe-instances` has a default behavior that describes ***all*** instances in the current account and AWS Region\. You can optionally specify a list of `instance-ids` to describe one or more instances; `dry-run` is an optional Boolean flag that doesn't take a value\. To use a Boolean flag, specify either shown value, in this case `--dry-run` or `--no-dry-run`\. Likewise, `--generate-cli-skeleton` doesn't take a value\. If there are conditions on an option's use, they are described in the `OPTIONS` section, or shown in the examples\.
 
 Options  
 A description of each of the options shown in the synopsis\.  
@@ -160,7 +160,7 @@ OUTPUT
                             is an opaque internal value and should be ignored.
 ...
 ```
-When the output is rendered into JSON by the AWS CLI, it becomes an array of reservation objects, similar to the following example\.  
+When the AWS CLI renders the output into JSON, it becomes an array of reservation objects, similar to the following example\.  
 
 ```
 {
@@ -199,15 +199,15 @@ The help files contain links that cannot be viewed or navigated to from the comm
 
 ## API Documentation<a name="api-reference"></a>
 
-All commands in the AWS CLI correspond to requests made to an AWS service's public API\. Each service with a public API has an API reference that can be found on the service's homepage on the [AWS Documentation website](http://aws.amazon.com/documentation/)\. The content for an API reference varies based on how the API is constructed and which protocol is used\. Typically, an API reference contains detailed information about the actions supported by the API, the data sent to and from the service, and any error conditions that the service can report\. 
+All commands in the AWS CLI correspond to requests made to an AWS service's public API\. Each service with a public API has an API reference that can be found on the service's home page on the [AWS Documentation website](http://aws.amazon.com/documentation/)\. The content for an API reference varies based on how the API is constructed and which protocol is used\. Typically, an API reference contains detailed information about the operations supported by the API, the data sent to and from the service, and any error conditions that the service can report\. 
 
 **API Documentation Sections**
-+  **Actions** – Detailed information on each action and its parameters \(including constraints on length or content, and default values\)\. It lists the errors that can occur for this action\. Each action corresponds to a subcommand in the AWS CLI\. 
-+  **Data Types** – Detailed information about structures that a command might require as a parameter or return in response to a request\.
++  **Actions** – Detailed information on each operation and its parameters \(including constraints on length or content, and default values\)\. It lists the errors that can occur for this operation\. Each operation corresponds to a subcommand in the AWS CLI\. 
++  **Data Types** – Detailed information about structures that a command might require as a parameter, or return in response to a request\.
 +  **Common Parameters** – Detailed information about the parameters that are shared by all of action for the service\. 
-+  **Common Errors** – Detailed information about errors that can be returned by any of the service's actions\. 
++  **Common Errors** – Detailed information about errors that can be returned by any of the service's operations\. 
 
-The name and availability of each section can vary depending on the service\. 
+The name and availability of each section can vary, depending on the service\. 
 
 **Service\-specific CLIs**  
 Some services have a separate CLI that dates from before a single AWS CLI was created to work with all services\. These service\-specific CLIs have separate documentation that is linked from the service's documentation page\. Documentation for service\-specific CLIs does not apply to the AWS CLI\. 

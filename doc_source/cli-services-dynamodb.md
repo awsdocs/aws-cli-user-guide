@@ -5,23 +5,22 @@ The AWS Command Line Interface \(AWS CLI\) provides support for all of the AWS d
 To list the AWS CLI commands for DynamoDB, use the following command\.
 
 ```
-aws dynamodb help
+$ aws dynamodb help
 ```
 
 Before you run any commands, set your default credentials\. For more information, see [Configuring the AWS CLI](cli-chap-configure.md)\.
 
-The command line format consists of an Amazon DynamoDB API name, followed by the parameters for that API\. The AWS CLI supports the CLI [shorthand syntax](cli-usage-shorthand.md) for the parameter values, as well as full JSON\.
+The command line format consists of an DynamoDB command name, followed by the parameters for that command\. The AWS CLI supports the CLI [shorthand syntax](cli-usage-shorthand.md) for the parameter values, and full JSON\.
 
 For example, the following command creates a table named `MusicCollection`\. 
 
 **Note**  
-For readability, long commands in this section are broken into separate lines\. The backslash character is the line continuation character for the Linux command line, and lets you copy and paste \(or enter\) multiple lines at a Linux prompt\. If you are using a shell that doesn't use the backslash for line continuation, replace the backslash with that shell's line continuation character\. Or remove the backslashes and put the entire command on a single line\.
+For readability, long commands in this section are broken into separate lines\. The backslash \( \\ \) character is the line continuation character for the Linux command line, and lets you copy and paste \(or enter\) multiple lines at a Linux prompt\. If you're using a shell that doesn't use the backslash for line continuation, replace the backslash with that shell's line continuation character\. Or remove the backslashes and put the entire command on a single line\.
 
 ```
 $ aws dynamodb create-table \
     --table-name MusicCollection \
-    --attribute-definitions \
-        AttributeName=Artist,AttributeType=S AttributeName=SongTitle,AttributeType=S \
+    --attribute-definitions AttributeName=Artist,AttributeType=S AttributeName=SongTitle,AttributeType=S \
     --key-schema AttributeName=Artist,KeyType=HASH AttributeName=SongTitle,KeyType=RANGE \
     --provisioned-throughput ReadCapacityUnits=1,WriteCapacityUnits=1
 ```
@@ -34,7 +33,8 @@ $ aws dynamodb put-item \
     --item '{
         "Artist": {"S": "No One You Know"},
         "SongTitle": {"S": "Call Me Today"} ,
-        "AlbumTitle": {"S": "Somewhat Famous"} }' \
+        "AlbumTitle": {"S": "Somewhat Famous"} 
+      }' \
     --return-consumed-capacity TOTAL
 {
     "ConsumedCapacity": {
@@ -42,13 +42,16 @@ $ aws dynamodb put-item \
         "TableName": "MusicCollection"
     }
 }
+
 $ aws dynamodb put-item \
     --table-name MusicCollection \
     --item '{ 
         "Artist": {"S": "Acme Band"}, 
         "SongTitle": {"S": "Happy Day"} , 
-        "AlbumTitle": {"S": "Songs About Life"} }' \
+        "AlbumTitle": {"S": "Songs About Life"} 
+      }' \
     --return-consumed-capacity TOTAL
+
 {
     "ConsumedCapacity": {
         "CapacityUnits": 1.0,
@@ -66,7 +69,7 @@ It can be difficult to compose valid JSON in a single\-line command\. To make th
 }
 ```
 
-You can use that file to issue a `query` request using the AWS CLI\. In the following example, the content of the `expression-attributes.json` file is used for the `--expression-attribute-values` parameter\.
+You can use that file to issue a `query` request using the AWS CLI\. In the following example, the content of the `expression-attributes.json` file is used as the value for the `--expression-attribute-values` parameter\.
 
 ```
 $ aws dynamodb query --table-name MusicCollection \
@@ -94,7 +97,7 @@ $ aws dynamodb query --table-name MusicCollection \
 
 For more information about using the AWS CLI with DynamoDB, see [DynamoDB](https://docs.aws.amazon.com/cli/latest/reference/dynamodb/index.html) in the *AWS CLI Command Reference*\.
 
-In addition to DynamoDB, you can use the AWS CLI with DynamoDB Local\. DynamoDB Local is a small client\-side database and server that mimics the DynamoDB service\. DynamoDB Local enables you to write applications that use the DynamoDB API, without actually manipulating any tables or data in the DynamoDB web service\. Instead, all of the API actions are rerouted to a local database\. This lets you save on provisioned throughput, data storage, and data transfer fees\.
+In addition to DynamoDB, you can use the AWS CLI with DynamoDB Local\. DynamoDB Local is a small client\-side database and server that mimics the DynamoDB service\. DynamoDB Local enables you to write applications that use the DynamoDB API, without manipulating any tables or data in the DynamoDB web service\. Instead, all of the API actions are rerouted to a local database\. This lets you save on provisioned throughput, data storage, and data transfer fees\.
 
 For more information about DynamoDB Local and how to use it with the AWS CLI, see the following sections of the [Amazon DynamoDB Developer Guide](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/):
 + [DynamoDB Local](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tools.DynamoDBLocal.html)

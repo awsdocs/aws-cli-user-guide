@@ -2,16 +2,15 @@
 
 On Linux or macOS, you can use the bundled installer to install version 1 of the AWS Command Line Interface \(AWS CLI\)\. The bundled installer includes all dependencies and can be used offline\.
 
-**Important**  
-On January 10th, 2020, AWS CLI version 1\.17 and later will no longer support Python 2\.6 or Python 3\.3\. After this date, the installer for the AWS CLI will require Python 2\.7, Python 3\.4, or a later version to successfully install the AWS CLI\. For more information, see [Using the AWS CLI version 1 with Python 2\.6 or Python 3\.3](deprecate-python-26-33.md) in this guide, and the [deprecation announcement in this blog post](https://aws.amazon.com/blogs/developer/deprecation-of-python-2-6-and-python-3-3-in-botocore-boto3-and-the-aws-cli/)\.
+The bundled installer doesn't support installing to paths that contain spaces\.
 
 **Important**  
-The bundled installer doesn't support installing to paths that contain spaces\.
+On January 10th, 2020, AWS CLI version 1\.17 and later will no longer support Python 2\.6 or Python 3\.3\. After this date, the installer for the AWS CLI will require Python 2\.7, Python 3\.4, or a later version to successfully install the AWS CLI\. For more information, see [Using the AWS CLI version 1 with Python 2\.6 or Python 3\.3](deprecate-python-26-33.md) in this guide, and the [deprecation announcement in this blog post](https://aws.amazon.com/blogs/developer/deprecation-of-python-2-6-and-python-3-3-in-botocore-boto3-and-the-aws-cli/)\.
 
 **Topics**
 + [Prerequisites](#install-bundle-other-os-prereq)
 + [Install the AWS CLI version 1 Using the Bundled Installer](#install-bundle-other)
-+ [Install the AWS CLI version 1 without `sudo` \(Linux or macOS\)](#install-bundle-user)
++ [Install the AWS CLI version 1 without Sudo \(Linux or macOS\)](#install-bundle-user)
 + [Uninstall the AWS CLI version 1](#install-bundle-uninstall)
 
 ## Prerequisites<a name="install-bundle-other-os-prereq"></a>
@@ -28,12 +27,12 @@ If your computer doesn't already have Python installed, or you would like to ins
 
 ## Install the AWS CLI version 1 Using the Bundled Installer<a name="install-bundle-other"></a>
 
-The steps below enable you to install the AWS CLI version 1 from the command line on any build of Linux or macOS\.
+The following steps enable you to install the AWS CLI version 1 from the command line on any build of Linux or macOS\.
 
-To download it directly \(without using curl\) use this link:
+To download it directly \(without using `curl`\), use this link:
 + [https://s3.amazonaws.com/aws-cli/awscli-bundle.zip](https://s3.amazonaws.com/aws-cli/awscli-bundle.zip)
 
-Here are a summary of the installation commands explained below that you can cut and paste to run as a single set of commands\.
+The following is a summary of the installation commands explained below that you can cut and paste to run as a single set of commands\.
 
 ```
 curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
@@ -45,13 +44,13 @@ Follow these steps from the command line to install the AWS CLI version 1 using 
 
 **To install the AWS CLI version 1 using the bundled installer**
 
-1. Download the AWS CLI version 1 Bundled Installer using the following command:
+1. Download the AWS CLI version 1 bundled installer using the following command\.
 
    ```
    $ curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
    ```
 
-1. Unzip the package\.
+1. Extract the files from the package\.
 
    ```
    $ unzip awscli-bundle.zip
@@ -65,7 +64,7 @@ If you don't have `unzip`, use your Linux distribution's built\-in package manag
    $ sudo ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
    ```
 **Note**  
-By default, the install script runs under the system default version of Python\. If you have installed an alternative version of Python and want to use that to install the AWS CLI, run the install script with that version by absolute path to the Python executable\. For example:  
+By default, the install script runs under the system default version of Python\. If you have installed an alternative version of Python and want to use that to install the AWS CLI, run the install script with that version by absolute path to the Python executable, as follows\.  
 
    ```
    $ sudo /usr/local/bin/python3.7 awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
@@ -79,9 +78,9 @@ To see an explanation of the `-i` and `-b` options, use the `-h` option\.
 $ ./awscli-bundle/install -h
 ```
 
-## Install the AWS CLI version 1 without `sudo` \(Linux or macOS\)<a name="install-bundle-user"></a>
+## Install the AWS CLI version 1 without Sudo \(Linux or macOS\)<a name="install-bundle-user"></a>
 
-If you don't have `sudo` permissions or want to install the AWS CLI only for the current user, you can use a modified version of the previous commands\. The first two commands are the same\. The last command uses the \-b parameter to specify the folder where the installer places the `aws` symlink file\. You must have write permissions to the specified folder\.
+If you don't have `sudo` permissions or want to install the AWS CLI only for the current user, you can use a modified version of the previous commands\. The first two commands are the same\. The last command uses the `-b` parameter to specify the folder where the installer places the `aws` symlink file\. You must have write permissions to the specified folder\.
 
 ```
 $ curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"

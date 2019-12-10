@@ -1,6 +1,6 @@
-# Set an Initial Password for an IAM User<a name="cli-services-iam-set-pw"></a>
+# Setting an Initial Password for an IAM User<a name="cli-services-iam-set-pw"></a>
 
-This topic describes how to use AWS Command Line Interface \(AWS CLI\) commands to set an initial password for an IAM user\.
+This topic describes how to use AWS Command Line Interface \(AWS CLI\) commands to set an initial password for an AWS Identity and Access Management\( IAM\) user\.
 
 Before you run any commands, set your default credentials\. For more information, see [Configuring the AWS CLI](cli-chap-configure.md)\.
 
