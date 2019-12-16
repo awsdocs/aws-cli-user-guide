@@ -40,7 +40,7 @@ $ export HTTPS_PROXY=http://username:password@proxy.example.com:5678
 
 ```
 C:\> setx HTTP_PROXY http://username:password@proxy.example.com:1234
-C:\> setx HTTPS_PROXY=http://username:password@proxy.example.com:5678
+C:\> setx HTTPS_PROXY http://username:password@proxy.example.com:5678
 ```
 
 **Note**  
