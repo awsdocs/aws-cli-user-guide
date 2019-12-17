@@ -76,10 +76,10 @@ You must specify an AWS Region when using the AWS CLI, either explicitly or by s
 ### Output Format<a name="cli-quick-configuration-format"></a>
 
 The `Default output format` specifies how the results are formatted\. The value can be any of the values in the following list\. If you don't specify an output format, `json` is used as the default\.
-+ [**`json`**](cli-usage-output.md#json-output): The output is formatted as a [JSON](https://json.org/) string\.
-+ [**`yaml`**](cli-usage-output.md#yaml-output): The output is formatted as a [YAML](https://yaml.org/) string\. *\(available in AWS CLI version 2 only\)*
-+ [**`text`**](cli-usage-output.md#text-output): The output is formatted as multiple lines of tab\-separated string values, which can be useful if you want to pass the output to a text processor, like `grep`, `sed`, or `awk`\.
-+ [**`table`**](cli-usage-output.md#table-output): The output is formatted as a table using the characters \+\|\- to form the cell borders\. It typically presents the information in a "human\-friendly" format that is much easier to read than the others, but not as programmatically useful\.
++ [**`json`**](cli-usage-output.md#json-output) – The output is formatted as a [JSON](https://json.org/) string\.
++ [**`yaml`**](cli-usage-output.md#yaml-output) – The output is formatted as a [YAML](https://yaml.org/) string\. *\(Available in the AWS CLI version 2 only\.\)*
++ [**`text`**](cli-usage-output.md#text-output) – The output is formatted as multiple lines of tab\-separated string values\. This can be useful to pass the output to a text processor, like `grep`, `sed`, or `awk`\.
++ [**`table`**](cli-usage-output.md#table-output) – The output is formatted as a table using the characters \+\|\- to form the cell borders\. It typically presents the information in a "human\-friendly" format that is much easier to read than the others, but not as programmatically useful\.
 
 ## Creating Multiple Profiles<a name="cli-quick-configuration-multi-profiles"></a>
 

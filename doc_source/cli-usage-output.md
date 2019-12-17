@@ -13,24 +13,24 @@ This topic describes the different ways to control the output from the AWS Comma
 ## How to Select the Output Format<a name="cli-usage-output-format"></a>
 
 The AWS CLI supports four output formats:
-+ [**`json`**](#json-output): The output is formatted as a [JSON](https://json.org/) string\.
-+ [**`yaml`**](#yaml-output): The output is formatted as a [YAML](https://yaml.org/) string\. *\(available in AWS CLI version 2 only\)*
-+ [**`text`**](#text-output): The output is formatted as multiple lines of tab\-separated string values, which can be useful if you want to pass the output to a text processor, like `grep`, `sed`, or `awk`\.
-+ [**`table`**](#table-output): The output is formatted as a table using the characters \+\|\- to form the cell borders\. It typically presents the information in a "human\-friendly" format that is much easier to read than the others, but not as programmatically useful\.
++ [**`json`**](#json-output) – The output is formatted as a [JSON](https://json.org/) string\.
++ [**`yaml`**](#yaml-output) – The output is formatted as a [YAML](https://yaml.org/) string\. *\(Available in the AWS CLI version 2 only\.\)*
++ [**`text`**](#text-output) – The output is formatted as multiple lines of tab\-separated string values\. This can be useful to pass the output to a text processor, like `grep`, `sed`, or `awk`\.
++ [**`table`**](#table-output) – The output is formatted as a table using the characters \+\|\- to form the cell borders\. It typically presents the information in a "human\-friendly" format that is much easier to read than the others, but not as programmatically useful\.
 
 As explained in the [configuration](cli-chap-configure.md) topic, you can specify the output format in three ways:
-+ Using the `output` option in a named profile in the `config` file\. The following example sets the default output format to `text`\.
++ **Using the `output` option in a named profile in the `config` file** – The following example sets the default output format to `text`\.
 
   ```
   [default]
   output=text
   ```
-+ Using the `AWS_DEFAULT_OUTPUT` environment variable\. The following output sets the format to `table` for the commands in this command line session until the variable is changed or the session ends\. Using this environment variable overrides any value set in the `config` file\.
++ **Using the `AWS_DEFAULT_OUTPUT` environment variable** – The following output sets the format to `table` for the commands in this command line session until the variable is changed or the session ends\. Using this environment variable overrides any value set in the `config` file\.
 
   ```
   $ export AWS_DEFAULT_OUTPUT="table"
   ```
-+ Using the `--output` option on the command line\. The following example sets the output of only this one command to `json`\. Using this option on the command overrides any currently set environment variable or the value in the `config` file\.
++ **Using the `--output` option on the command line ** – The following example sets the output of only this one command to `json`\. Using this option on the command overrides any currently set environment variable or the value in the `config` file\.
 
   ```
   $ aws swf list-domains --registration-status REGISTERED --output json
@@ -40,7 +40,7 @@ You can customize and filter the results in any format by using the \-\-query pa
 
 ## JSON Output Format<a name="json-output"></a>
 
-[JSON](https://json.org) is the default output format of the AWS CLI\. Most languages can easily decode JSON strings using built\-in functions or with publicly available libraries\. You can combine JSON output with the [\-\-query option](#cli-usage-output-filter) in powerful ways to filter and format the AWS CLI JSON\-formatted output\. 
+[JSON](https://json.org) is the default output format of the AWS CLI\. Most programming languages can easily decode JSON strings using built\-in functions or with publicly available libraries\. You can combine JSON output with the [\-\-query option](#cli-usage-output-filter) in powerful ways to filter and format the AWS CLI JSON\-formatted output\. 
 
 For more advanced filtering that you might not be able to do with `--query`, you can consider `jq`, a command line JSON processor\. You can download it and find the official tutorial at [http://stedolan\.github\.io/jq/](http://stedolan.github.io/jq/)\.
 
@@ -84,7 +84,7 @@ $ aws iam list-users --output json
 **This feature is available only with version 2 of the AWS CLI\.**  
 The following feature is available only if you use version 2 of the AWS CLI\. It isn't available if you run version 1\. For information about how to install the preview of version 2, see [Installing the AWS CLI version 2](install-cliv2.md)\.
 
-[YAML](https://yaml.org) is a good choice for handling the output programmatically with tools that emit or consume [YAML](https://yaml.org) formatted strings, such as AWS CloudFormation with its support for [YAML formatted templates](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-formats.html)\.
+[YAML](https://yaml.org) is a good choice for handling the output programmatically with services and tools that emit or consume [YAML](https://yaml.org)\-formatted strings, such as AWS CloudFormation with its support for [YAML\-formatted templates](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-formats.html)\.
 
 For more advanced filtering that you might not be able to do with `--query`, you can consider `yq`, a command line YAML processor\. You can download it and find documentation at [http://mikefarah.github.io/yq/](http://mikefarah.github.io/yq/)\.
 
@@ -116,16 +116,16 @@ Users:
 
 ## Text Output Format<a name="text-output"></a>
 
-The *text* format organizes the AWS CLI output into tab\-delimited lines\. It works well with traditional Unix text tools such as `grep`, `sed`, and `awk`, and the text processing performed by PowerShell\. 
+The `text` format organizes the AWS CLI output into tab\-delimited lines\. It works well with traditional Unix text tools such as `grep`, `sed`, and `awk`, and the text processing performed by PowerShell\. 
 
-The text output format follows the basic structure shown below\. The columns are sorted alphabetically by the corresponding key names of the underlying JSON object\.
+The `text` output format follows the basic structure shown below\. The columns are sorted alphabetically by the corresponding key names of the underlying JSON object\.
 
 ```
 IDENTIFIER  sorted-column1 sorted-column2
 IDENTIFIER2 sorted-column1 sorted-column2
 ```
 
-The following is an example of text output\. Each field is tab separated from the others, with an extra tab where there is an empty field\.
+The following is an example of `text` output\. Each field is tab separated from the others, with an extra tab where there is an empty field\.
 
 ```
 $ aws iam list-users --output text
@@ -137,12 +137,12 @@ USERS   arn:aws:iam::123456789012:user/backup/backup-user   2019-09-17T19:30:40+
 USERS   arn:aws:iam::123456789012:user/cli-user             2019-09-17T19:11:39+00:00                               /          AIDA3333333333EXAMPLE   cli-user
 ```
 
-The fourth column is the `PasswordLastUsed` field, and is empty for the last two entries because those users never sign in to the AWS console\.
+The fourth column is the `PasswordLastUsed` field, and is empty for the last two entries because those users never sign in to the AWS Management Console\.
 
 **Important**  
 *We strongly recommend that if you specify `text` output, you also always use the [`--query`](#cli-usage-output-filter) option to ensure consistent behavior*\.   
-This is because the text format alphabetically orders output columns by the key name of the underlying JSON object returned by the AWS service, and similar resources might not have the same key names\. For example, the JSON representation of a Linux\-based EC2 instance might have elements that are not present in the JSON representation of a Windows\-based instance, or vice versa\. Also, resources might have key\-value elements added or removed in future updates, altering the column ordering\. This is where `--query` augments the functionality of the `text` output to provide you with complete control over the output format\.   
-In the following example, the command specifies which elements to display and *defines the ordering* of the columns with the list notation `[key1, key2, ...]`\. This gives you full confidence that the correct key values are always displayed in the expected column\. Finally, notice how the AWS CLI outputs None as values for keys that don't exist\.  
+This is because the text format alphabetically orders output columns by the key name of the underlying JSON object returned by the AWS service, and similar resources might not have the same key names\. For example, the JSON representation of a Linux\-based Amazon EC2 instance might have elements that are not present in the JSON representation of a Windows\-based instance, or vice versa\. Also, resources might have key\-value elements added or removed in future updates, altering the column ordering\. This is where `--query` augments the functionality of the `text` output to provide you with complete control over the output format\.   
+In the following example, the command specifies which elements to display and *defines the ordering* of the columns with the list notation `[key1, key2, ...]`\. This gives you full confidence that the correct key values are always displayed in the expected column\. Finally, notice how the AWS CLI outputs None as the value for keys that don't exist\.  
 
 ```
 $ aws iam list-users --output text --query 'Users[*].[UserName,Arn,CreateDate,PasswordLastUsed,UserId]'
@@ -154,7 +154,7 @@ backup-user   arn:aws:iam::123456789012:user/backup-user   2019-09-17T19:30:40+0
 cli-user      arn:aws:iam::123456789012:user/cli-backup    2019-09-17T19:11:39+00:00   None                        AIDA3333333333EXAMPLE
 ```
 
-The following example show how you can use `grep` and `awk` with the text output from the `aws ec2 describe-instances` command\. The first command displays the Availability Zone, current state, and the instance ID of each instance in `text` output\. The second command processes that output to display only the instance IDs of all running instances in the `us-west-2a` Availability Zone\.
+The following example shows how you can use `grep` and `awk` with the text output from the `aws ec2 describe-instances` command\. The first command displays the Availability Zone, current state, and the instance ID of each instance in `text` output\. The second command processes that output to display only the instance IDs of all running instances in the `us-west-2a` Availability Zone\.
 
 ```
 $ aws ec2 describe-instances --query 'Reservations[*].Instances[*].[Placement.AvailabilityZone, State.Name, InstanceId]' --output text
@@ -189,7 +189,7 @@ $ aws ec2 describe-instances --query 'Reservations[*].Instances[*].[State.Name, 
 > done
 ```
 
-The `text` output can also be useful in PowerShell\. Because the columns in `text` output are tab\-delimited, you can easily split the output into an array by using PowerShell's ``t` delimiter\. The following command displays the value of the third column \(`InstanceId`\) if the first column \(`AvailabilityZone`\) matches the string `us-west-2a`\.
+The `text` output can also be useful in PowerShell\. Because the columns in `text` output are tab delimited, you can easily split the output into an array by using PowerShell's ``t` delimiter\. The following command displays the value of the third column \(`InstanceId`\) if the first column \(`AvailabilityZone`\) matches the string `us-west-2a`\.
 
 ```
 PS C:\>aws ec2 describe-instances --query 'Reservations[*].Instances[*].[Placement.AvailabilityZone, State.Name, InstanceId]' --output text |
@@ -197,13 +197,13 @@ PS C:\>aws ec2 describe-instances --query 'Reservations[*].Instances[*].[Placeme
 ```
 
 ```
-i-4b41a37c
+-4b41a37c
 i-a071c394
 i-3045b007
 i-6fc67758
 ```
 
-Notice that although the previous example does show how to use the `--query` parameter to parse the underlying JSON objects and pull out the desired column, PowerShell has its own ability to handle JSON that you can use if cross\-platform compatibility isn't a concern\. Instead of handling the output as text, as most command shells require, PowerShell lets you use the `ConvertFrom-JSON` cmdlet to produce a hierarchically structured object\. You can then directly access the member you want from that object\.
+Notice that although the previous example does show how to use the `--query` parameter to parse the underlying JSON objects and pull out the desired column, PowerShell has its own ability to handle JSON, if cross\-platform compatibility isn't a concern\. Instead of handling the output as text, as most command shells require, PowerShell lets you use the `ConvertFrom-JSON` cmdlet to produce a hierarchically structured object\. You can then directly access the member you want from that object\.
 
 ```
 (aws ec2 describe-instances --output json | ConvertFrom-Json).Reservations.Instances.InstanceId
@@ -255,7 +255,7 @@ $ aws iam list-users --output table
 +---------------------------------------------------------------------------------------------------------------------------------------------------------------+
 ```
 
-You can combine the `--query` option with the `table` format to display a set of elements preselected from the raw output\. Notice the output differences between dictionary and list notations: column names are alphabetically ordered in the first example, and unnamed columns are ordered as defined by the user in the second example\. For more information about the `--query` option, see [How to Filter the Output with the `--query` Option](#cli-usage-output-filter)\.
+You can combine the `--query` option with the `table` format to display a set of elements preselected from the raw output\. Notice the output differences between dictionary and list notations: in the first example, column names are ordered alphabetically, and in the second example, unnamed columns are ordered as defined by the user\. For more information about the `--query` option, see [How to Filter the Output with the `--query` Option](#cli-usage-output-filter)\.
 
 ```
 $ aws ec2 describe-volumes --query 'Volumes[*].{ID:VolumeId,InstanceId:Attachments[0].InstanceId,AZ:AvailabilityZone,Size:Size}' --output table
@@ -290,12 +290,12 @@ $ aws ec2 describe-volumes --query 'Volumes[*].[VolumeId,Attachments[0].Instance
 The AWS CLI provides built\-in JSON\-based output filtering capabilities with the `--query` option\. The `--query` parameter accepts strings that are compliant with the [JMESPath specification](http://jmespath.org/)\. 
 
 **Important**  
-The output type you specify \(`json`, `yaml`, `text`, or `table`\) impacts how the `--query` option operates\.  
-If you specify `--output text`, the output is paginated *before* the `--query` filter is applied and the AWS CLI runs the query once on *each page* of the output\. This can result in unexpected extra output, especially if your filter specifies an array element using something like \[0\], because the output then includes the first matching element on each page\. To work around the extra output that can be produced if you use `--output text`, you can specify `--no-paginate`\. This causes the filter to apply only to the complete set of results\. But it does remove any pagination, so it might result in long output\. You can also use other command line tools such as `head` or `tail` to additionally filter the output to only the values you want\. 
-If you specify `--output json`, the output is completely processed as a single, native, JSON structure before the `--query` filter is applied\. The AWS CLI runs the query only once against the entire JSON structure, producing a filtered JSON result that is then output\.
+The output type you specify \(`json`, `yaml`, `text`, or `table`\) impacts how the `--query` option operates:  
+If you specify `--output text`, the output is paginated *before* the `--query` filter is applied, and the AWS CLI runs the query once on *each page* of the output\. This can result in unexpected extra output, especially if your filter specifies an array element using something like \[0\], because the output then includes the first matching element on each page\. To work around the extra output that `--output text` can produce, you can specify `--no-paginate`\. This causes the filter to apply only to the complete set of results\. But it does remove any pagination, so it might result in long output\. You can also use other command line tools such as `head` or `tail` to additionally filter the output to only the values you want\. 
+If you specify `--output json`, the output is completely processed as a single, native JSON structure before the `--query` filter is applied\. The AWS CLI runs the query only once against the entire JSON structure, producing a filtered JSON result that is then output\.
 If you specify `--output yaml`, the output is completely processed as a single, native JSON structure before the `--query` filter is applied\. The AWS CLI runs the query only once against the entire JSON structure, producing a filtered JSON result that is then converted to YAML and output\.
 
-To demonstrate how `--query` works, we first start with the following default JSON output\. This describes two Amazon Elastic Block Store \(Amazon EBS\) volumes attached to separate Amazon EC2 instances\.
+To demonstrate how `--query` works, we start with the following default JSON output\. This describes two Amazon Elastic Block Store \(Amazon EBS\) volumes attached to separate Amazon EC2 instances\.
 
 ```
 $ aws ec2 describe-volumes
@@ -505,7 +505,7 @@ $ aws --region us-east-1 ec2 describe-vpc-endpoint-services \
 ]
 ```
 
-The `--query` parameter also enables you to count items in the output\. The following example displays the number of available volumes that are more than 1000 IOPS by using `length` to count how many in a list\.
+The `--query` parameter also enables you to count items in the output\. The following example displays the number of available volumes that are more than 1000 IOPS by using `length` to count how many are in a list\.
 
 ```
 $ aws ec2 describe-volumes \
@@ -578,6 +578,6 @@ $ aws autoscaling describe-auto-scaling-groups \
     --query 'AutoScalingGroups[*].Instances[?HealthStatus==`Unhealthy`].InstanceId'
 ```
 
-Combined with the three output formats that are explained in more detail in the following sections, the `--query` option is a powerful tool you can use to customize the content and style of outputs\. 
+Combined with the output formats that are explained in more detail previously in this topic, the `--query` option is a powerful tool you can use to customize the content and style of outputs\. 
 
 For more examples and the full spec of JMESPath, the underlying JSON\-processing library, see [http://jmespath\.org/specification\.html](http://jmespath.org/specification.html)\.

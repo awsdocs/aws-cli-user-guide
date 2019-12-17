@@ -1,14 +1,14 @@
-# Generate the AWS CLI Skeleton and Input Parameters from a JSON or YAML Input File<a name="cli-usage-skeleton"></a>
+# Generating AWS CLI Skeleton and Input Parameters from a JSON or YAML Input File<a name="cli-usage-skeleton"></a>
 
 **Important**  
-**Creating and consuming YAML input skeleton templates is available only with version 2 of the AWS CLI\.** If you use AWS CLI version 1 then you can create and consume only JSON input skeleton templates\.
+**You can create and consume YAML input skeleton templates only with version 2 of the AWS CLI\.** If you use AWS CLI version 1, you can create and consume only JSON input skeleton templates\.
 
 Most of the AWS Command Line Interface \(AWS CLI\) commands support the ability to accept all of the parameter input from a file using the `--cli-input-json` and `--cli-input-yaml` parameters\.
 
-Those same commands helpfully provide the `--generate-cli-skeleton` to generate a file in either JSON or YAML format with all of the parameters that you can edit and fill in\. Then you can run the command with the relevant `--cli-input-json` or `--cli-input-yaml` parameter and point to the filled\-in file\.
+Those same commands helpfully provide the `--generate-cli-skeleton` parameter to generate a file in either JSON or YAML format with all of the parameters that you can edit and fill in\. Then you can run the command with the relevant `--cli-input-json` or `--cli-input-yaml` parameter and point to the filled\-in file\.
 
 **Important**  
-There are several AWS CLI commands that don't map directly to individual AWS API operations, such as the [`aws s3` commands](https://docs.aws.amazon.com/cli/latest/reference/s3/index.html)\. Such commands don't support either the `--generate-cli-skeleton` or `--cli-input-json` and `--cli-input-yaml` parameters that are discussed in this topic\. If you don't know whether a specific command supports these parameters, run the following command, replacing the *service* and *command* names with the ones you're interested in\.  
+Several AWS CLI commands don't map directly to individual AWS API operations, such as the [`aws s3` commands](https://docs.aws.amazon.com/cli/latest/reference/s3/index.html)\. Such commands don't support either the `--generate-cli-skeleton` or `--cli-input-json` and `--cli-input-yaml` parameters described in this topic\. If you don't know whether a specific command supports these parameters, run the following command, replacing the *service* and *command* names with the ones you're interested in\.  
 
 ```
 $ aws service command help
@@ -34,7 +34,7 @@ The `--generate-cli-skeleton` parameter accepts one of the following values:
 + `yaml-input` – The generated template includes all input parameters formatted as YAML\.
 + `output` – The generated template includes all output parameters formatted as JSON\. You can't currently request the output parameters as YAML\.
 
-Because the AWS CLI is essentially a "wrapper" around the service's API, the skeleton file expects you to reference all parameters by their underlying API parameter name\. This is likely different from the AWS CLI parameter name\. For example, an AWS CLI parameter named `user-name` might map to the AWS service's API parameter named `UserName` \(notice the altered capitalization and missing dash\)\. We recommend that you use the `--generate-cli-skeleton` option to generate the template with the "correct" parameter names to avoid errors\. You can also reference the API Reference Guide for the service to see the expected parameter names\. You can delete any parameters from the template that are not required and for which you don't want to supply a value\.
+Because the AWS CLI is essentially a "wrapper" around the service's API, the skeleton file expects you to reference all parameters by their underlying API parameter names\. This is likely different from the AWS CLI parameter name\. For example, an AWS CLI parameter named `user-name` might map to the AWS service's API parameter named `UserName` \(notice the altered capitalization and missing dash\)\. We recommend that you use the `--generate-cli-skeleton` option to generate the template with the "correct" parameter names to avoid errors\. You can also reference the API Reference Guide for the service to see the expected parameter names\. You can delete any parameters from the template that are not required and for which you don't want to supply a value\.
 
 For example, if you run the following command, it generates the parameter template for the Amazon Elastic Compute Cloud \(Amazon EC2\) command run\-instances\.
 
@@ -135,7 +135,7 @@ $ aws ec2 run-instances --generate-cli-skeleton yaml-input
 BlockDeviceMappings:  # The block device mapping entries.
 - DeviceName: ''  # The device name (for example, /dev/sdh or xvdh).
   VirtualName: '' # The virtual device name (ephemeralN).
-  Ebs: # Parameters used to automatically set up EBS volumes when the instance is launched.
+  Ebs: # Parameters used to automatically set up Amazon EBS volumes when the instance is launched.
     DeleteOnTermination: true  # Indicates whether the EBS volume is deleted on instance termination.
     Iops: 0 # The number of I/O operations per second (IOPS) that the volume supports.
     SnapshotId: '' # The ID of the snapshot.
@@ -294,7 +294,7 @@ LicenseSpecifications: # The license configurations.
 
    In this example, we leave the `DryRun` parameter set to `true` to use the Amazon EC2 dry run feature\. This feature lets you safely test the command without actually creating or modifying any resources\. 
 
-1. Fill in the remaining values with values appropriate for your scenario\. In this example, we provide the instance type, key name, security group and identifier of the Amazon Machine Image \(AMI\) to use\. This example assumes the default AWS Region\. The AMI `ami-dfc39aef` is a 64\-bit Amazon Linux image hosted in the `us-west-2` Region\. If you use a different Region, you must [find the correct AMI ID to use](http://aws.amazon.com/amazon-linux-ami/)\.
+1. Fill in the remaining values with values appropriate for your scenario\. In this example, we provide the instance type, key name, security group, and identifier of the Amazon Machine Image \(AMI\) to use\. This example assumes the default AWS Region\. The AMI `ami-dfc39aef` is a 64\-bit Amazon Linux image hosted in the `us-west-2` Region\. If you use a different Region, you must [find the correct AMI ID to use](http://aws.amazon.com/amazon-linux-ami/)\.
 
 ------
 #### [ JSON ]
@@ -356,7 +356,7 @@ LicenseSpecifications: # The license configurations.
 
 ------
 
-   The dry run error indicates that the JSON or YAML is formed correctly and that the parameter values are valid\. If any other issues are reported in the output, fix them and repeat the previous step until the "Request would have succeeded" message is displayed\. 
+   The dry run error indicates that the JSON or YAML is formed correctly and that the parameter values are valid\. If other issues are reported in the output, fix them and repeat the previous step until the "Request would have succeeded" message is displayed\. 
 
 1. Now you can set the DryRun parameter to false to disable dry run\.
 

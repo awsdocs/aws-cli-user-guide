@@ -14,10 +14,10 @@ Specifies which AWS Region to send this command's AWS request to\. For a list of
 
 **\-\-output *<string>***  
 Specifies the output format to use for this command\. You can specify any of the following values:  
-+ [**`json`**](cli-usage-output.md#json-output): The output is formatted as a [JSON](https://json.org/) string\.
-+ [**`yaml`**](cli-usage-output.md#yaml-output): The output is formatted as a [YAML](https://yaml.org/) string\. *\(available in AWS CLI version 2 only\)*
-+ [**`text`**](cli-usage-output.md#text-output): The output is formatted as multiple lines of tab\-separated string values, which can be useful if you want to pass the output to a text processor, like `grep`, `sed`, or `awk`\.
-+ [**`table`**](cli-usage-output.md#table-output): The output is formatted as a table using the characters \+\|\- to form the cell borders\. It typically presents the information in a "human\-friendly" format that is much easier to read than the others, but not as programmatically useful\.
++ [**`json`**](cli-usage-output.md#json-output) – The output is formatted as a [JSON](https://json.org/) string\.
++ [**`yaml`**](cli-usage-output.md#yaml-output) – The output is formatted as a [YAML](https://yaml.org/) string\. *\(Available in the AWS CLI version 2 only\.\)*
++ [**`text`**](cli-usage-output.md#text-output) – The output is formatted as multiple lines of tab\-separated string values\. This can be useful to pass the output to a text processor, like `grep`, `sed`, or `awk`\.
++ [**`table`**](cli-usage-output.md#table-output) – The output is formatted as a table using the characters \+\|\- to form the cell borders\. It typically presents the information in a "human\-friendly" format that is much easier to read than the others, but not as programmatically useful\.
 
 **\-\-endpoint\-url *<string>***  
 Specifies the URL to send the request to\. For most commands, the AWS CLI automatically determines the URL based on the selected service and the specified AWS Region\. However, some commands require that you specify an account\-specific URL\. You can also configure some AWS services to [host an endpoint directly within your private VPC](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html#what-is-privatelink), which might then need to be specified\.   

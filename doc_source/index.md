@@ -44,7 +44,7 @@ Amazon's trademarks and trade dress may not be used in
    + [Getting Help with the AWS CLI](cli-usage-help.md)
    + [Command Structure in the AWS CLI](cli-usage-commandstructure.md)
    + [Specifying Parameter Values for the AWS CLI](cli-usage-parameters.md)
-   + [Generate the AWS CLI Skeleton and Input Parameters from a JSON or YAML Input File](cli-usage-skeleton.md)
+   + [Generating AWS CLI Skeleton and Input Parameters from a JSON or YAML Input File](cli-usage-skeleton.md)
    + [Controlling Command Output from the AWS CLI](cli-usage-output.md)
    + [Using Shorthand Syntax with the AWS CLI](cli-usage-shorthand.md)
    + [Using AWS CLI Pagination Options](cli-usage-pagination.md)
