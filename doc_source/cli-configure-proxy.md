@@ -20,9 +20,9 @@ $ export HTTPS_PROXY=http://proxy.example.com:5678
 
 ```
 C:\> setx HTTP_PROXY http://10.15.20.25:1234
-C:\> setx HTTP_PROXY=http://proxy.example.com:1234
-C:\> setx HTTPS_PROXY=http://10.15.20.25:5678
-C:\> setx HTTPS_PROXY=http://proxy.example.com:5678
+C:\> setx HTTP_PROXY http://proxy.example.com:1234
+C:\> setx HTTPS_PROXY http://10.15.20.25:5678
+C:\> setx HTTPS_PROXY http://proxy.example.com:5678
 ```
 
 ## Authenticating to a Proxy<a name="cli-configure-proxy-auth"></a>
