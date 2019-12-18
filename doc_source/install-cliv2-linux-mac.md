@@ -14,21 +14,21 @@ This section describes how to install, upgrade, and remove the AWS CLI version 2
 + [Verifying the Integrity and Authenticity of the Downloaded Files](#v2-install-linux-mac-validate)
 
 ## Prerequisites<a name="cliv2-linux--mac-prereq"></a>
-
-The AWS CLI version 2 has no dependencies on other software packages\. It has a self\-contained copy of all dependencies included with the installer\. You no longer need to have Python installed first\.
-
-**Linux: **We support the AWS CLI version 2 on recent distributions of CentOS, Fedora, Ubuntu, Amazon Linux 1, and Amazon Linux 2\.
-
-**macOS: **We support the AWS CLI version 2 on versions of macOS that are supported by Apple, including High Sierra \(10\.13\), Mojave \(10\.14\), and Catalina \(10\.15\)\.
++ The AWS CLI version 2 has no dependencies on other software packages\. It has a self\-contained copy of all dependencies included with the installer\. You no longer need to have Python installed first\.
++ You must be able to "unzip" the downloaded package\. If your operating system doesn't have a built\-in `unzip` command, use your favorite package manager to download it or an equivalent\.
++ **Linux: **We support the AWS CLI version 2 on recent distributions of CentOS, Fedora, Ubuntu, Amazon Linux 1, and Amazon Linux 2\.
++ **macOS: **We support the AWS CLI version 2 on versions of macOS that are supported by Apple, including High Sierra \(10\.13\), Mojave \(10\.14\), and Catalina \(10\.15\)\.
 
 ## Installing<a name="cliv2-linux-mac-install"></a>
 
 Follow these steps from the command line to install the AWS CLI on either Linux or macOS\. The only difference in the following commands is the name of the file that you download\. Everything else is the same\.
 
+**Important**  
+Ensure that the paths you install to contain no volume or folder names that contain any spaces or the installation fails\.
+
 We provide the steps in one easy to copy and paste group\. See the descriptions of each line in the steps that follow\. 
-**Note**  
-You can verify that integrity and authenticity of the installation file after you download it\. For more information, see [Verifying the Integrity and Authenticity of the Downloaded Files](#v2-install-linux-mac-validate) before you extract the files from the package\.
-If you don't have `unzip`, use your favorite package manager to install it or an equivalent\.
+
+You can verify that integrity and authenticity of the installation file after you download it and before you extract the files from the package\. For more information, see [Verifying the Integrity and Authenticity of the Downloaded Files](#v2-install-linux-mac-validate)\.
 
 **Commands for Linux**
 
@@ -84,7 +84,11 @@ sudo ./aws/install
    $ sudo ./aws/install
    ```
 
-   The installation command is a file named `install` found in the newly unzipped `aws` folder\. By default, the files are all installed to `/usr/local/aws`, and a symlink is created in `/usr/local/bin`\. The command includes `sudo` to grant write permissions to those folders\. You can install without `sudo` if you specify folders that you already have write permissions to\. You can use the following parameters with the `install` command to specify those folders:
+   The installation command is a file named `install` found in the newly unzipped `aws` folder\. By default, the files are all installed to `/usr/local/aws`, and a symlink is created in `/usr/local/bin`\. The command includes `sudo` to grant write permissions to those folders\. You can install without `sudo` if you specify folders that you already have write permissions to\. 
+
+   You can use the following parameters with the `install` command to specify those folders:
+**Important**  
+Ensure that the paths you provide to the `-i` and `-b` parameters contain no volume name or folder names that contain any space characters or other white space characters\. If there is a space, the installation fails\.
    + `--install-dir` or `-i`
 
      This option specifies the folder to copy all of the files to\. This example installs the files to a folder named `/usr/local/aws-cli`\. You must have write permissions to `/usr/local` to create this folder\. 
