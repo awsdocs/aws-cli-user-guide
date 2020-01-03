@@ -111,7 +111,7 @@ The preview release of the AWS CLI version 2 names the symlink `aws2` to enable 
 
 ## Upgrading<a name="cliv2-linux-mac-upgrade"></a>
 
-To upgrade your copy of the AWS CLI version 2, run the same steps that you used to install it, but this time include the `--update` or `-u` option on the `install` command line\. If the installer finds an existing version of the AWS CLI version 2 in the target installation folder and the `--upgrade` option isn't used, the install fails\.
+To upgrade your copy of the AWS CLI version 2, run the same steps that you used to install it, but this time include the `--update` or `-u` option on the `install` command line\. If the installer finds an existing version of the AWS CLI version 2 in the target installation folder and the `--update` option isn't used, the install fails\.
 
 Find the symlink that the installer created\. This gives you the path to use with the `--bin-dir` parameter\.
 
