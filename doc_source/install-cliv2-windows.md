@@ -4,7 +4,7 @@ This section describes how to install, upgrade, and remove AWS CLI version 2 on 
 
 **Preview Evaluation Software**  
 AWS CLI version 2 is provided as a preview for testing and evaluation\. At this time, we do not recommend using it in a production environment\. For production environments, we recommend that you use the generally available version 1\.x\.  
-You can provide feedback for this developer preview version in the [AWS CLI version 2 GitHub repo](https://github.com/aws/aws-cli/issues?q=is%3Aopen+is\%3Aissue+label%3Av2)\. Be sure to attach the "V2" label to your issue\.
+You can provide feedback for this developer preview version in the [AWS CLI version 2 GitHub repo](https://github.com/aws/aws-cli/issues?q=is%3Aopen+is\%3Aissue+label%3Av2)\. Be sure to specify "\[V2\]" in the title of your issue\.
 
 **Topics**
 + [Prerequisites for Windows](#cliv2-windows-prereq)
