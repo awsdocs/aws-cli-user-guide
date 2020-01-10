@@ -124,8 +124,8 @@ ca_bundle = dev/apps/ca-certs/cabundle-2019mar05.pem
 ```
 
 *cli\_follow\_urlparam*  
-**This feature is available only with version 1 of the AWS CLI\.**  
-The following feature is available only if you use version 1 of the AWS CLI\. It isn't available if you run version 2\.
+**This feature is available only with AWS CLI version 1\.**  
+The following feature is available only if you use AWS CLI version 1\. It isn't available if you run AWS CLI version 2\.
 Specifies whether the CLI attempts to follow URL links in command line parameters that begin with `http://` or `https://`\. When enabled, the retrieved content is used as the parameter value instead of the URL\.  
 + **true**: This is the default value\. If specified, any string parameters that begin with `http://` or `https://` are fetched and any downloaded content is used as the parameter value for the command\.
 + **false**: If specified, the CLI does not treat parameter string values that begin with `http://` or `https://` differently from other strings\.
@@ -234,8 +234,8 @@ This setting does not have an environment variable or command line option\.
 sso_account_id = 123456789012
 ```
 
-**This feature is available only with version 2 of the AWS CLI\.**  
-The following feature is available only if you use version 2 of the AWS CLI\. It isn't available if you run version 1\. For information about how to install the preview of version 2, see [Installing the AWS CLI version 2](install-cliv2.md)\.
+**This feature is available only with AWS CLI version 2\.**  
+The following feature is available only if you use AWS CLI version 2\. It isn't available if you run AWS CLI version 1\. For information about how to install the preview of version 2, see [Installing the AWS CLI version 2](install-cliv2.md)\.
 
 *[sso\_region](cli-configure-sso.md)*  
 Specifies the AWS Region that contains the AWS SSO portal host\. This is separate from, and can be a different Region than the default CLI `region` parameter\.  
@@ -245,8 +245,8 @@ This setting does not have an environment variable or command line option\.
 aws_sso_region = us_west-2
 ```
 
-**This feature is available only with version 2 of the AWS CLI\.**  
-The following feature is available only if you use version 2 of the AWS CLI\. It isn't available if you run version 1\. For information about how to install the preview of version 2, see [Installing the AWS CLI version 2](install-cliv2.md)\.
+**This feature is available only with AWS CLI version 2\.**  
+The following feature is available only if you use AWS CLI version 2\. It isn't available if you run AWS CLI version 1\. For information about how to install the preview of version 2, see [Installing the AWS CLI version 2](install-cliv2.md)\.
 
 *[sso\_role\_name](cli-configure-sso.md)*  
 Specifies the friendly name of the IAM role that defines the user's permissions when using this profile\.   
@@ -256,8 +256,8 @@ This setting does not have an environment variable or command line option\.
 sso_role_name = ReadAccess
 ```
 
-**This feature is available only with version 2 of the AWS CLI\.**  
-The following feature is available only if you use version 2 of the AWS CLI\. It isn't available if you run version 1\. For information about how to install the preview of version 2, see [Installing the AWS CLI version 2](install-cliv2.md)\.
+**This feature is available only with AWS CLI version 2\.**  
+The following feature is available only if you use AWS CLI version 2\. It isn't available if you run AWS CLI version 1\. For information about how to install the preview of version 2, see [Installing the AWS CLI version 2](install-cliv2.md)\.
 
 *[sso\_start\_url](cli-configure-sso.md)*  
 Specifies the URL that points to the organization's AWS SSO user portal\. The AWS CLI uses this URL to establish a session with the AWS SSO service to authenticate its users\.  
@@ -267,8 +267,8 @@ This setting does not have an environment variable or command line option\.
 sso_start_url = https://my-sso-portal.awsapps.com/start
 ```
 
-**This feature is available only with version 2 of the AWS CLI\.**  
-The following feature is available only if you use version 2 of the AWS CLI\. It isn't available if you run version 1\. For information about how to install the preview of version 2, see [Installing the AWS CLI version 2](install-cliv2.md)\.
+**This feature is available only with AWS CLI version 2\.**  
+The following feature is available only if you use AWS CLI version 2\. It isn't available if you run AWS CLI version 1\. For information about how to install the preview of version 2, see [Installing the AWS CLI version 2](install-cliv2.md)\.
 
 *sts\_regional\_endpoints*  
 Specifies the AWS service endpoint that the AWS CLI client uses to talk to the AWS Security Token Service \(AWS STS\)\. You can specify one of two values:  

@@ -81,4 +81,4 @@ $ aws ec2 describe-instances --output table --region us-west-2
 ...
 ```
 
-The argument types \(for example, string, Boolean\) for each command line option are described in detail in [Specifying Parameter Values](cli-usage-parameters.md)\.
+The argument types \(for example, string, Boolean\) for each command line option are described in detail in [](cli-usage-parameters.md)\.

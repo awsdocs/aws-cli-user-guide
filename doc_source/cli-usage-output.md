@@ -81,8 +81,8 @@ $ aws iam list-users --output json
 
 ## YAML Output Format<a name="yaml-output"></a>
 
-**This feature is available only with version 2 of the AWS CLI\.**  
-The following feature is available only if you use version 2 of the AWS CLI\. It isn't available if you run version 1\. For information about how to install the preview of version 2, see [Installing the AWS CLI version 2](install-cliv2.md)\.
+**This feature is available only with AWS CLI version 2\.**  
+The following feature is available only if you use AWS CLI version 2\. It isn't available if you run AWS CLI version 1\. For information about how to install the preview of version 2, see [Installing the AWS CLI version 2](install-cliv2.md)\.
 
 [YAML](https://yaml.org) is a good choice for handling the output programmatically with services and tools that emit or consume [YAML](https://yaml.org)\-formatted strings, such as AWS CloudFormation with its support for [YAML\-formatted templates](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-formats.html)\.
 

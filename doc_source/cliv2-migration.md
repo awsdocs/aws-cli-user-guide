@@ -78,6 +78,6 @@ In the following table, the first column displays the service, command, and para
 
 For the Amazon S3 customization commands in the `s3` namespace, we improved the consistency of how paths are shown\. In the AWS CLI version 2, paths are always displayed relative to the relevant key\. The AWS CLI version 1 sometimes showed paths in absolute form and sometimes in relative form\. 
 
-## AWS CLI version 2 currently does not support the `[plugins]`\[plugins\] section in the AWS `config` file<a name="cliv2-migration-profile-plugins"></a>
+## AWS CLI version 2 currently does not support the `[plugins]` section in the AWS `config` file<a name="cliv2-migration-profile-plugins"></a>
 
 AWS CLI version 2 does not support the `[plugins]` section of the `~/.aws/config` file\. Version 1 plugins do not work in version 2, and can cause failures\. We recommend that you either remove the section or rename it\.

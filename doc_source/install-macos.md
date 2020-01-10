@@ -3,7 +3,11 @@
 The recommended way to install version 1 of the AWS Command Line Interface \(AWS CLI\) on macOS is to use the bundled installer\. The bundled installer includes all dependencies and you can use it offline\.
 
 **Important**  
-On January 10th, 2020, AWS CLI version 1\.17 and later will no longer support Python 2\.6 or Python 3\.3\. After this date, the installer for the AWS CLI will require Python 2\.7, Python 3\.4, or a later version to successfully install the AWS CLI\. For more information, see [Using the AWS CLI version 1 with Python 2\.6 or Python 3\.3](deprecate-python-26-33.md) in this guide, and the [deprecation announcement in this blog post](https://aws.amazon.com/blogs/developer/deprecation-of-python-2-6-and-python-3-3-in-botocore-boto3-and-the-aws-cli/)\.
+On January 10th, 2020, AWS CLI version 1, which requires a separate installation of Python to operate, stopped supporting Python versions 2\.6 and 3\.3\. All builds of AWS CLI version 1 released after January 10th, 2020, starting with version 1\.17, require Python 2\.7, Python 3\.4, or a later version to successfully use the AWS CLI\.  
+This change does not affect the following versions of the AWS CLI:  
+**Windows MSI installer version of AWS CLI version 1\.** The Windows MSI installer for AWS CLI version 1 includes and uses its own embedded copy of Python, independent of any other Python version that you might have installed\. If you're using an MSI installer\-based AWS CLI, no changes are required\.
+**AWS CLI version 2\.** All installers for AWS CLI version 2 include and use an embedded copy of Python, independent of any other Python version that you might have installed\. If you're using AWS CLI version 2, no changes are required\.
+For more information, see [Using the AWS CLI version 1 with Earlier Versions of Python](deprecate-old-python-versions.md) in this guide, and the [deprecation announcement in this blog post](https://aws.amazon.com/blogs/developer/deprecation-of-python-2-6-and-python-3-3-in-botocore-boto3-and-the-aws-cli/)\.
 
 **Important**  
 The bundled installer doesn't support installing to paths that contain spaces\.

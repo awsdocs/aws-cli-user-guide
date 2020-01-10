@@ -1,8 +1,8 @@
 # Installing the AWS CLI version 2 on Linux or macOS<a name="install-cliv2-linux-mac"></a>
 
 **Preview Evaluation Software**  
-AWS CLI version 2 is provided as a preview for testing and evaluation\. At this time, we do not recommend using it in a production environment\. For production environments, we recommend that you use the generally available version 1\.x\.  
-You can provide feedback for this developer preview version in the [AWS CLI version 2 GitHub repo](https://github.com/aws/aws-cli/issues?q=is%3Aopen+is\%3Aissue+label%3Av2)\. Be sure to specify "\[V2\]" in the title of your issue\.
+AWS CLI version 2 is provided as a preview for testing and evaluation\. At this time, we do not recommend using it in a production environment\. For production environments, we recommend that you use the generally available version 1\.  
+We welcome feedback for this developer preview of AWS CLI version 2 in the [AWS CLI version 2 GitHub repo](https://github.com/aws/aws-cli/issues?q=is%3Aopen+is\%3Aissue+label%3Av2)\. Be sure to specify "\[V2\]" in the title of your issue\.
 
 This section describes how to install, upgrade, and remove the AWS CLI version 2 on Linux or macOS\.
 
@@ -14,7 +14,7 @@ This section describes how to install, upgrade, and remove the AWS CLI version 2
 + [Verifying the Integrity and Authenticity of the Downloaded Files](#v2-install-linux-mac-validate)
 
 ## Prerequisites<a name="cliv2-linux--mac-prereq"></a>
-+ The AWS CLI version 2 has no dependencies on other software packages\. It has a self\-contained copy of all dependencies included with the installer\. You no longer need to have Python installed first\.
++ The AWS CLI version 2 has no dependencies on other software packages\. It has a self\-contained, embedded copy of all dependencies included in the installer\. You no longer need to install and maintain Python to use the AWS CLI\.
 + You must be able to "unzip" the downloaded package\. If your operating system doesn't have a built\-in `unzip` command, use your favorite package manager to download it or an equivalent\.
 + **Linux: **We support the AWS CLI version 2 on recent distributions of CentOS, Fedora, Ubuntu, Amazon Linux 1, and Amazon Linux 2\.
 + **macOS: **We support the AWS CLI version 2 on versions of macOS that are supported by Apple, including High Sierra \(10\.13\), Mojave \(10\.14\), and Catalina \(10\.15\)\.
