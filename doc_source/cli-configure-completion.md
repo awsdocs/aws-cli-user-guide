@@ -36,6 +36,10 @@ $ ps
 
 ## Locate the AWS Completer<a name="cli-command-completion-completer"></a>
 
+**AWS CLI version 2**
+
+For AWS CLI version 2, substitute `aws2_completer` instead of `aws_completer` in the commands below.
+
  The location of the AWS completer can vary depending on the installation method used\. 
 
  **Package Manager** – Programs such as `pip`, `yum`, `brew`, and `apt-get` typically install the AWS completer \(or a symlink to it\) to a standard path location\. In this case, the `which` command can locate the completer for you\.
