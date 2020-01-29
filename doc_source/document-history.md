@@ -4,6 +4,7 @@ The following table describes important additions to the *AWS Command Line Inter
 
 | Change | Description | Date | 
 | --- |--- |--- |
+| [Added content for AWS CLI version 2's improved default handling of S3 and STS regional endpoints](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html#cli-config-sts_regional_endpoints) | By default, AWS CLI version 2 now directs requests for the Amazon S3 and AWS STS services to the currently configured regional endpoint instead of the global endpoint\. | January 13, 2020 | 
 | [Updated to remove support for Python 2\.6 and 3\.3 from AWS CLI version 1](https://docs.aws.amazon.com/cli/latest/userguide/deprecate-old-python-versions.html) | As of January 10th, 2020, AWS CLI version 1 no longer supports using Python versions 2\.6 or 3\.3\. You must update to a newer version of Python to use AWS CLI version 1\.17 or later\. | January 10, 2020 | 
 | [Developer preview release for AWS CLI version 2](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html) | Announcing preview release of AWS CLI version 2\. Added instructions about installing version 2\. Add Migration topic to discuss differences between versions 1 and 2\. | November 7, 2019 | 
 | [Added support for AWS Single Sign\-On to AWS CLI named profiles](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-sso.html) | AWS CLI version 2 adds support for creating a named profile that can directly login to an AWS SSO user account and get AWS temporary credentials for use in subsequent AWS CLI commands\. | November 7, 2019 | 

@@ -28,7 +28,6 @@ Amazon's trademarks and trade dress may not be used in
       + [Install the AWS CLI version 1 in a Virtual Environment](install-virtualenv.md)
       + [Install the AWS CLI version 1 Using the Bundled Installer (Linux or macOS)](install-bundle.md)
       + [Using the AWS CLI version 1 with Earlier Versions of Python](deprecate-old-python-versions.md)
-   + [Migrating from AWS CLI version 1 to version 2](cliv2-migration.md)
 + [Configuring the AWS CLI](cli-chap-configure.md)
    + [Configuration and Credential File Settings](cli-configure-files.md)
    + [Named Profiles](cli-configure-profiles.md)
@@ -77,4 +76,5 @@ Amazon's trademarks and trade dress may not be used in
    + [Identity and Access Management for the AWS CLI](cli-security-iam.md)
    + [Compliance Validation for the AWS CLI](cli-security-compliance-validation.md)
 + [Troubleshooting AWS CLI Errors](cli-chap-troubleshooting.md)
++ [Breaking Changes – Migrating from AWS CLI version 1 to version 2](cliv2-migration.md)
 + [AWS CLI User Guide Document History](document-history.md)

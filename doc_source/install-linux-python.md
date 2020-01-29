@@ -27,7 +27,7 @@ If your Linux distribution came with Python, you might need to install the Pytho
    + On Red Hat and derivatives, use `yum`\. Check the yum repository for the versions of Python available to you\. Then, run a command similar to the following, substituting the correct package name\.
 
      ```
-     $ sudo yum install python36
+     $ sudo yum install python3
      ```
    + On SUSE and derivatives, use `zypper`\. Check the repository for the versions of Python available to you\. Then, run a command similar to the following, substituting the correct package name\.
 

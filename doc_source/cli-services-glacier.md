@@ -6,7 +6,7 @@ You can access the features of Amazon S3 Glacier using the AWS Command Line Inte
 aws glacier help
 ```
 
-This topic shows examples of AWS CLI commands that perform common tasks for S3 Glacier\. The examples demonstrate how to use the AWS CLI to upload a large file to Glacier by splitting it into smaller parts and uploading them from the command line\.
+This topic shows examples of AWS CLI commands that perform common tasks for S3 Glacier\. The examples demonstrate how to use the AWS CLI to upload a large file to S3 Glacier by splitting it into smaller parts and uploading them from the command line\.
 
 Before you run any commands, set your default credentials\. For more information, see [Configuring the AWS CLI](cli-chap-configure.md)\.
 
@@ -113,7 +113,7 @@ $ aws glacier upload-multipart-part --upload-id $UPLOADID --body chunkac --range
 **Note**  
 The previous example uses the dollar sign \(`$`\) to reference the contents of the `UPLOADID` shell variable on Linux\. On the Windows command line, use a percent sign \(%\) on either side of the variable name \(for example, `%UPLOADID%`\)\.
 
-You must specify the byte range of each part when you upload it so that Glacier can reassemble it in the correct order\. Each piece is 1,048,576 bytes, so the first piece occupies bytes 0\-1048575, the second 1048576\-2097151, and the third 2097152\-3145727\.
+You must specify the byte range of each part when you upload it so that S3 Glacier can reassemble it in the correct order\. Each piece is 1,048,576 bytes, so the first piece occupies bytes 0\-1048575, the second 1048576\-2097151, and the third 2097152\-3145727\.
 
 ## Complete the Upload<a name="cli-services-glacier-complete"></a>
 

@@ -123,12 +123,26 @@ Can be overridden by the `AWS_CA_BUNDLE` environment variable or the `--ca-bundl
 ca_bundle = dev/apps/ca-certs/cabundle-2019mar05.pem
 ```
 
+*cli\_binary\_format*  
+**This feature is available only with AWS CLI version 2\.**  
+The following feature is available only if you use AWS CLI version 2\. It isn't available if you run AWS CLI version 1\. For information about how to install the preview of version 2, see [Installing the AWS CLI version 2](install-cliv2.md)\.
+Specifies how the AWS CLI version 2 interprets binary input parameters\. It can be one of the following values:  
++ **base64** – This is the default value\. An input parameter that is typed as a binary large object \(BLOB\) accepts a base64\-encoded string\. To pass true binary content, put the content in a file and provide the file's path and name with the `fileb://` prefix as the parameter's value\. To pass base64\-encoded text contained in a file, provide the file's path and name with the `file://` prefix as the parameter's value\.
++ **raw\-in\-base64\-out** – Provides backward compatibility with the AWS CLI version 1 behavior where binary values must be passed literally\. 
+This entry does not have an equivalent environment variable\. You can specify the value on a single command by using the `--cli-binary-format raw-in-base64-out` parameter\.  
+
+```
+cli_binary_format = raw-in-base64-out
+```
+If you reference a binary value in a file using the `fileb://` prefix notation, the AWS CLI *always* expects the file to contain raw binary content and does not attempt to convert the value\.   
+If you reference a binary value in a file using the `file://` prefix notation, the AWS CLI handles the file according to the current `cli_binary_format` setting\. If that setting's value is `base64` \(the default when not explicitly set\), the CLI expects the file to contain base64\-encoded text\. If that setting's value is `raw-in-base64-out`, the CLI expects the file to contain raw binary content\.
+
 *cli\_follow\_urlparam*  
 **This feature is available only with AWS CLI version 1\.**  
 The following feature is available only if you use AWS CLI version 1\. It isn't available if you run AWS CLI version 2\.
 Specifies whether the CLI attempts to follow URL links in command line parameters that begin with `http://` or `https://`\. When enabled, the retrieved content is used as the parameter value instead of the URL\.  
-+ **true**: This is the default value\. If specified, any string parameters that begin with `http://` or `https://` are fetched and any downloaded content is used as the parameter value for the command\.
-+ **false**: If specified, the CLI does not treat parameter string values that begin with `http://` or `https://` differently from other strings\.
++ **true** – This is the default value\. If specified, any string parameters that begin with `http://` or `https://` are fetched and any downloaded content is used as the parameter value for the command\.
++ **false** – If specified, the CLI does not treat parameter string values that begin with `http://` or `https://` differently from other strings\.
 This entry does not have an equivalent environment variable or command line option\.  
 
 ```
@@ -196,8 +210,10 @@ parameter_validation = false
 ```
 
 *[region](cli-chap-configure.md#cli-quick-configuration-region)*  
-Specifies the default AWS Region to send requests to for commands requested using this profile\. You can specify any of the Region codes available for the chosen service as listed in [AWS Regions and Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html) in the *Amazon Web Services General Reference*\.  
-Can be overridden by the `AWS_DEFAULT_REGION` environment variable or the `--region` command line option\.  
+Specifies the AWS Region to send requests to for commands requested using this profile\.  
++ You can specify any of the Region codes available for the chosen service as listed in [AWS Regions and Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html) in the *Amazon Web Services General Reference*\.
++ `aws_global` enables you to specify the global endpoint for services that support a global endpoint in addition to regional endpoints, such as AWS Security Token Service \(AWS STS\) and Amazon Simple Storage Service \(Amazon S3\)\.
+You can override this value by using the `AWS_DEFAULT_REGION` environment variable or the `--region` command line option\.  
 
 ```
 region = us-west-2
@@ -226,7 +242,7 @@ Specifies a named profile with long\-term credentials that the AWS CLI can use t
 source_profile = production-profile
 ```
 
-*[sso\_account\_id](cli-configure-sso.md)*  
+*[sso\_account\_id](cli-configure-sso.md) *\(Available in the AWS CLI version 2 only\.\)**  
 Specifies the AWS account ID that contains the IAM role with the permission that you want to grant to the associated AWS SSO user\.  
 This setting does not have an environment variable or command line option\.  
 
@@ -234,10 +250,7 @@ This setting does not have an environment variable or command line option\.
 sso_account_id = 123456789012
 ```
 
-**This feature is available only with AWS CLI version 2\.**  
-The following feature is available only if you use AWS CLI version 2\. It isn't available if you run AWS CLI version 1\. For information about how to install the preview of version 2, see [Installing the AWS CLI version 2](install-cliv2.md)\.
-
-*[sso\_region](cli-configure-sso.md)*  
+*[sso\_region](cli-configure-sso.md) *\(Available in the AWS CLI version 2 only\.\)**  
 Specifies the AWS Region that contains the AWS SSO portal host\. This is separate from, and can be a different Region than the default CLI `region` parameter\.  
 This setting does not have an environment variable or command line option\.  
 
@@ -245,10 +258,7 @@ This setting does not have an environment variable or command line option\.
 aws_sso_region = us_west-2
 ```
 
-**This feature is available only with AWS CLI version 2\.**  
-The following feature is available only if you use AWS CLI version 2\. It isn't available if you run AWS CLI version 1\. For information about how to install the preview of version 2, see [Installing the AWS CLI version 2](install-cliv2.md)\.
-
-*[sso\_role\_name](cli-configure-sso.md)*  
+*[sso\_role\_name](cli-configure-sso.md) *\(Available in the AWS CLI version 2 only\.\)**  
 Specifies the friendly name of the IAM role that defines the user's permissions when using this profile\.   
 This setting does not have an environment variable or command line option\.  
 
@@ -256,10 +266,7 @@ This setting does not have an environment variable or command line option\.
 sso_role_name = ReadAccess
 ```
 
-**This feature is available only with AWS CLI version 2\.**  
-The following feature is available only if you use AWS CLI version 2\. It isn't available if you run AWS CLI version 1\. For information about how to install the preview of version 2, see [Installing the AWS CLI version 2](install-cliv2.md)\.
-
-*[sso\_start\_url](cli-configure-sso.md)*  
+*[sso\_start\_url](cli-configure-sso.md) *\(Available in the AWS CLI version 2 only\.\)**  
 Specifies the URL that points to the organization's AWS SSO user portal\. The AWS CLI uses this URL to establish a session with the AWS SSO service to authenticate its users\.  
 This setting does not have an environment variable or command line option\.   
 
@@ -267,13 +274,14 @@ This setting does not have an environment variable or command line option\.
 sso_start_url = https://my-sso-portal.awsapps.com/start
 ```
 
-**This feature is available only with AWS CLI version 2\.**  
-The following feature is available only if you use AWS CLI version 2\. It isn't available if you run AWS CLI version 1\. For information about how to install the preview of version 2, see [Installing the AWS CLI version 2](install-cliv2.md)\.
-
 *sts\_regional\_endpoints*  
-Specifies the AWS service endpoint that the AWS CLI client uses to talk to the AWS Security Token Service \(AWS STS\)\. You can specify one of two values:  
-+ `regional` – The AWS CLI uses the AWS STS endpoint that corresponds to the configured Region\. For example, if the client is configured to use `us-west-2`, all calls to AWS STS are made to the regional endpoint `sts.us-west-2.amazonaws.com` instead of the global `sts.amazonaws.com` endpoint\.
-+ `legacy` – Uses the global STS endpoint, `sts.amazonaws.com`, for the following Regions: `ap-northeast-1`, `ap-south-1`, `ap-southeast-1`, `ap-southeast-2`, `aws-global`, `ca-central-1`, `eu-central-1`, `eu-north-1`, `eu-west-1`, `eu-west-2`, `eu-west-3`, `sa-east-1`, `us-east-1`, `us-east-2`, `us-west-1`, and `us-west-2`\. All other Regions use their respective regional endpoint\.
+Specifies how the AWS CLI determines the AWS service endpoint that the AWS CLI client uses to talk to the AWS Security Token Service \(AWS STS\)\.   
++ The default value for AWS CLI version 1 is `legacy`\.
++ The default value for AWS CLI version 2 is `regional`\.
+You can specify one of two values:  
++ **`legacy`** – Uses the global STS endpoint, `sts.amazonaws.com`, for the following AWS Regions: `ap-northeast-1`, `ap-south-1`, `ap-southeast-1`, `ap-southeast-2`, `aws-global`, `ca-central-1`, `eu-central-1`, `eu-north-1`, `eu-west-1`, `eu-west-2`, `eu-west-3`, `sa-east-1`, `us-east-1`, `us-east-2`, `us-west-1`, and `us-west-2`\. All other Regions automatically use their respective regional endpoint\.
++ **`regional`** – The AWS CLI always uses the AWS STS endpoint for the currently configured Region\. For example, if the client is configured to use `us-west-2`, all calls to AWS STS are made to the regional endpoint `sts.us-west-2.amazonaws.com` instead of the global `sts.amazonaws.com` endpoint\. To send a request to the global endpoint while this setting is enabled, you can set the Region to `aws-global`\.
+This setting can be overwritten by using the **AWS\_STS\_REGIONAL\_ENDPOINTS** environment variable\. You can't set this value as a command line parameter\.
 
 *[web\_identity\_token\_file](cli-configure-role.md#cli-configure-role-oidc)*  
 Specifies the path to a file that contains an OAuth 2\.0 access token or OpenID Connect ID token that is provided by an identity provider\. The AWS CLI loads the contents of this file and passes it as the `WebIdentityToken` argument to the `AssumeRoleWithWebIdentity` operation\.

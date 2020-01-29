@@ -22,4 +22,4 @@ For information about how to install AWS CLI version 1, see [Installing the AWS 
 
 ## Migrating from AWS CLI version 1 to version 2<a name="migrating"></a>
 
-If you ran commands or scripts with AWS CLI version 1 and you are considering migrating to AWS CLI version 2, see [Migrating from AWS CLI version 1 to version 2](cliv2-migration.md) for a description of the changes that you should know about\.
+If you ran commands or scripts with AWS CLI version 1 and you are considering migrating to AWS CLI version 2, see [Breaking Changes – Migrating from AWS CLI version 1 to version 2](cliv2-migration.md) for a description of the changes that you should know about\.
