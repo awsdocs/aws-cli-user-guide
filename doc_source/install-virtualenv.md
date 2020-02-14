@@ -59,7 +59,7 @@ For more information, see [Using the AWS CLI version 1 with Earlier Versions of 
 
    ```
    $ aws --version
-   aws-cli/1.16.273 Python/3.7.3 Linux/4.14.133-113.105.amzn2.x86_64 botocore/1.13.0
+   aws-cli/1.17.4 Python/3.7.4 Linux/4.14.133-113.105.amzn2.x86_64 botocore/1.13
    ```
 
 You can use the `deactivate` command to exit the virtual environment\. Whenever you start a new session, you must reactivate the environment\.

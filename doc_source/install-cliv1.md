@@ -1,6 +1,8 @@
 # Installing the AWS CLI version 1<a name="install-cliv1"></a>
 
-This topic describes how to install version 1 of the AWS Command Line Interface \(AWS CLI\)\. For information about how to install version 2, see [Installing the AWS CLI version 2](install-cliv2.md)\.
+This topic describes how to install version 1 of the AWS Command Line Interface \(AWS CLI\)\. 
+
+We recommend that you AWS CLI version 2 instead\. For information about how to install version 2, see [Installing the AWS CLI version 2](install-cliv2.md)\.
 
 You can install the AWS CLI version 1 using any of the following techniques:
 + [Using a bundled installer](#install-tool-bundled)
@@ -51,7 +53,7 @@ Use the `pip3 list -o` command to check which packages are "outdated"\.
 
 ```
 $ aws --version
-aws-cli/1.16.273 Python/3.7.3 Linux/4.14.133-113.105.amzn2.x86_64 botocore/1.13.0
+aws-cli/1.17.4 Python/3.7.4 Linux/4.14.133-113.105.amzn2.x86_64 botocore/1.13
 
 $ pip3 list -o
 Package    Version  Latest   Type 
@@ -110,7 +112,7 @@ Verify that the AWS CLI installed correctly by running `aws --version`\.
 
 ```
 $ aws --version
-aws-cli/1.16.273 Python/3.7.3 Linux/4.14.133-113.105.amzn2.x86_64 botocore/1.13.0
+aws-cli/1.17.4 Python/3.7.4 Linux/4.14.133-113.105.amzn2.x86_64 botocore/1.13
 ```
 
 ### Configure the AWS CLI with Your Credentials<a name="post-install-configure"></a>
@@ -141,9 +143,9 @@ $ pip3 uninstall awscli
 If you don't have Python and `pip`, use the procedure for your environment\.
 
 ## Detailed Instructions for Each Environment<a name="install-sections"></a>
++ [Install the AWS CLI version 1 Using the Bundled Installer \(Linux or macOS\)](install-bundle.md)
 + [Install the AWS CLI version 1 on Linux](install-linux.md)
 + [Install the AWS CLI version 1 on macOS](install-macos.md)
 + [Install the AWS CLI version 1 on Windows](install-windows.md)
 + [Install the AWS CLI version 1 in a Virtual Environment](install-virtualenv.md)
-+ [Install the AWS CLI version 1 Using the Bundled Installer \(Linux or macOS\)](install-bundle.md)
 + [Using the AWS CLI version 1 with Earlier Versions of Python](deprecate-old-python-versions.md)

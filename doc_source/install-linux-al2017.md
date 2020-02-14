@@ -4,7 +4,7 @@ The AWS Command Line Interface version 1 \(AWS CLI version 1\) comes preinstalle
 
 ```
 $ aws --version
-aws-cli/1.16.273 Python/3.7.3 Linux/4.14.133-113.105.amzn2.x86_64 botocore/1.13.0
+aws-cli/1.17.4 Python/3.7.4 Linux/4.14.133-113.105.amzn2.x86_64 botocore/1.13
 ```
 
 **Important**  
@@ -26,10 +26,10 @@ Verify that Python and `pip` are already installed\. For more information, see [
    $ pip3 install --upgrade --user awscli
    ```
 
-1. Add the install location to the beginning of your `PATH` variable\.
+1. If the folder containing the `aws` command is not already in your search path, add it to the beginning of your `PATH` variable\.
 
    ```
-   $ export PATH=/home/ec2-user/.local/bin:$PATH
+   $ export PATH=$HOME/.local/bin:$PATH
    ```
 
    Add this command to the end of your profile's startup script \(for example, `~/.bashrc`\) to persist the change between command line sessions\.
@@ -38,5 +38,5 @@ Verify that Python and `pip` are already installed\. For more information, see [
 
    ```
    $ aws --version
-   aws-cli/1.16.273 Python/3.7.3 Linux/4.14.133-113.105.amzn2.x86_64 botocore/1.13.0
+   aws-cli/1.17.4 Python/3.7.4 Linux/4.14.133-113.105.amzn2.x86_64 botocore/1.13
    ```

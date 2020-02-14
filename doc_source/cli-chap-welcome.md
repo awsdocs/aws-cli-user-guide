@@ -10,8 +10,8 @@ For more information, see [Using the AWS CLI version 1 with Earlier Versions of 
 The AWS Command Line Interface \(AWS CLI\) is an open source tool that enables you to interact with AWS services using commands in your command\-line shell\. 
 
 The AWS CLI is available in two versions:
-+ **Version 1\.x** – The generally available version of the AWS CLI that is suitable for use in production environments\.
-+ **Version 2\.x** – A preview version of the AWS CLI that is intended for testing and evaluation\. This version does include some "breaking" changes that might require you to change your scripts so that they continue to operate as you expect\. For a list of new features and breaking changes in version 2, see [Breaking Changes – Migrating from AWS CLI version 1 to version 2](cliv2-migration.md)\.
++ **Version 2\.x** – The current, generally available release of the AWS CLI that is intended for use in production environments\. This version does include some "breaking" changes from version 1 that might require you to change your scripts so that they continue to operate as you expect\. For a list of new features and breaking changes in version 2, see [Breaking Changes – Migrating from AWS CLI version 1 to version 2](cliv2-migration.md)\.
++ **Version 1\.x** – The previous version of the AWS CLI that is available for backwards compatiblity\.
 
 Information in this guide applies to both versions unless we specifically state that it applies to only one version or the other\.
 

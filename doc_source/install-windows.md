@@ -1,6 +1,6 @@
 # Install the AWS CLI version 1 on Windows<a name="install-windows"></a>
 
-You can install version 1 of the AWS Command Line Interface \(AWS CLI\) on Windows by using a standalone installer or `pip`, which is a package manager for Python\. If you already have `pip`, follow the instructions in the main [installation topic](cli-chap-install.md)\.
+You can install version 1 of the AWS Command Line Interface \(AWS CLI\) on Windows by using a standalone installer \(recommended\) or `pip`, which is a package manager for Python\. If you already have `pip`, follow the instructions in the main [installation topic](cli-chap-install.md)\.
 
 **Important**  
 On January 10th, 2020, AWS CLI version 1, which requires a separate installation of Python to operate, stopped supporting Python versions 2\.6 and 3\.3\. All builds of AWS CLI version 1 released after January 10th, 2020, starting with version 1\.17, require Python 2\.7, Python 3\.4, or a later version to successfully use the AWS CLI\.  
@@ -23,9 +23,9 @@ When updates are released, you must repeat the installation process to get the l
 **To install the AWS CLI version 1 using the MSI installer**
 
 1. Download the appropriate MSI installer\.
-   + [Download the AWS CLI MSI installer for Windows \(64\-bit\)](https://s3.amazonaws.com/aws-cli/AWSCLI64PY3.msi)
-   + [Download the AWS CLI MSI installer for Windows \(32\-bit\)](https://s3.amazonaws.com/aws-cli/AWSCLI32PY3.msi)
-   + [Download the AWS CLI setup file](https://s3.amazonaws.com/aws-cli/AWSCLISetup.exe) \(includes both the 32\-bit and 64\-bit MSI installers and will automatically install the correct version\)
+   + [Download the AWS CLI MSI installer for Windows \(64\-bit\) from https://s3\.amazonaws\.com/aws\-cli/AWSCLI64PY3\.msi](https://s3.amazonaws.com/aws-cli/AWSCLI64PY3.msi)
+   + [Download the AWS CLI MSI installer for Windows \(32\-bit\) from https://s3\.amazonaws\.com/aws\-cli/AWSCLI32PY3\.msi](https://s3.amazonaws.com/aws-cli/AWSCLI32PY3.msi)
+   + [Download the AWS CLI combined setup file for Windows from https://s3\.amazonaws\.com/aws\-cli/AWSCLISetup\.exe](https://s3.amazonaws.com/aws-cli/AWSCLISetup.exe) \(includes both the 32\-bit and 64\-bit MSI installers and will automatically install the correct version\)
 **Note**  
 The MSI installer for the AWS CLI version 1 doesn't work with Windows Server 2008 \(version 6\.0\.6002\)\. Use [pip](#awscli-install-windows-pip) to install with this version of Windows Server\.
 
@@ -37,7 +37,7 @@ By default, the AWS CLI version 1 installs to `C:\Program Files\Amazon\AWSCLI` \
 
 ```
 C:\> aws --version
-aws-cli/1.16.273 Python/3.7.3 Windows/10 botocore/1.13.0
+aws-cli/1.17.4 Python/3.7.4 Windows/10 botocore/1.13
 ```
 
 Don't include the prompt symbol \(`C:\>`, shown above\) when you type a command\. These are included in program listings to differentiate commands that you type from output returned by the CLI\. The rest of this guide uses the generic prompt symbol, `$` , except in cases where a command is Windows\-specific\.
@@ -99,7 +99,7 @@ If you use Python version 3\+, we recommend that you use the `pip3` command\.
 
    ```
    C:\> aws --version
-   aws-cli/1.16.273 Python/3.7.3 Windows/10 botocore/1.13.0
+   aws-cli/1.17.4 Python/3.7.4 Windows/10 botocore/1.13
    ```
 
 To upgrade to the latest version, run the installation command again\.

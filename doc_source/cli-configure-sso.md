@@ -16,7 +16,7 @@ This topic describes how to configure the AWS CLI to authenticate the user with 
 You can configure one or more of your AWS CLI [named profiles](cli-configure-profiles.md) to use a role from AWS SSO You can create and configure multiple profiles and configure each one to use a a different AWS SSO user portal or SSO\-defined role\.
 
 You can configure the profile in the following ways:
-+ [Automatically](#sso-configure-profile-auto), using the command `aws2 configure sso`
++ [Automatically](#sso-configure-profile-auto), using the command `aws configure sso`
 + [Manually](#sso-configure-profile-manual), by editing the \.aws/config file that stores the named profiles\.
 
 ### Automatic Configuration<a name="sso-configure-profile-auto"></a>
@@ -24,7 +24,7 @@ You can configure the profile in the following ways:
 You can add an AWS SSO enabled profile to your AWS CLI by running the following command, providing your AWS SSO start URL and the AWS Region that hosts the AWS SSO directory\. 
 
 ```
-$ aws2 configure sso
+$ aws configure sso
 SSO start URL [None]: [None]: https://my-sso-portal.awsapps.com/start
 SSO region [None]:us-east-1
 ```
@@ -92,7 +92,7 @@ A final message describes the completed profile configuration\.
 ```
 To use this profile, specify the profile name using --profile, as shown:
 
-aws2 s3 ls --profile my-dev-profile
+aws s3 ls --profile my-dev-profile
 ```
 
 The previous example entries would result in a named profile in `~/.aws/config` that looks like the following example\.
@@ -171,7 +171,7 @@ This section describes how to use the AWS SSO profile you created in the previou
 After you configure a named profile automatically or manually, you can invoke it to request temporary credentials from AWS\. Before you can run an AWS CLI service command, you must retrieve and cache a set of temporary credentials\. To get these temporary credentials, run the following command\.
 
 ```
-$ aws2 sso login --profile my-dev-profile
+$ aws sso login --profile my-dev-profile
 ```
 
 The AWS CLI opens your default browser and verifies your AWS SSO log in\. 
@@ -187,7 +187,7 @@ If you are not currently signed in to your AWS SSO account, you must provide you
 If the AWS CLI can't open your browser, it prompts you to open it yourself and enter the specified code\.
 
 ```
-$ aws2 sso login --profile my-dev-profile
+$ aws sso login --profile my-dev-profile
 Using a browser, open the following URL:
  
 https://my-sso-portal.awsapps.com/verify
@@ -211,7 +211,7 @@ Welcome, you have successfully signed-in to the AWS-CLI.
 You can use these temporary credentials to invoke an AWS CLI command with the associated named profile\. The following example shows that the command was run under an assumed role that is part of the specified account\.
 
 ```
-$ aws2 sts get-caller-identity --profile my-dev-profile
+$ aws sts get-caller-identity --profile my-dev-profile
 {
     "UserId": "AROA12345678901234567:test-user@example.com",
     "Account": "123456789011",
@@ -222,7 +222,7 @@ $ aws2 sts get-caller-identity --profile my-dev-profile
 As long as you signed in to AWS SSO and those cached credentials are not expired, the AWS CLI automatically renews expired AWS temporary credentials when needed\. However, if your AWS SSO credentials expire, you must explicitly renew them by logging in to your AWS SSO account again\.
 
 ```
-$ aws2 s3 ls --profile my-sso-profile
+$ aws s3 ls --profile my-sso-profile
 Your short-term credentials have expired. Please sign-in to renew your credentials
 SSO authorization page has automatically been opened in your default browser. 
 Follow the instructions in the browser to complete this authorization request.
@@ -236,7 +236,7 @@ You can create multiple AWS SSO enabled named profiles that each point to a diff
 # cached credentials have expired, it opens your browser and prompts you for your 
 # AWS SSO user name and password. It then retrieves AWS temporary credentials for
 # the IAM role associated with this profile.
-$ aws2 sso login --profile my-first-sso-profile
+$ aws sso login --profile my-first-sso-profile
 
 # The next command retrieves a different set of temporary credentials for the AWS 
 # account and role specified in the second named profile. It does not overwrite or 
@@ -245,15 +245,15 @@ $ aws2 sso login --profile my-first-sso-profile
 # previoius command. The AWS CLI then retrieves AWS temporary credentials for the
 # IAM role associated with the second profile. You don't have to sign in to 
 # AWS SSO again.
-$ aws2 sso login --profile my-second-sso-profile
+$ aws sso login --profile my-second-sso-profile
 
 # The following command lists the Amazon EC2 instances accessible to the role 
 # identified in the first profile.
-$ aws2 ec2 describe-instances --profile my-first-sso-profile
+$ aws ec2 describe-instances --profile my-first-sso-profile
 
 # The following command lists the Amazon EC2 instances accessible to the role 
 # identified in the second profile.
-$ aws2 ec2 describe-instances --profile my-second-sso-profile
+$ aws ec2 describe-instances --profile my-second-sso-profile
 ```
 
 ### Signing Out of Your AWS SSO Sessions<a name="sso-using-profile-sign-out"></a>
@@ -261,7 +261,7 @@ $ aws2 ec2 describe-instances --profile my-second-sso-profile
 When you are done using your AWS SSO enabled profiles, you can choose to do nothing and let the AWS temporary credentials and your AWS SSO credentials expire\. However, you can also choose to run the following command to immediately delete all cached credentials in the SSO credential cache folder and all AWS temporary credentials that were based on the AWS SSO credentials\. This makes those credentials unavailable to be used for any future command\.
 
 ```
-$ aws2 sso logout
+$ aws sso logout
 Successfully signed out of all SSO profiles.
 ```
 
