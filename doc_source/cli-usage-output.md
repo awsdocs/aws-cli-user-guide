@@ -9,6 +9,7 @@ This topic describes the different ways to control the output from the AWS Comma
 + [Text Output Format](#text-output)
 + [Table Output Format](#table-output)
 + [How to Filter the Output with the `--query` Option](#cli-usage-output-filter)
++ [How to Set the Output’s Default Pager Program](#cli-usage-output-pager)
 
 ## How to Select the Output Format<a name="cli-usage-output-format"></a>
 
@@ -581,3 +582,54 @@ $ aws autoscaling describe-auto-scaling-groups \
 Combined with the output formats that are explained in more detail previously in this topic, the `--query` option is a powerful tool you can use to customize the content and style of outputs\. 
 
 For more examples and the full spec of JMESPath, the underlying JSON\-processing library, see [http://jmespath\.org/specification\.html](http://jmespath.org/specification.html)\.
+
+## How to Set the Output’s Default Pager Program<a name="cli-usage-output-pager"></a>
+
+**This feature is available only with AWS CLI version 2\.**  
+The following feature is available only if you use AWS CLI version 2\. It isn't available if you run AWS CLI version 1\. For information about how to install the preview of version 2, see [Installing the AWS CLI version 2](install-cliv2.md)\.
+
+AWS CLI version 2 provides the use of a client\-side pager program for output\. By default, this feature returns all output through your operating system’s default pager program\. Client\-side pagination occurs after any server\-side pagination you specify, see [Pagination](cli-usage-pagination.md)\. 
+
+To disable all use of an external paging program, set the variable to an empty string\. 
+
+You can specify the output pager in two ways:
++ **Using the `cli_pager` option in the `config` file \-** The following example sets the default output pager to the `less` program\.
+
+  ```
+  [default]
+  cli_pager=less
+  ```
+
+  The following example sets the default to disable the use of a pager\.
+
+  ```
+  [default]
+  cli_pager=
+  ```
++ **Using the `AWS_PAGER` environment variable \-** The following example sets the default output pager to the `less` program\.
+
+  *Linux or macOS*
+
+  ```
+  $ export AWS_PAGER="less"
+  ```
+
+  *Windows*
+
+  ```
+  C:\> setx AWS_PAGER "less"
+  ```
+
+  The following example disables the use of a pager\.
+
+  *Linux or macOS*
+
+  ```
+  $ export AWS_PAGER=""
+  ```
+
+  *Windows*
+
+  ```
+  C:\> setx AWS_PAGER ""
+  ```

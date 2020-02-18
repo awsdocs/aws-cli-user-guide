@@ -149,6 +149,21 @@ This entry does not have an equivalent environment variable or command line opti
 cli_follow_urlparam = false
 ```
 
+*cli\_pager*  
+**This feature is available only with AWS CLI version 2\.**  
+The following feature is available only if you use AWS CLI version 2\. It isn't available if you run AWS CLI version 1\. For information about how to install the preview of version 2, see [Installing the AWS CLI version 2](install-cliv2.md)\.
+Specifies the pager program used for output\. By default, AWS CLI version 2 returns all output through your operating system’s default pager program\.  
+Can be overridden by the AWS\_PAGER environment variable\.  
+
+```
+cli_pager=less
+```
+To disable all use of an external paging program, set the variable to an empty string as shown in the following example\.  
+
+```
+cli_pager=
+```
+
 *cli\_timestamp\_format*  
 Specifies the format of timestamp values included in the output\. You can specify either of the following values:  
 + **iso8601** – The default value for the AWS CLI version 2\. If specified, the AWS CLI reformats all timestamps according to [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html)\.

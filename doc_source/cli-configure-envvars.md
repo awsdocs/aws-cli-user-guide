@@ -28,6 +28,11 @@ If defined, this environment variable overrides the value for the profile settin
 Specifies the AWS Region to send the request to\.  
 If defined, this environment variable overrides the value for the profile setting `region`\. You can override this environment variable by using the `--region` command line parameter\.
 
+[`AWS_PAGER`](cli-configure-files.md#cli-config-cli_pager)  
+Specifies the pager program used for output\. By default, AWS CLI version 2 returns all output through your operating system’s default pager program\.  
+To disable all use of an external paging program, set the variable to an empty string\.   
+If defined, this environment variable overrides the value for the profile setting `cli_pager`\.
+
 [`AWS_PROFILE`](cli-configure-profiles.md)  
 Specifies the name of the CLI profile with the credentials and options to use\. This can be the name of a profile stored in a `credentials` or `config` file, or the value `default` to use the default profile\.   
 If defined, this environment variable overrides the behavior of using the profile named `[default]` in the configuration file\. You can override this environment variable by using the `--profile` command line parameter\.
