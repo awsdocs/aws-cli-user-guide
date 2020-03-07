@@ -20,6 +20,8 @@ For Windows users, the MSI installation package offers a familiar and convenient
 
 1. [Download the AWS CLI MSI installer for Windows \(64\-bit\) at https://awscli\.amazonaws\.com/AWSCLIV2\.msi](https://awscli.amazonaws.com/AWSCLIV2.msi)
 
+   In this example the latest version of the CLI is downloaded\. A version can be specified by appending it just before the file extension: `https://awscli.amazonaws.com/AWSCLIV2-2.x.y.zip`
+
 1. Run the downloaded MSI installer and follow the onscreen instructions\. By default, the AWS CLI installs to `C:\Program Files\Amazon\AWSCLIV2`\.
 
 1. To confirm the installation, use the `aws --version` command at a command prompt \(open the **Start** menu and search for `cmd` to start a command prompt\)\.

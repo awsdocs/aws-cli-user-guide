@@ -53,6 +53,8 @@ $ sudo installer -pkg AWSCLIV2.pkg -target /
 
    In this example, the `-o` option specifies the file name that the downloaded package is written to\. In the previous example, the file is written to `AWSCLIV2.pkg` in the current folder\.
 
+   In this example the latest version of the CLI is downloaded\. A version can be specified by appending it just before the file extension: `https://awscli.amazonaws.com/AWSCLIV2-2.x.y.pkg`
+
 1. Run the standard macOS `installer` program, specifying the downloaded \.pkg file as the source\.
 
    ```

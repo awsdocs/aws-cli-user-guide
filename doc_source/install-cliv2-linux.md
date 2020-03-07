@@ -41,6 +41,8 @@ sudo ./aws/install
 
    Alternatively, you can use your browser to download the installer from the following URL: `https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip`
 
+   In this example the latest version of the CLI is downloaded\. A version can be specified by appending it just before the file extension: `https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.x.y.zip`
+
    You can verify the integrity and authenticity of the installation file after you download it\. For more information, see [Verifying the Integrity and Authenticity of the Downloaded Files](#v2-install-linux-validate) before you unzip the package\.
 
 1. Unzip the installer\. The following example command unzips the package to the current folder\. If your Linux distribution doesn't have a built\-in `unzip` command, use your favorite package manager, or an equivalent, to install it\.
