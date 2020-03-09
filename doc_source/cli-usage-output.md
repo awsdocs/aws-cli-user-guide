@@ -83,7 +83,7 @@ $ aws iam list-users --output json
 ## YAML Output Format<a name="yaml-output"></a>
 
 **This feature is available only with AWS CLI version 2\.**  
-The following feature is available only if you use AWS CLI version 2\. It isn't available if you run AWS CLI version 1\. For information about how to install the preview of version 2, see [Installing the AWS CLI version 2](install-cliv2.md)\.
+The following feature is available only if you use AWS CLI version 2\. It isn't available if you run AWS CLI version 1\. For information on how to install version 2, see [Installing the AWS CLI version 2](install-cliv2.md)\.
 
 [YAML](https://yaml.org) is a good choice for handling the output programmatically with services and tools that emit or consume [YAML](https://yaml.org)\-formatted strings, such as AWS CloudFormation with its support for [YAML\-formatted templates](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-formats.html)\.
 
@@ -586,7 +586,7 @@ For more examples and the full spec of JMESPath, the underlying JSON\-processing
 ## How to Set the Output’s Default Pager Program<a name="cli-usage-output-pager"></a>
 
 **This feature is available only with AWS CLI version 2\.**  
-The following feature is available only if you use AWS CLI version 2\. It isn't available if you run AWS CLI version 1\. For information about how to install the preview of version 2, see [Installing the AWS CLI version 2](install-cliv2.md)\.
+The following feature is available only if you use AWS CLI version 2\. It isn't available if you run AWS CLI version 1\. For information on how to install version 2, see [Installing the AWS CLI version 2](install-cliv2.md)\.
 
 AWS CLI version 2 provides the use of a client\-side pager program for output\. By default, this feature returns all output through your operating system’s default pager program\. Client\-side pagination occurs after any server\-side pagination you specify, see [Pagination](cli-usage-pagination.md)\. 
 

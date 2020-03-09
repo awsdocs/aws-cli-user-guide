@@ -1,6 +1,13 @@
 # Configuration and Credential File Settings<a name="cli-configure-files"></a>
 
-You can save your frequently used configuration settings and credentials in files that are maintained by the AWS CLI\. The files are divided into sections that can be referenced by name\. These are called "profiles"\. Unless you specify otherwise, the CLI uses the settings found in the profile named `default`\. To use alternate settings, you can create and reference additional profiles\. You can also override an individual setting by either setting one of the supported environment variables, or by using a command line parameter\.
+You can save your frequently used configuration settings and credentials in files that are maintained by the AWS CLI\. Credentials are mainly comprised of the following two pieces of information:
++ The IAM user, see [Creating an IAM User in Your AWS Account](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html) for more information\.
++ The access key attached to the IAM user, see [Managing Access Keys for IAM Users](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html) for more information\.
+
+**Note**  
+You need to use the AWS console to create your preferred IAM user for first time AWS CLI configuration setup\. After setup is complete, you can create additional users through the AWS CLI\.
+
+The files are divided into sections that can be referenced by name\. These are called "profiles"\. Unless you specify otherwise, the CLI uses the settings found in the profile named `default`\. To use alternate settings, you can create and reference additional profiles\. You can also override an individual setting by either setting one of the supported environment variables, or by using a command line parameter\.
 + [Where Are Configuration Settings Stored?](#cli-configure-files-where)
 + [Global Settings](#cli-configure-files-global)
 + [S3 Custom Command Settings](#cli-configure-files-s3)
@@ -125,7 +132,7 @@ ca_bundle = dev/apps/ca-certs/cabundle-2019mar05.pem
 
 *cli\_binary\_format*  
 **This feature is available only with AWS CLI version 2\.**  
-The following feature is available only if you use AWS CLI version 2\. It isn't available if you run AWS CLI version 1\. For information about how to install the preview of version 2, see [Installing the AWS CLI version 2](install-cliv2.md)\.
+The following feature is available only if you use AWS CLI version 2\. It isn't available if you run AWS CLI version 1\. For information on how to install version 2, see [Installing the AWS CLI version 2](install-cliv2.md)\.
 Specifies how the AWS CLI version 2 interprets binary input parameters\. It can be one of the following values:  
 + **base64** – This is the default value\. An input parameter that is typed as a binary large object \(BLOB\) accepts a base64\-encoded string\. To pass true binary content, put the content in a file and provide the file's path and name with the `fileb://` prefix as the parameter's value\. To pass base64\-encoded text contained in a file, provide the file's path and name with the `file://` prefix as the parameter's value\.
 + **raw\-in\-base64\-out** – Provides backward compatibility with the AWS CLI version 1 behavior where binary values must be passed literally\. 
@@ -151,7 +158,7 @@ cli_follow_urlparam = false
 
 *cli\_pager*  
 **This feature is available only with AWS CLI version 2\.**  
-The following feature is available only if you use AWS CLI version 2\. It isn't available if you run AWS CLI version 1\. For information about how to install the preview of version 2, see [Installing the AWS CLI version 2](install-cliv2.md)\.
+The following feature is available only if you use AWS CLI version 2\. It isn't available if you run AWS CLI version 1\. For information on how to install version 2, see [Installing the AWS CLI version 2](install-cliv2.md)\.
 Specifies the pager program used for output\. By default, AWS CLI version 2 returns all output through your operating system’s default pager program\.  
 Can be overridden by the AWS\_PAGER environment variable\.  
 

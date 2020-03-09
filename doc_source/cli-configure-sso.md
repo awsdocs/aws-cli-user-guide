@@ -1,7 +1,7 @@
 # Configuring the AWS CLI to use AWS Single Sign\-On<a name="cli-configure-sso"></a>
 
 **This feature is available only with AWS CLI version 2\.**  
-The following feature is available only if you use AWS CLI version 2\. It isn't available if you run AWS CLI version 1\. For information about how to install the preview of version 2, see [Installing the AWS CLI version 2](install-cliv2.md)\.
+The following feature is available only if you use AWS CLI version 2\. It isn't available if you run AWS CLI version 1\. For information on how to install version 2, see [Installing the AWS CLI version 2](install-cliv2.md)\.
 
 If your organization uses AWS Single Sign\-On \(AWS SSO\), your users can sign in to Active Directory, a built\-in AWS SSO directory, or [another iDP connected to AWS SSO](https://docs.aws.amazon.com/singlesignon/latest/userguide/manage-your-identity-source-idp.html) and get mapped to an AWS Identity and Access Management \(IAM\) role that enables you to run AWS CLI commands\. Regardless of which iDP you use, AWS SSO abstracts those distinctions away, and they all work with the AWS CLI as described below\. For example, you can connect Microsoft Azure AD as described in the blog article [The Next Evolution in AWS Single Sign\-On](http://aws.amazon.com/blogs/aws/the-next-evolution-in-aws-single-sign-on/)
 

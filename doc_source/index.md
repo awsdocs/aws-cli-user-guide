@@ -76,6 +76,7 @@ Amazon's trademarks and trade dress may not be used in
    + [Data Protection in the AWS CLI](data-protection.md)
    + [Identity and Access Management for the AWS CLI](cli-security-iam.md)
    + [Compliance Validation for the AWS CLI](cli-security-compliance-validation.md)
+   + [Enforcing a TLS 1.2 Minimum](cli-security-enforcing-tls.md)
 + [Troubleshooting AWS CLI Errors](cli-chap-troubleshooting.md)
 + [Breaking Changes – Migrating from AWS CLI version 1 to version 2](cliv2-migration.md)
 + [AWS CLI User Guide Document History](document-history.md)

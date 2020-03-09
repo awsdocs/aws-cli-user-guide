@@ -12,3 +12,4 @@ This documentation helps you understand how to apply the shared responsibility m
 + [Data Protection in the AWS CLI](data-protection.md)
 + [Identity and Access Management for the AWS CLI](cli-security-iam.md)
 + [Compliance Validation for the AWS CLI](cli-security-compliance-validation.md)
++ [Enforcing a TLS 1\.2 Minimum](cli-security-enforcing-tls.md)

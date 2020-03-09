@@ -57,6 +57,15 @@ By default, the install script runs under the system's default version of Python
    $ sudo /usr/local/bin/python3.7 awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
    ```
 
+1. Verify that the AWS CLI is installed correctly\.
+
+   ```
+   $ aws --version
+   aws-cli/1.17.4 Python/3.7.4 Darwin/18.7.0 botocore/1.13
+   ```
+
+   If the program isn't found, [add it to your command line path](#awscli-install-osx-path)\.
+
 To see an explanation of the `-i` and `-b` options, use the `-h` option\.
 
 ```
