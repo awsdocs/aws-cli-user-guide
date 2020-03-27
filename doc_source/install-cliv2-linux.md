@@ -10,9 +10,12 @@ This section describes how to install, upgrade, and remove the AWS CLI version 2
 + [Verifying the Integrity and Authenticity of the Downloaded Files](#v2-install-linux-validate)
 
 ## Prerequisites<a name="cliv2-linux-prereq"></a>
-+ The AWS CLI version 2 has no dependencies on other software packages\. It has a self\-contained, embedded copy of all dependencies included in the installer\. You no longer need to install and maintain Python to use the AWS CLI\.
++ The AWS CLI version 2 has no dependencies on other software packages except for `glibc`, which is available on nearly all Linux distributions\. It has a self\-contained, embedded copy of all dependencies included in the installer\. You no longer need to install and maintain Python to use the AWS CLI\.
 + You must be able to "unzip" the downloaded package\. If your operating system doesn't have a built\-in `unzip` command, use your favorite package manager to download it or an equivalent\.
-+ ****We support the AWS CLI version 2 on recent distributions of CentOS, Fedora, Ubuntu, Amazon Linux 1, and Amazon Linux 2\.
++ We support the AWS CLI version 2 on recent distributions of CentOS, Fedora, Ubuntu, Amazon Linux 1, and Amazon Linux 2\.
+
+**Important**  
+It is important to note that BusyBox and Alpine Linux, which are popular Linux distributions for Docker containers and continuous integration systems due to their size, use `musl` for their standard C library and do not ship with `glibc` by default\.
 
 ## Installing<a name="cliv2-linux-install"></a>
 
