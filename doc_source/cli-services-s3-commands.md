@@ -182,7 +182,7 @@ MyFile88.txt
 $ rm *.txt
 
 // Sync with delete, excluding files that match a pattern. MyFile88.txt is deleted, while remote MyFile1.txt is not.
-$ aws s3 sync . s3://my-bucket/path --delete --exclude "my-bucket/path/MyFile?.txt"
+$ aws s3 sync . s3://my-bucket/path --delete --exclude "path/MyFile?.txt"
 delete: s3://my-bucket/path/MyFile88.txt
 '''
 // Delete MyFile2.rtf
