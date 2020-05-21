@@ -23,5 +23,5 @@ The AWS CLI supports copying, moving, and syncing from Amazon S3 to Amazon S3 us
 When operations such as these can be performed completely in the cloud, only the bandwidth necessary for the HTTP request and response is used\.
 
 **Topics**
-+ [Using High\-Level \(`s3`\) Commands with the AWS CLI](cli-services-s3-commands.md)
-+ [Using API\-Level \(`s3api`\) Commands with the AWS CLI](cli-services-s3-apicommands.md)
++ [Using high\-level \(`s3`\) commands with the AWS CLI](cli-services-s3-commands.md)
++ [Using API\-Level \(`s3api`\) commands with the AWS CLI](cli-services-s3-apicommands.md)

@@ -1,4 +1,4 @@
-# Create an Access Key for an IAM User<a name="cli-services-iam-create-creds"></a>
+# Create an access key for an IAM user<a name="cli-services-iam-create-creds"></a>
 
 This topic describes how to use AWS Command Line Interface \(AWS CLI\) commands to create a set of access keys for an AWS Identity and Access Management \(IAM\) user\.
 

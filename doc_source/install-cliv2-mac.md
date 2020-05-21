@@ -1,101 +1,78 @@
 # Installing the AWS CLI version 2 on macOS<a name="install-cliv2-mac"></a>
 
-This section describes how to install, upgrade, and remove the AWS CLI version 2 on macOS\.
+This topic describes how to install, update, and remove the AWS CLI version 2 on macOS\.
 
 **Important**  
-Because AWS CLI versions 1 and 2 use the same `aws` name for the command, your computer will find only the first one found in your search path if you have both installed\. If you previously had installed AWS CLI version 1, then we recommend that you do one of the following to use AWS CLI version 2:  
-***Recommended:*** Uninstall AWS CLI version 1 and use only AWS CLI version 2\.
-Use your operating system's ability to create an alias or sym link with a different name for one of the two `aws` commands\. For example, you could use [https://www.linux.com/tutorials/understanding-linux-links/](https://www.linux.com/tutorials/understanding-linux-links/) or [https://www.linux.com/tutorials/aliases-diy-shell-commands/](https://www.linux.com/tutorials/aliases-diy-shell-commands/) in Linux and macOS, or []() in Windows\.
-
-**Topics**
-+ [Prerequisites](#cliv2-mac-prereq)
-+ [Installing using the macOS graphical interface](#cliv2-mac-install-gui)
-+ [Installing using the macOS command line](#cliv2-mac-install-cmd)
-+ [Confirming the installation](#cliv2-mac-install-confirm)
-+ [Upgrading](#cliv2-mac-upgrade)
-+ [Uninstalling](#cliv2-mac-remove)
+AWS CLI versions 1 and 2 use the same `aws` command name\. If you have both versions installed, your computer uses the first one found in your search path\. If you previously installed AWS CLI version 1, we recommend that you do one of the following to use AWS CLI version 2:  
+** Recommended** – Uninstall AWS CLI version 1 and use only AWS CLI version 2\.
+Use your operating system's ability to create a symbolic link \(symlink\) or alias with a different name for one of the two `aws` commands\. For example, you can use a [symbolic link](https://www.linux.com/tutorials/understanding-linux-links/) or [alias](https://www.linux.com/tutorials/aliases-diy-shell-commands/) on Linux and macOS, or [https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/doskey](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/doskey) on Windows\.
 
 ## Prerequisites<a name="cliv2-mac-prereq"></a>
-+ The AWS CLI version 2 has no dependencies on other software packages\. It has a self\-contained, embedded copy of all dependencies included in the installer\. You no longer need to install and maintain Python to use the AWS CLI\.
-+ We support the AWS CLI version 2 on versions of macOS that are supported by Apple, including High Sierra \(10\.13\), Mojave \(10\.14\), and Catalina \(10\.15\)\.
++ We support the AWS CLI version 2 on Apple\-supported versions of 64\-bit macOS\.
++ Because AWS doesn't maintain third\-party repositories, we can’t guarantee that they contain the latest version of the AWS CLI\.
 
-You can install using either the graphical interface or the command line\.
+## Install and update the AWS CLI version 2 using the macOS user interface<a name="cliv2-mac-install-gui"></a>
 
-## Installing using the macOS graphical interface<a name="cliv2-mac-install-gui"></a>
+The following steps show how to install or update to the latest version of the AWS CLI version 2 by using the standard macOS user interface and your browser\. If you are updating to the latest version, use the same installation method that you used for your current version\.
 
-To install using the standard macOS graphical interface and your browser, follow these steps:
-
-1. Using your browser, download this file: [https://awscli.amazonaws.com/AWSCLIV2.pkg](https://awscli.amazonaws.com/AWSCLIV2.pkg)\.
+1. In your browser, download the macOS `pkg` file: [https://awscli.amazonaws.com/AWSCLIV2.pkg](https://awscli.amazonaws.com/AWSCLIV2.pkg)\.
 
 1. Double\-click the downloaded file to launch the installer\.
 
 1. Follow the on\-screen instructions\. You can choose to install the AWS CLI version 2 in the following ways:
    + **For all users on the computer \(requires `sudo`\)**
      + You can install to any folder, or choose the recommended default folder of `/usr/local/aws-cli`\.
-     + The installer automatically creates a symbolic link \(symlink\) at `/usr/local/bin/aws` that links to main program in the installation folder you chose\.
+
+       The installer automatically creates a symlink at `/usr/local/bin/aws` that links to the main program in the installation folder you chose\.
    + **For only the current user \(doesn't require `sudo`\)**
      + You can install to any folder to which you have write permission\.
-     + You must manually create a symlink file in your `$PATH` that points to the actual `aws` and `aws_completer` programs\. You must run these commands at the command prompt\. Because standard user permissions typically don't allow writing to folders in the path, the installer in this mode doesn't try to add the symlinks\. You must manually create the symlinks after the installer finishes\. If your `$PATH`includes a folder you can write to, you can run the following command without `sudo` if you specify that folder as the target's path\. If you don't have a writable folder in your `$PATH`, then you must use `sudo` in the commands to get permissions to write to the specified target folder\.
+     + Due to standard user permissions, after the installer finishes, you must manually create a symlink file in your `$PATH` that points to the `aws` and `aws_completer` programs by using the following commands at the command prompt\. If your `$PATH` includes a folder you can write to, you can run the following command without `sudo` if you specify that folder as the target's path\. If you don't have a writable folder in your `$PATH`, you must use `sudo` in the commands to get permissions to write to the specified target folder\. The default location for a symlink is `/usr/local/bin/`\.
 
        ```
-       $ sudo ln -s /folder/installed/aws-cli/aws /folder/in/path/aws
-       $ sudo ln -s /folder/installed/aws-cli/aws_completer /folder/in/path/aws_completer
+       $ sudo ln -s /folder/installed/aws-cli/aws /usr/local/bin/aws
+       $ sudo ln -s /folder/installed/aws-cli/aws_completer /usr/local/bin/aws/aws_completer
        ```
+**Note**  
+You can view debug logs for the installation by pressing **Cmd\+L** anywhere in the installer\. This opens a log pane that enables you to filter and save the log\. The log file is also automatically saved to `/var/log/install.log`\.
 
-1. You can view debug logs for the installation by pressing **CMD\+L** anywhere in the installer\. This opens up a log pane that enables you to filter and save the log\. The log file is also automatically saved to `/var/log/install.log`\.
+1. To verify the AWS CLI version 2 is installed, follow the steps in [Verify the installation](#cliv2-mac-install-confirm)\.
 
-1. Follow the steps in the section [Confirming the installation](#cliv2-mac-install-confirm) below\.
+## Install and update the AWS CLI version 2 using the macOS command line<a name="cliv2-mac-install-cmd"></a>
 
-## Installing using the macOS command line<a name="cliv2-mac-install-cmd"></a>
+You can download, install, and update from the command line\. If you are updating to the latest version, use the same installation method that you used in your current version\. You can install the AWS CLI version 2 in one of the following ways:
++ [For all users](#cliv2-mac-install-cmd-all-users) – Requires `sudo`\.
++ [For only the current user](#cliv2-mac-install-cmd-current-user) – Might require `sudo` to create a symlink in a folder in your `$PATH` variable\.<a name="cliv2-mac-install-cmd-all-users"></a>
 
-You can also download and install from the command line\. You can choose to install the AWS CLI version 2 in the following ways:
-+ [For all users](#cliv2-mac-install-cmd-all-users) \- requires `sudo`
-+ [For only the current user](#cliv2-mac-install-cmd-current-user) \- might require `sudo` to create symlink in folder in $PATH<a name="cliv2-mac-install-cmd-all-users"></a>
+## To install and update for all users using the macOS command line<a name="cliv2-mac-install-cmd-all-users"></a>
 
-## To install for all users using the macOS command line<a name="cliv2-mac-install-cmd-all-users"></a>
+If you have `sudo` permissions, you can install the AWS CLI version 2 for all users on the computer\.
 
-If you have sudo permissions, you can install the AWS CLI version 2 for all users on the computer\.
-
-We provide the steps in one easy to copy and paste group\. See the descriptions of each line in the steps that follow\. 
+We provide the steps in one easy to copy and paste group\. See the descriptions of each line in the following steps\. 
 
 ```
 $ curl "https://awscli.amazonaws.com/AWSCLIV2.pkg" -o "AWSCLIV2.pkg"
 $ sudo installer -pkg AWSCLIV2.pkg -target /
 ```
 
-1. Download the file using the `curl` command\. The options on the following example command cause the downloaded file to be written to the current directory with the local name \.
+1. Download the file using the `curl` command\. The `-o` option specifies the file name that the downloaded package is written to\. In this example, the file is written to `AWSCLIV2.pkg` in the current folder\.
 
    ```
    $ curl "https://awscli.amazonaws.com/AWSCLIV2.pkg" -o "AWSCLIV2.pkg"
    ```
 
-   In this example, the `-o` option specifies the file name that the downloaded package is written to\. In the previous example, the file is written to `AWSCLIV2.pkg` in the current folder\.
-
-1. Run the standard macOS `installer` program, specifying the downloaded \.pkg file as the source\.
+1. Run the standard macOS `installer` program, specifying the downloaded `.pkg` file as the source\. Use the `-pkg` parameter to specify the name of the package to install, and the `-target /` parameter for which drive to install the package to\. The files are installed to `/usr/local/aws-cli`, and a symlink is automatically created in `/usr/local/bin`\. You must include `sudo` on the command to grant write permissions to those folders\. 
 
    ```
    $ sudo installer -pkg ./AWSCLIV2.pkg -target /
    ```
 
-   You must specify the name of the package to install by using the `-pkg` parameter, and the drive to which to install the package by using the `-target /` parameter\. The files are installed to `/usr/local/aws-cli`, and a symlink is automatically created in `/usr/local/bin`\. You must include `sudo` on the command to grant write permissions to those folders\. 
+   After installation is complete, debug logs are written to `/var/log/install.log`\.
 
-1. You can view debug logs after installation is complete\. The logs are written to `/var/log/install.log`\.
+1. To verify the AWS CLI version 2 installed, follow the steps in [Verify the installation](#cliv2-mac-install-confirm)\.<a name="cliv2-mac-install-cmd-current-user"></a>
 
-1. Follow the steps in the section [Confirming the installation](#cliv2-mac-install-confirm) below\.<a name="cliv2-mac-install-cmd-current-user"></a>
+## To install and update for only the current user using the macOS command line<a name="cliv2-mac-install-cmd-current-user"></a>
 
-## To install for only the current user using the macOS command line<a name="cliv2-mac-install-cmd-current-user"></a>
-
-If you have sudo permissions, you can install the AWS CLI version 2 for all users on the computer\.
-
-1. Download the file using the `curl` command\. The options on the following example command cause the downloaded file to be written to the current directory with the local name \.
-
-   ```
-   $ curl "https://awscli.amazonaws.com/AWSCLIV2.pkg" -o "AWSCLIV2.pkg"
-   ```
-
-   In this example, the `-o` option specifies the file name that the downloaded package is written to\. In the previous example, the file is written to `AWSCLIV2.pkg` in the current folder\.
-
-1. Before you can run the installer, you must create a file that specifies the folder to which the AWS CLI is installed\. This file is an XML formatted file that looks like the following example\. Leave all value as shown, expect you must replace the path */Users/myusername* in line 9 with the path to the folder you want the AWS CLI version 2 installed to\. *The folder must already exist, or the command fails\.* This XML example specifies that the installer is install the AWS CLI in the folder `/Users/myusername`, where it creates a folder named `aws-cli`\.
+1. To specify which folder the AWS CLI is installed to, you must create an XML file\. This file is an XML\-formatted file that looks like the following example\. Leave all values as shown, except you must replace the path */Users/myusername* in line 9 with the path to the folder you want the AWS CLI version 2 installed to\. *The folder must already exist, or the command fails\.* This XML example specifies that the installer installs the AWS CLI in the folder `/Users/myusername`, where it creates a folder named `aws-cli`\.
 
    ```
    <?xml version="1.0" encoding="UTF-8"?>
@@ -114,10 +91,18 @@ If you have sudo permissions, you can install the AWS CLI version 2 for all user
    </plist>
    ```
 
-1. Now you can run the standard macOS `installer` program with the following options:
+1. Download the `pkg` installer using the `curl` command\. The `-o` option specifies the file name that the downloaded package is written to\. In this example, the file is written to `AWSCLIV2.pkg` in the current folder\.
+
+   ```
+   $ curl "https://awscli.amazonaws.com/AWSCLIV2.pkg" -o "AWSCLIV2.pkg"
+   ```
+
+1. Run the standard macOS `installer` program with the following options:
    + Specify the name of the package to install by using the `-pkg` parameter\.
-   + To specify a *current user only* installation, you must set the parameter `--target CurrentUserHomeDirectory`\.
-   + Specify the path \(relative to the current folder\) and name of the XML file that you created in the previous step in the `--applyChoiceChangesXML` parameter\.
+   + Specify a *current user only* installation by setting the parameter `--target CurrentUserHomeDirectory`\.
+   + Specify the path \(relative to the current folder\) and name of the XML file that you created in the `--applyChoiceChangesXML` parameter\.
+
+   The following example installs the AWS CLI in the folder `/Users/myusername/aws-cli`\.
 
    ```
    $ installer -pkg AWSCLIV2.pkg \
@@ -125,61 +110,55 @@ If you have sudo permissions, you can install the AWS CLI version 2 for all user
                -applyChoiceChangesXML choices.xml
    ```
 
-   This installs the AWS CLI in the folder `/Users/myusername/aws-cli`\.
-
-1. Finally, you must create a symlink file in your `$PATH` that points to the actual `aws` and `aws_completer` programs\. Because standard user permissions typically don't allow writing to folders in the path, the installer in this mode doesn't try to add the symlinks\. You must manually create the symlinks after the installer finishes\. If your `$PATH`includes a folder you can write to, you can run the following command without `sudo` if you specify that folder as the target's path\. If you don't have a writable folder in your `$PATH`, then you must use `sudo` in the commands to get permissions to write to the specified target folder\.
+1. Because standard user permissions typically don't allow writing to folders in your `$PATH`, the installer in this mode doesn't try to add the symlinks to the `aws` and `aws_completer` programs\. For the AWS CLI to run correctly, you must manually create the symlinks after the installer finishes\. If your `$PATH` includes a folder you can write to and you specify the folder as the target's path, you can run the following command without `sudo`\. If you don't have a writable folder in your `$PATH`, you must use `sudo` for permissions to write to the specified target folder\.
 
    ```
-   $ sudo ln -s /folder/installed/aws-cli/aws /folder/in/path/aws
-   $ sudo ln -s /folder/installed/aws-cli/aws_completer /folder/in/path/aws_completer
+   $ sudo ln -s /folder/installed/aws-cli/aws /folder/in/your/PATH/aws
+   $ sudo ln -s /folder/installed/aws-cli/aws_completer /folder/in/your/PATH/aws_completer
    ```
 
-1. You can view debug logs after installation is complete\. The logs are written to `/var/log/install.log`\.
+   After installation is complete, debug logs are written to `/var/log/install.log`\.
 
-1. Follow the steps in the section [Confirming the installation](#cliv2-mac-install-confirm) below\.
+1. To verify the AWS CLI version 2 installed, follow the steps in [Verify the installation](#cliv2-mac-install-confirm)\.
 
-## Confirming the installation<a name="cliv2-mac-install-confirm"></a>
+## Verify the installation<a name="cliv2-mac-install-confirm"></a>
 
-Confirm the installation\. The following commands verify that the shell can find the `aws` command in your path, and that the command can actually run\.
+To verify that the shell can find and run the `aws` command in your `$PATH`, use the following commands\.
 
 ```
 $ which aws
 /usr/local/bin/aws 
 $ aws --version
-aws-cli/2.0.0 Python/3.7.4 Darwin/18.7.0 botocore/2.0.0
+aws-cli/2.0.6 Python/3.7.4 Darwin/18.7.0 botocore/2.0.0
 ```
 
-## Upgrading<a name="cliv2-mac-upgrade"></a>
-
-To upgrade your copy of the AWS CLI version 2, run the same steps that you used to install it in the previous section\. Download and run the package\. If it finds that the AWS CLI is already installed, then it automatically overwrites and upgrades the existing installation\.
-
-## Uninstalling<a name="cliv2-mac-remove"></a>
+## Uninstall the AWS CLI version 2<a name="cliv2-mac-remove"></a>
 
 To uninstall the AWS CLI version 2, run the following commands, substituting the paths you used to install\.
 
-Find the folder that contains the symlinks to the main program and the completer\.
+1. Find the folder that contains the symlinks to the main program and the completer\.
 
-```
-$ which aws
-/usr/local/bin/aws
-```
+   ```
+   $ which aws
+   /usr/local/bin/aws
+   ```
 
-Use that information to find the installation folder that the symlinks point to\.
+1. Using that information, run the following command to find the installation folder that the symlinks point to\.
 
-```
-$ ls -l /usr/local/bin/aws
-lrwxrwxrwx 1 ec2-user ec2-user 49 Oct 22 09:49 /usr/local/bin/aws -> /usr/local/aws-cli/aws
-```
+   ```
+   $ ls -l /usr/local/bin/aws
+   lrwxrwxrwx 1 ec2-user ec2-user 49 Oct 22 09:49 /usr/local/bin/aws -> /usr/local/aws-cli/aws
+   ```
 
-Now delete the two symlinks in the first folder\. If your user account already has write permission to these folders, you don't need to use `sudo`\.
+1. Delete the two symlinks in the first folder\. If your user account already has write permission to these folders, you don't need to use `sudo`\.
 
-```
-$ sudo rm /usr/local/bin/aws
-$ sudo rm /usr/local/bin/aws_completer
-```
+   ```
+   $ sudo rm /usr/local/bin/aws
+   $ sudo rm /usr/local/bin/aws_completer
+   ```
 
-Finally, you can delete the main installation folder\. Use `sudo` to gain write access to the `/usr/local` folder\.
+1. Delete the main installation folder\. Use `sudo` to gain write access to the `/usr/local` folder\.
 
-```
-$ sudo rm -rf /usr/local/aws-cli
-```
+   ```
+   $ sudo rm -rf /usr/local/aws-cli
+   ```

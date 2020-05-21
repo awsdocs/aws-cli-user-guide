@@ -1,71 +1,124 @@
 # Install the AWS CLI version 1 on Linux<a name="install-linux"></a>
 
-**Important**  
-On January 10th, 2020, AWS CLI version 1, which requires a separate installation of Python to operate, stopped supporting Python versions 2\.6 and 3\.3\. All builds of AWS CLI version 1 released after January 10th, 2020, starting with version 1\.17, require Python 2\.7, Python 3\.4, or a later version to successfully use the AWS CLI\.  
-This change does not affect the following versions of the AWS CLI:  
-**Windows MSI installer version of AWS CLI version 1\.** The Windows MSI installer for AWS CLI version 1 includes and uses its own embedded copy of Python, independent of any other Python version that you might have installed\. If you're using an MSI installer\-based AWS CLI, no changes are required\.
-**AWS CLI version 2\.** All installers for AWS CLI version 2 include and use an embedded copy of Python, independent of any other Python version that you might have installed\. If you're using AWS CLI version 2, no changes are required\.
-For more information, see [Using the AWS CLI version 1 with Earlier Versions of Python](deprecate-old-python-versions.md) in this guide, and the [deprecation announcement in this blog post](https://aws.amazon.com/blogs/developer/deprecation-of-python-2-6-and-python-3-3-in-botocore-boto3-and-the-aws-cli/)\.
+You can install the AWS Command Line Interface \(AWS CLI\) version 1 and its dependencies on most Linux distributions by using the `pip` package manager or the bundled installer\.
 
-You can install version 1 of the AWS Command Line Interface \(AWS CLI\) and its dependencies on most Linux distributions by using `pip`, a package manager for Python\.
-
-Although the `awscli` package is available in repositories for other package managers such as `apt` and `yum`, these are not produced or managed by AWS and are therefore not official and not supported by AWS\. We recommend that you install the AWS CLI from only the official AWS distribution points, as documented in this guide\.
-
-If you already have `pip`, follow the instructions in the main [installation topic](cli-chap-install.md)\. Run `pip --version` to see if your version of Linux already includes Python and `pip`\. We recommend that if you have Python version 3\+ installed, you use the `pip3` command\.
-
-```
-$ pip3 --version
-```
-
-If you don't already have `pip` installed, check which version of Python is installed\.
-
-```
-$ python --version
-```
-
-**or**
-
-```
-$ python3 --version
-```
-
-If you don't already have Python 2 version 2\.7\+ or Python 3 version 3\.4\+, you must first [install Python](install-linux-python.md)\. If you do have Python installed, proceed to installing `pip` and the AWS CLI\.
+Although the `awscli` package is available in repositories for other package managers such as `apt` and `yum`, these are not produced, managed, or supported by AWS\. We recommend that you install the AWS CLI from only the official AWS distribution points, as documented in this guide\.
 
 **Topics**
-+ [Install `pip`](#install-linux-pip)
-+ [Install the AWS CLI version 1 with `pip`](#install-linux-awscli)
-+ [Upgrading to the Latest Version of the AWS CLI version 1](#install-linux-awscli-upgrade)
-+ [Add the AWS CLI version 1 Executable to Your Command Line Path](#install-linux-path)
++ [Prerequisites](#install-linux-prereqs)
++ [Install and uninstall the AWS CLI version 1 on Linux using the bundled installer](#install-linux-bundled)
++ [Install and uninstall the AWS CLI version 1 using pip](#install-linux-pip)
 + [Installing Python on Linux](install-linux-python.md)
-+ [Install the AWS CLI version 1 on Amazon Linux](install-linux-al2017.md)
 
-## Install `pip`<a name="install-linux-pip"></a>
+## Prerequisites<a name="install-linux-prereqs"></a>
 
-If you don't already have `pip` installed, you can install it by using the script that the *Python Packaging Authority* provides\.
+You must have Python 2 version 2\.7 or later, or Python 3 version 3\.4 or later installed\. For installation instructions, see [Installing Python on Linux](install-linux-python.md)\.
 
-**To install `pip`**
+**Important**  
+AWS CLI version 1 no longer supports Python versions 2\.6 and 3\.3\. All versions of the AWS CLI version 1 released after January 10th, 2020, starting with 1\.17, require Python 2\.7, Python 3\.4, or a later version\.  
+This change does not affect the following versions of the AWS CLI:  
+Windows MSI installer version of AWS CLI version 1
+AWS CLI version 2
+For more information, see [Using the AWS CLI version 1 with earlier versions of Python](deprecate-old-python-versions.md) in this guide, and the [deprecation announcement](https://aws.amazon.com/blogs/developer/deprecation-of-python-2-6-and-python-3-3-in-botocore-boto3-and-the-aws-cli/) blog post\.
 
-1. Use the `curl` command to download the installation script\. The following command uses the `-O` \(uppercase "O"\) parameter to specify that the downloaded file is to be stored in the current folder using the same name it has on the remote host\.
+## Install and uninstall the AWS CLI version 1 on Linux using the bundled installer<a name="install-linux-bundled"></a>
+
+On Linux or macOS, you can use the bundled installer to install version 1 of the AWS CLI\. The bundled installer includes all dependencies and can be used offline\.
+
+**Note**  
+The bundled installer doesn't support installing to paths that contain spaces\.
+
+### Install the AWS CLI version 1 using the bundled installer with `sudo`<a name="install-linux-bundled-sudo"></a>
+
+The following steps enable you to install the AWS CLI version 1 from the command line on any build of Linux or macOS\.
+
+The following is a summary of the installation commands explained below that you can cut and paste to run as a single set of commands\.
+
+```
+curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
+unzip awscli-bundle.zip
+sudo ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
+```
+
+Follow these steps from the command line to install the AWS CLI version 1 using the bundled installer\.
+
+**To install the AWS CLI version 1 using the bundled installer**
+
+1. Download the AWS CLI version 1 bundled installer using one of the the following methods\.
+   + Download using the `curl` command\.
+
+     ```
+     $ curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
+     ```
+   + Download using the direct link: [https://s3.amazonaws.com/aws-cli/awscli-bundle.zip](https://s3.amazonaws.com/aws-cli/awscli-bundle.zip)
+
+1. Extract the files from the package\. If you don't have `unzip` to extract the files, use your Linux distribution's built\-in package manager to install it\.
 
    ```
-   $ curl -O https://bootstrap.pypa.io/get-pip.py
+   $ unzip awscli-bundle.zip
    ```
 
-1. Run the script with Python to download and install the latest version of `pip` and other required support packages\.
+1. Run the install program\. The installer installs the AWS CLI at `/usr/local/aws` and creates the symlink `aws` at the `/usr/local/bin` directory\. Using the `-b` option to create a symlink eliminates the need to specify the install directory in the user's `$PATH` variable\. This should enable all users to call the AWS CLI by entering `aws` from any directory\.
 
    ```
-   $ python get-pip.py --user
+   $ sudo ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
    ```
 
-   Or use the following\.
+   By default, the install script runs under the system default version of Python\. If you have installed an alternative version of Python and want to use that version to install the AWS CLI, run the install script with that version by absolute path to the Python executable, as follows\.
 
    ```
-   $ python3 get-pip.py --user
+   $ sudo /usr/local/bin/python3.7 awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
    ```
 
-   When you include the `--user` switch, the script installs `pip` to the path `~/.local/bin`\.
+1. Verify that the AWS CLI installed correctly\.
 
-1. Ensure the folder that contains `pip` is part of your `PATH` variable\.
+   ```
+   $ aws --version
+   aws-cli/1.17.4 Python/3.7.4 Linux/4.14.133-113.105.amzn2.x86_64 botocore/1.13
+   ```
+
+   If you get an error, see [Troubleshooting AWS CLI errors](cli-chap-troubleshooting.md)\.
+
+### Install the AWS CLI version 1 using the bundled installer without `sudo`<a name="install-linux-bundled-no-sudo"></a>
+
+If you don't have `sudo` permissions or want to install the AWS CLI only for the current user, you can use a modified version of the previous commands\. The first two commands are the same\. 
+
+```
+$ curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
+$ unzip awscli-bundle.zip
+$ ./awscli-bundle/install -b ~/bin/aws
+```
+
+**To install the AWS CLI version 1 for current user**
+
+1. Download the AWS CLI version 1 bundled installer in one of the following ways\.
+   + Download using the `curl` command\.
+
+     ```
+     $ curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
+     ```
+   + Download using the direct link: [https://s3.amazonaws.com/aws-cli/awscli-bundle.zip](https://s3.amazonaws.com/aws-cli/awscli-bundle.zip)
+
+1. Extract the files from the package by using `unzip`\. If you don't have `unzip`, use your Linux distribution's built\-in package manager to install it\.
+
+   ```
+   $ unzip awscli-bundle.zip
+   ```
+
+1. Run the install program\. The installer installs the AWS CLI at `/usr/local/aws` and creates the symlink `aws` at the `/usr/local/bin` directory\. The command uses the `-b` parameter to specify the directory where the installer places the `aws` symlink file\. You must have write permissions to the specified folder\.
+
+   ```
+   $ ./awscli-bundle/install -b ~/bin/aws
+   ```
+
+   This installs the AWS CLI to the default location \(`~/.local/lib/aws`\) and creates a symbolic link \(symlink\) at `~/bin/aws`\. Make sure that `~/bin` is in your `PATH` environment variable for the symlink to work\.
+
+   ```
+   $ echo $PATH | grep ~/bin     // See if $PATH contains ~/bin (output will be empty if it doesn't)
+   $ export PATH=~/bin:$PATH     // Add ~/bin to $PATH if necessary
+   ```
+
+1. Ensure the directory that the AWS CLI version 1 is part of your `PATH` variable\.
 
    1. Find your shell's profile script in your user folder\. If you're not sure which shell you have, run `echo $SHELL`\.
 
@@ -91,79 +144,93 @@ If you don't already have `pip` installed, you can install it by using the scrip
       $ source ~/.bash_profile
       ```
 
-1. Now you can test to verify that `pip` is installed correctly\.
+1. Verify that the AWS CLI installed correctly\.
+
+   ```
+   $ aws --version
+   aws-cli/1.17.4 Python/3.7.4 Linux/4.14.133-113.105.amzn2.x86_64 botocore/1.13
+   ```
+
+   If you get an error, see [Troubleshooting AWS CLI errors](cli-chap-troubleshooting.md)\.
+
+### Uninstall the AWS CLI version 1 bundled installer<a name="install-linux-bundled-uninstall"></a>
+
+The bundled installer doesn't put anything outside of the installation directory except the optional symlink, so uninstalling is as simple as deleting those two items\.
+
+```
+$ sudo rm -rf /usr/local/aws
+$ sudo rm /usr/local/bin/aws
+```
+
+## Install and uninstall the AWS CLI version 1 using pip<a name="install-linux-pip"></a>
+
+### Install pip<a name="install-linux-pip-pip"></a>
+
+If you don't already have `pip` installed, you can install it by using the script that the *Python Packaging Authority* provides\. Run `pip --version` to see if your version of Linux already includes Python and `pip`\. We recommend that if you have Python version 3 or later installed, you use the `pip3` command\.
+
+1. Use the `curl` command to download the installation script\. The following command uses the `-O` \(uppercase "O"\)parameter to specify that the downloaded file is to be stored in the current directory using the same name it has on the remote host\.
+
+   ```
+   $ curl -O https://bootstrap.pypa.io/get-pip.py
+   ```
+
+1. Run the script with the `python` or `python3` command to download and install the latest version of `pip` and other required support packages\. When you include the `--user` switch, the script installs `pip` to the path `~/.local/bin`\.
+
+   ```
+   $ python3 get-pip.py --user
+   ```
+
+1. Ensure the directoy that contains `pip` is part of your `PATH`variable\.
+
+   1. Find your shell's profile script in your user folder\. If you're not sure which shell you have, run `echo $SHELL`\.
+
+      ```
+      $ ls -a ~
+      .  ..  .bash_logout  .bash_profile  .bashrc  Desktop  Documents  Downloads
+      ```
+      + **Bash** – `.bash_profile`, `.profile`, or `.bash_login`
+      + **Zsh** – `.zshrc`
+      + **Tcsh** – `.tcshrc`, `.cshrc` or `.login`
+
+   1. Add an export command at the end of your profile script that's similar to the following example\.
+
+      ```
+      export PATH=~/.local/bin:$PATH
+      ```
+
+      This command inserts the path, `~/.local/bin` in this example, at the front of the existing `PATH` variable\.
+
+   1. Reload the profile into your current session to put those changes into effect\.
+
+      ```
+      $ source ~/.bash_profile
+      ```
+
+1. To verify that `pip` or `pip3` is installed correctly, run the following command\.
 
    ```
    $ pip3 --version
    pip 19.2.3 from ~/.local/lib/python3.7/site-packages (python 3.7)
    ```
 
-## Install the AWS CLI version 1 with `pip`<a name="install-linux-awscli"></a>
+### Install and update the AWS CLI version 1 using pip<a name="install-linux-awscli"></a>
 
-Use `pip` to install the AWS CLI\.
+1. Use the `pip` or `pip3` command to install or update the AWS CLI\. We recommend that if you use Python version 3 or later that you use the `pip3` command\. The `--user` switch, `pip` installs the AWS CLI to `~/.local/bin`\. 
 
-```
-$ pip3 install awscli --upgrade --user
-```
+   ```
+   $ pip3 install awscli --upgrade --user
+   ```
 
-When you use the `--user` switch, `pip` installs the AWS CLI to `~/.local/bin`\. 
+1. Verify that the AWS CLI installed correctly\.
 
-Verify that the AWS CLI installed correctly\.
+   ```
+   $ aws --version
+   aws-cli/1.17.4 Python/3.7.4 Linux/4.14.133-113.105.amzn2.x86_64 botocore/1.13
+   ```
 
-```
-$ aws --version
-aws-cli/1.17.4 Python/3.7.4 Linux/4.14.133-113.105.amzn2.x86_64 botocore/1.13
-```
+   If you get an error, see [Troubleshooting AWS CLI errors](cli-chap-troubleshooting.md)\.
 
-If you get an error, see [Troubleshooting AWS CLI Errors](cli-chap-troubleshooting.md)\.
-
-## Upgrading to the Latest Version of the AWS CLI version 1<a name="install-linux-awscli-upgrade"></a>
-
-We recommend that you regularly check to see if there is a new version of the AWS CLI and upgrade to it when you can\.
-
-Use the `pip list -o` command to check which packages are "outdated"\.
-
-```
-$ aws --version
-aws-cli/1.16.170 Python/3.7.3 Linux/4.14.123-111.109.amzn2.x86_64 botocore/1.12.160
-
-$ pip3 list -o
-Package    Version  Latest   Type 
----------- -------- -------- -----
-awscli     1.16.170 1.16.198 wheel
-botocore   1.12.160 1.12.188 wheel
-```
-
-Because the previous command shows that there is a newer version of the AWS CLI version 1 available, you can run `pip install --upgrade` to get the latest version\.
-
-```
-$ pip3 install --upgrade --user awscli
-Collecting awscli
-  Downloading https://files.pythonhosted.org/packages/dc/70/b32e9534c32fe9331801449e1f7eacba6a1992c2e4af9c82ac9116661d3b/awscli-1.16.198-py2.py3-none-any.whl (1.7MB)
-     |████████████████████████████████| 1.7MB 1.6MB/s 
-Collecting botocore==1.12.188 (from awscli)
-  Using cached https://files.pythonhosted.org/packages/10/cb/8dcfb3e035a419f228df7d3a0eea5d52b528bde7ca162f62f3096a930472/botocore-1.12.188-py2.py3-none-any.whl
-Requirement already satisfied, skipping upgrade: docutils>=0.10 in ./venv/lib/python3.7/site-packages (from awscli) (0.14)
-Requirement already satisfied, skipping upgrade: rsa<=3.5.0,>=3.1.2 in ./venv/lib/python3.7/site-packages (from awscli) (3.4.2)
-Requirement already satisfied, skipping upgrade: colorama<=0.3.9,>=0.2.5 in ./venv/lib/python3.7/site-packages (from awscli) (0.3.9)
-Requirement already satisfied, skipping upgrade: PyYAML<=5.1,>=3.10; python_version != "2.6" in ./venv/lib/python3.7/site-packages (from awscli) (3.13)
-Requirement already satisfied, skipping upgrade: s3transfer<0.3.0,>=0.2.0 in ./venv/lib/python3.7/site-packages (from awscli) (0.2.0)
-Requirement already satisfied, skipping upgrade: jmespath<1.0.0,>=0.7.1 in ./venv/lib/python3.7/site-packages (from botocore==1.12.188->awscli) (0.9.4)
-Requirement already satisfied, skipping upgrade: urllib3<1.26,>=1.20; python_version >= "3.4" in ./venv/lib/python3.7/site-packages (from botocore==1.12.188->awscli) (1.24.3)
-Requirement already satisfied, skipping upgrade: python-dateutil<3.0.0,>=2.1; python_version >= "2.7" in ./venv/lib/python3.7/site-packages (from botocore==1.12.188->awscli) (2.8.0)
-Requirement already satisfied, skipping upgrade: pyasn1>=0.1.3 in ./venv/lib/python3.7/site-packages (from rsa<=3.5.0,>=3.1.2->awscli) (0.4.5)
-Requirement already satisfied, skipping upgrade: six>=1.5 in ./venv/lib/python3.7/site-packages (from python-dateutil<3.0.0,>=2.1; python_version >= "2.7"->botocore==1.12.188->awscli) (1.12.0)
-Installing collected packages: botocore, awscli
-  Found existing installation: botocore 1.12.160
-    Uninstalling botocore-1.12.160:
-      Successfully uninstalled botocore-1.12.160
-  Found existing installation: awscli 1.16.170
-    Uninstalling awscli-1.16.170:
-      Successfully uninstalled awscli-1.16.170
-Successfully installed awscli-1.16.198 botocore-1.12.188
-```
-
-## Add the AWS CLI version 1 Executable to Your Command Line Path<a name="install-linux-path"></a>
+### Add the AWS CLI version 1 executable to your command line path<a name="install-linux-path"></a>
 
 After installing with `pip`, you might need to add the `aws` executable to your operating system' `PATH` environment variable\.
 
@@ -190,4 +257,38 @@ $ ls -al /usr/local/bin/python
 /usr/local/bin/python -> ~/.local/Python/3.6/bin/python3.6
 ```
 
-If this is the same folder you added to the path in step 3 in [Install `pip`](#install-linux-pip), you're done\. Otherwise, perform those same steps 3a–3c again, adding this folder to the path\.
+`pip` installs programs in the same folder that contains the Python application\. Add this folder to your `PATH` variable\.
+
+**To modify your `PATH` variable**
+
+1. Find your shell's profile script in your user directory\. If you're not sure which shell you have, run `echo $SHELL`\.
+
+   ```
+   $ ls -a ~
+   .  ..  .bash_logout  .bash_profile  .bashrc  Desktop  Documents  Downloads
+   ```
+   + **Bash** – `.bash_profile`, `.profile`, or `.bash_login`
+   + **Zsh** – `.zshrc`
+   + **Tcsh** – `.tcshrc`, `.cshrc`, or `.login`
+
+1. Add an export command to your profile script\.
+
+   ```
+   export PATH=~/.local/bin:$PATH
+   ```
+
+   This command adds a path, `~/.local/bin` in this example, to the current `PATH` variable\.
+
+1. Load the updated profile into your current session\.
+
+   ```
+   $ source ~/.bash_profile
+   ```
+
+### Uninstall the AWS CLI using pip<a name="post-install-uninstall"></a>
+
+If you need to uninstall the AWS CLI, use `pip uninstall`\.
+
+```
+$ pip3 uninstall awscli
+```

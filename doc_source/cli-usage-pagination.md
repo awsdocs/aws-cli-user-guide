@@ -1,4 +1,4 @@
-# Using AWS CLI Pagination Options<a name="cli-usage-pagination"></a>
+# Using AWS CLI pagination options<a name="cli-usage-pagination"></a>
 
 This topic describes the different ways to paginate output from theAWS Command Line Interface \(AWS CLI\)\.There are primarily two ways to control pagination from the AWS CLI\.
 + [Using server\-side pagination parameters\.](#cli-usage-pagination-serverside)
@@ -6,7 +6,7 @@ This topic describes the different ways to paginate output from theAWS Command L
 
 Server\-side pagination parameters process first and any output is sent to client\-side pagination\.
 
-## Server\-side Pagination<a name="cli-usage-pagination-serverside"></a>
+## Server\-side pagination<a name="cli-usage-pagination-serverside"></a>
 
 For commands that can return a large list of items, the AWS Command Line Interface \(AWS CLI\) has three options to control the number of items included in the output when the AWS CLI calls a service's API to populate the list\.
 + `--page-size`
@@ -61,7 +61,7 @@ $ aws s3api list-objects \
 
 The specified AWS service might not return items in the same order each time you call\. If you specify different values for `--page-size` and `--max-items`, you can get unexpected results with missing or duplicated items\. To prevent this, use the same number for `--page-size` and `--max-items` to sync the AWS CLI pagination with the pagination of the underlying service\. You can also retrieve the whole list and perform any necessary paging operations locally\.
 
-## Client\-side Pagination<a name="cli-usage-pagination-clientside"></a>
+## Client\-side pagination<a name="cli-usage-pagination-clientside"></a>
 
 AWS CLI version 2 provides the use of a client\-side pager program for output\. By default, this feature returns all output through your operating system’s default pager program\. Client\-side pagination occurs after any server\-side pagination you specify\. 
 

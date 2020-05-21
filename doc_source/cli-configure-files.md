@@ -1,4 +1,4 @@
-# Configuration and Credential File Settings<a name="cli-configure-files"></a>
+# Configuration and credential file settings<a name="cli-configure-files"></a>
 
 You can save your frequently used configuration settings and credentials in files that are maintained by the AWS CLI\. Credentials are mainly comprised of the following two pieces of information:
 + The IAM user, see [Creating an IAM User in Your AWS Account](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html) for more information\.
@@ -8,11 +8,11 @@ You can save your frequently used configuration settings and credentials in file
 You need to use the AWS console to create your preferred IAM user for first time AWS CLI configuration setup\. After setup is complete, you can create additional users through the AWS CLI\.
 
 The files are divided into sections that can be referenced by name\. These are called "profiles"\. Unless you specify otherwise, the CLI uses the settings found in the profile named `default`\. To use alternate settings, you can create and reference additional profiles\. You can also override an individual setting by either setting one of the supported environment variables, or by using a command line parameter\.
-+ [Where Are Configuration Settings Stored?](#cli-configure-files-where)
-+ [Global Settings](#cli-configure-files-global)
-+ [S3 Custom Command Settings](#cli-configure-files-s3)
++ [Where are configuration settings stored?](#cli-configure-files-where)
++ [Global settings](#cli-configure-files-global)
++ [S3 Custom command settings](#cli-configure-files-s3)
 
-## Where Are Configuration Settings Stored?<a name="cli-configure-files-where"></a>
+## Where are configuration settings stored?<a name="cli-configure-files-where"></a>
 
 The AWS CLI stores the credentials that you specify with `aws configure` in a local file named `credentials`, in a folder named `.aws` in your home directory\. The other configuration options that you specify with `aws configure` are stored in a local file named `config`, also stored in the `.aws` folder in your home directory\. Where you find your home directory location varies based on the operating system, but is referred to using the environment variables `%UserProfile%` in Windows and `$HOME` or `~` \(tilde\) in Unix\-based systems\. 
 
@@ -32,9 +32,9 @@ C:\> dir "%UserProfile%\.aws"
 
  The AWS CLI uses two files to store the sensitive credential information \(in `~/.aws/credentials`\) separated from the less sensitive configuration options \(in `~/.aws/config`\)\. 
 
- You can specify a non\-default location for the `config` file by setting the `AWS_CONFIG_FILE` environment variable to another local path\. See [Environment Variables To Configure the AWS CLI](cli-configure-envvars.md) for details\. 
+ You can specify a non\-default location for the `config` file by setting the `AWS_CONFIG_FILE` environment variable to another local path\. See [Environment variables to configure the AWS CLI](cli-configure-envvars.md) for details\. 
 
-**Storing Credentials in the Config File**  
+**Storing credentials in the config file**  
 The AWS CLI can also read credentials from the `config` file\. You can keep all of your profile settings in a single file\. If there are ever credentials in both locations for a profile \(say you used `aws configure` to update the profile's keys\), the keys in the credentials file take precedence\.   
 These files are also used by the various language software development kits \(SDKs\)\. If you use one of the SDKs in addition to the AWS CLI, you might receive additional warnings if credentials aren't stored in their own file\.
 
@@ -57,15 +57,15 @@ output=json
 ```
 
 **Note**  
-The preceding examples show the files with a single, default profile\. For examples of the files with multiple named profiles, see [Named Profiles](cli-configure-profiles.md)\.
+The preceding examples show the files with a single, default profile\. For examples of the files with multiple named profiles, see [Named profiles](cli-configure-profiles.md)\.
 
 When you use a shared profile that specifies an IAM role, the AWS CLI calls the AWS STS `AssumeRole` operation to retrieve temporary credentials\. These credentials are then stored \(in `~/.aws/cli/cache`\)\. Subsequent AWS CLI commands use the cached temporary credentials until they expire, and at that point the AWS CLI automatically refreshes the credentials\.
 
-## Supported `config` File Settings<a name="cli-configure-files-settings"></a>
+## Supported `config` file settings<a name="cli-configure-files-settings"></a>
 
 **Topics**
-+ [Global Settings](#cli-configure-files-global)
-+ [S3 Custom Command Settings](#cli-configure-files-s3)
++ [Global settings](#cli-configure-files-global)
++ [S3 Custom command settings](#cli-configure-files-s3)
 
 The following settings are supported in the `config` file\. The values listed in the specified \(or default\) profile are used unless they are overridden by the presence of an environment variable with the same name, or a command line option with the same name\.
 
@@ -84,7 +84,7 @@ us-west-2
 
 If the output is empty, the setting is not explicitly set and uses the default value\.
 
-### Global Settings<a name="cli-configure-files-global"></a>
+### Global settings<a name="cli-configure-files-global"></a>
 
 *api\_versions*  
 Some AWS services maintain multiple API versions to support backward compatibility\. By default, CLI commands use the latest available API version\. You can specify an API version to use for a profile by including the `api_versions` setting in the `config` file\.   
@@ -182,7 +182,7 @@ cli_timestamp_format = iso8601
 ```
 
 *[credential\_process](cli-configure-sourcing-external.md)*  
-Specifies an external command that the CLI runs to generate or retrieve authentication credentials to use for this command\. The command must return the credentials in a specific format\. For more information about how to use this setting, see [Sourcing Credentials with an External Process](cli-configure-sourcing-external.md)\.  
+Specifies an external command that the CLI runs to generate or retrieve authentication credentials to use for this command\. The command must return the credentials in a specific format\. For more information about how to use this setting, see [Sourcing credentials with an external process](cli-configure-sourcing-external.md)\.  
 This entry does not have an equivalent environment variable or command line option\.  
 
 ```
@@ -316,7 +316,7 @@ This entry does not have an equivalent environment variable or command line opti
 tcp_keepalive = false
 ```
 
-### S3 Custom Command Settings<a name="cli-configure-files-s3"></a>
+### S3 Custom command settings<a name="cli-configure-files-s3"></a>
 
 Amazon S3 supports several settings that configure how the AWS CLI performs Amazon S3 operations\. Some apply to all S3 commands in both the `s3api` and `s3` namespaces\. Others are specifically for the S3 "custom" commands that abstract common operations and do more than a one\-to\-one mapping to an API operation\. The `aws s3` transfer commands `cp`, `sync`, `mv`, and `rm` have additional settings you can use to control S3 transfers\. 
 

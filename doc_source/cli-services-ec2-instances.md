@@ -1,4 +1,4 @@
-# Launching, Listing, and Terminating Amazon EC2 Instances<a name="cli-services-ec2-instances"></a>
+# Launching, listing, and terminating Amazon EC2 instances<a name="cli-services-ec2-instances"></a>
 
 You can use the AWS Command Line Interface \(AWS CLI\) to launch, list, and terminate Amazon Elastic Compute Cloud \(Amazon EC2\) instances\. You need a [key pair](cli-services-ec2-keypairs.md) and a [security group](cli-services-ec2-sg.md)\. You also need to select an Amazon Machine Image \(AMI\) and make a note of the AMI ID\. For more information, see [Finding a Suitable AMI](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/finding-an-ami.html) in the *Amazon EC2 User Guide for Linux Instances*\.
 
@@ -8,14 +8,14 @@ If you launch an instance that isn't within the AWS Free Tier, you are billed af
 The following examples assume that you have already [configured your default credentials](cli-services-ec2-keypairs.md)\.
 
 **Topics**
-+ [Launch Your Instance](#launching-instances)
-+ [Add a Block Device to Your Instance](#block-device-mapping)
-+ [Add a Tag to Your Instance](#tagging-instances)
-+ [Connect to Your Instance](#connecting-to-instances)
-+ [List Your Instances](#listing-instances)
-+ [Terminate Your Instance](#terminating-instances)
++ [Launch your instance](#launching-instances)
++ [Add a block device to your instance](#block-device-mapping)
++ [Add a tag to your instance](#tagging-instances)
++ [Connect to your instance](#connecting-to-instances)
++ [List your instances](#listing-instances)
++ [Terminate your instance](#terminating-instances)
 
-## Launch Your Instance<a name="launching-instances"></a>
+## Launch your instance<a name="launching-instances"></a>
 
 To launch an Amazon EC2 instance using the AMI you selected, use the [run\-instances](https://docs.aws.amazon.com/cli/latest/reference/ec2/run-instances.html) command\. You can launch the instance into a virtual private cloud \(VPC\), or if your account supports it, into EC2\-Classic\.
 
@@ -215,7 +215,7 @@ $ aws ec2 run-instances --image-id ami-173d747e --count 1 --instance-type t1.mic
 }
 ```
 
-## Add a Block Device to Your Instance<a name="block-device-mapping"></a>
+## Add a block device to your instance<a name="block-device-mapping"></a>
 
 Each instance that you launch has an associated root device volume\. You can use block device mapping to specify additional Amazon Elastic Block Store \(Amazon EBS\) volumes or instance store volumes to attach to an instance when it's launched\.
 
@@ -247,7 +247,7 @@ The following example creates the mapping \(`/dev/sdj`\), but doesn't provision 
 
 For more information, see [Block Device Mapping](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/block-device-mapping-concepts.html) in the *Amazon EC2 User Guide for Linux Instances*\.
 
-## Add a Tag to Your Instance<a name="tagging-instances"></a>
+## Add a tag to your instance<a name="tagging-instances"></a>
 
 A tag is a label that you assign to an AWS resource\. It enables you to add metadata to your resources that you can use for a variety of purposes\. For more information, see [Tagging Your Resources](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html) in the *Amazon EC2 User Guide for Linux Instances*\.
 
@@ -257,11 +257,11 @@ The following example shows how to add a tag with the key name "`Name` and the v
 $ aws ec2 create-tags --resources i-5203422c --tags Key=Name,Value=MyInstance
 ```
 
-## Connect to Your Instance<a name="connecting-to-instances"></a>
+## Connect to your instance<a name="connecting-to-instances"></a>
 
 When your instance is running, you can connect to it and use it just as you'd use a computer sitting in front of you\. For more information, see [Connect to Your Amazon EC2 Instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstances.html) in the *Amazon EC2 User Guide for Linux Instances*\.
 
-## List Your Instances<a name="listing-instances"></a>
+## List your instances<a name="listing-instances"></a>
 
 You can use the AWS CLI to list your instances and view information about them\. You can list all your instances, or filter the results based on the instances that you're interested in\.
 
@@ -288,7 +288,7 @@ The following command lists your instances that were launched using any of the f
 $ aws ec2 describe-instances --filters "Name=image-id,Values=ami-x0123456,ami-y0123456,ami-z0123456"
 ```
 
-## Terminate Your Instance<a name="terminating-instances"></a>
+## Terminate your instance<a name="terminating-instances"></a>
 
 Terminating an instance deletes it\. You can't reconnect to an instance after you've terminated it\. 
 

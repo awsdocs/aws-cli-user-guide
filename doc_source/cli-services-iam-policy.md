@@ -1,4 +1,4 @@
-# Attaching an IAM Managed Policy to an IAM User<a name="cli-services-iam-policy"></a>
+# Attaching an IAM managed policy to an IAM user<a name="cli-services-iam-policy"></a>
 
 This topic describes how to use AWS Command Line Interface \(AWS CLI\) commands to attach an AWS Identity and Access Management \(IAM\) policy to an IAM user\. The policy in this example provides the user with "Power User Access"\.
 

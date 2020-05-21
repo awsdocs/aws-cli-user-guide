@@ -1,14 +1,14 @@
-# Using High\-Level \(`s3`\) Commands with the AWS CLI<a name="cli-services-s3-commands"></a>
+# Using high\-level \(`s3`\) commands with the AWS CLI<a name="cli-services-s3-commands"></a>
 
 This topic describes how you can manage Amazon S3 buckets and objects using high\-level `aws s3` commands\.
 
 Before you run any commands, set your default credentials\. For more information, see [Configuring the AWS CLI](cli-chap-configure.md)\.
 
-## Manage Buckets<a name="using-s3-commands-managing-buckets"></a>
+## Manage buckets<a name="using-s3-commands-managing-buckets"></a>
 
 High\-level `aws s3` commands support common bucket operations, such as creating, listing, and deleting buckets\.
 
-### Create a Bucket<a name="using-s3-commands-managing-buckets-creating"></a>
+### Create a bucket<a name="using-s3-commands-managing-buckets-creating"></a>
 
 Use the [https://docs.aws.amazon.com/cli/latest/reference/s3/mb.html](https://docs.aws.amazon.com/cli/latest/reference/s3/mb.html) command to create a bucket\. Bucket names must be ***globally*** unique and should be DNS compliant\. Bucket names can contain lowercase letters, numbers, hyphens, and periods\. Bucket names can start and end only with a letter or number, and cannot contain a period next to a hyphen or another period\. 
 
@@ -16,7 +16,7 @@ Use the [https://docs.aws.amazon.com/cli/latest/reference/s3/mb.html](https://do
 $ aws s3 mb s3://bucket-name
 ```
 
-### List Your Buckets<a name="using-s3-commands-listing-buckets"></a>
+### List your buckets<a name="using-s3-commands-listing-buckets"></a>
 
 Use the [https://docs.aws.amazon.com/cli/latest/reference/s3/ls.html](https://docs.aws.amazon.com/cli/latest/reference/s3/ls.html) command to list your buckets\. Here are some examples of common usage\.
 
@@ -45,7 +45,7 @@ $ aws s3 ls s3://bucket-name/path/
 2018-12-06 18:59:32          3 MyFile2.txt
 ```
 
-### Delete a Bucket<a name="using-s3-commands-removing-buckets"></a>
+### Delete a bucket<a name="using-s3-commands-removing-buckets"></a>
 
 To remove a bucket, use the [https://docs.aws.amazon.com/cli/latest/reference/s3/rb.html](https://docs.aws.amazon.com/cli/latest/reference/s3/rb.html) command\.
 
@@ -64,7 +64,7 @@ $ aws s3 rb s3://bucket-name --force
 **Note**  
 If you're using a versioned bucket that contains previously deleted—but retained—objects, this command does *not* allow you to remove the bucket\. You must first remove all of the content\.
 
-## Manage Objects<a name="using-s3-commands-managing-objects"></a>
+## Manage objects<a name="using-s3-commands-managing-objects"></a>
 
 The high\-level `aws s3` commands make it convenient to manage Amazon S3 objects\. The object commands include [https://docs.aws.amazon.com/cli/latest/reference/s3/cp.html](https://docs.aws.amazon.com/cli/latest/reference/s3/cp.html), [https://docs.aws.amazon.com/cli/latest/reference/s3/ls.html](https://docs.aws.amazon.com/cli/latest/reference/s3/ls.html), [https://docs.aws.amazon.com/cli/latest/reference/s3/mv.html](https://docs.aws.amazon.com/cli/latest/reference/s3/mv.html), [https://docs.aws.amazon.com/cli/latest/reference/s3/rm.html](https://docs.aws.amazon.com/cli/latest/reference/s3/rm.html), and [https://docs.aws.amazon.com/cli/latest/reference/s3/sync.html](https://docs.aws.amazon.com/cli/latest/reference/s3/sync.html)\. 
 

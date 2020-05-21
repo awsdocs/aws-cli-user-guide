@@ -1,4 +1,4 @@
-# Creating IAM Users and Groups<a name="cli-services-iam-new-user-group"></a>
+# Creating IAM users and groups<a name="cli-services-iam-new-user-group"></a>
 
 This topic describes how to use AWS Command Line Interface \(AWS CLI\) commands to create an AWS Identity and Access Management \(IAM\) group and a new IAM user, and then add the user to the group\.
 

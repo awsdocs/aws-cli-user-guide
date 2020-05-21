@@ -1,4 +1,4 @@
-# Common AWS CLI Parameter Types<a name="cli-usage-parameters-types"></a>
+# Common AWS CLI parameter types<a name="cli-usage-parameters-types"></a>
 
 This section describes some of the common parameter types and the typical required format\. If you are having trouble formatting a parameter for a specific command, check the help by entering **help** after the command name, as shown\. 
 
@@ -12,7 +12,7 @@ The help for each subcommand describes its function, options, output, and exampl
 
 String parameters can contain alphanumeric characters, symbols, and white space from the [ASCII](https://wikipedia.org/wiki/ASCII) character set\. Strings that contain white space must be surrounded by quotation marks\. We recommend that you don't use symbols or white space other than the standard space character because it can cause unexpected results\. 
 
-Some string parameters can accept binary data from a file\. See [Binary Files](cli-usage-parameters-file.md#cli-usage-parameters-file-binary) for an example\. 
+Some string parameters can accept binary data from a file\. See [Binary files](cli-usage-parameters-file.md#cli-usage-parameters-file-binary) for an example\. 
 
 ## Timestamp<a name="parameter-type-timestamp"></a>
 

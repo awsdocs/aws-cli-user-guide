@@ -1,4 +1,4 @@
-# Getting Credentials from EC2 Instance Metadata<a name="cli-configure-metadata"></a>
+# Getting credentials from EC2 instance metadata<a name="cli-configure-metadata"></a>
 
 When you run the AWS CLI from within an Amazon Elastic Compute Cloud \(Amazon EC2\) instance, you can simplify providing credentials to your commands\. Each Amazon EC2 instance contains metadata that the AWS CLI can directly query for temporary credentials\. To provide these, create an AWS Identity and Access Management \(IAM\) role that has access to the resources needed, and attach that role to the Amazon EC2 instance when you launch it\.
 

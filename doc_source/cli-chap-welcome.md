@@ -1,16 +1,16 @@
 # What Is the AWS Command Line Interface?<a name="cli-chap-welcome"></a>
 
 **Important**  
-On January 10th, 2020, AWS CLI version 1, which requires a separate installation of Python to operate, stopped supporting Python versions 2\.6 and 3\.3\. All builds of AWS CLI version 1 released after January 10th, 2020, starting with version 1\.17, require Python 2\.7, Python 3\.4, or a later version to successfully use the AWS CLI\.  
+AWS CLI version 1 no longer supports Python versions 2\.6 and 3\.3\. All versions of the AWS CLI version 1 released after January 10th, 2020, starting with 1\.17, require Python 2\.7, Python 3\.4, or a later version\.  
 This change does not affect the following versions of the AWS CLI:  
-**Windows MSI installer version of AWS CLI version 1\.** The Windows MSI installer for AWS CLI version 1 includes and uses its own embedded copy of Python, independent of any other Python version that you might have installed\. If you're using an MSI installer\-based AWS CLI, no changes are required\.
-**AWS CLI version 2\.** All installers for AWS CLI version 2 include and use an embedded copy of Python, independent of any other Python version that you might have installed\. If you're using AWS CLI version 2, no changes are required\.
-For more information, see [Using the AWS CLI version 1 with Earlier Versions of Python](deprecate-old-python-versions.md) in this guide, and the [deprecation announcement in this blog post](https://aws.amazon.com/blogs/developer/deprecation-of-python-2-6-and-python-3-3-in-botocore-boto3-and-the-aws-cli/)\.
+Windows MSI installer version of AWS CLI version 1
+AWS CLI version 2
+For more information, see [Using the AWS CLI version 1 with earlier versions of Python](deprecate-old-python-versions.md) in this guide, and the [deprecation announcement](https://aws.amazon.com/blogs/developer/deprecation-of-python-2-6-and-python-3-3-in-botocore-boto3-and-the-aws-cli/) blog post\.
 
 The AWS Command Line Interface \(AWS CLI\) is an open source tool that enables you to interact with AWS services using commands in your command\-line shell\. 
 
 The AWS CLI is available in two versions:
-+ **Version 2\.x** – The current, generally available release of the AWS CLI that is intended for use in production environments\. This version does include some "breaking" changes from version 1 that might require you to change your scripts so that they continue to operate as you expect\. For a list of new features and breaking changes in version 2, see [Breaking Changes – Migrating from AWS CLI version 1 to version 2](cliv2-migration.md)\.
++ **Version 2\.x** – The current, generally available release of the AWS CLI that is intended for use in production environments\. This version does include some "breaking" changes from version 1 that might require you to change your scripts so that they continue to operate as you expect\. For a list of new features and breaking changes in version 2, see [Breaking changes – Migrating from AWS CLI version 1 to version 2](cliv2-migration.md)\.
 + **Version 1\.x** – The previous version of the AWS CLI that is available for backwards compatiblity\.
 
 Information in this guide applies to both versions unless we specifically state that it applies to only one version or the other\.
@@ -49,7 +49,7 @@ Depending on your use case, you might want to choose one of the AWS SDKs or the 
 
 You can view—and fork—the source code for the AWS CLI on GitHub in the [aws\-cli repository](https://github.com/aws/aws-cli)\. Join the community of users on GitHub to provide feedback, request features, and submit your own contributions\!
 
-## Using the Examples<a name="cli-using-examples"></a>
+## Using the examples<a name="cli-using-examples"></a>
 
 The examples in this guide are formatted using the following conventions:
 + **Prompt** – The command prompt is typically displayed as a dollar sign followed by a space \(`$ `\)\. For commands that are Windows specific, `C:\>` is used as the prompt\. Do not include the prompt when you type commands\. 

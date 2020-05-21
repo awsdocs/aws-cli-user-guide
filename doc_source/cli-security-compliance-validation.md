@@ -1,4 +1,4 @@
-# Compliance Validation for the AWS CLI<a name="cli-security-compliance-validation"></a>
+# Compliance validation for the AWS CLI<a name="cli-security-compliance-validation"></a>
 
 Third\-party auditors assess the security and compliance of AWS services as part of multiple AWS compliance programs\. Using the AWS Command Line Interface \(AWS CLI\) to access a service does not alter that service's compliance\. 
 

@@ -1,4 +1,4 @@
-# Using an IAM Role in the AWS CLI<a name="cli-configure-role"></a>
+# Using an IAM role in the AWS CLI<a name="cli-configure-role"></a>
 
 An [AWS Identity and Access Management \(IAM\) role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html) is an authorization tool that lets an IAM user gain additional \(or different\) permissions, or get permissions to perform actions in a different AWS account\. 
 
@@ -30,14 +30,14 @@ credential_source = Ec2InstanceMetadata
 When you invoke a role, you have additional options that you can require, such as the use of multi\-factor authentication and an External ID \(used by third\-party companies to access their clients' resources\)\. You can also specify unique role session names that can be more easily audited in AWS CloudTrail logs\.
 
 **Topics**
-+ [Configuring and Using a Role](#cli-role-prepare)
-+ [Using Multi\-Factor Authentication](#cli-configure-role-mfa)
-+ [Cross\-Account Roles and External ID](#cli-configure-role-xaccount)
-+ [Specifying a Role Session Name for Easier Auditing](#cli-configure-role-session-name)
-+ [Assume Role with Web Identity](#cli-configure-role-oidc)
-+ [Clearing Cached Credentials](#cli-configure-role-cache)
++ [Configuring and using a role](#cli-role-prepare)
++ [Using multi\-factor authentication](#cli-configure-role-mfa)
++ [Cross\-account roles and external ID](#cli-configure-role-xaccount)
++ [Specifying a role session name for easier auditing](#cli-configure-role-session-name)
++ [Assume role with web identity](#cli-configure-role-oidc)
++ [Clearing cached credentials](#cli-configure-role-cache)
 
-## Configuring and Using a Role<a name="cli-role-prepare"></a>
+## Configuring and using a role<a name="cli-role-prepare"></a>
 
 When you run commands using a profile that specifies an IAM role, the AWS CLI uses the source profile's credentials to call AWS Security Token Service \(AWS STS\) and request temporary credentials for the specified role\. The user in the source profile must have permission to call `sts:assume-role` for the role in the specified profile\. The role must have a trust relationship that allows the user in the source profile to use the role\. The process of retrieving and then using temporary credentials for a role is often referred to as *assuming the role*\.
 
@@ -101,7 +101,7 @@ C:\> setx AWS_PROFILE marketingadmin
 
 For more information about configuring IAM users and roles, see [Users and Groups](https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_WorkingWithGroupsAndUsers.html) and [Roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/roles-toplevel.html) in the *IAM User Guide*\.
 
-## Using Multi\-Factor Authentication<a name="cli-configure-role-mfa"></a>
+## Using multi\-factor authentication<a name="cli-configure-role-mfa"></a>
 
 For additional security, you can require that users provide a one\-time key generated from a multi\-factor authentication \(MFA\) device, a U2F device, or mobile app when they attempt to make a call using the role profile\.
 
@@ -162,9 +162,9 @@ Enter MFA code for arn:aws:iam::123456789012:mfa/cli-user:
             ...
 ```
 
-## Cross\-Account Roles and External ID<a name="cli-configure-role-xaccount"></a>
+## Cross\-account roles and external ID<a name="cli-configure-role-xaccount"></a>
 
-You can enable IAM users to use roles that belong to different accounts by configuring the role as a cross\-account role\. During role creation, set the role type to **Another AWS account**, as described in [Creating a Role to Delegate Permissions to an IAM user](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user.html)\. Optionally, select **Require MFA**\. **Require MFA** configures the appropriate condition in the trust relationship, as described in [Using Multi\-Factor Authentication](#cli-configure-role-mfa)\.
+You can enable IAM users to use roles that belong to different accounts by configuring the role as a cross\-account role\. During role creation, set the role type to **Another AWS account**, as described in [Creating a Role to Delegate Permissions to an IAM user](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user.html)\. Optionally, select **Require MFA**\. **Require MFA** configures the appropriate condition in the trust relationship, as described in [Using multi\-factor authentication](#cli-configure-role-mfa)\.
 
 If you use an [external ID](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html) to provide additional control over who can use a role across accounts, you must also add the `external_id` parameter to the role profile\. You typically use this only when the other account is controlled by someone outside your company or organization\.
 
@@ -176,7 +176,7 @@ mfa_serial = arn:aws:iam::123456789012:mfa/saanvi
 external_id = 123456
 ```
 
-## Specifying a Role Session Name for Easier Auditing<a name="cli-configure-role-session-name"></a>
+## Specifying a role session name for easier auditing<a name="cli-configure-role-session-name"></a>
 
 When many individuals share a role, auditing becomes more of a challenge\. You want to associate each operation invoked with the individual who invoked the action\. However, when the individual uses a role, the assumption of the role by the individual is a separate action from the invoking of an operation, and you must manually correlate the two\.
 
@@ -199,7 +199,7 @@ arn:aws:iam::234567890123:assumed-role/SomeRole/Session_Maria_Garcia
 
 Also, all AWS CloudTrail logs include the role session name in the information captured for each operation\.
 
-## Assume Role with Web Identity<a name="cli-configure-role-oidc"></a>
+## Assume role with web identity<a name="cli-configure-role-oidc"></a>
 
 You can configure a profile to indicate that the AWS CLI should assume a role using [web identity federation and Open ID Connect \(OIDC\)](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_oidc.html)\. When you specify this in a profile, the AWS CLI automatically makes the corresponding AWS STS `AssumeRoleWithWebIdentity` call for you\.
 
@@ -241,7 +241,7 @@ The name applied to this assume\-role session\.
 **Note**  
 These environment variables currently apply only to the assume role with web identity provider\. They don't apply to the general assume role provider configuration\.
 
-## Clearing Cached Credentials<a name="cli-configure-role-cache"></a>
+## Clearing cached credentials<a name="cli-configure-role-cache"></a>
 
 When you use a role, the AWS CLI caches the temporary credentials locally until they expire\. The next time you try to use them, the AWS CLI attempts to renew them on your behalf\. 
 

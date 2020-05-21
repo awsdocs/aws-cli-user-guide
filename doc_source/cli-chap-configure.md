@@ -6,21 +6,21 @@ This section explains how to configure the settings that the AWS Command Line In
 AWS requires that all incoming requests are cryptographically signed\. The AWS CLI does this for you\. The "signature" includes a date/time stamp\. Therefore, you must ensure that your computer's date and time are set correctly\. If you don't, and the date/time in the signature is too far off of the date/time recognized by the AWS service, AWS rejects the request\.
 
 **Topics**
-+ [Quickly Configuring the AWS CLI](#cli-quick-configuration)
-+ [Creating Multiple Profiles](#cli-quick-configuration-multi-profiles)
-+ [Configuration Settings and Precedence](#config-settings-and-precedence)
-+ [Configuration and Credential File Settings](cli-configure-files.md)
-+ [Named Profiles](cli-configure-profiles.md)
++ [Quickly configuring the AWS CLI](#cli-quick-configuration)
++ [Creating multiple profiles](#cli-quick-configuration-multi-profiles)
++ [Configuration settings and precedence](#config-settings-and-precedence)
++ [Configuration and credential file settings](cli-configure-files.md)
++ [Named profiles](cli-configure-profiles.md)
 + [Configuring the AWS CLI to use AWS Single Sign\-On](cli-configure-sso.md)
-+ [Environment Variables To Configure the AWS CLI](cli-configure-envvars.md)
-+ [Command Line Options](cli-configure-options.md)
-+ [Sourcing Credentials with an External Process](cli-configure-sourcing-external.md)
-+ [Getting Credentials from EC2 Instance Metadata](cli-configure-metadata.md)
-+ [Using an HTTP Proxy](cli-configure-proxy.md)
-+ [Using an IAM Role in the AWS CLI](cli-configure-role.md)
-+ [Command Completion](cli-configure-completion.md)
++ [Environment variables to configure the AWS CLI](cli-configure-envvars.md)
++ [Command line options](cli-configure-options.md)
++ [Sourcing credentials with an external process](cli-configure-sourcing-external.md)
++ [Getting credentials from EC2 instance metadata](cli-configure-metadata.md)
++ [Using an HTTP proxy](cli-configure-proxy.md)
++ [Using an IAM role in the AWS CLI](cli-configure-role.md)
++ [Command completion](cli-configure-completion.md)
 
-## Quickly Configuring the AWS CLI<a name="cli-quick-configuration"></a>
+## Quickly configuring the AWS CLI<a name="cli-quick-configuration"></a>
 
  For general use, the `aws configure` command is the fastest way to set up your AWS CLI installation\. The following example shows sample values\. Replace them with your own values as described in the following sections\.
 
@@ -34,7 +34,7 @@ Default output format [None]: json
 
 When you enter this command, the AWS CLI prompts you for four pieces of information \(access key, secret access key, AWS Region, and output format\)\. These are described in the following sections\. The AWS CLI stores this information in a *profile* \(a collection of settings\) named `default`\. The information in the `default` profile is used any time you run an AWS CLI command that doesn't explicitly specify a profile to use\.
 
-### Access Key and Secret Access Key<a name="cli-quick-configuration-creds"></a>
+### Access key and secret access key<a name="cli-quick-configuration-creds"></a>
 
 The `AWS Access Key ID` and `AWS Secret Access Key` are your AWS credentials\. They are associated with an AWS Identity and Access Management \(IAM\) user or role that determines what permissions you have\. For a tutorial on how to create a user with the IAM service, see [Creating Your First IAM Admin User and Group](https://docs.aws.amazon.com/IAM/latest/UserGuide/getting-started_create-admin-group.html) in the *IAM User Guide*\.
 
@@ -73,7 +73,7 @@ The `Default region name` identifies the AWS Region whose servers you want to se
 **Note**  
 You must specify an AWS Region when using the AWS CLI, either explicitly or by setting a default Region\. For a list of the available Regions, see [Regions and Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html)\. The Region designators used by the AWS CLI are the same names that you see in AWS Management Console URLs and service endpoints\.
 
-### Output Format<a name="cli-quick-configuration-format"></a>
+### Output format<a name="cli-quick-configuration-format"></a>
 
 The `Default output format` specifies how the results are formatted\. The value can be any of the values in the following list\. If you don't specify an output format, `json` is used as the default\.
 + [**`json`**](cli-usage-output.md#json-output) – The output is formatted as a [JSON](https://json.org/) string\.
@@ -81,7 +81,7 @@ The `Default output format` specifies how the results are formatted\. The value 
 + [**`text`**](cli-usage-output.md#text-output) – The output is formatted as multiple lines of tab\-separated string values\. This can be useful to pass the output to a text processor, like `grep`, `sed`, or `awk`\.
 + [**`table`**](cli-usage-output.md#table-output) – The output is formatted as a table using the characters \+\|\- to form the cell borders\. It typically presents the information in a "human\-friendly" format that is much easier to read than the others, but not as programmatically useful\.
 
-## Creating Multiple Profiles<a name="cli-quick-configuration-multi-profiles"></a>
+## Creating multiple profiles<a name="cli-quick-configuration-multi-profiles"></a>
 
 If you use the command shown in the previous section, the result is a single profile named `default`\. You can create additional configurations that you can refer to with a name by specifying the `--profile` option and assigning a name\. The following example creates a profile named `produser`\. You can specify credentials from a completely different account and Region than the other profiles\.
 
@@ -107,7 +107,7 @@ $ aws s3 ls --profile produser
 
 To update any of your settings, simply run `aws configure` again \(with or without the `--profile` parameter, depending on which profile you want to update\) and enter new values as appropriate\. The next sections contain more information about the files that `aws configure` creates, additional settings, and named profiles\.
 
-## Configuration Settings and Precedence<a name="config-settings-and-precedence"></a>
+## Configuration settings and precedence<a name="config-settings-and-precedence"></a>
 
 The AWS CLI uses a set of *credential providers* to look for AWS credentials\. Each credential provider looks for credentials in a different place, such as the system or user environment variables, local AWS configuration files, or explicitly declared on the command line as a parameter\. The AWS CLI looks for credentials and configuration settings by invoking the providers in the following order, stopping when it finds a set of credentials to use:
 
