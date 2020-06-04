@@ -8,11 +8,10 @@ Although the `awscli` package is available in repositories for other package man
 + [Prerequisites](#install-linux-prereqs)
 + [Install and uninstall the AWS CLI version 1 on Linux using the bundled installer](#install-linux-bundled)
 + [Install and uninstall the AWS CLI version 1 using pip](#install-linux-pip)
-+ [Installing Python on Linux](install-linux-python.md)
 
 ## Prerequisites<a name="install-linux-prereqs"></a>
 
-You must have Python 2 version 2\.7 or later, or Python 3 version 3\.4 or later installed\. For installation instructions, see [Installing Python on Linux](install-linux-python.md)\.
+You must have Python 2 version 2\.7 or later, or Python 3 version 3\.4 or later installed\. For installation instructions, see the [Downloading Python](https://wiki.python.org/moin/BeginnersGuide/Download) page in Python's *Beginner Guide*\.
 
 **Important**  
 AWS CLI version 1 no longer supports Python versions 2\.6 and 3\.3\. All versions of the AWS CLI version 1 released after January 10th, 2020, starting with 1\.17, require Python 2\.7, Python 3\.4, or a later version\.  

@@ -62,7 +62,7 @@ Specifies the path to a certificate bundle to use for HTTPS certificate validati
 If defined, this environment variable overrides the value for the profile setting `ca_bundle`\. You can override this environment variable by using the `--ca-bundle` command line parameter\.
 
 `AWS_CLI_FILE_ENCODING`  
-AWS CLI version 2 only\. Specifies the encoding used for text files\. By default encoding matches your locale\. To set encoding different from the locale, use the `AWS_CLI_FILE_ENCODING` environment variable\. For example, if you use Windows with default encoding `CP1252`, setting `AWS_CLI_FILE_ENCODING=UTF-8` sets the CLI to open text files using `UTF-8`\.
+AWS CLI version 2 only\. Specifies the encoding used for text files\. By default encoding matches your locale\. To set encoding different from the locale, use the `aws_cli_file_encoding` environment variable\. For example, if you use Windows with default encoding `CP1252`, setting `aws_cli_file_encoding=UTF-8` sets the CLI to open text files using `UTF-8`\.
 
 `AWS_CONFIG_FILE`  
 Specifies the location of the file that the AWS CLI uses to store configuration profiles\. The default path is `~/.aws/config`\)\.  

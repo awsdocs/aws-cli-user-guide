@@ -24,7 +24,6 @@ Amazon's trademarks and trade dress may not be used in
    + [Installing the AWS CLI version 1](install-cliv1.md)
       + [Install the AWS CLI version 1 on Amazon Linux](install-linux-al2017.md)
       + [Install the AWS CLI version 1 on Linux](install-linux.md)
-         + [Installing Python on Linux](install-linux-python.md)
       + [Install the AWS CLI version 1 on macOS](install-macos.md)
       + [Install the AWS CLI version 1 on Windows](install-windows.md)
       + [Install the AWS CLI version 1 in a virtual environment](install-virtualenv.md)

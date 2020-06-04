@@ -14,7 +14,7 @@ aws-cli/1.17.4 Python/3.7.4 Linux/4.14.133-113.105.amzn2.x86_64 botocore/1.13
 
 ## Prerequisites<a name="install-amazon-linux-prereq"></a>
 
-Verify that Python is already installed\. For more information, see [Install the AWS CLI version 1 on Linux](install-linux.md)\.
+You must have Python 2 version 2\.7 or later, or Python 3 version 3\.4 or later installed\. For installation instructions, see the [Downloading Python](https://wiki.python.org/moin/BeginnersGuide/Download) page in Python's *Beginner Guide*\.
 
 **Important**  
 AWS CLI version 1 no longer supports Python versions 2\.6 and 3\.3\. All versions of the AWS CLI version 1 released after January 10th, 2020, starting with 1\.17, require Python 2\.7, Python 3\.4, or a later version\.  
