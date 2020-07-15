@@ -161,6 +161,7 @@ To uninstall the AWS CLI version 2, run the following commands\.
    ```
    $ sudo rm /usr/local/bin/aws
    $ sudo rm /usr/local/bin/aws_completer
+   $ sudo rm /usr/local/aws-cli
    ```
 
 1. Delete the `--install-dir` directory\. If your user account has write permission to this directory, you don't need to use `sudo`\.
