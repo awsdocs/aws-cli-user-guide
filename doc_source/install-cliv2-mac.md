@@ -30,7 +30,7 @@ The following steps show how to install or update to the latest version of the A
 
        ```
        $ sudo ln -s /folder/installed/aws-cli/aws /usr/local/bin/aws
-       $ sudo ln -s /folder/installed/aws-cli/aws_completer /usr/local/bin/aws/aws_completer
+       $ sudo ln -s /folder/installed/aws-cli/aws_completer /usr/local/bin/aws_completer
        ```
 **Note**  
 You can view debug logs for the installation by pressing **Cmd\+L** anywhere in the installer\. This opens a log pane that enables you to filter and save the log\. The log file is also automatically saved to `/var/log/install.log`\.
