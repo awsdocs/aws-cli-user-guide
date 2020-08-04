@@ -40,6 +40,20 @@ This is how the command functions:
 + `--rm` – Specifies to clean up the container after the command exits\.
 + `-it` – Specifies to open a pseudo\-TTY with `stdin`\. This enables you to provide input to the AWS CLI version 2 while it's running in a container, for example, by using the `aws configure` and `aws help` commands\. 
 
+NOTE: In a scripted usage of the AWS CLI, omit the -it argument. The -it argument may cause the AWS CLI to output unexpected terminal escape characters. E.g. The result of the calling the docker AWS CLI in a bash script to set a variable like this:
+```
+IDENTITY_ARN=$(docker run --rm -it -v ~/.aws:/root/.aws amazon/aws-cli:2.0.36 sts get-caller-identity --query 'Arn' --output text)
+```
+will set the bash variable IDENTITY_ARN to:
+```
+^[[?1h^[=
+<ARN>^[[m
+
+                                                                                                                                           ^[[K^[[?1l^[>
+```
+Since these characters are non-displayable characters this might be difficult to diagnose and cause unexpected script outcomes.
+
+
 For more information about the `docker run` command, see the [Docker reference guide](https://docs.docker.com/engine/reference/run/)\.
 
 ## Use specific versions and tags<a name="cliv2-docker-upgrade"></a>
