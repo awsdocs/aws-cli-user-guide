@@ -5,6 +5,7 @@ The following table describes important additions to the *AWS Command Line Inter
 | Change | Description | Date | 
 | --- |--- |--- |
 | [Updated installation information](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html) | The install, update, and uninstall information for Linux, macOS, and Windows are updated\. | May 19, 2020 | 
+| [Added information for text file encoding on the AWS CLI version 2](https://docs.aws.amazon.com/cli/latest/userguide/cliv2-migration.html) | By default, AWS CLI version 2 uses the same text file encoding as the local\. You can now use environment variables to set text file encoding\. | May 14, 2020 | 
 | [Official Docker image for the AWS CLI version 2 released](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-docker.html) | The official support Docker image for the AWS CLI version 2 is released for all Linux, macOS, and Windows\. | March 31, 2020 | 
 | [Added information regarding client\-side pagers for AWS CLI version 2](https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-pagination.html) | By default, AWS CLI version 2 uses the pager program `less` for all client\-side output\. | February 19, 2020 | 
 | [AWS Command Line Interface \(AWS CLI\) Version 2 is officially released](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-mac.html) | The AWS CLI version 2 is generally available and is the recommended version for customers to install\.  | February 10, 2020 | 
@@ -17,4 +18,3 @@ The following table describes important additions to the *AWS Command Line Inter
 | [Update to "Using the CLI" section](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-using.html) | Major improvements and additions to the usage instructions and procedures\. | March 7, 2019 | 
 | [Update to "Installing the CLI" section](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html) | Major improvements and additions to the CLI installation instructions and procedures\. | March 7, 2019 | 
 | [Update to "Configuring the CLI" section](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html) | Major improvements and additions to the CLI configuration instructions and procedures\. | March 7, 2019 | 
-| [Added information for text file encoding on the AWS CLI version 2](https://docs.aws.amazon.com/cli/latest/userguide/cliv2-migration.html) | By default, AWS CLI version 2 uses the same text file encoding as the local\. You can now use environment variables to set text file encoding\. | May 14, 20120 | 

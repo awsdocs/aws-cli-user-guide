@@ -4,13 +4,18 @@ This section describes how to install, update, and remove the AWS CLI version 2 
 
 **Important**  
 AWS CLI versions 1 and 2 use the same `aws` command name\. If you have both versions installed, your computer uses the first one found in your search path\. If you previously installed AWS CLI version 1, we recommend that you do one of the following to use AWS CLI version 2:  
-** Recommended** – Uninstall AWS CLI version 1 and use only AWS CLI version 2\.
+** Recommended** – Uninstall AWS CLI version 1 and use only AWS CLI version 2\. For uninstall instructions, determine the method you used to install AWS CLI version 1 and follow the appropriate uninstall instructions for your operating system in [Installing the AWS CLI version 1](install-cliv1.md)
 Use your operating system's ability to create a symbolic link \(symlink\) or alias with a different name for one of the two `aws` commands\. For example, you can use a [symbolic link](https://www.linux.com/tutorials/understanding-linux-links/) or [alias](https://www.linux.com/tutorials/aliases-diy-shell-commands/) on Linux and macOS, or [https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/doskey](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/doskey) on Windows\.
+
+**Topics**
++ [Prerequisites](#cliv2-windows-prereq)
++ [Install or update the AWS CLI version 2 on Windows using the MSI installer](#cliv2-windows-install)
++ [Uninstall the AWS CLI version 2 from Windows](#cliv2-windows-remove)
 
 ## Prerequisites<a name="cliv2-windows-prereq"></a>
 
 Before you can install or update the AWS CLI version 2 on Windows, be sure you have the following:
-+ Windows XP or later, or a 64\-bit version of Windows
++ A 64\-bit version of Windows XP or later\.
 + Admin rights to install software
 
 ## Install or update the AWS CLI version 2 on Windows using the MSI installer<a name="cliv2-windows-install"></a>
@@ -27,7 +32,7 @@ Before you can install or update the AWS CLI version 2 on Windows, be sure you h
 
    ```
    C:\> aws --version
-   aws-cli/2.0.6 Python/3.7.4 Windows/10 botocore/2.0.0
+   aws-cli/2.0.36 Python/3.7.4 Windows/10 botocore/2.0.0
    ```
 
    If Windows is unable to find the program, you might need to close and reopen the command prompt window to refresh the path, or [add the installation directory to your PATH](install-windows.md#awscli-install-windows-path) environment variable manually\.

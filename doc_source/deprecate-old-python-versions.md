@@ -39,5 +39,5 @@ $ curl https://s3.amazonaws.com/aws-cli/awscli-bundle-1.16.312.zip -o awscli-bun
 ```
 
 From here, you can continue to follow the installation instructions, after the step to download the installer\.
-+ [Install the AWS CLI version 1 on macOS using the bundled installer](install-macos.md#install-macosos-bundled)
++ [Install, update and uninstall the AWS CLI version 1 on macOS using the bundled installer](install-macos.md#install-macosos-bundled)
 + [Install and uninstall the AWS CLI version 1 on Linux using the bundled installer](install-linux.md#install-linux-bundled)

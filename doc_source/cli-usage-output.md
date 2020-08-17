@@ -87,7 +87,7 @@ The following feature is available only if you use AWS CLI version 2\. It isn't 
 
 [YAML](https://yaml.org) is a good choice for handling the output programmatically with services and tools that emit or consume [YAML](https://yaml.org)\-formatted strings, such as AWS CloudFormation with its support for [YAML\-formatted templates](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-formats.html)\.
 
-For more advanced filtering that you might not be able to do with `--query`, you can consider `yq`, a command line YAML processor\. You can download it and find documentation at [http://mikefarah.github.io/yq/](http://mikefarah.github.io/yq/)\.
+For more advanced filtering that you might not be able to do with `--query`, you can consider `yq`, a command line YAML processor\. You can download it and find documentation at [https://mikefarah.gitbook.io/yq/](https://mikefarah.gitbook.io/yq/)\.
 
 The following is an example of YAML output\.
 

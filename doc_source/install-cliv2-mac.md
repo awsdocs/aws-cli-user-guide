@@ -4,8 +4,15 @@ This topic describes how to install, update, and remove the AWS CLI version 2 on
 
 **Important**  
 AWS CLI versions 1 and 2 use the same `aws` command name\. If you have both versions installed, your computer uses the first one found in your search path\. If you previously installed AWS CLI version 1, we recommend that you do one of the following to use AWS CLI version 2:  
-** Recommended** – Uninstall AWS CLI version 1 and use only AWS CLI version 2\.
+** Recommended** – Uninstall AWS CLI version 1 and use only AWS CLI version 2\. For uninstall instructions, determine the method you used to install AWS CLI version 1 and follow the appropriate uninstall instructions for your operating system in [Installing the AWS CLI version 1](install-cliv1.md)
 Use your operating system's ability to create a symbolic link \(symlink\) or alias with a different name for one of the two `aws` commands\. For example, you can use a [symbolic link](https://www.linux.com/tutorials/understanding-linux-links/) or [alias](https://www.linux.com/tutorials/aliases-diy-shell-commands/) on Linux and macOS, or [https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/doskey](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/doskey) on Windows\.
+
+**Topics**
++ [Prerequisites](#cliv2-mac-prereq)
++ [Install and update the AWS CLI version 2 using the macOS user interface](#cliv2-mac-install-gui)
++ [Install and update the AWS CLI version 2 using the macOS command line](#cliv2-mac-install-cmd)
++ [Verify the installation](#cliv2-mac-install-confirm)
++ [Uninstall the AWS CLI version 2](#cliv2-mac-remove)
 
 ## Prerequisites<a name="cliv2-mac-prereq"></a>
 + We support the AWS CLI version 2 on Apple\-supported versions of 64\-bit macOS\.
@@ -129,7 +136,7 @@ To verify that the shell can find and run the `aws` command in your `$PATH`, use
 $ which aws
 /usr/local/bin/aws 
 $ aws --version
-aws-cli/2.0.6 Python/3.7.4 Darwin/18.7.0 botocore/2.0.0
+aws-cli/2.0.36 Python/3.7.4 Darwin/18.7.0 botocore/2.0.0
 ```
 
 ## Uninstall the AWS CLI version 2<a name="cliv2-mac-remove"></a>

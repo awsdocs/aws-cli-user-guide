@@ -1,4 +1,4 @@
-# Install the AWS CLI version 1 on Linux<a name="install-linux"></a>
+# Install, Update, and Uninstall the AWS CLI version 1 on Linux<a name="install-linux"></a>
 
 You can install the AWS Command Line Interface \(AWS CLI\) version 1 and its dependencies on most Linux distributions by using the `pip` package manager or the bundled installer\.
 
@@ -15,9 +15,7 @@ You must have Python 2 version 2\.7 or later, or Python 3 version 3\.4 or later 
 
 **Important**  
 AWS CLI version 1 no longer supports Python versions 2\.6 and 3\.3\. All versions of the AWS CLI version 1 released after January 10th, 2020, starting with 1\.17, require Python 2\.7, Python 3\.4, or a later version\.  
-This change does not affect the following versions of the AWS CLI:  
-Windows MSI installer version of AWS CLI version 1
-AWS CLI version 2
+This change does not affect the Windows MSI installer version of the AWS CLI version 1 and the AWS CLI version 2\.  
 For more information, see [Using the AWS CLI version 1 with earlier versions of Python](deprecate-old-python-versions.md) in this guide, and the [deprecation announcement](https://aws.amazon.com/blogs/developer/deprecation-of-python-2-6-and-python-3-3-in-botocore-boto3-and-the-aws-cli/) blog post\.
 
 ## Install and uninstall the AWS CLI version 1 on Linux using the bundled installer<a name="install-linux-bundled"></a>
@@ -26,6 +24,11 @@ On Linux or macOS, you can use the bundled installer to install version 1 of the
 
 **Note**  
 The bundled installer doesn't support installing to paths that contain spaces\.
+
+**Topics**
++ [Install the AWS CLI version 1 using the bundled installer with `sudo`](#install-linux-bundled-sudo)
++ [Install the AWS CLI version 1 using the bundled installer without `sudo`](#install-linux-bundled-no-sudo)
++ [Uninstall the AWS CLI version 1 bundled installer](#install-linux-bundled-uninstall)
 
 ### Install the AWS CLI version 1 using the bundled installer with `sudo`<a name="install-linux-bundled-sudo"></a>
 
@@ -73,7 +76,7 @@ Follow these steps from the command line to install the AWS CLI version 1 using 
 
    ```
    $ aws --version
-   aws-cli/1.17.4 Python/3.7.4 Linux/4.14.133-113.105.amzn2.x86_64 botocore/1.13
+   aws-cli/1.18.109 Python/3.7.4 Linux/4.14.133-113.105.amzn2.x86_64 botocore/1.13
    ```
 
    If you get an error, see [Troubleshooting AWS CLI errors](cli-chap-troubleshooting.md)\.
@@ -147,7 +150,7 @@ $ ./awscli-bundle/install -b ~/bin/aws
 
    ```
    $ aws --version
-   aws-cli/1.17.4 Python/3.7.4 Linux/4.14.133-113.105.amzn2.x86_64 botocore/1.13
+   aws-cli/1.18.109 Python/3.7.4 Linux/4.14.133-113.105.amzn2.x86_64 botocore/1.13
    ```
 
    If you get an error, see [Troubleshooting AWS CLI errors](cli-chap-troubleshooting.md)\.
@@ -162,6 +165,12 @@ $ sudo rm /usr/local/bin/aws
 ```
 
 ## Install and uninstall the AWS CLI version 1 using pip<a name="install-linux-pip"></a>
+
+**Topics**
++ [Install pip](#install-linux-pip-pip)
++ [Install and update the AWS CLI version 1 using pip](#install-linux-awscli)
++ [Add the AWS CLI version 1 executable to your command line path](#install-linux-path)
++ [Uninstall the AWS CLI using pip](#post-install-uninstall)
 
 ### Install pip<a name="install-linux-pip-pip"></a>
 
@@ -224,7 +233,7 @@ If you don't already have `pip` installed, you can install it by using the scrip
 
    ```
    $ aws --version
-   aws-cli/1.17.4 Python/3.7.4 Linux/4.14.133-113.105.amzn2.x86_64 botocore/1.13
+   aws-cli/1.18.109 Python/3.7.4 Linux/4.14.133-113.105.amzn2.x86_64 botocore/1.13
    ```
 
    If you get an error, see [Troubleshooting AWS CLI errors](cli-chap-troubleshooting.md)\.

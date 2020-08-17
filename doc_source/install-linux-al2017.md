@@ -1,10 +1,10 @@
-# Install the AWS CLI version 1 on Amazon Linux<a name="install-linux-al2017"></a>
+# Install, Update, and Uninstall the AWS CLI version 1 on Amazon Linux<a name="install-linux-al2017"></a>
 
 The AWS CLI version 1 is preinstalled on Amazon Linux and Amazon Linux 2\. Check the currently installed version by using the following command\.
 
 ```
 $ aws --version
-aws-cli/1.17.4 Python/3.7.4 Linux/4.14.133-113.105.amzn2.x86_64 botocore/1.13
+aws-cli/1.18.109 Python/3.7.4 Linux/4.14.133-113.105.amzn2.x86_64 botocore/1.13
 ```
 
 **Topics**
@@ -18,9 +18,7 @@ You must have Python 2 version 2\.7 or later, or Python 3 version 3\.4 or later 
 
 **Important**  
 AWS CLI version 1 no longer supports Python versions 2\.6 and 3\.3\. All versions of the AWS CLI version 1 released after January 10th, 2020, starting with 1\.17, require Python 2\.7, Python 3\.4, or a later version\.  
-This change does not affect the following versions of the AWS CLI:  
-Windows MSI installer version of AWS CLI version 1
-AWS CLI version 2
+This change does not affect the Windows MSI installer version of the AWS CLI version 1 and the AWS CLI version 2\.  
 For more information, see [Using the AWS CLI version 1 with earlier versions of Python](deprecate-old-python-versions.md) in this guide, and the [deprecation announcement](https://aws.amazon.com/blogs/developer/deprecation-of-python-2-6-and-python-3-3-in-botocore-boto3-and-the-aws-cli/) blog post\.
 
 ## Install or update the AWS CLI version 1 on Amazon Linux using pip<a name="install-amazon-linux-pip"></a>
@@ -63,7 +61,7 @@ To install the latest version of the AWS CLI version 1 for the current user, use
 
    ```
    $ aws --version
-   aws-cli/1.17.4 Python/3.7.4 Linux/4.14.133-113.105.amzn2.x86_64 botocore/1.13
+   aws-cli/1.18.109 Python/3.7.4 Linux/4.14.133-113.105.amzn2.x86_64 botocore/1.13
    ```
 
 ## Uninstall the AWS CLI version 1 using pip<a name="install-amazon-linux-uninstall"></a>
