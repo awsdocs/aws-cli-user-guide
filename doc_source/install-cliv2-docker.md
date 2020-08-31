@@ -63,7 +63,7 @@ You can use two types of tags:
 + `<major.minor.patch>` – Defines a specific version of the AWS CLI version 2 for the Docker image\. If you plan to use the Docker image in production, we recommend you use a specific version of the AWS CLI version 2 to ensure backward compatibility\. For example, to run version 2\.0\.6, append the version to the container image name\.
 
   ```
-  $ docker run --rm -it amazon/aws-cli:2.0.366 command
+  $ docker run --rm -it amazon/aws-cli:2.0.6 command
   ```
 
 ## Update to the latest Docker image<a name="cliv2-docker-update"></a>
