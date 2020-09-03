@@ -149,10 +149,10 @@ To enable command completion, run the command for the shell that you're using\. 
   ```
 
   Add the command to `~/.bashrc` to run it each time you open a new shell\. Your `~/.bash_profile` should source `~/.bashrc` to ensure that the command is also run in login shells\.
-+  **`zsh`** – To run command completion, you need to run `bashcompinit` by adding the following autoload line at the end of your `~/.zshrc` profile script\.
++  **`zsh`** – To run command completion, you need to run `compinit` by adding the following autoload line at the end of your `~/.zshrc` profile script\.
 
   ```
-  $ autoload bashcompinit && bashcompinit
+  $ autoload compinit && compinit
   ```
 
   To enable command completion, use the built\-in command `complete`\.
