@@ -157,20 +157,20 @@ To shorten the Docker `aws` command, we suggest you use your operating system's 
   ```
 
 ------
-+ For access to the host file system and configuration settings when using `aws` commands, run the following\.
++ For access to the host file system and configuration settings when using `aws` commands, forwarding `AWS_PROFILE` to the container's environment, run the following\.
 
 ------
 #### [ Linux and macOS ]
 
   ```
-  $ alias aws='docker run --rm -it -v ~/.aws:/root/.aws -v $(pwd):/aws amazon/aws-cli'
+  $ alias aws='docker run --rm -it -v ~/.aws:/root/.aws -v $(pwd):/aws -e AWS_PROFILE amazon/aws-cli'
   ```
 
 ------
 #### [ Windows ]
 
   ```
-  C:\> doskey aws=docker run --rm -it -v ~/.aws:/root/.aws -v %cd%:/aws amazon/aws-cli $*
+  C:\> doskey aws=docker run --rm -it -v ~/.aws:/root/.aws -v %cd%:/aws -e AWS_PROFILE amazon/aws-cli $*
   ```
 
 ------
