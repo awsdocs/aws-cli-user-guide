@@ -1,4 +1,4 @@
-# Creating, Displaying, and Deleting Amazon EC2 Key Pairs<a name="cli-services-ec2-keypairs"></a>
+# Creating, displaying, and deleting Amazon EC2 key pairs<a name="cli-services-ec2-keypairs"></a>
 
 You can use the AWS Command Line Interface \(AWS CLI\) to create, display, and delete your key pairs for Amazon Elastic Compute Cloud \(Amazon EC2\)\. You use key pairs to connect to an Amazon EC2 instance\. 
 
@@ -8,11 +8,11 @@ You must provide the key pair to Amazon EC2 when you create the instance, and th
 The following examples assume that you have already [configured your default credentials](#cli-services-ec2-keypairs)\.
 
 **Topics**
-+ [Create a Key Pair](#creating-a-key-pair)
-+ [Display Your Key Pair](#displaying-a-key-pair)
-+ [Delete Your Key Pair](#deleting-a-key-pair)
++ [Create a key pair](#creating-a-key-pair)
++ [Display your key pair](#displaying-a-key-pair)
++ [Delete your key pair](#deleting-a-key-pair)
 
-## Create a Key Pair<a name="creating-a-key-pair"></a>
+## Create a key pair<a name="creating-a-key-pair"></a>
 
 To create a key pair, use the [create\-key\-pair](https://docs.aws.amazon.com/cli/latest/reference/ec2/create-key-pair.html) command with the `--query` option, and the `--output text` option to pipe your private key directly into a file\.
 
@@ -62,7 +62,7 @@ If you're connecting to your instance from a Linux computer, we recommend that y
 $ chmod 400 MyKeyPair.pem
 ```
 
-## Display Your Key Pair<a name="displaying-a-key-pair"></a>
+## Display your key pair<a name="displaying-a-key-pair"></a>
 
 A "fingerprint" is generated from your key pair, and you can use it to verify that the private key that you have on your local machine matches the public key that's stored in AWS\. 
 
@@ -84,7 +84,7 @@ $ aws ec2 describe-key-pairs --key-name MyKeyPair
 
 For more information about keys and fingerprints, see [Amazon EC2 Key Pairs](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html) in the *Amazon EC2 User Guide for Linux Instances*\.
 
-## Delete Your Key Pair<a name="deleting-a-key-pair"></a>
+## Delete your key pair<a name="deleting-a-key-pair"></a>
 
 To delete a key pair, run the following command, substituting *`MyKeyPair`* with the name of the pair to delete\.
 

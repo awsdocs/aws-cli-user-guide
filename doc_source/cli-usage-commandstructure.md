@@ -1,4 +1,4 @@
-# Command Structure in the AWS CLI<a name="cli-usage-commandstructure"></a>
+# Command structure in the AWS CLI<a name="cli-usage-commandstructure"></a>
 
 The AWS Command Line Interface \(AWS CLI\) uses a multipart structure on the command line that must be specified in this order:
 
