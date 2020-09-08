@@ -229,7 +229,7 @@ The following example assumes you downloaded the installer package and saved it 
    Size:             4096/4096
    Created:          2019-09-18
    Expires:          2023-09-17
-   User ID:          AWS CLI Team &aws-cli@amazon.com>
+   User ID:          AWS CLI Team <aws-cli@amazon.com>
    Key fingerprint:  FB5D B77F D5C1 18B8 0511  ADA8 A631 0ACC 4672 475C
    ```
 
