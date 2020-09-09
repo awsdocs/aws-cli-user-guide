@@ -26,6 +26,8 @@ Before you can install or update the AWS CLI version 2 on Windows, be sure you h
 
 1. Run the downloaded MSI installer and follow the on\-screen instructions\. By default, the AWS CLI installs to `C:\Program Files\Amazon\AWSCLIV2`\.
 
+   In this example the latest version of the CLI is downloaded\. A version can be specified by appending it just before the file extension: `https://awscli.amazonaws.com/AWSCLIV2-2.x.y.zip`
+
 1. To confirm the installation, open the **Start** menu, search for `cmd` to open a command prompt window, and at the command prompt use the `aws --version` command\. 
 
    Don't include the prompt symbol \(`C:\>`\) when you type a command\. These are included in program listings to differentiate commands that you type from output returned by the AWS CLI\. The rest of this guide uses the generic prompt symbol \(`$`\), except in cases where a command is Windows\-specific\. For more information about how we format code examples, see [Using the examples](cli-chap-welcome.md#cli-using-examples)\.
@@ -48,5 +50,6 @@ Before you can install or update the AWS CLI version 2 on Windows, be sure you h
      ```
 
 1. Select the entry named **AWS Command Line Interface**, and then choose **Uninstall** to launch the uninstaller\.
+
 
 1. Confirm that you want to uninstall the AWS CLI\.

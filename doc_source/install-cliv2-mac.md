@@ -67,6 +67,10 @@ $ sudo installer -pkg AWSCLIV2.pkg -target /
    $ curl "https://awscli.amazonaws.com/AWSCLIV2.pkg" -o "AWSCLIV2.pkg"
    ```
 
+   In this example, the `-o` option specifies the file name that the downloaded package is written to\. In the previous example, the file is written to `AWSCLIV2.pkg` in the current folder\.
+
+   In this example the latest version of the CLI is downloaded\. A version can be specified by appending it just before the file extension: `https://awscli.amazonaws.com/AWSCLIV2-2.x.y.pkg`
+
 1. Run the standard macOS `installer` program, specifying the downloaded `.pkg` file as the source\. Use the `-pkg` parameter to specify the name of the package to install, and the `-target /` parameter for which drive to install the package to\. The files are installed to `/usr/local/aws-cli`, and a symlink is automatically created in `/usr/local/bin`\. You must include `sudo` on the command to grant write permissions to those folders\. 
 
    ```
@@ -165,6 +169,7 @@ To uninstall the AWS CLI version 2, run the following commands, substituting the
    ```
 
 1. Delete the main installation folder\. Use `sudo` to gain write access to the `/usr/local` folder\.
+
 
    ```
    $ sudo rm -rf /usr/local/aws-cli
