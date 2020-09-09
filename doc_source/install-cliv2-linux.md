@@ -30,20 +30,44 @@ We provide the steps in one easy to copy and paste group based on whether you us
 ------
 #### [ Linux x86 \(64\-bit\) ]
 
+**For the latest version of the AWS CLI,** use the following command block:
+
 ```
-curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+$ curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
 unzip awscliv2.zip
 sudo ./aws/install
 ```
+
+**For a specific version of the AWS CLI,** append a hyphen and the version number to the filename\. For this example the filename for version *2\.0\.30* would be `awscli-exe-linux-x86_64-2.0.30.zip` resulting in the following command:
+
+```
+$ curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.0.30.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+sudo ./aws/install
+```
+
+ For a list of versions, see the [AWS CLI version 2 changelog](https://github.com/aws/aws-cli/blob/v2/CHANGELOG.rst) on *GitHub*\.
 
 ------
 #### [ Linux ARM ]
 
+**For the latest version of the AWS CLI, **use the following command block:
+
 ```
-curl "https://awscli.amazonaws.com/awscli-exe-linux-aarch64.zip" -o "awscliv2.zip"
+$ curl "https://awscli.amazonaws.com/awscli-exe-linux-aarch64.zip" -o "awscliv2.zip"
 unzip awscliv2.zip
 sudo ./aws/install
 ```
+
+**For a specific version of the AWS CLI, **append a hyphen and the version number to the filename\. For this example the filename for version *2\.0\.30* would be `awscli-exe-linux-aarch64-2.0.30.zip` resulting in the following command:
+
+```
+$ curl "https://awscli.amazonaws.com/awscli-exe-linux-aarch64-2.0.30.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+sudo ./aws/install
+```
+
+ For a list of versions, see the [AWS CLI version 2 changelog](https://github.com/aws/aws-cli/blob/v2/CHANGELOG.rst) on *GitHub*\.
 
 ------
 
@@ -53,22 +77,59 @@ sudo ./aws/install
 ------
 #### [ Linux x86 \(64\-bit\) ]
 
+     **For the current version of the AWS CLI,** use the following command:
+
      ```
      $ curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
      ```
 
+     **For a specific version of the AWS CLI,** append a hyphen and the version number to the filename\. For this example the filename for version *2\.0\.30* would be `awscli-exe-linux-x86_64-2.0.30.zip` resulting in the following command:
+
+     ```
+     $ curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.0.30.zip" -o "awscliv2.zip"
+     ```
+
+      For a list of versions, see the [AWS CLI version 2 changelog](https://github.com/aws/aws-cli/blob/v2/CHANGELOG.rst) on *GitHub*\.
+
 ------
 #### [ Linux ARM ]
+
+     **For the current version of the AWS CLI,** use the following command:
 
      ```
      $ curl "https://awscli.amazonaws.com/awscli-exe-linux-aarch64.zip" -o "awscliv2.zip"
      ```
 
- mention-v2-versions
-   In this example the latest version of the CLI is downloaded\. A version can be specified by appending it just before the file extension: `https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.x.y.zip`
+     **For a specific version of the AWS CLI,** append a hyphen and the version number to the filename\. For this example the filename for version *2\.0\.30* would be `awscli-exe-linux-aarch64-2.0.30.zip` resulting in the following command:
 
-   You can verify the integrity and authenticity of the installation file after you download it\. For more information, see [Verifying the Integrity and Authenticity of the Downloaded Files](#v2-install-linux-validate) before you unzip the package\.
-   + **Downloading from the URL** – To download the installer with your browser, use the following URL: `[https://awscli\.amazonaws\.com/awscli\-exe\-linux\-x86\_64\.zip](https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip)`\. You can verify the integrity and authenticity of your downloaded installation file before you extract \(unzip\) the package\. See [Verify the integrity and authenticity of the downloaded installer files](#v2-install-linux-validate) for more information\.
+     ```
+     $ curl "https://awscli.amazonaws.com/awscli-exe-linux-aarch64-2.0.30.zip" -o "awscliv2.zip"curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.0.30.zip" -o "awscliv2.zip"
+     ```
+
+      For a list of versions, see the [AWS CLI version 2 changelog](https://github.com/aws/aws-cli/blob/v2/CHANGELOG.rst) on *GitHub*\.
+
+------
+   + **Downloading from the URL** – To download the installer with your browser, use one of the following URLs\. You can verify the integrity and authenticity of your downloaded installation file before you extract \(unzip\) the package\. See [Verify the integrity and authenticity of the downloaded installer files](#v2-install-linux-validate) for more information\.
+
+------
+#### [ Linux x86 \(64\-bit\) ]
+
+     **For the latest version of the AWS CLI:** [https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip](https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip)
+
+     **For a specific version of the AWS CLI,** append a hyphen and the version number to the filename\. For this example the filename for version *2\.0\.30* would be `awscli-exe-linux-x86_64-2.0.30.zip` resulting in the following url: [https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.0.30.zip](https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.0.30.zip)
+
+      For a list of versions, see the [AWS CLI version 2 changelog](https://github.com/aws/aws-cli/blob/v2/CHANGELOG.rst) on *GitHub*\.
+
+------
+#### [ Linux ARM ]
+
+     **For the latest version of the AWS CLI:** [https://awscli.amazonaws.com/awscli-exe-linux-aarch64.zip](https://awscli.amazonaws.com/awscli-exe-linux-aarch64.zip)
+
+     **For a specific version of the AWS CLI, **append a hyphen and the version number to the filename\. For this example the filename for version *2\.0\.30* would be `awscli-exe-linux-aarch64-2.0.30.zip` resulting in the following url [https://awscli.amazonaws.com/awscli-exe-linux-aarch64-2.0.30.zip](https://awscli.amazonaws.com/awscli-exe-linux-aarch64-2.0.30.zip)
+
+     For a list of versions, see the [AWS CLI version 2 changelog](https://github.com/aws/aws-cli/blob/v2/CHANGELOG.rst) on *GitHub*\.
+
+------
 
 1. Unzip the installer\. If your Linux distribution doesn't have a built\-in `unzip` command, use an equivalent to unzip it\. The following example command unzips the package and creates a directory named `aws` under the current directory\.
 
@@ -99,7 +160,7 @@ sudo ./aws/install
 
    ```
    $ aws --version
-   aws-cli/2.0.36 Python/3.7.4 Linux/4.14.133-113.105.amzn2.x86_64 botocore/2.0.0
+   aws-cli/2.0.47 Python/3.7.4 Linux/4.14.133-113.105.amzn2.x86_64 botocore/2.0.0
    ```
 
 ## Update the AWS CLI version 2 on Linux<a name="cliv2-linux-upgrade"></a>
@@ -107,14 +168,64 @@ sudo ./aws/install
 To update your copy of the AWS CLI version 2, from the Linux command line, follow these steps\.
 
 1. Download the installation file in one of the following ways:
-   + **Using the `curl` command** – The options on the following example command write the downloaded file to the current directory with the local name `awscliv2.zip`\. 
 
-     The `-o` option specifies the file name that the downloaded package is written to\. In this example, the file is written to `awscliv2.zip` in the current directory\.
+   **Using the `curl` command** – The options on the following example command write the downloaded file to the current directory with the local name `awscliv2.zip`\. 
 
-     ```
-     $ curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-     ```
-   + **Downloading from the URL** – To download the installer using your browser, use the following URL: `https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip`\. You can verify the integrity and authenticity of the installation file after you download it\. For more information before you unzip the package, see [Verify the integrity and authenticity of the downloaded installer files](#v2-install-linux-validate)\.
+   The `-o` option specifies the file name that the downloaded package is written to\. In this example, the file is written to `awscliv2.zip` in the current directory\.
+
+------
+#### [ Linux x86 \(64\-bit\) ]
+
+   **For the latest version of the AWS CLI,** use the following command block:
+
+   ```
+   $ curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+   ```
+
+   **For a specific version of the AWS CLI,** append a hyphen and the version number to the filename\. For this example the filename for version *2\.0\.30* would be `awscli-exe-linux-x86_64-2.0.30.zip` resulting in the following command:
+
+   ```
+   $ curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.0.30.zip" -o "awscliv2.zip"
+   ```
+
+    For a list of versions, see the [AWS CLI version 2 changelog](https://github.com/aws/aws-cli/blob/v2/CHANGELOG.rst) on *GitHub*\.
+
+------
+#### [ Linux ARM ]
+
+   **For the latest version of the AWS CLI, **use the following command block:
+
+   ```
+   $ curl "https://awscli.amazonaws.com/awscli-exe-linux-aarch64.zip" -o "awscliv2.zip"
+   ```
+
+   **For a specific version of the AWS CLI, **append a hyphen and the version number to the filename\. For this example the filename for version *2\.0\.30* would be `awscli-exe-linux-aarch64-2.0.30.zip` resulting in the following command:
+
+   ```
+   $ curl "https://awscli.amazonaws.com/awscli-exe-linux-aarch64-2.0.30.zip" -o "awscliv2.zip"
+   ```
+
+    For a list of versions, see the [AWS CLI version 2 changelog](https://github.com/aws/aws-cli/blob/v2/CHANGELOG.rst) on *GitHub*\.
+
+------
+
+   **Downloading from the URL** – To download the installer using your browser, use one of the following URLs\. You can verify the integrity and authenticity of the installation file after you download it\. For more information before you unzip the package, see [Verify the integrity and authenticity of the downloaded installer files](#v2-install-linux-validate)\.
+
+------
+#### [ Linux x86 \(64\-bit\) ]
+
+   **For the latest version of the AWS CLI:** [https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip](https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip)
+
+   **For a specific version of the AWS CLI:** Append a hyphen and the version number to the filename\. For this example the filename for version *2\.0\.30* would be `awscli-exe-linux-x86_64-2.0.30.zip` resulting in the following link [https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.0.30.zip](https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.0.30.zip)\. For a list of versions, see the [AWS CLI version 2 changelog](https://github.com/aws/aws-cli/blob/v2/CHANGELOG.rst) on *GitHub*\.
+
+------
+#### [ Linux ARM ]
+
+   **For the latest version of the AWS CLI:** [https://awscli.amazonaws.com/awscli-exe-linux-aarch64.zip](https://awscli.amazonaws.com/awscli-exe-linux-aarch64.zip)
+
+   **For a specific version of the AWS CLI:** Append a hyphen and the version number to the filename\. For this example the filename for version *2\.0\.30* would be `awscli-exe-linux-aarch64-2.0.30.zip` resulting in the following link: [https://awscli.amazonaws.com/awscli-exe-linux-aarch64-2.0.30.zip](https://awscli.amazonaws.com/awscli-exe-linux-aarch64-2.0.30.zip)\. For a list of versions, see the [AWS CLI version 2 changelog](https://github.com/aws/aws-cli/blob/v2/CHANGELOG.rst) on *GitHub*\.
+
+------
 
 1. Unzip the installer\. If your Linux distribution doesn't have a built\-in `unzip` command, use an equivalent to install it\. The following example command unzips the package and creates a directory named `aws` under the current directory\.
 
@@ -146,7 +257,7 @@ To update your copy of the AWS CLI version 2, from the Linux command line, follo
 
    ```
    $ aws --version
-   aws-cli/2.0.36 Python/3.7.4 Linux/4.14.133-113.105.amzn2.x86_64 botocore/2.0.0
+   aws-cli/2.0.47 Python/3.7.4 Linux/4.14.133-113.105.amzn2.x86_64 botocore/2.0.0
    ```
 
 ## Uninstall the AWS CLI version 2 on Linux<a name="cliv2-linux-remove"></a>
@@ -248,9 +359,41 @@ The following example assumes you downloaded the installer package and saved it 
 
 1. Download the AWS CLI signature file for the package you downloaded\. It has the same path and name as the `.zip` file it corresponds to, but has the extension `.sig`\. In the following examples, we save it to the current directory as a file named `awscliv2.sig`\.
 
+------
+#### [ Linux x86 \(64\-bit\) ]
+
+   **For the latest version of the AWS CLI,** use the following command block:
+
    ```
-   $ curl -o awscliv2.sig [https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip.sig](https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip.sig)
+   $ curl -o awscliv2.sig https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip.sig
    ```
+
+   **For a specific version of the AWS CLI,** append a hyphen and the version number to the filename\. For this example the filename for version *2\.0\.30* would be `awscli-exe-linux-x86_64-2.0.30.zip.sig` resulting in the following command:
+
+   ```
+   $ curl -o awscliv2.sig https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.0.30.zip.sig
+   ```
+
+    For a list of versions, see the [AWS CLI version 2 changelog](https://github.com/aws/aws-cli/blob/v2/CHANGELOG.rst) on *GitHub*\.
+
+------
+#### [ Linux ARM ]
+
+   **For the latest version of the AWS CLI, **use the following command block:
+
+   ```
+   $ curl -o awscliv2.sig https://awscli.amazonaws.com/awscli-exe-linux-aarch64.zip.sig
+   ```
+
+   **For a specific version of the AWS CLI, **append a hyphen and the version number to the filename\. For this example the filename for version *2\.0\.30* would be `awscli-exe-linux-aarch64-2.0.30.zip.sig` resulting in the following command:
+
+   ```
+   $ curl -o awscliv2.sig https://awscli.amazonaws.com/awscli-exe-linux-aarch64-2.0.30.zip.sig
+   ```
+
+    For a list of versions, see the [AWS CLI version 2 changelog](https://github.com/aws/aws-cli/blob/v2/CHANGELOG.rst) on *GitHub*\.
+
+------
 
 1. Verify the signature, passing both the downloaded `.sig` and `.zip` file names as parameters to the `gpg` command\.
 

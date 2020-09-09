@@ -43,7 +43,7 @@ This is how the command functions:
 
   ```
   $ docker run --rm -it amazon/aws-cli --version
-  aws-cli/2.0.36 Python/3.7.3 Linux/4.9.184-linuxkit botocore/2.0.0dev10
+  aws-cli/2.0.47 Python/3.7.3 Linux/4.9.184-linuxkit botocore/2.0.0dev10
   ```
 + `--rm` – Specifies to clean up the container after the command exits\.
 + `-it` – Specifies to open a pseudo\-TTY with `stdin`\. This enables you to provide input to the AWS CLI version 2 while it's running in a container, for example, by using the `aws configure` and `aws help` commands\. 
@@ -196,5 +196,5 @@ After setting your alias, you can run the AWS CLI version 2 from within a Docker
 
 ```
 $ aws --version
-aws-cli/2.0.36 Python/3.7.3 Linux/4.9.184-linuxkit botocore/2.0.0dev10
+aws-cli/2.0.47 Python/3.7.3 Linux/4.9.184-linuxkit botocore/2.0.0dev10
 ```
