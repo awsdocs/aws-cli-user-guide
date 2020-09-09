@@ -1,4 +1,4 @@
-# Command Line Options<a name="cli-configure-options"></a>
+# Command line options<a name="cli-configure-options"></a>
 
 You can use the following command line options to override the default configuration settings for a single command\. You can't use command line options to directly specify credentials, although you can specify which profile to use\.
 
@@ -30,7 +30,7 @@ A Boolean switch that enables debug logging\. This includes additional diagnosti
 A Boolean switch that disables automatic pagination of the output\.
 
 **\-\-query *<string>***  
-Specifies a [JMESPath query](http://jmespath.org/) to use in filtering the response data\. For more information, see [How to Filter the Output with the `--query` Option](cli-usage-output.md#cli-usage-output-filter)\.
+Specifies a [JMESPath query](http://jmespath.org/) to use in filtering the response data\. For more information, see [How to filter the output with the `--query` option](cli-usage-output.md#cli-usage-output-filter)\.
 
 **\-\-version**  
 A Boolean switch that displays the current version of the AWS CLI program that is running\.
@@ -81,4 +81,4 @@ $ aws ec2 describe-instances --output table --region us-west-2
 ...
 ```
 
-The argument types \(for example, string, Boolean\) for each command line option are described in detail in [](cli-usage-parameters.md)\.
+The argument types \(for example, string, Boolean\) for each command line option are described in detail in [Specifying parameter values for the AWS CLICommon AWS CLI parameter types](cli-usage-parameters.md)\.

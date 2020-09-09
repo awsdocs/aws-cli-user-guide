@@ -1,4 +1,4 @@
-# Using Quotation Marks with Strings in the AWS CLI<a name="cli-usage-parameters-quoting-strings"></a>
+# Using quotation marks with strings in the AWS CLI<a name="cli-usage-parameters-quoting-strings"></a>
 
 Parameter names and their values are separated by spaces on the command line\. If a string value contains an embedded space, then you must surround the entire string with quotation marks to prevent the AWS CLI from misinterpreting the space as a divider between the value and the next parameter name\. Which type of quotation marks you use depend on the operating system you are running the AWS CLI on\.
 
@@ -16,7 +16,7 @@ $ aws ec2 create-key-pair --key-name 'my key pair'
 C:\> aws ec2 create-key-pair --key-name "my key pair"
 ```
 
-Optionally, you can optionally separate the parameter name from the value with an equals sign \(=\) instead of a space\. This is typically necessary only if the value of the parameter starts with a hyphen\.
+Optionally, you can separate the parameter name from the value with an equals sign \(=\) instead of a space\. This is typically necessary only if the value of the parameter starts with a hyphen\.
 
 ```
 $ aws ec2 delete-key-pair --key-name=-mykey

@@ -1,17 +1,17 @@
-# Controlling Command Output from the AWS CLI<a name="cli-usage-output"></a>
+# Controlling command output from the AWS CLI<a name="cli-usage-output"></a>
 
 This topic describes the different ways to control the output from the AWS Command Line Interface \(AWS CLI\)\.
 
 **Topics**
-+ [How to Select the Output Format](#cli-usage-output-format)
-+ [JSON Output Format](#json-output)
-+ [YAML Output Format](#yaml-output)
-+ [Text Output Format](#text-output)
-+ [Table Output Format](#table-output)
-+ [How to Filter the Output with the `--query` Option](#cli-usage-output-filter)
-+ [How to Set the Output’s Default Pager Program](#cli-usage-output-pager)
++ [How to select the output format](#cli-usage-output-format)
++ [JSON output format](#json-output)
++ [YAML output format](#yaml-output)
++ [Text output format](#text-output)
++ [Table output format](#table-output)
++ [How to filter the output with the `--query` option](#cli-usage-output-filter)
++ [How to set the output’s default pager program](#cli-usage-output-pager)
 
-## How to Select the Output Format<a name="cli-usage-output-format"></a>
+## How to select the output format<a name="cli-usage-output-format"></a>
 
 The AWS CLI supports four output formats:
 + [**`json`**](#json-output) – The output is formatted as a [JSON](https://json.org/) string\.
@@ -37,9 +37,9 @@ As explained in the [configuration](cli-chap-configure.md) topic, you can specif
   $ aws swf list-domains --registration-status REGISTERED --output json
   ```
 
-You can customize and filter the results in any format by using the \-\-query parameter\. For more information, see [How to Filter the Output with the `--query` Option](#cli-usage-output-filter)\. 
+You can customize and filter the results in any format by using the \-\-query parameter\. For more information, see [How to filter the output with the `--query` option](#cli-usage-output-filter)\. 
 
-## JSON Output Format<a name="json-output"></a>
+## JSON output format<a name="json-output"></a>
 
 [JSON](https://json.org) is the default output format of the AWS CLI\. Most programming languages can easily decode JSON strings using built\-in functions or with publicly available libraries\. You can combine JSON output with the [\-\-query option](#cli-usage-output-filter) in powerful ways to filter and format the AWS CLI JSON\-formatted output\. 
 
@@ -80,14 +80,14 @@ $ aws iam list-users --output json
 }
 ```
 
-## YAML Output Format<a name="yaml-output"></a>
+## YAML output format<a name="yaml-output"></a>
 
 **This feature is available only with AWS CLI version 2\.**  
-The following feature is available only if you use AWS CLI version 2\. It isn't available if you run AWS CLI version 1\. For information about how to install the preview of version 2, see [Installing the AWS CLI version 2](install-cliv2.md)\.
+The following feature is available only if you use AWS CLI version 2\. It isn't available if you run AWS CLI version 1\. For information on how to install version 2, see [Installing the AWS CLI version 2](install-cliv2.md)\.
 
 [YAML](https://yaml.org) is a good choice for handling the output programmatically with services and tools that emit or consume [YAML](https://yaml.org)\-formatted strings, such as AWS CloudFormation with its support for [YAML\-formatted templates](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-formats.html)\.
 
-For more advanced filtering that you might not be able to do with `--query`, you can consider `yq`, a command line YAML processor\. You can download it and find documentation at [http://mikefarah.github.io/yq/](http://mikefarah.github.io/yq/)\.
+For more advanced filtering that you might not be able to do with `--query`, you can consider `yq`, a command line YAML processor\. You can download it and find documentation at [https://mikefarah.gitbook.io/yq/](https://mikefarah.gitbook.io/yq/)\.
 
 The following is an example of YAML output\.
 
@@ -115,7 +115,7 @@ Users:
   UserName: cli-user
 ```
 
-## Text Output Format<a name="text-output"></a>
+## Text output format<a name="text-output"></a>
 
 The `text` format organizes the AWS CLI output into tab\-delimited lines\. It works well with traditional Unix text tools such as `grep`, `sed`, and `awk`, and the text processing performed by PowerShell\. 
 
@@ -234,7 +234,7 @@ SpreadsheetUsers
 LocalAdmins
 ```
 
-## Table Output Format<a name="table-output"></a>
+## Table output format<a name="table-output"></a>
 
 The `table` format produces human\-readable representations of complex AWS CLI output in a tabular form\.
 
@@ -256,7 +256,7 @@ $ aws iam list-users --output table
 +---------------------------------------------------------------------------------------------------------------------------------------------------------------+
 ```
 
-You can combine the `--query` option with the `table` format to display a set of elements preselected from the raw output\. Notice the output differences between dictionary and list notations: in the first example, column names are ordered alphabetically, and in the second example, unnamed columns are ordered as defined by the user\. For more information about the `--query` option, see [How to Filter the Output with the `--query` Option](#cli-usage-output-filter)\.
+You can combine the `--query` option with the `table` format to display a set of elements preselected from the raw output\. Notice the output differences between dictionary and list notations: in the first example, column names are ordered alphabetically, and in the second example, unnamed columns are ordered as defined by the user\. For more information about the `--query` option, see [How to filter the output with the `--query` option](#cli-usage-output-filter)\.
 
 ```
 $ aws ec2 describe-volumes --query 'Volumes[*].{ID:VolumeId,InstanceId:Attachments[0].InstanceId,AZ:AvailabilityZone,Size:Size}' --output table
@@ -286,7 +286,7 @@ $ aws ec2 describe-volumes --query 'Volumes[*].[VolumeId,Attachments[0].Instance
 +--------------+--------------+--------------+-----+
 ```
 
-## How to Filter the Output with the `--query` Option<a name="cli-usage-output-filter"></a>
+## How to filter the output with the `--query` option<a name="cli-usage-output-filter"></a>
 
 The AWS CLI provides built\-in JSON\-based output filtering capabilities with the `--query` option\. The `--query` parameter accepts strings that are compliant with the [JMESPath specification](http://jmespath.org/)\. 
 
@@ -583,10 +583,10 @@ Combined with the output formats that are explained in more detail previously in
 
 For more examples and the full spec of JMESPath, the underlying JSON\-processing library, see [http://jmespath\.org/specification\.html](http://jmespath.org/specification.html)\.
 
-## How to Set the Output’s Default Pager Program<a name="cli-usage-output-pager"></a>
+## How to set the output’s default pager program<a name="cli-usage-output-pager"></a>
 
 **This feature is available only with AWS CLI version 2\.**  
-The following feature is available only if you use AWS CLI version 2\. It isn't available if you run AWS CLI version 1\. For information about how to install the preview of version 2, see [Installing the AWS CLI version 2](install-cliv2.md)\.
+The following feature is available only if you use AWS CLI version 2\. It isn't available if you run AWS CLI version 1\. For information on how to install version 2, see [Installing the AWS CLI version 2](install-cliv2.md)\.
 
 AWS CLI version 2 provides the use of a client\-side pager program for output\. By default, this feature returns all output through your operating system’s default pager program\. Client\-side pagination occurs after any server\-side pagination you specify, see [Pagination](cli-usage-pagination.md)\. 
 

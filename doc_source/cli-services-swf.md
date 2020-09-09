@@ -13,5 +13,5 @@ Before you run any commands, set your default credentials\. For more information
 The following topics show examples of CLI commands that perform common tasks for Amazon SWF\.
 
 **Topics**
-+ [List of Amazon SWF Commands by Category](cli-services-swf-commands.md)
-+ [Working with Amazon SWF Domains Using the AWS CLI](cli-services-swf-domains.md)
++ [List of Amazon SWF commands by category](cli-services-swf-commands.md)
++ [Working with Amazon SWF domains using the AWS CLI](cli-services-swf-domains.md)

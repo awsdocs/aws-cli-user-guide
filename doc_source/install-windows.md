@@ -1,86 +1,78 @@
-# Install the AWS CLI version 1 on Windows<a name="install-windows"></a>
+# Install, Update, and Uninstall the AWS CLI version 1 on Windows<a name="install-windows"></a>
 
-You can install version 1 of the AWS Command Line Interface \(AWS CLI\) on Windows by using a standalone installer \(recommended\) or `pip`, which is a package manager for Python\. If you already have `pip`, follow the instructions in the main [installation topic](cli-chap-install.md)\.
+You can install version 1 of the AWS Command Line Interface \(AWS CLI\) on Windows by using a standalone installer \(recommended\) or `pip`, which is a package manager for Python\. If you already have `pip`\. 
+
+Don't include the prompt symbol \(`C:\>`\) when you type a command\. These are included in program listings to differentiate commands that you type from output returned by the CLI\. The rest of this guide uses the generic prompt symbol \(`$`\), except in cases where a command is Windows\-specific\.
 
 **Important**  
-On January 10th, 2020, AWS CLI version 1, which requires a separate installation of Python to operate, stopped supporting Python versions 2\.6 and 3\.3\. All builds of AWS CLI version 1 released after January 10th, 2020, starting with version 1\.17, require Python 2\.7, Python 3\.4, or a later version to successfully use the AWS CLI\.  
-This change does not affect the following versions of the AWS CLI:  
-**Windows MSI installer version of AWS CLI version 1\.** The Windows MSI installer for AWS CLI version 1 includes and uses its own embedded copy of Python, independent of any other Python version that you might have installed\. If you're using an MSI installer\-based AWS CLI, no changes are required\.
-**AWS CLI version 2\.** All installers for AWS CLI version 2 include and use an embedded copy of Python, independent of any other Python version that you might have installed\. If you're using AWS CLI version 2, no changes are required\.
-For more information, see [Using the AWS CLI version 1 with Earlier Versions of Python](deprecate-old-python-versions.md) in this guide, and the [deprecation announcement in this blog post](https://aws.amazon.com/blogs/developer/deprecation-of-python-2-6-and-python-3-3-in-botocore-boto3-and-the-aws-cli/)\.
+AWS CLI version 1 no longer supports Python versions 2\.6 and 3\.3\. All versions of the AWS CLI version 1 released after January 10th, 2020, starting with 1\.17, require Python 2\.7, Python 3\.4, or a later version\.  
+This change does not affect the Windows MSI installer version of the AWS CLI version 1 and the AWS CLI version 2\.  
+For more information, see [Using the AWS CLI version 1 with earlier versions of Python](deprecate-old-python-versions.md) in this guide, and the [deprecation announcement](https://aws.amazon.com/blogs/developer/deprecation-of-python-2-6-and-python-3-3-in-botocore-boto3-and-the-aws-cli/) blog post\.
 
 **Topics**
-+ [Install the AWS CLI version 1 Using the MSI Installer](#install-msi-on-windows)
-+ [Install the AWS CLI version 1 Using Python and `pip` on Windows](#awscli-install-windows-pip)
-+ [Add the AWS CLI version 1 Executable to Your Command Line Path](#awscli-install-windows-path)
++ [Install, update, and uninstall the AWS CLI version 1 using the MSI installer](#msi-on-windows)
++ [Install, update, and uninstall the AWS CLI version 1 using Python and pip on Windows](#awscli-install-windows-pip)
++ [Add the AWS CLI version 1 executable to your command line path](#awscli-install-windows-path)
 
-## Install the AWS CLI version 1 Using the MSI Installer<a name="install-msi-on-windows"></a>
+## Install, update, and uninstall the AWS CLI version 1 using the MSI installer<a name="msi-on-windows"></a>
 
-The AWS CLI version 1 is supported on Windows XP or later\. For Windows users, the MSI installation package offers a familiar and convenient way to install the AWS CLI version 1 without installing any other prerequisites\.
+The AWS CLI version 1 is supported on Windows XP or later\. For Windows users, the MSI installation package offers a familiar and convenient way to install the AWS CLI version 1 without installing any other prerequisites\. 
 
-When updates are released, you must repeat the installation process to get the latest version of the AWS CLI version 1\. 
+### Install and update the AWS CLI version 1 using the MSI installer<a name="install-msi-on-windows"></a>
 
-**To install the AWS CLI version 1 using the MSI installer**
+Check the [Releases](https://github.com/aws/aws-cli/releases) page on GitHub to see when the latest version was released\. When updates are released, you must repeat the installation process to get the latest version of the AWS CLI version 1\. 
 
-1. Download the appropriate MSI installer\.
-   + [Download the AWS CLI MSI installer for Windows \(64\-bit\) from https://s3\.amazonaws\.com/aws\-cli/AWSCLI64PY3\.msi](https://s3.amazonaws.com/aws-cli/AWSCLI64PY3.msi)
-   + [Download the AWS CLI MSI installer for Windows \(32\-bit\) from https://s3\.amazonaws\.com/aws\-cli/AWSCLI32PY3\.msi](https://s3.amazonaws.com/aws-cli/AWSCLI32PY3.msi)
-   + [Download the AWS CLI combined setup file for Windows from https://s3\.amazonaws\.com/aws\-cli/AWSCLISetup\.exe](https://s3.amazonaws.com/aws-cli/AWSCLISetup.exe) \(includes both the 32\-bit and 64\-bit MSI installers and will automatically install the correct version\)
-**Note**  
-The MSI installer for the AWS CLI version 1 doesn't work with Windows Server 2008 \(version 6\.0\.6002\)\. Use [pip](#awscli-install-windows-pip) to install with this version of Windows Server\.
+1. Download the appropriate MSI installer:
+   + AWS CLI MSI installer for Windows \(64\-bit\): [https://s3\.amazonaws\.com/aws\-cli/AWSCLI64PY3\.msi](https://s3.amazonaws.com/aws-cli/AWSCLI64PY3.msi)
+   + AWS CLI MSI installer for Windows \(32\-bit\): [https://s3\.amazonaws\.com/aws\-cli/AWSCLI32PY3\.msi](https://s3.amazonaws.com/aws-cli/AWSCLI32PY3.msi)
+   + AWS CLI combined setup file for Windows: [ https://s3\.amazonaws\.com/aws\-cli/AWSCLISetup\.exe](https://s3.amazonaws.com/aws-cli/AWSCLISetup.exe) \(includes both the 32\-bit and 64\-bit MSI installers, and automatically installs the correct version\)
 
 1. Run the downloaded MSI installer or the setup file\.
 
-1. Follow the onscreen instructions\.
+1. Follow the on\-screen instructions\. By default, the AWS CLI version 1 installs to `C:\Program Files\Amazon\AWSCLI` \(64\-bit version\) or `C:\Program Files (x86)\Amazon\AWSCLI` \(32\-bit version\)\. 
 
-By default, the AWS CLI version 1 installs to `C:\Program Files\Amazon\AWSCLI` \(64\-bit version\) or `C:\Program Files (x86)\Amazon\AWSCLI` \(32\-bit version\)\. To confirm the installation, use the `aws --version` command at a command prompt \(open the **Start** menu and search for `cmd` to start a command prompt\)\.
+1. To confirm the installation, use the `aws --version` command at a command prompt \(open the **Start** menu and search for `cmd` to start a command prompt\)\.
 
-```
-C:\> aws --version
-aws-cli/1.17.4 Python/3.7.4 Windows/10 botocore/1.13
-```
+   ```
+   C:\> aws --version
+   aws-cli/1.18.109 Python/3.7.4 Windows/10 botocore/1.13
+   ```
 
-Don't include the prompt symbol \(`C:\>`, shown above\) when you type a command\. These are included in program listings to differentiate commands that you type from output returned by the CLI\. The rest of this guide uses the generic prompt symbol, `$` , except in cases where a command is Windows\-specific\.
+   If Windows is unable to find the program, you might need to close and reopen the command prompt to refresh the path, or [add the installation directory to your PATH](#awscli-install-windows-path) environment variable manually\.
 
-If Windows is unable to find the program, you might need to close and reopen the command prompt to refresh the path, or [add the installation directory to your PATH](#awscli-install-windows-path) environment variable manually\.
+### Uninstall the AWS CLI version 1<a name="install-msi-uninstall"></a>
 
-### Updating an MSI Installation<a name="install-msi-update"></a>
+To use the following uninstall instructions, you need to have installed the AWS CLI version 1 with the MSI installer or setup file\.
 
-The AWS CLI version 1 is updated regularly\. Check the [Releases](https://github.com/aws/aws-cli/releases) page on GitHub to see when the latest version was released\. To update to the latest version, download and run the MSI installer again, as described previously\.
+1. Open **Programs and Features** by doing one of the following:
+   + Open the **Control Panel**, and then choose **Programs and Features**\.
+   + Open a command prompt and enter the following command\.
 
-### Uninstalling the AWS CLI version 1<a name="install-msi-uninstall"></a>
+     ```
+     C:\> appwiz.cpl
+     ```
 
-To uninstall the AWS CLI version 1, open the **Control Panel**, and then choose **Programs and Features**\. Select the entry named **AWS Command Line Interface**, and then choose **Uninstall** to launch the uninstaller\. Confirm that you want to uninstall the AWS CLI when you're prompted\.
+1. Select the entry named **AWS Command Line Interface**, and then choose **Uninstall** to launch the uninstaller\.
 
-You can also launch the **Programs and Features** program from the command line with the following command\.
+1. Confirm that you want to uninstall the AWS CLI\.
 
-```
-C:\> appwiz.cpl
-```
-
-## Install the AWS CLI version 1 Using Python and `pip` on Windows<a name="awscli-install-windows-pip"></a>
+## Install, update, and uninstall the AWS CLI version 1 using Python and pip on Windows<a name="awscli-install-windows-pip"></a>
 
 The Python Software Foundation provides installers for Windows that include `pip`\.
 
-**To install Python and `pip` \(Windows\)**
+### Install Python<a name="awscli-install-windows-pip-python"></a>
 
-1. Download the Python Windows x86\-64 installer from the [downloads page](https://www.python.org/downloads/windows/) of [Python\.org](https://www.python.org)\.
+1. Download the Python Windows installer from the [downloads page](https://www.python.org/downloads/windows/) of [Python\.org](https://www.python.org)\.
 
-1. Run the installer\.
+1. Run the Python installer\.
 
 1. Choose **Add Python 3 to PATH**\.
 
-1. Choose **Install Now**\.
+1. Choose **Install Now**\. The installer installs Python in your user folder and adds its program folders to your user path\.
 
-The installer installs Python in your user folder and adds its program folders to your user path\.
+1. On the **Start** menu, choose **Command Prompt**\.
 
-**To install the AWS CLI version 1 with `pip3` \(Windows\)**
-
-If you use Python version 3\+, we recommend that you use the `pip3` command\.
-
-1. Open the **Command Prompt** from the **Start** menu\.
-
-1. Use the following commands to verify that Python and `pip` are both installed correctly\.
+1. To verify that Python and `pip` are both installed correctly, use the following commands and confirm there is output\.
 
    ```
    C:\> python --version
@@ -89,74 +81,93 @@ If you use Python version 3\+, we recommend that you use the `pip3` command\.
    pip 19.2.3 from c:\program files\python37\lib\site-packages\pip (python 3.7)
    ```
 
-1. Install the AWS CLI version 1 using `pip`\.
+### Install and update the AWS CLI version 1 using pip<a name="awscli-install-windows-pip-python"></a>
+
+1. To Install the AWS CLI version 1, use the `pip3` command \(if you use Python version 3 or later\) or the `pip` command\.
 
    ```
    C:\> pip3 install awscli
    ```
 
-1. Verify that the AWS CLI version 1 is installed correctly\.
+   To upgrade to the latest version, run the installation command with the `--user` and `--upgrade` paramaters\.
+
+   ```
+   C:\> pip3 install --user --upgrade awscli
+   ```
+
+1. Verify that the AWS CLI version 1 is installed correctly\. If there is no response, see the [Add the AWS CLI version 1 executable to your command line path](#awscli-install-windows-path) section\.
 
    ```
    C:\> aws --version
-   aws-cli/1.17.4 Python/3.7.4 Windows/10 botocore/1.13
+   aws-cli/1.18.109 Python/3.7.4 Windows/10 botocore/1.13
    ```
 
-To upgrade to the latest version, run the installation command again\.
+### Uninstall the AWS CLI version 1 using pip<a name="awscli-install-windows-pip-uninstall"></a>
+
+If you installed the AWS CLI version 1 using `pip`, you must also uninstall using `pip`\. If you use Python version 3 or later, we recommend that you use the `pip3` command\.
 
 ```
-C:\> pip3 install --user --upgrade awscli
+C:\> pip3 uninstall awscli
 ```
 
-## Add the AWS CLI version 1 Executable to Your Command Line Path<a name="awscli-install-windows-path"></a>
+You might need to restart your command prompt window or your computer to remove all files\.
 
-After installing the AWS CLI version 1 with `pip`, add the `aws` program to your operating system's `PATH` environment variable\. With an MSI installation, this should happen automatically, but you might need to set it manually if the `aws` command doesn't run after you install it\.
+## Add the AWS CLI version 1 executable to your command line path<a name="awscli-install-windows-path"></a>
 
-If this command returns a response, then you should be ready to run the tool\. The `where` command, by default, shows where in the system `PATH` it found the specified program\.
+After installing the AWS CLI version 1 with `pip`, add the `aws` program to your operating system's `PATH` environment variable\. With an MSI installation, this should happen automatically\. But if the `aws` command doesn't run after you install it, you might need to set it manually\.
 
-```
-C:\> where aws
-C:\Program Files\Amazon\AWSCLI\bin\aws.exe
-```
+1. Use the `where` command to find the `aws` file location\. By default, the `where` command shows where a specified program is found in the system's `PATH`\. 
 
-You can find where the `aws` program is installed by running the following command\.
+   ```
+   C:\> where aws
+   ```
 
-```
-C:\> where c:\ aws
-C:\Program Files\Python37\Scripts\aws
-```
+   The paths that show up depend on your platform and which method you used to install the AWS CLI\. Folder names that include version numbers can vary\. These examples reflect the use of Python version 3\.7\. Replace the version with the version number you're using, as needed\. Typical paths include the following:
+   + **Python 3 and `pip3`** – `C:\Program Files\Python37\Scripts\`
+   + **Python 3 and `pip3` \-\-user option on earlier versions of Windows** – `%USERPROFILE%\AppData\Local\Programs\Python\Python37\Scripts`
+   + **Python 3 and `pip3` \-\-user option on Windows 10** – `%USERPROFILE%\AppData\Roaming\Python\Python37\Scripts`
+   + **MSI installer \(64\-bit\)** – `C:\Program Files\Amazon\AWSCLI\bin`
+   + **MSI installer \(32\-bit\)** – `C:\Program Files (x86)\Amazon\AWSCLI\bin`
 
-If the `where` command returns the following error, it's not in the system `PATH` and you can't run it by simply typing its name\.
+   Use the following steps based on whether a file path is returned\.
 
-```
-C:\> where c:\ aws
-INFO: Could not find files for the given pattern(s).
-```
+------
+#### [ A file path is returned ]
 
-In that case, run the `where` command with the `/R path` parameter to tell it to search all folders, and then add the path manually\. Use the command line or File Explorer to discover where it is installed on your computer\. 
+   ```
+   C:\> where aws
+   C:\Program Files\Amazon\AWSCLI\bin\aws.exe
+   ```
 
-```
-C:\> where /R c:\ aws
-c:\Program Files\Amazon\AWSCLI\bin\aws.exe
-c:\Program Files\Amazon\AWSCLI\bincompat\aws.cmd
-c:\Program Files\Amazon\AWSCLI\runtime\Scripts\aws
-c:\Program Files\Amazon\AWSCLI\runtime\Scripts\aws.cmd
-...
-```
+   You can find where the `aws` program is installed by running the following command\.
 
-The paths that show up depend on your platform and which method you used to install the AWS CLI\. 
+   ```
+   C:\> where c:\ aws
+   C:\Program Files\Python37\Scripts\aws
+   ```
 
-Typical paths include:
-+ **Python 3 and `pip3`** – `C:\Program Files\Python37\Scripts\`
-+ **Python 3 and `pip3` \-\-user option on earlier versions of Windows** – `%USERPROFILE%\AppData\Local\Programs\Python\Python37\Scripts`
-+ **Python 3 and `pip3` \-\-user option on Windows 10** – `%USERPROFILE%\AppData\Roaming\Python\Python37\Scripts`
-+ **MSI installer \(64\-bit\)** – `C:\Program Files\Amazon\AWSCLI\bin`
-+ **MSI installer \(32\-bit\)** – `C:\Program Files (x86)\Amazon\AWSCLI\bin`
+------
+#### [ A file path is NOT returned ]
 
-**Note**  
-Folder names that include version numbers can vary\. The examples above reflect the use of Python version 3\.7\. Replace as needed with the version number you are using\.
+   If the `where` command returns the following error, it's not in the system `PATH` and you can't run it by entering its name\.
 
-**To modify your PATH variable \(Windows\)**
+   ```
+   C:\> where c:\ aws
+   INFO: Could not find files for the given pattern(s).
+   ```
+
+   In that case, run the `where` command with the `/R path` parameter to tell it to search all folders, and then add the path manually\. Use the command line or File Explorer to discover where it's installed on your computer\. 
+
+   ```
+   C:\> where /R c:\ aws
+   c:\Program Files\Amazon\AWSCLI\bin\aws.exe
+   c:\Program Files\Amazon\AWSCLI\bincompat\aws.cmd
+   c:\Program Files\Amazon\AWSCLI\runtime\Scripts\aws
+   c:\Program Files\Amazon\AWSCLI\runtime\Scripts\aws.cmd
+   ...
+   ```
+
+------
 
 1. Press the Windows key and enter **environment variables**\.
 
@@ -164,7 +175,7 @@ Folder names that include version numbers can vary\. The examples above reflect 
 
 1. Choose **PATH**, and then choose **Edit**\.
 
-1. Add the path to the **Variable value** field\. For example: ***C:\\new\\path***
+1. Add the path you found into the **Variable value** field, for example, ***C:\\Program Files\\Amazon\\AWSCLI\\bin\\aws\.exe***\.
 
 1. Choose **OK** twice to apply the new settings\.
 

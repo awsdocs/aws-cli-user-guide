@@ -1,14 +1,14 @@
-# Working with Amazon SWF Domains Using the AWS CLI<a name="cli-services-swf-domains"></a>
+# Working with Amazon SWF domains using the AWS CLI<a name="cli-services-swf-domains"></a>
 
 You can use the AWS Command Line Interface \(AWS CLI\) to manage your Amazon Simple Workflow Service \(Amazon SWF\) domains\.
 
 **Topics**
-+ [List Your Domains](#listing-your-domains)
-+ [Get Information about a Domain](#getting-information-about-a-domain)
-+ [Register a Domain](#registering-a-domain)
-+ [Deprecate a Domain](#deprecating-a-domain)
++ [List your domains](#listing-your-domains)
++ [Get information about a domain](#getting-information-about-a-domain)
++ [Register a domain](#registering-a-domain)
++ [Deprecate a domain](#deprecating-a-domain)
 
-## List Your Domains<a name="listing-your-domains"></a>
+## List your domains<a name="listing-your-domains"></a>
 
 To list the Amazon SWF domains that you have registered for your AWS account, you can use [https://docs.aws.amazon.com/cli/latest/reference/swf/list-domains.html](https://docs.aws.amazon.com/cli/latest/reference/swf/list-domains.html)\. You must include `--registration-status` and specify either `REGISTERED` or `DEPRECATED`\.
 
@@ -31,11 +31,11 @@ $ aws swf list-domains --registration-status REGISTERED
 ```
 
 **Note**  
-For an example of using `DEPRECATED`, see [Deprecate a Domain](#deprecating-a-domain)\.
+For an example of using `DEPRECATED`, see [Deprecate a domain](#deprecating-a-domain)\.
 
 For more information, see [list\-domains](https://docs.aws.amazon.com/cli/latest/reference/swf/list-domains.html) in the *AWS CLI Command Reference*\.
 
-## Get Information about a Domain<a name="getting-information-about-a-domain"></a>
+## Get information about a domain<a name="getting-information-about-a-domain"></a>
 
 To get detailed information about a particular domain, use [https://docs.aws.amazon.com/cli/latest/reference/swf/describe-domain.html](https://docs.aws.amazon.com/cli/latest/reference/swf/describe-domain.html)\. There is one required parameter, `--name`, which takes the name of the domain you want information about, as shown in the following example\.
 
@@ -54,7 +54,7 @@ $ aws swf describe-domain --name ExampleDomain
 
 For more information, see [describe\-domain](https://docs.aws.amazon.com/cli/latest/reference/swf/describe-domain.html) in the *AWS CLI Command Reference*\.
 
-## Register a Domain<a name="registering-a-domain"></a>
+## Register a domain<a name="registering-a-domain"></a>
 
 To register new domains, use [https://docs.aws.amazon.com/cli/latest/reference/swf/register-domain.html](https://docs.aws.amazon.com/cli/latest/reference/swf/register-domain.html)\. 
 
@@ -83,7 +83,7 @@ $ aws swf describe-domain --name MyNeatNewDomain
 
 For more information, see [register\-domain](https://docs.aws.amazon.com/cli/latest/reference/swf/register-domain.html) in the *AWS CLI Command Reference*\.
 
-## Deprecate a Domain<a name="deprecating-a-domain"></a>
+## Deprecate a domain<a name="deprecating-a-domain"></a>
 
 To deprecate a domain \(you can still see it, but cannot create new workflow executions or register types on it\), use [https://docs.aws.amazon.com/cli/latest/reference/swf/deprecate-domain.html](https://docs.aws.amazon.com/cli/latest/reference/swf/deprecate-domain.html)\. It has a sole required parameter, `--name`, which takes the name of the domain to deprecate\.
 

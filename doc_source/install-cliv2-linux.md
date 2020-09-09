@@ -1,29 +1,34 @@
 # Installing the AWS CLI version 2 on Linux<a name="install-cliv2-linux"></a>
 
-This section describes how to install, upgrade, and remove the AWS CLI version 2 on Linux\.
-
-**Topics**
-+ [Prerequisites](#cliv2-linux-prereq)
-+ [Installing](#cliv2-linux-install)
-+ [Upgrading](#cliv2-linux-upgrade)
-+ [Uninstalling](#cliv2-linux-remove)
-+ [Verifying the Integrity and Authenticity of the Downloaded Files](#v2-install-linux-validate)
-
-## Prerequisites<a name="cliv2-linux-prereq"></a>
-+ The AWS CLI version 2 has no dependencies on other software packages\. It has a self\-contained, embedded copy of all dependencies included in the installer\. You no longer need to install and maintain Python to use the AWS CLI\.
-+ You must be able to "unzip" the downloaded package\. If your operating system doesn't have a built\-in `unzip` command, use your favorite package manager to download it or an equivalent\.
-+ ****We support the AWS CLI version 2 on recent distributions of CentOS, Fedora, Ubuntu, Amazon Linux 1, and Amazon Linux 2\.
-
-## Installing<a name="cliv2-linux-install"></a>
-
-Follow these steps from the command line to install the AWS CLI on Linux\. The only difference in the following commands is the name of the file that you download\. Everything else is the same\.
+This section describes how to install, update, and remove the AWS CLI version 2 on Linux\. The AWS CLI version 2 has no dependencies on other Python packages\. It has a self\-contained, embedded copy of Python included in the installer\.
 
 **Important**  
-Ensure that the paths you install to contain no volume or folder names that contain any spaces or the installation fails\.
+AWS CLI versions 1 and 2 use the same `aws` command name\. If you have both versions installed, your computer uses the first one found in your search path\. If you previously installed AWS CLI version 1, we recommend that you do one of the following to use AWS CLI version 2:  
+** Recommended** – Uninstall AWS CLI version 1 and use only AWS CLI version 2\. For uninstall instructions, determine the method you used to install AWS CLI version 1 and follow the appropriate uninstall instructions for your operating system in [Installing the AWS CLI version 1](install-cliv1.md)
+Use your operating system's ability to create a symbolic link \(symlink\) or alias with a different name for one of the two `aws` commands\. For example, you can use a [symbolic link](https://www.linux.com/tutorials/understanding-linux-links/) or [alias](https://www.linux.com/tutorials/aliases-diy-shell-commands/) on Linux and macOS, or [https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/doskey](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/doskey) on Windows\.
 
-We provide the steps in one easy to copy and paste group\. See the descriptions of each line in the steps that follow\. 
+**Topics**
++ [Prerequisites for Linux](#cliv2-linux-prereq)
++ [Install the AWS CLI version 2 on Linux](#cliv2-linux-install)
++ [Update the AWS CLI version 2 on Linux](#cliv2-linux-upgrade)
++ [Uninstall the AWS CLI version 2 on Linux](#cliv2-linux-remove)
++ [Verify the integrity and authenticity of the downloaded installer files](#v2-install-linux-validate)
 
-You can verify that integrity and authenticity of the installation file after you download it and before you extract the files from the package\. For more information, see [Verifying the Integrity and Authenticity of the Downloaded Files](#v2-install-linux-validate)\.
+## Prerequisites for Linux<a name="cliv2-linux-prereq"></a>
++ You must be able to extract or "unzip" the downloaded package\. If your operating system doesn't have the built\-in `unzip` command, use an equivalent\.
++ The AWS CLI version 2 uses `glibc`, `groff`, and `less`\. These are included by default in most major distributions of Linux\.
++ We support the AWS CLI version 2 on 64\-bit versions of recent distributions of CentOS, Fedora, Ubuntu, Amazon Linux 1, and Amazon Linux 2\.
++ We support the AWS CLI version 2 on Linux ARM\.
++ Because AWS doesn't maintain third\-party repositories, we can’t guarantee that they contain the latest version of the AWS CLI\.
+
+## Install the AWS CLI version 2 on Linux<a name="cliv2-linux-install"></a>
+
+Follow these steps from the command line to install the AWS CLI on Linux\. 
+
+We provide the steps in one easy to copy and paste group based on whether you use 64\-bit Linux or Linux ARM\. See the descriptions of each line in the steps that follow\.
+
+------
+#### [ Linux x86 \(64\-bit\) ]
 
 ```
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
@@ -31,125 +36,161 @@ unzip awscliv2.zip
 sudo ./aws/install
 ```
 
-1. You can download the file using the `curl` command\. The options on the following example command cause the downloaded file to be written to the current directory with the local name `awscliv2.zip`\.
+------
+#### [ Linux ARM ]
 
-   ```
-   $ curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-   ```
+```
+curl "https://awscli.amazonaws.com/awscli-exe-linux-aarch64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+sudo ./aws/install
+```
 
-   In this example, the `-o` option specifies the file name that the downloaded package is written to\. In the previous example, the file is written to `awscliv2.zip` in the current folder\.
+------
 
-   Alternatively, you can use your browser to download the installer from the following URL: `https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip`
+1. Download the installation file in one of the following ways:
+   + **Use the `curl` command** – The `-o` option specifies the file name that the downloaded package is written to\. The options on the following example command write the downloaded file to the current directory with the local name `awscliv2.zip`\. 
 
+------
+#### [ Linux x86 \(64\-bit\) ]
+
+     ```
+     $ curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+     ```
+
+------
+#### [ Linux ARM ]
+
+     ```
+     $ curl "https://awscli.amazonaws.com/awscli-exe-linux-aarch64.zip" -o "awscliv2.zip"
+     ```
+
+ mention-v2-versions
    In this example the latest version of the CLI is downloaded\. A version can be specified by appending it just before the file extension: `https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.x.y.zip`
 
    You can verify the integrity and authenticity of the installation file after you download it\. For more information, see [Verifying the Integrity and Authenticity of the Downloaded Files](#v2-install-linux-validate) before you unzip the package\.
+   + **Downloading from the URL** – To download the installer with your browser, use the following URL: `[https://awscli\.amazonaws\.com/awscli\-exe\-linux\-x86\_64\.zip](https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip)`\. You can verify the integrity and authenticity of your downloaded installation file before you extract \(unzip\) the package\. See [Verify the integrity and authenticity of the downloaded installer files](#v2-install-linux-validate) for more information\.
 
-1. Unzip the installer\. The following example command unzips the package to the current folder\. If your Linux distribution doesn't have a built\-in `unzip` command, use your favorite package manager, or an equivalent, to install it\.
+1. Unzip the installer\. If your Linux distribution doesn't have a built\-in `unzip` command, use an equivalent to unzip it\. The following example command unzips the package and creates a directory named `aws` under the current directory\.
 
    ```
    $ unzip awscliv2.zip
    ```
 
-   This creates a folder named `aws` under the current folder\.
-
-1. Run the install program\.
+1. Run the install program\. The installation command uses a file named `install` in the newly unzipped `aws` directory\. By default, the files are all installed to `/usr/local/aws-cli`, and a symbolic link is created in `/usr/local/bin`\. The command includes `sudo` to grant write permissions to those directories\. 
 
    ```
    $ sudo ./aws/install
    ```
 
-   The installation command is a file named `install` found in the newly unzipped `aws` folder\. By default, the files are all installed to `/usr/local/aws`, and a symlink is created in `/usr/local/bin`\. The command includes `sudo` to grant write permissions to those folders\. You can install without `sudo` if you specify folders that you already have write permissions to\. 
-
-   You can use the following parameters with the `install` command to specify those folders:
-**Important**  
-Ensure that the paths you provide to the `-i` and `-b` parameters contain no volume name or folder names that contain any space characters or other white space characters\. If there is a space, the installation fails\.
-   + `--install-dir` or `-i`
-
-     This option specifies the folder to copy all of the files to\. This example installs the files to a folder named `/usr/local/aws-cli`\. You must have write permissions to `/usr/local` to create this folder\. 
+   You can install without `sudo` if you specify directories that you already have write permissions to\. Use the following instructions for the `install` command to specify the installation location:
+   + Ensure that the paths you provide to the `-i` and `-b` parameters contain no volume name or directory names that contain any space characters or other white space characters\. If there is a space, the installation fails\.
+   + `--install-dir` or `-i` – This option specifies the directory to copy all of the files to\.
 
      The default value is `/usr/local/aws-cli`\.
-   + `--bin-dir` or `-b`
-
-     This option specifies that the main `aws` program in the install folder is symlinked to the file `aws` in the specified path\. This example creates the symlink `/usr/local/bin/aws`\. You must have write permissions to the specified folder\. Creating a symlink to a folder that is already in your path eliminates the need to add the install directory to the user's `$PATH` variable\. 
+   + `--bin-dir` or `-b` – This option specifies that the main `aws` program in the install directory is symbolically linked to the file `aws` in the specified path\. You must have write permissions to the specified directory\. Creating a symlink to a directory that is already in your path eliminates the need to add the install directory to the user's `$PATH` variable\. 
 
      The default value is `/usr/local/bin`\.
+
+   ```
+   $ sudo ./aws/install -i /usr/local/aws-cli -b /usr/local/bin
+   ```
 
 1. Confirm the installation\.
 
    ```
    $ aws --version
-   aws-cli/2.0.0 Python/3.7.4 Linux/4.14.133-113.105.amzn2.x86_64 botocore/2.0.0
+   aws-cli/2.0.36 Python/3.7.4 Linux/4.14.133-113.105.amzn2.x86_64 botocore/2.0.0
    ```
 
-## Upgrading<a name="cliv2-linux-upgrade"></a>
+## Update the AWS CLI version 2 on Linux<a name="cliv2-linux-upgrade"></a>
 
-To upgrade your copy of the AWS CLI version 2, run the same steps that you used to install it, but this time include the `--update` or `-u` option on the `install` command line\. If the installer finds an existing version of the AWS CLI version 2 in the target installation folder and the `--update` option isn't used, the install fails\.
+To update your copy of the AWS CLI version 2, from the Linux command line, follow these steps\.
 
-Find the symlink that the installer created\. This gives you the path to use with the `--bin-dir` parameter\.
+1. Download the installation file in one of the following ways:
+   + **Using the `curl` command** – The options on the following example command write the downloaded file to the current directory with the local name `awscliv2.zip`\. 
 
-```
-$ which aws
-/usr/local/bin/aws
-```
+     The `-o` option specifies the file name that the downloaded package is written to\. In this example, the file is written to `awscliv2.zip` in the current directory\.
 
-Use that to find the folder that the symlink points to\. This gives you the path to use with the `--install-dir` parameter\.
+     ```
+     $ curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+     ```
+   + **Downloading from the URL** – To download the installer using your browser, use the following URL: `https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip`\. You can verify the integrity and authenticity of the installation file after you download it\. For more information before you unzip the package, see [Verify the integrity and authenticity of the downloaded installer files](#v2-install-linux-validate)\.
 
-```
-$ ls -l /usr/local/bin/aws
-lrwxrwxrwx 1 ec2-user ec2-user 49 Oct 22 09:49 /usr/local/bin/aws -> /usr/local/aws-cli/v2/current/bin/aws
-```
+1. Unzip the installer\. If your Linux distribution doesn't have a built\-in `unzip` command, use an equivalent to install it\. The following example command unzips the package and creates a directory named `aws` under the current directory\.
 
-Then use that information to construct the install command\.
+   ```
+   $ unzip awscliv2.zip
+   ```
 
-```
-$ sudo ./aws/install --bin-dir /usr/local/bin --install-dir /usr/local/aws-cli --update
-```
+1. To ensure that the update installs in the same location as your current AWS CLI version 2, locate the existing symlink and installation directory\. 
+   + Use the `which` command to find your symlink\. This gives you the path to use with the `--bin-dir` parameter\.
 
-## Uninstalling<a name="cliv2-linux-remove"></a>
+     ```
+     $ which aws
+     /usr/local/bin/aws
+     ```
+   + Use the `ls` command to find the directory that your symlink points to\. This gives you the path to use with the `--install-dir` parameter\.
 
-To uninstall the AWS CLI version 2, run the following commands, substituting the paths you used to install\.
+     ```
+     $ ls -l /usr/local/bin/aws
+     lrwxrwxrwx 1 ec2-user ec2-user 49 Oct 22 09:49 /usr/local/bin/aws -> /usr/local/aws-cli/v2/current/bin/aws
+     ```
 
-Find the symlinks that you created in the `--bin-dir` folder\.
+1. Use your symlink and installer information to construct the `install` command with the `--update` parameter\.
 
-```
-$ which aws
-/usr/local/bin/aws
-```
+   ```
+   $ sudo ./aws/install --bin-dir /usr/local/bin --install-dir /usr/local/aws-cli --update
+   ```
 
-Use that to find the `--install-dir` folder that the symlink points to\.
+1. Confirm the installation\.
 
-```
-$ ls -l /usr/local/bin/aws
-lrwxrwxrwx 1 ec2-user ec2-user 49 Oct 22 09:49 /usr/local/bin/aws -> /usr/local/aws-cli/v2/current/bin/aws
-```
+   ```
+   $ aws --version
+   aws-cli/2.0.36 Python/3.7.4 Linux/4.14.133-113.105.amzn2.x86_64 botocore/2.0.0
+   ```
 
-Now delete the two symlinks in the `--bin-dir` folder\. If your user account has write permission to these folders, you don't need to use `sudo`\.
+## Uninstall the AWS CLI version 2 on Linux<a name="cliv2-linux-remove"></a>
 
-```
-$ sudo rm /usr/local/bin/aws
-$ sudo rm /usr/local/bin/aws2_completer
-```
+To uninstall the AWS CLI version 2, run the following commands\.
 
-Finally, you can delete the `--install-dir` folder\. Again, if your user account has write permission to this folder, you don't need to use `sudo`\.
+1. Locate the symlink and install paths\.
+   + Use the `which` command to find the symlink\. This shows the path you used with the `--bin-dir` parameter\.
 
-```
-$ sudo rm -rf /usr/local/aws-cli
-```
+     ```
+     $ which aws
+     /usr/local/bin/aws
+     ```
+   + Use the `ls` command to find the directory that the symlink points to\. This gives you the path you used with the `--install-dir` parameter\.
 
-## Verifying the Integrity and Authenticity of the Downloaded Files<a name="v2-install-linux-validate"></a>
+     ```
+     $ ls -l /usr/local/bin/aws
+     lrwxrwxrwx 1 ec2-user ec2-user 49 Oct 22 09:49 /usr/local/bin/aws -> /usr/local/aws-cli/v2/current/bin/aws
+     ```
 
-The AWS CLI version 2 installer package \.zip files are cryptographically signed using PGP signatures\. You can use the following steps to verify the signatures by using the `GnuPG` tool\. If there is any damage or alteration of the files, this verification fails and you should not proceed with installation\.
+1. Delete the two symlinks in the `--bin-dir` directory\. If your user account has write permission to these directories, you don't need to use `sudo`\.
+
+   ```
+   $ sudo rm /usr/local/bin/aws
+   $ sudo rm /usr/local/bin/aws_completer
+   ```
+
+1. Delete the `--install-dir` directory\. If your user account has write permission to this directory, you don't need to use `sudo`\.
+
+   ```
+   $ sudo rm -rf /usr/local/aws-cli
+   ```
+
+## Verify the integrity and authenticity of the downloaded installer files<a name="v2-install-linux-validate"></a>
+
+The AWS CLI version 2 installer package `.zip` files are cryptographically signed using PGP signatures\. You can use the following steps to verify the signatures by using the `GnuPG` tool\. If there is any damage or alteration of the files, this verification fails and you should not proceed with installation\.
 
 The following example assumes you downloaded the installer package and saved it locally as `awscliv2.zip`\. If you named it something else, substitute that name in the following steps\.
 
-Steps 1, 2, and 3 are prerequisite steps that you need to perform only once\. You should perform steps 4 and 5 every time you download a new copy of the installer package\.
-
 **To validate the files using the PGP signature**
 
-1. Download and install the `gpg` command using your favorite package manager\. For more information about GnuPG, see the [GnuPG website](https://www.gnupg.org/)\. 
+1. Download and install the `gpg` command using your package manager\. For more information about `GnuPG`, see the [GnuPG website](https://www.gnupg.org/)\. 
 
-1. Create a text file and paste in the following text\.
+1. To create the public key file, create a text file and paste in the following text\.
 
    ```
    -----BEGIN PGP PUBLIC KEY BLOCK-----
@@ -183,7 +224,7 @@ Steps 1, 2, and 3 are prerequisite steps that you need to perform only once\. Yo
    -----END PGP PUBLIC KEY BLOCK-----
    ```
 
-   Here are the details of the public key for reference\.
+   For reference, the following are the details of the public key\.
 
    ```
    Key ID:           A6310ACC4672
@@ -191,11 +232,11 @@ Steps 1, 2, and 3 are prerequisite steps that you need to perform only once\. Yo
    Size:             4096/4096
    Created:          2019-09-18
    Expires:          2023-09-17
-   User ID:          AWS CLI Team &aws-cli@amazon.com>
+   User ID:          AWS CLI Team <aws-cli@amazon.com>
    Key fingerprint:  FB5D B77F D5C1 18B8 0511  ADA8 A631 0ACC 4672 475C
    ```
 
-1. Import the AWS CLI public key with the following command, substituting *public\-key\-file\-name* with whatever you named the file in step 2\.
+1. Import the AWS CLI public key with the following command, substituting *public\-key\-file\-name* with the file name of the public key you created\.
 
    ```
    $ gpg --import public-key-file-name
@@ -205,7 +246,7 @@ Steps 1, 2, and 3 are prerequisite steps that you need to perform only once\. Yo
    gpg:               imported: 1
    ```
 
-1. Download the AWS CLI signature file for the package you downloaded\. It has the same path and name as the \.zip file it corresponds to, but has the extension `.sig`\. In the following examples, we save it to the current folder as a file named `awscliv2.sig`\.
+1. Download the AWS CLI signature file for the package you downloaded\. It has the same path and name as the `.zip` file it corresponds to, but has the extension `.sig`\. In the following examples, we save it to the current directory as a file named `awscliv2.sig`\.
 
    ```
    $ curl -o awscliv2.sig [https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip.sig](https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip.sig)
