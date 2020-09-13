@@ -242,7 +242,7 @@ $ aws sso login --profile my-first-sso-profile
 # account and role specified in the second named profile. It does not overwrite or 
 # in any way compromise the first profile's credentials. If this profile specifies the
 # same AWS SSO portal, then it uses the SSO credentials that you retrieved in the 
-# previoius command. The AWS CLI then retrieves AWS temporary credentials for the
+# previous command. The AWS CLI then retrieves AWS temporary credentials for the
 # IAM role associated with the second profile. You don't have to sign in to 
 # AWS SSO again.
 $ aws sso login --profile my-second-sso-profile
