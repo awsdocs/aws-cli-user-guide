@@ -4,6 +4,7 @@ The following table describes important additions to the *AWS Command Line Inter
 
 | Change | Description | Date | 
 | --- |--- |--- |
+| [Updated version installation information](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html) | The install information for Linux, macOS, and Windows are updated with information on how to download and install specific versions of the AWS CLI version 2\. | May 19, 2020 | 
 | [Updated installation information](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html) | The install, update, and uninstall information for Linux, macOS, and Windows are updated\. | May 19, 2020 | 
 | [Added information for text file encoding on the AWS CLI version 2](https://docs.aws.amazon.com/cli/latest/userguide/cliv2-migration.html) | By default, AWS CLI version 2 uses the same text file encoding as the local\. You can now use environment variables to set text file encoding\. | May 14, 2020 | 
 | [Official Docker image for the AWS CLI version 2 released](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-docker.html) | The official support Docker image for the AWS CLI version 2 is released for all Linux, macOS, and Windows\. | March 31, 2020 | 

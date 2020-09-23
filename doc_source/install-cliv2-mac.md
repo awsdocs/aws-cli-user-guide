@@ -22,15 +22,16 @@ Use your operating system's ability to create a symbolic link \(symlink\) or ali
 
 The following steps show how to install or update to the latest version of the AWS CLI version 2 by using the standard macOS user interface and your browser\. If you are updating to the latest version, use the same installation method that you used for your current version\.
 
-1. In your browser, download the macOS `pkg` file: [https://awscli.amazonaws.com/AWSCLIV2.pkg](https://awscli.amazonaws.com/AWSCLIV2.pkg)\.
+1. In your browser, download the macOS `pkg` file: 
+   + **For the latest version of the AWS CLI:** [https://awscli.amazonaws.com/AWSCLIV2.pkg](https://awscli.amazonaws.com/AWSCLIV2.pkg)
+   + **For a specific version of the AWS CLI:** Append a hyphen and the version number to the filename\. For this example the filename for version *2\.0\.30* would be `AWSCLIV2-2.0.30.pkg` resulting in the following link [https://awscli.amazonaws.com/https://awscli.amazonaws.com/AWSCLIV2-2.0.30.pkg](https://awscli.amazonaws.com/https://awscli.amazonaws.com/AWSCLIV2-2.0.30.pkg)\. For a list of versions, see the [AWS CLI version 2 changelog](https://github.com/aws/aws-cli/blob/v2/CHANGELOG.rst) on *GitHub*\.
 
 1. Double\-click the downloaded file to launch the installer\.
 
 1. Follow the on\-screen instructions\. You can choose to install the AWS CLI version 2 in the following ways:
    + **For all users on the computer \(requires `sudo`\)**
      + You can install to any folder, or choose the recommended default folder of `/usr/local/aws-cli`\.
-
-       The installer automatically creates a symlink at `/usr/local/bin/aws` that links to the main program in the installation folder you chose\.
+     + The installer automatically creates a symlink at `/usr/local/bin/aws` that links to the main program in the installation folder you chose\.
    + **For only the current user \(doesn't require `sudo`\)**
      + You can install to any folder to which you have write permission\.
      + Due to standard user permissions, after the installer finishes, you must manually create a symlink file in your `$PATH` that points to the `aws` and `aws_completer` programs by using the following commands at the command prompt\. If your `$PATH` includes a folder you can write to, you can run the following command without `sudo` if you specify that folder as the target's path\. If you don't have a writable folder in your `$PATH`, you must use `sudo` in the commands to get permissions to write to the specified target folder\. The default location for a symlink is `/usr/local/bin/`\.
@@ -56,16 +57,37 @@ If you have `sudo` permissions, you can install the AWS CLI version 2 for all us
 
 We provide the steps in one easy to copy and paste group\. See the descriptions of each line in the following steps\. 
 
+**For the latest version of the AWS CLI,** use the following command block:
+
 ```
 $ curl "https://awscli.amazonaws.com/AWSCLIV2.pkg" -o "AWSCLIV2.pkg"
 $ sudo installer -pkg AWSCLIV2.pkg -target /
 ```
 
+**For a specific version of the AWS CLI,** append a hyphen and the version number to the filename\. For this example the filename for version *2\.0\.30* would be `AWSCLIV2-2.0.30.pkg` resulting in the following command:
+
+```
+$ curl "https://awscli.amazonaws.com/AWSCLIV2-2.0.30.pkg" -o "AWSCLIV2.pkg"
+$ sudo installer -pkg AWSCLIV2.pkg -target /
+```
+
+ For a list of versions, see the [AWS CLI version 2 changelog](https://github.com/aws/aws-cli/blob/v2/CHANGELOG.rst) on *GitHub*\.
+
 1. Download the file using the `curl` command\. The `-o` option specifies the file name that the downloaded package is written to\. In this example, the file is written to `AWSCLIV2.pkg` in the current folder\.
+
+   **For the latest version of the AWS CLI,** use the following command block:
 
    ```
    $ curl "https://awscli.amazonaws.com/AWSCLIV2.pkg" -o "AWSCLIV2.pkg"
    ```
+
+   **For a specific version of the AWS CLI,** append a hyphen and the version number to the filename\. For this example the filename for version *2\.0\.30* would be `AWSCLIV2-2.0.30.pkg` resulting in the following command:
+
+   ```
+   $ curl "https://awscli.amazonaws.com/AWSCLIV2-2.0.30.pkg" -o "AWSCLIV2.pkg"
+   ```
+
+    For a list of versions, see the [AWS CLI version 2 changelog](https://github.com/aws/aws-cli/blob/v2/CHANGELOG.rst) on *GitHub*\.
 
 1. Run the standard macOS `installer` program, specifying the downloaded `.pkg` file as the source\. Use the `-pkg` parameter to specify the name of the package to install, and the `-target /` parameter for which drive to install the package to\. The files are installed to `/usr/local/aws-cli`, and a symlink is automatically created in `/usr/local/bin`\. You must include `sudo` on the command to grant write permissions to those folders\. 
 
@@ -100,9 +122,19 @@ $ sudo installer -pkg AWSCLIV2.pkg -target /
 
 1. Download the `pkg` installer using the `curl` command\. The `-o` option specifies the file name that the downloaded package is written to\. In this example, the file is written to `AWSCLIV2.pkg` in the current folder\.
 
+1. **For the latest version of the AWS CLI,** use the following command block:
+
    ```
    $ curl "https://awscli.amazonaws.com/AWSCLIV2.pkg" -o "AWSCLIV2.pkg"
    ```
+
+   **For a specific version of the AWS CLI,** append a hyphen and the version number to the filename\. For this example the filename for version *2\.0\.30* would be `AWSCLIV2-2.0.30.pkg` resulting in the following command:
+
+   ```
+   $ curl "https://awscli.amazonaws.com/AWSCLIV2-2.0.30.pkg" -o "AWSCLIV2.pkg"
+   ```
+
+    For a list of versions, see the [AWS CLI version 2 changelog](https://github.com/aws/aws-cli/blob/v2/CHANGELOG.rst) on *GitHub*\.
 
 1. Run the standard macOS `installer` program with the following options:
    + Specify the name of the package to install by using the `-pkg` parameter\.
@@ -136,7 +168,7 @@ To verify that the shell can find and run the `aws` command in your `$PATH`, use
 $ which aws
 /usr/local/bin/aws 
 $ aws --version
-aws-cli/2.0.36 Python/3.7.4 Darwin/18.7.0 botocore/2.0.0
+aws-cli/2.0.47 Python/3.7.4 Darwin/18.7.0 botocore/2.0.0
 ```
 
 ## Uninstall the AWS CLI version 2<a name="cliv2-mac-remove"></a>

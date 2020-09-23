@@ -2,11 +2,11 @@
 
 The AWS Command Line Interface \(AWS CLI\) is available in two versions\.
 
-To check which version you have installed, run the `aws --version`\. The returned value provides the current version you have installed\. The following example shows that the version running is 2\.0\.36\.
+To check which version you have installed, run the `aws --version`\. The returned value provides the current version you have installed\. The following example shows that the version running is 2\.0\.47\.
 
 ```
 $ aws --version
-aws-cli/2.0.36 Python/3.7.4 Linux/4.14.133-113.105.amzn2.x86_64 botocore/2.0.0
+aws-cli/2.0.47 Python/3.7.4 Linux/4.14.133-113.105.amzn2.x86_64 botocore/2.0.0
 ```
 
 ## AWS CLI version 2<a name="cli-chap-install-v2"></a>
