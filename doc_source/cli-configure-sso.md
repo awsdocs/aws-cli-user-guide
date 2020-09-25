@@ -8,10 +8,10 @@ If your organization uses AWS Single Sign\-On \(AWS SSO\), your users can sign i
 For more information about AWS SSO, see the [AWS Single Sign\-On User Guide](https://docs.aws.amazon.com/singlesignon/latest/userguide/)\.
 
 This topic describes how to configure the AWS CLI to authenticate the user with AWS SSO to get short\-term credentials to run AWS CLI commands\. It includes the following sections:
-+ **[Configuring a Named Profile to Use AWS SSO](#sso-configure-profile)** \- How to create and configure profiles that use AWS SSO for authentication and mapping to an IAM role for AWS permissions\.
-+ **[Using an AWS SSO Enabled Named Profile](#sso-using-profile)** \- how to login to AWS SSO from the CLI and use the provided AWS temporary credentials to run AWS CLI commands\. 
++ **[Configuring a named profile to use AWS SSO](#sso-configure-profile)** \- How to create and configure profiles that use AWS SSO for authentication and mapping to an IAM role for AWS permissions\.
++ **[Using an AWS SSO enabled named profile](#sso-using-profile)** \- how to login to AWS SSO from the CLI and use the provided AWS temporary credentials to run AWS CLI commands\. 
 
-## Configuring a Named Profile to Use AWS SSO<a name="sso-configure-profile"></a>
+## Configuring a named profile to use AWS SSO<a name="sso-configure-profile"></a>
 
 You can configure one or more of your AWS CLI [named profiles](cli-configure-profiles.md) to use a role from AWS SSO You can create and configure multiple profiles and configure each one to use a a different AWS SSO user portal or SSO\-defined role\.
 
@@ -19,7 +19,7 @@ You can configure the profile in the following ways:
 + [Automatically](#sso-configure-profile-auto), using the command `aws configure sso`
 + [Manually](#sso-configure-profile-manual), by editing the \.aws/config file that stores the named profiles\.
 
-### Automatic Configuration<a name="sso-configure-profile-auto"></a>
+### Automatic configuration<a name="sso-configure-profile-auto"></a>
 
 You can add an AWS SSO enabled profile to your AWS CLI by running the following command, providing your AWS SSO start URL and the AWS Region that hosts the AWS SSO directory\. 
 
@@ -76,7 +76,7 @@ The AWS CLI confirms your role selection\.
 Using the role name "ReadOnly"
 ```
 
-Now you can finish the configuration of your profile, by specifying the [default output format](cli-configure-files.md#cli-config-output), the [default AWS Region](cli-configure-files.md#cli-config-region) to send commands to, and providing a [name for the profile](cli-chap-configure.md#cli-quick-configuration-multi-profiles) so you can reference this profile from among all those defined on the local computer\. In the following example, the user enters a default Region, default output format, and the name of the profile\. You can alternatively press `<ENTER>` to select any default values that are shown between the square brackets\. The suggested profile name is the account ID number followed by an underscore followed by the role name\.
+Now you can finish the configuration of your profile, by specifying the [default output format](cli-configure-files.md#cli-config-output), the [default AWS Region](cli-configure-files.md#cli-config-region) to send commands to, and providing a [name for the profile](cli-configure-quickstart.md#cli-configure-quickstart-profiles) so you can reference this profile from among all those defined on the local computer\. In the following example, the user enters a default Region, default output format, and the name of the profile\. You can alternatively press `<ENTER>` to select any default values that are shown between the square brackets\. The suggested profile name is the account ID number followed by an underscore followed by the role name\.
 
 ```
 CLI default client Region [None]: us-west-2<ENTER>
@@ -107,12 +107,12 @@ region = us-west-2
 output = json
 ```
 
-At this point, you have a profile that you can use to request temporary credentials\. You must use the `aws sso login` command to actually request and retrieve the temporary credentials needed to run commands\. For instructions, see [Using an AWS SSO Enabled Named Profile](#sso-using-profile)\.
+At this point, you have a profile that you can use to request temporary credentials\. You must use the `aws sso login` command to actually request and retrieve the temporary credentials needed to run commands\. For instructions, see [Using an AWS SSO enabled named profile](#sso-using-profile)\.
 
 **Note**  
 You can also run an AWS CLI command using the specified profile\. If you are not currently logged in to the AWS SSO portal, it starts the login process for you automatically, just as if you had manually ran the command `aws sso login` command\.
 
-### Manual Configuration<a name="sso-configure-profile-manual"></a>
+### Manual configuration<a name="sso-configure-profile-manual"></a>
 
 To manually add AWS SSO support to a named profile, you must add the following keys and values to the profile definition in the file `~/.aws/config` \(Linux or macOS\) or `%USERPROFILE%/.aws/config` \(Windows\)\.
 
@@ -160,13 +160,13 @@ region = us-west-2
 output = json
 ```
 
-At this point, you have a profile that you can use to request temporary credentials\. However, you can't yet run an AWS CLI service command\. You must first use the `aws sso login` command to actually request and retrieve the temporary credentials needed to run commands\. For instructions, see the next section, [Using an AWS SSO Enabled Named Profile](#sso-using-profile)\.
+At this point, you have a profile that you can use to request temporary credentials\. However, you can't yet run an AWS CLI service command\. You must first use the `aws sso login` command to actually request and retrieve the temporary credentials needed to run commands\. For instructions, see the next section, [Using an AWS SSO enabled named profile](#sso-using-profile)\.
 
-## Using an AWS SSO Enabled Named Profile<a name="sso-using-profile"></a>
+## Using an AWS SSO enabled named profile<a name="sso-using-profile"></a>
 
 This section describes how to use the AWS SSO profile you created in the previous section\.
 
-### Signing In and Getting Temporary Credentials<a name="sso-using-profile-sign-in"></a>
+### Signing in and getting temporary credentials<a name="sso-using-profile-sign-in"></a>
 
 After you configure a named profile automatically or manually, you can invoke it to request temporary credentials from AWS\. Before you can run an AWS CLI service command, you must retrieve and cache a set of temporary credentials\. To get these temporary credentials, run the following command\.
 
@@ -206,7 +206,7 @@ If your AWS SSO credentials are valid, the AWS CLI uses them to securely retriev
 Welcome, you have successfully signed-in to the AWS-CLI.
 ```
 
-### Running a Command with Your AWS SSO Enabled Profile<a name="sso-using-profile-running"></a>
+### Running a command with your AWS SSO enabled profile<a name="sso-using-profile-running"></a>
 
 You can use these temporary credentials to invoke an AWS CLI command with the associated named profile\. The following example shows that the command was run under an assumed role that is part of the specified account\.
 
@@ -256,7 +256,7 @@ $ aws ec2 describe-instances --profile my-first-sso-profile
 $ aws ec2 describe-instances --profile my-second-sso-profile
 ```
 
-### Signing Out of Your AWS SSO Sessions<a name="sso-using-profile-sign-out"></a>
+### Signing out of your AWS SSO sessions<a name="sso-using-profile-sign-out"></a>
 
 When you are done using your AWS SSO enabled profiles, you can choose to do nothing and let the AWS temporary credentials and your AWS SSO credentials expire\. However, you can also choose to run the following command to immediately delete all cached credentials in the SSO credential cache folder and all AWS temporary credentials that were based on the AWS SSO credentials\. This makes those credentials unavailable to be used for any future command\.
 

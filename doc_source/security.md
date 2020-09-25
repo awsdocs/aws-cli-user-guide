@@ -9,7 +9,7 @@ Security is a shared responsibility between AWS and you\. The [shared responsibi
 This documentation helps you understand how to apply the shared responsibility model when using the AWS Command Line Interface \(AWS CLI\)\. The following topics show you how to configure the AWS CLI to meet your security and compliance objectives\. You also learn how to use the AWS CLI to help you to monitor and secure your AWS resources\. 
 
 **Topics**
-+ [Data Protection in the AWS CLI](data-protection.md)
++ [Data protection in the AWS CLI](data-protection.md)
 + [Identity and Access Management for the AWS CLI](cli-security-iam.md)
-+ [Compliance Validation for the AWS CLI](cli-security-compliance-validation.md)
-+ [Enforcing a TLS 1\.2 Minimum](cli-security-enforcing-tls.md)
++ [Compliance validation for the AWS CLI](cli-security-compliance-validation.md)
++ [Enforcing a minimum version of TLS 1\.2](cli-security-enforcing-tls.md)

@@ -1,9 +1,14 @@
-# AWS CLI User Guide Document History<a name="document-history"></a>
+# AWS CLI user guide document history<a name="document-history"></a>
 
 The following table describes important additions to the *AWS Command Line Interface User Guide*, beginning in January 2019\. For notification about updates to this documentation, you can subscribe to the RSS feed\.
 
 | Change | Description | Date | 
 | --- |--- |--- |
+| [Updated version installation information](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html) | The install information for Linux, macOS, and Windows are updated with information on how to download and install specific versions of the AWS CLI version 2\. | May 19, 2020 | 
+| [Updated installation information](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html) | The install, update, and uninstall information for Linux, macOS, and Windows are updated\. | May 19, 2020 | 
+| [Added information for text file encoding on the AWS CLI version 2](https://docs.aws.amazon.com/cli/latest/userguide/cliv2-migration.html) | By default, AWS CLI version 2 uses the same text file encoding as the local\. You can now use environment variables to set text file encoding\. | May 14, 2020 | 
+| [Official Docker image for the AWS CLI version 2 released](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-docker.html) | The official support Docker image for the AWS CLI version 2 is released for all Linux, macOS, and Windows\. | March 31, 2020 | 
+| [Added information regarding client\-side pagers for AWS CLI version 2](https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-pagination.html) | By default, AWS CLI version 2 uses the pager program `less` for all client\-side output\. | February 19, 2020 | 
 | [AWS Command Line Interface \(AWS CLI\) Version 2 is officially released](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-mac.html) | The AWS CLI version 2 is generally available and is the recommended version for customers to install\.  | February 10, 2020 | 
 | [macOS installer for AWS CLI version 2 is now an Apple Package installer \.pkg file\. ](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-mac.html) | The macOS installer for AWS CLI version 2 has been updated from a `.zip` file with a shell script to full macOS Installer package\. This simplifies installation and makes it compatible with the newest macOS releases\. | February 3, 2020 | 
 | [Added content for AWS CLI version 2's improved default handling of S3 and STS regional endpoints](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html#cli-config-sts_regional_endpoints) | By default, AWS CLI version 2 now directs requests for the Amazon S3 and AWS STS services to the currently configured regional endpoint instead of the global endpoint\. | January 13, 2020 | 
@@ -14,4 +19,3 @@ The following table describes important additions to the *AWS Command Line Inter
 | [Update to "Using the CLI" section](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-using.html) | Major improvements and additions to the usage instructions and procedures\. | March 7, 2019 | 
 | [Update to "Installing the CLI" section](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html) | Major improvements and additions to the CLI installation instructions and procedures\. | March 7, 2019 | 
 | [Update to "Configuring the CLI" section](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html) | Major improvements and additions to the CLI configuration instructions and procedures\. | March 7, 2019 | 
-| [Added information regarding client\-side pagers for AWS CLI version 2](https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-pagination.html) | By default, AWS CLI version 2 uses the pager program `less` for all client\-side output\. | February 19, 20120 | 

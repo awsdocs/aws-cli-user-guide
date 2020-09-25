@@ -14,12 +14,12 @@ Before you run any commands, set your default credentials\. For more information
 This tutorial uses several command line tools that typically come preinstalled on Unix\-like operating systems, including Linux and macOS\. Windows users can use the same tools by installing [Cygwin](https://www.cygwin.com/) and running the commands from the Cygwin terminal\. We note Windows native commands and utilities that perform the same functions where available\.
 
 **Topics**
-+ [Create an Amazon S3 Glacier Vault](#cli-services-glacier-vault)
-+ [Prepare a File for Uploading](#cli-services-glacier-prep)
-+ [Initiate a Multipart Upload and Upload Files](#cli-services-glacier-initiate)
-+ [Complete the Upload](#cli-services-glacier-complete)
++ [Create an Amazon S3 Glacier vault](#cli-services-glacier-vault)
++ [Prepare a file for uploading](#cli-services-glacier-prep)
++ [Initiate a multipart upload and upload files](#cli-services-glacier-initiate)
++ [Complete the upload](#cli-services-glacier-complete)
 
-## Create an Amazon S3 Glacier Vault<a name="cli-services-glacier-vault"></a>
+## Create an Amazon S3 Glacier vault<a name="cli-services-glacier-vault"></a>
 
 Create a vault with the `[create\-vault](https://docs.aws.amazon.com/cli/latest/reference/glacier/create-vault.html)` command\.
 
@@ -33,7 +33,7 @@ $ aws glacier create-vault --account-id - --vault-name myvault
 **Note**  
 All S3 Glacier commands require an account ID parameter\. Use the hyphen character \(`--account-id -`\) to use the current account\.
 
-## Prepare a File for Uploading<a name="cli-services-glacier-prep"></a>
+## Prepare a file for uploading<a name="cli-services-glacier-prep"></a>
 
 Create a file for the test upload\. The following commands create a file named *largefile* that contains exactly 3 MiB of random data\.
 
@@ -67,7 +67,7 @@ creating file `chunkac'
 **Note**  
 [HJ\-Split](http://www.hjsplit.org/) is a free file splitter for Windows and many other platforms\.
 
-## Initiate a Multipart Upload and Upload Files<a name="cli-services-glacier-initiate"></a>
+## Initiate a multipart upload and upload files<a name="cli-services-glacier-initiate"></a>
 
 Create a multipart upload in Amazon S3 Glacier by using the `[initiate\-multipart\-upload](https://docs.aws.amazon.com/cli/latest/reference/glacier/initiate-multipart-upload.html)` command\.
 
@@ -115,7 +115,7 @@ The previous example uses the dollar sign \(`$`\) to reference the contents of t
 
 You must specify the byte range of each part when you upload it so that S3 Glacier can reassemble it in the correct order\. Each piece is 1,048,576 bytes, so the first piece occupies bytes 0\-1048575, the second 1048576\-2097151, and the third 2097152\-3145727\.
 
-## Complete the Upload<a name="cli-services-glacier-complete"></a>
+## Complete the upload<a name="cli-services-glacier-complete"></a>
 
 Amazon S3 Glacier requires a tree hash of the original file to confirm that all of the uploaded pieces reached AWS intact\. 
 

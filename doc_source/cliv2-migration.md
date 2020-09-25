@@ -1,8 +1,9 @@
-# Breaking Changes – Migrating from AWS CLI version 1 to version 2<a name="cliv2-migration"></a>
+# Breaking changes – Migrating from AWS CLI version 1 to version 2<a name="cliv2-migration"></a>
 
 This topic describes the changes in behavior between AWS CLI version 1 and AWS CLI version 2 that might require you to make changes to scripts or commands to get the same behavior in version 2 as you did in version 1\.
 
 **Topics**
++ [AWS CLI version 2 now uses environment variable to set text file encoding](#cliv2-migration-encodingenvvar)
 + [AWS CLI version 2 now passes binary parameters as base64\-encoded strings by default](#cliv2-migration-binaryparam)
 + [AWS CLI version 2 improves Amazon S3 handling of file properties and tags when performing multipart copies](#cliv2-migration-s3-copy-metadata)
 + [AWS CLI version 2 no longer automatically retrieves `http://` or `https://` URLs for parameters](#cliv2-migration-paramfile)
@@ -15,6 +16,16 @@ This topic describes the changes in behavior between AWS CLI version 1 and AWS C
 + [AWS CLI version 2 replaces `ecr get-login` with `ecr get-login-password`](#cliv2-migration-ecr-get-login)
 + [AWS CLI version 2 support for plugins is changing](#cliv2-migration-profile-plugins)
 + [AWS CLI version 2 no longer supports "hidden" aliases](#cliv2-migration-aliases)
+
+## AWS CLI version 2 now uses environment variable to set text file encoding<a name="cliv2-migration-encodingenvvar"></a>
+
+By default, text files use the same encoding as the installed locale\. To set encoding for text files to be different from the locale, use the `AWS_CLI_FILE_ENCODING` environment variable\. The below example sets the CLI to open text files using `UTF-8` on windows\.
+
+```
+AWS_CLI_FILE_ENCODING=UTF-8
+```
+
+For more information, see [Environment variables to configure the AWS CLI](cli-configure-envvars.md) \.
 
 ## AWS CLI version 2 now passes binary parameters as base64\-encoded strings by default<a name="cliv2-migration-binaryparam"></a>
 

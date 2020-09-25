@@ -1,4 +1,4 @@
-# Understanding Return Codes from the AWS CLI<a name="cli-usage-returncodes"></a>
+# Understanding return codes from the AWS CLI<a name="cli-usage-returncodes"></a>
 
 To determine the return code of an AWS Command Line Interface \(AWS CLI\) command, run one of the following commands immediately after running the CLI command\.
 

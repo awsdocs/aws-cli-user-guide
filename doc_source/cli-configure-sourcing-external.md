@@ -1,4 +1,4 @@
-# Sourcing Credentials with an External Process<a name="cli-configure-sourcing-external"></a>
+# Sourcing credentials with an external process<a name="cli-configure-sourcing-external"></a>
 
 **Warning**  
 This topic discusses sourcing credentials from an external process\. This could be a security risk if the command to generate the credentials becomes accessible by non\-approved processes or users\. We recommend that you use the supported, secure alternatives provided by the AWS CLI and AWS to reduce the risk of compromising your credentials\. Ensure that you secure the `config` file and any supporting files and tools to prevent disclosure\.  
