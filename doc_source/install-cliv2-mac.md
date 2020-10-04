@@ -24,7 +24,7 @@ The following steps show how to install or update to the latest version of the A
 
 1. In your browser, download the macOS `pkg` file: 
    + **For the latest version of the AWS CLI:** [https://awscli.amazonaws.com/AWSCLIV2.pkg](https://awscli.amazonaws.com/AWSCLIV2.pkg)
-   + **For a specific version of the AWS CLI:** Append a hyphen and the version number to the filename\. For this example the filename for version *2\.0\.30* would be `AWSCLIV2-2.0.30.pkg` resulting in the following link [https://awscli.amazonaws.com/https://awscli.amazonaws.com/AWSCLIV2-2.0.30.pkg](https://awscli.amazonaws.com/https://awscli.amazonaws.com/AWSCLIV2-2.0.30.pkg)\. For a list of versions, see the [AWS CLI version 2 changelog](https://github.com/aws/aws-cli/blob/v2/CHANGELOG.rst) on *GitHub*\.
+   + **For a specific version of the AWS CLI:** Append a hyphen and the version number to the filename\. For this example the filename for version *2\.0\.30* would be `AWSCLIV2-2.0.30.pkg` resulting in the following link [https://awscli.amazonaws.com/AWSCLIV2-2.0.30.pkg](https://awscli.amazonaws.com/AWSCLIV2-2.0.30.pkg)\. For a list of versions, see the [AWS CLI version 2 changelog](https://github.com/aws/aws-cli/blob/v2/CHANGELOG.rst) on *GitHub*\.
 
 1. Double\-click the downloaded file to launch the installer\.
 
