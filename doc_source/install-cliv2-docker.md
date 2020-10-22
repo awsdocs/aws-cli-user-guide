@@ -2,7 +2,7 @@
 
 This topic describes how to run, version control, and configure the AWS CLI version 2 on Docker\. For more information on how to use Docker, see [Docker's documentation](https://docs.docker.com/)\.
 
-Official Docker images provide isolation, portability, and security that AWS directly supports and maintains\. This enables you to use the AWS CLI version 2 in a container\-based environment without having to manage the installation yourself\. 
+Official Docker images provide isolation, portability, and security that AWS directly supports and maintains\. This enables you to use the AWS CLI version 2 in a container\-based environment without having to manage the installation yourself\.
 
 **Note**  
 The AWS CLI version 2 is the only tool that's supported on the official AWS Docker image\.
@@ -17,7 +17,7 @@ The AWS CLI version 2 is the only tool that's supported on the official AWS Dock
 
 ## Prerequisites<a name="cliv2-docker-prereq"></a>
 
-You must have Docker installed\. For installation instructions, see the [Docker website](https://docs.docker.com/install/)\. 
+You must have Docker installed\. For installation instructions, see the [Docker website](https://docs.docker.com/install/)\.
 
 To verify your installation of Docker, run the following command and confirm there is an output\.
 
@@ -28,7 +28,7 @@ Docker version 19.03.1
 
 ## Run the official AWS CLI version 2 Docker image<a name="cliv2-docker-install"></a>
 
-The official AWS CLI version 2 Docker image is hosted on DockerHub in the `amazon/aws-cli` repository\. The first time you use the `docker run` command, the latest Docker image is downloaded to your computer\. Each subsequent use of the `docker run` command runs from your local copy\. 
+The official AWS CLI version 2 Docker image is hosted on DockerHub in the `amazon/aws-cli` repository\. The first time you use the `docker run` command, the latest Docker image is downloaded to your computer\. Each subsequent use of the `docker run` command runs from your local copy\.
 
 To run the AWS CLI version 2 Docker image, use the `docker run` command\.
 
@@ -46,15 +46,15 @@ This is how the command functions:
   aws-cli/2.0.47 Python/3.7.3 Linux/4.9.184-linuxkit botocore/2.0.0dev10
   ```
 + `--rm` – Specifies to clean up the container after the command exits\.
-+ `-it` – Specifies to open a pseudo\-TTY with `stdin`\. This enables you to provide input to the AWS CLI version 2 while it's running in a container, for example, by using the `aws configure` and `aws help` commands\. 
++ `-it` – Specifies to open a pseudo\-TTY with `stdin`\. This enables you to provide input to the AWS CLI version 2 while it's running in a container, for example, by using the `aws configure` and `aws help` commands\.
 
 For more information about the `docker run` command, see the [Docker reference guide](https://docs.docker.com/engine/reference/run/)\.
 
 ## Use specific versions and tags<a name="cliv2-docker-upgrade"></a>
 
-The official AWS CLI version 2 Docker image has multiple versions you can use, starting with version 2\.0\.6\. To run a specific version of the AWS CLI version 2, append the appropriate tag to your `docker run` command\. The first time you use the `docker run` command with a tag, the latest Docker image for that tag is downloaded to your computer\. Each subsequent use of the `docker run` command with that tag runs from your local copy\. 
+The official AWS CLI version 2 Docker image has multiple versions you can use, starting with version 2\.0\.6\. To run a specific version of the AWS CLI version 2, append the appropriate tag to your `docker run` command\. The first time you use the `docker run` command with a tag, the latest Docker image for that tag is downloaded to your computer\. Each subsequent use of the `docker run` command with that tag runs from your local copy\.
 
-You can use two types of tags: 
+You can use two types of tags:
 + `latest` – Defines the latest version of the AWS CLI version 2 for the Docker image\. We recommend you use the `latest` tag when you want the latest version of the AWS CLI version 2\. However, there are no backward\-compatibility guarantees when relying on this tag\. The `latest` tag is used by default in the `docker run` command\. To explicitly use the `latest` tag, append the tag to the container image name\.
 
   ```
@@ -82,7 +82,7 @@ Because the AWS CLI version 2 is run in a container, by default the CLI can't ac
 $ docker run --rm -it -v ~/.aws:/root/.aws amazon/aws-cli command
 ```
 
-For more information about the `-v` flag and mounting, see the [Docker reference guide](https://docs.docker.com/storage/volumes/)\. 
+For more information about the `-v` flag and mounting, see the [Docker reference guide](https://docs.docker.com/storage/volumes/)\.
 
 ### Example 1: Providing credentials and configuration<a name="cliv2-docker-share-files-config"></a>
 
@@ -95,7 +95,7 @@ $ docker run --rm -ti -v ~/.aws:/root/.aws amazon/aws-cli s3 ls
 
 ### Example 2: Downloading an Amazon S3 file to your host system<a name="cliv2-docker-share-files-s3"></a>
 
-For some AWS CLI version 2 commands, you can read files from the host system in the container or write files from the container to the host system\. 
+For some AWS CLI version 2 commands, you can read files from the host system in the container or write files from the container to the host system\.
 
 In this example, we download the `S3` object `s3://aws-cli-docker-demo/hello` to your local file system by mounting the current working directory to the container's `/aws` directory\. By downloading the `hello` object to the container's `/aws` directory, the file is saved to the host system’s current working directory also\.
 
@@ -141,6 +141,33 @@ Hello from Docker!
 
 To shorten the Docker `aws` command, we suggest you use your operating system's ability to create a [https://www.linux.com/tutorials/understanding-linux-links/](https://www.linux.com/tutorials/understanding-linux-links/) \(symlink\) or [https://www.linux.com/tutorials/aliases-diy-shell-commands/](https://www.linux.com/tutorials/aliases-diy-shell-commands/) in Linux and macOS, or [https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/doskey](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/doskey) in Windows\. To set the `aws` alias, you can run one of the following commands\.
 + For basic access to `aws` commands, run the following\.
+
+------
+
+## Enable automatic completion from Docker container<a name="cliv2-docker-completion"></a>
+
+The docker image contains a completer working for Bash and for ZSH.
+
+To make use of, we suggest creating a script calling the completer from docker and
+adding it to the complete options in your favourite shell.
+
+Step 1. Create a script to reference the completer inside the docker and make it executable. E.g. in /usr/local/bin/aws_completer
+
+```
+#!/bin/bash
+docker run --rmi -e COMP_LINE -e COMP_POINT --entrypoint /usr/local/bin/aws_completer amazon/aws-cli $@
+```
+
+Make the file executable: `chmod +x /usr/local/bin/aws_completer`
+
+If you use zsh, please, correct the first line of the file to match your shell executable.
+
+Step 2.  Setup your shell to use it to complete commands for aws
+
+`complete -C '/usr/local/bin/aws_completer' aws`
+
+Note: this assumes you have aliased the CLI to the aws command. Otherwise, change the last word in
+the command above to aws-cli. See the point above.
 
 ------
 #### [ Linux and macOS ]
@@ -192,7 +219,7 @@ To shorten the Docker `aws` command, we suggest you use your operating system's 
 
 ------
 
-After setting your alias, you can run the AWS CLI version 2 from within a Docker container as if it's installed on your host system\. 
+After setting your alias, you can run the AWS CLI version 2 from within a Docker container as if it's installed on your host system\.
 
 ```
 $ aws --version

@@ -76,6 +76,8 @@ $ ps
 
  The location of the AWS completer can vary depending on the installation method used\. 
 
+ **Docker** - folow the steps in <a href="install-cliv2-docker.html#cliv2-docker-completion">AWS CLIv2 Installation Manual for Docker</a>. We explain there how to call the aws_completer command from the docker image <a href="install-cliv2-docker.html#cliv2-docker-completion">there</a>.
+
  **Package Manager** – Programs such as `pip`, `yum`, `brew`, and `apt-get` typically install the AWS completer \(or a symlink to it\) to a standard path location\. In this case, the `which` command can locate the completer for you\.
 
 If you used `pip` without the `--user` command, you might see the following path\.
