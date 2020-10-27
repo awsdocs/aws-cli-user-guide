@@ -298,7 +298,7 @@ MyFile88.txt
 '''
 
 // Sync with delete, excluding files that match a pattern. MyFile88.txt is deleted, while remote MyFile1.txt is not.
-$ aws s3 sync . s3://my-bucket/path --delete --exclude "my-bucket/path/MyFile?.txt"
+$ aws s3 sync . s3://my-bucket/path --delete --exclude "path/MyFile?.txt"
 delete: s3://my-bucket/path/MyFile88.txt
 '''
 
@@ -394,6 +394,8 @@ When you use this option, the command is performed on all files or objects under
 ```
 $ aws s3 rm s3://my-bucket/path --recursive
 ```
+
+When you use the `--recursive` option on a directory or folder with `cp`, `mv`, or `rm`, the command walks the directory tree, including all subdirectories\. These commands also accept the `--exclude`, `--include`, and `--acl` options as the `sync` command does\.
 
 ## References<a name="using-s3-commands-managing-buckets-references"></a>
 
