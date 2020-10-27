@@ -70,7 +70,7 @@ If defined, this environment variable overrides the value for the profile settin
 AWS CLI version 2 only\. Specifies the encoding used for text files\. By default encoding matches your locale\. To set encoding different from the locale, use the `aws_cli_file_encoding` environment variable\. For example, if you use Windows with default encoding `CP1252`, setting `aws_cli_file_encoding=UTF-8` sets the CLI to open text files using `UTF-8`\.
 
 `AWS_CONFIG_FILE`  
-Specifies the location of the file that the AWS CLI uses to store configuration profiles\. The default path is `~/.aws/config`\)\.  
+Specifies the location of the file that the AWS CLI uses to store configuration profiles\. The default path is `~/.aws/config`\.
 You can't specify this value in a named profile setting or by using a command line parameter\.
 
 [`AWS_DEFAULT_OUTPUT`](cli-configure-quickstart.md#cli-configure-quickstart-format)  
@@ -103,7 +103,7 @@ Specifies the session token value that is required if you are using temporary se
 If defined, this environment variable overrides the value for the profile setting `aws_session_token`\. You can't specify the session token as a command line option\.
 
 `AWS_SHARED_CREDENTIALS_FILE`  
-Specifies the location of the file that the AWS CLI uses to store access keys\. The default path is `~/.aws/credentials`\)\.  
+Specifies the location of the file that the AWS CLI uses to store access keys\. The default path is `~/.aws/credentials`\.
 You can't specify this value in a named profile setting or by using a command line parameter\.
 
 [`AWS_STS_REGIONAL_ENDPOINTS`](cli-configure-files.md#cli-config-sts_regional_endpoints)  
