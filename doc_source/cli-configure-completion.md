@@ -78,24 +78,17 @@ $ ps
 
  **Package Manager** – Programs such as `pip`, `yum`, `brew`, and `apt-get` typically install the AWS completer \(or a symlink to it\) to a standard path location\. In this case, the `which` command can locate the completer for you\.
 
-If you used `pip` without the `--user` command, you might see the following path\.
+If you installed the AWS CLI per the [Installing the AWS CLI version 2 on Linux](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-linux.html) guide, you might see the following path\.
 
 ```
 $ which aws_completer
-/usr/local/aws/bin/aws_completer
-```
-
-If you used the `--user` parameter on the `pip` install command, you can typically find the completer in the `local/bin` folder under your `$HOME` folder\.
-
-```
-$ which aws_completer
-/home/username/.local/bin/aws_completer
+/usr/local/bin/aws_completer
 ```
 
  **Bundled Installer** – If you used the bundled installer per the instructions in the previous section, the AWS completer is located in the `bin` subfolder of the installation directory\. 
 
 ```
-$ ls /usr/local/aws/bin
+$ ls /usr/local/bin
 activate
 activate.csh
 activate.fish
@@ -110,7 +103,7 @@ If all else fails, you can use `find` to search your entire file system for the 
 
 ```
 $ find / -name aws_completer
-/usr/local/aws/bin/aws_completer
+/usr/local/bin/aws_completer
 ```
 
 ### Add the completer's folder to your path<a name="cli-command-completion-path"></a>
@@ -130,7 +123,7 @@ For the AWS completer to work successfully, you must first add it to your comput
 1. Add an export command at the end of your profile script that's similar to the following example\. Replace *`/usr/local/aws/bin`* with the folder that you discovered in the previous section\.
 
    ```
-   export PATH=/usr/local/aws/bin:$PATH
+   export PATH=/usr/local/bin:$PATH
    ```
 
 1. Reload the profile into the current session to put those changes into effect\. Replace `.bash_profile` with the name of the shell script you discovered in the first section\.
@@ -141,11 +134,13 @@ For the AWS completer to work successfully, you must first add it to your comput
 
 ### Enable command completion<a name="cli-command-completion-enable"></a>
 
+
 To enable command completion, run the command for the shell that you're using\. You can add the command to your shell's RC file to run it each time you open a new shell\. In each command, replace the path `/usr/local/aws/bin` with the one found on your system in the previous section\.
+
 + **`bash`** – Use the built\-in command `complete`\.
 
   ```
-  $ complete -C '/usr/local/aws/bin/aws_completer' aws
+  $ complete -C '/usr/local/bin/aws_completer' aws
   ```
 
   Add the command to `~/.bashrc` to run it each time you open a new shell\. Your `~/.bash_profile` should source `~/.bashrc` to ensure that the command is also run in login shells\.
@@ -158,7 +153,7 @@ To enable command completion, run the command for the shell that you're using\. 
   To enable command completion, use the built\-in command `complete`\.
 
   ```
-  $ complete -C '/usr/local/aws/bin/aws_completer' aws
+  $ complete -C '/usr/local/bin/aws_completer' aws
   ```
 
   Add the command to `~/.zshrc` to run it each time you open a new shell\.

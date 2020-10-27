@@ -71,7 +71,8 @@ sudo ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
 
    ```
    $ aws --version
-   aws-cli/1.18.109 Python/3.7.4 Linux/4.14.133-113.105.amzn2.x86_64 botocore/1.13
+   aws-cli/1.18.66 Python/3.7.4 Darwin/18.7.0 botocore/1.16.16
+
    ```
 
    If you get an error, see [Troubleshooting AWS CLI errors](cli-chap-troubleshooting.md)\.
@@ -145,7 +146,7 @@ $ ./awscli-bundle/install -b ~/bin/aws
 
    ```
    $ aws --version
-   aws-cli/1.18.109 Python/3.7.4 Linux/4.14.133-113.105.amzn2.x86_64 botocore/1.13
+   aws-cli/1.18.134 Python/3.7.4 Linux/4.14.133-113.105.amzn2.x86_64 botocore/1.13
    ```
 
    If you get an error, see [Troubleshooting AWS CLI errors](cli-chap-troubleshooting.md)\.
@@ -197,7 +198,7 @@ If you don't already have `pip` installed, you can install it by using the scrip
 
    ```
    $ aws --version
-   aws-cli/1.18.109 Python/3.7.4 Darwin/18.7.0 botocore/1.13
+   aws-cli/1.18.134 Python/3.7.4 Darwin/18.7.0 botocore/1.13
    ```
 
    If the program isn't found, [add it to your command line path](#awscli-install-osx-path)\.
@@ -254,6 +255,7 @@ $ ls -al /usr/local/bin/python
    ```
    $ source ~/.bash_profile
    ```
+
 
 ### Uninstall the AWS CLI using pip<a name="awscli-install-osx-pip-uninstall"></a>
 

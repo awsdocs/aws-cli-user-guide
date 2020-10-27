@@ -76,7 +76,7 @@ Follow these steps from the command line to install the AWS CLI version 1 using 
 
    ```
    $ aws --version
-   aws-cli/1.18.109 Python/3.7.4 Linux/4.14.133-113.105.amzn2.x86_64 botocore/1.13
+   aws-cli/1.18.134 Python/3.7.4 Linux/4.14.133-113.105.amzn2.x86_64 botocore/1.13
    ```
 
    If you get an error, see [Troubleshooting AWS CLI errors](cli-chap-troubleshooting.md)\.
@@ -150,7 +150,7 @@ $ ./awscli-bundle/install -b ~/bin/aws
 
    ```
    $ aws --version
-   aws-cli/1.18.109 Python/3.7.4 Linux/4.14.133-113.105.amzn2.x86_64 botocore/1.13
+   aws-cli/1.18.134 Python/3.7.4 Linux/4.14.133-113.105.amzn2.x86_64 botocore/1.13
    ```
 
    If you get an error, see [Troubleshooting AWS CLI errors](cli-chap-troubleshooting.md)\.
@@ -233,7 +233,7 @@ If you don't already have `pip` installed, you can install it by using the scrip
 
    ```
    $ aws --version
-   aws-cli/1.18.109 Python/3.7.4 Linux/4.14.133-113.105.amzn2.x86_64 botocore/1.13
+   aws-cli/1.18.134 Python/3.7.4 Linux/4.14.133-113.105.amzn2.x86_64 botocore/1.13
    ```
 
    If you get an error, see [Troubleshooting AWS CLI errors](cli-chap-troubleshooting.md)\.
