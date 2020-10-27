@@ -38,17 +38,7 @@ This is how the command functions:
   aws-cli/2.0.6 Python/3.7.3 Linux/4.9.184-linuxkit botocore/2.0.0dev10
   ```
 + `--rm` – Specifies to clean up the container after the command exits\.
-+ `-it` – Specifies to open a pseudo\-TTY with `stdin`\. This enables you to provide input to the AWS CLI version 2 while it's running in a container, for example, by using the `aws configure` and `aws help` commands\. 
-
-NOTE: In a scripted usage of the AWS CLI, omit the -it argument. The -it argument may cause the AWS CLI to output unexpected terminal escape characters. E.g. The result of the calling the docker AWS CLI in a bash script to set a variable like this:
-```
-IDENTITY_ARN=$(docker run --rm -it -v ~/.aws:/root/.aws amazon/aws-cli:2.0.36 sts get-caller-identity --query 'Arn' --output text)
-```
-will set the bash variable IDENTITY_ARN to:
-```
-^[[?1h^[=
-<ARN>^[[m
-
++ `-it` – Specifies to open a pseudo\-TTY with `stdin`\. This enables you to provide input to the AWS CLI version 2 while it's running in a container, for example, by using the `aws configure` and `aws help` commands\.  If you are running scripts, -it is not needed. If you are experiencing errors with your scripts, omit -it from your Docker call.
                                                                                                                                            ^[[K^[[?1l^[>
 ```
 Since these characters are non-displayable characters this might be difficult to diagnose and cause unexpected script outcomes.
