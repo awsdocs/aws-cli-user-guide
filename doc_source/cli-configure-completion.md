@@ -134,7 +134,9 @@ For the AWS completer to work successfully, you must first add it to your comput
 
 ### Enable command completion<a name="cli-command-completion-enable"></a>
 
-To enable command complettion, run the command for the shell that you're using\. You can add the command to your shell's RC file to run it each time you open a new shell\. In each command, replace the path `/usr/local/bin` with the one found on your system in the previous section\.
+
+To enable command completion, run the command for the shell that you're using\. You can add the command to your shell's RC file to run it each time you open a new shell\. In each command, replace the path `/usr/local/aws/bin` with the one found on your system in the previous section\.
+
 + **`bash`** – Use the built\-in command `complete`\.
 
   ```

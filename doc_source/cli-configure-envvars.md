@@ -9,7 +9,7 @@ You can't specify AWS Single Sign\-On \(AWS SSO\) authentication by using enviro
 + If you specify an option by using one of the environment variables described in this topic, it overrides any value loaded from a profile in the configuration file\. 
 + If you specify an option by using a parameter on the CLI command line, it overrides any value from either the corresponding environment variable or a profile in the configuration file\.
 
-For more information about precedence and how the AWS CLI determines which credentials to use, see [Configuration settings and precedence](cli-chap-configure.md#config-settings-and-precedence)\.
+For more information about precedence and how the AWS CLI determines which credentials to use, see [Configuration settings and precedence](cli-configure-quickstart.md#cli-configure-quickstart-precedence)\.
 
 **Topics**
 + [How to set environment variables](#envvars-set)
@@ -19,7 +19,8 @@ For more information about precedence and how the AWS CLI determines which crede
 
 The following examples show how you can configure environment variables for the default user\.
 
-**Linux or macOS**
+------
+#### [ Linux or macOS ]
 
 ```
 $ export AWS_ACCESS_KEY_ID=AKIAIOSFODNN7EXAMPLE
@@ -29,7 +30,8 @@ $ export AWS_DEFAULT_REGION=us-west-2
 
 Setting the environment variable changes the value used until the end of your shell session, or until you set the variable to a different value\. You can make the variables persistent across future sessions by setting them in your shell's startup script\.
 
-**Windows Command Prompt**
+------
+#### [ Windows Command Prompt ]
 
 ```
 C:\> setx AWS_ACCESS_KEY_ID AKIAIOSFODNN7EXAMPLE
@@ -39,7 +41,8 @@ C:\> setx AWS_DEFAULT_REGION us-west-2
 
 Using `[set](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/set_1)` to set an environment variable changes the value used until the end of the current command prompt session, or until you set the variable to a different value\. Using [https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/setx](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/setx) to set an environment variable changes the value used in both the current command prompt session and all command prompt sessions that you create after running the command\. It does ***not*** affect other command shells that are already running at the time you run the command\.
 
-**PowerShell**
+------
+#### [ PowerShell ]
 
 ```
 PS C:\> $Env:AWS_ACCESS_KEY_ID="AKIAIOSFODNN7EXAMPLE"
@@ -48,6 +51,8 @@ PS C:\> $Env:AWS_DEFAULT_REGION="us-west-2"
 ```
 
 If you set an environment variable at the PowerShell prompt as shown in the previous examples, it saves the value for only the duration of the current session\. To make the environment variable setting persistent across all PowerShell and Command Prompt sessions, store it by using the **System** application in **Control Panel**\. Alternatively, you can set the variable for all future PowerShell sessions by adding it to your PowerShell profile\. See the [PowerShell documentation](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_environment_variables) for more information about storing environment variables or persisting them across sessions\.
+
+------
 
 ## AWS CLI supported environment variables<a name="envvars-list"></a>
 
@@ -68,11 +73,11 @@ AWS CLI version 2 only\. Specifies the encoding used for text files\. By default
 Specifies the location of the file that the AWS CLI uses to store configuration profiles\. The default path is `~/.aws/config`\)\.  
 You can't specify this value in a named profile setting or by using a command line parameter\.
 
-[`AWS_DEFAULT_OUTPUT`](cli-chap-configure.md#cli-quick-configuration-format)  
+[`AWS_DEFAULT_OUTPUT`](cli-configure-quickstart.md#cli-configure-quickstart-format)  
 Specifies the [output format](cli-usage-output.md) to use\.  
 If defined, this environment variable overrides the value for the profile setting `output`\. You can override this environment variable by using the `--output` command line parameter\.
 
-[`AWS_DEFAULT_REGION`](cli-chap-configure.md#cli-quick-configuration-region)  
+[`AWS_DEFAULT_REGION`](cli-configure-quickstart.md#cli-configure-quickstart-region)  
 Specifies the AWS Region to send the request to\.  
 If defined, this environment variable overrides the value for the profile setting `region`\. You can override this environment variable by using the `--region` command line parameter\.
 
@@ -100,3 +105,11 @@ If defined, this environment variable overrides the value for the profile settin
 `AWS_SHARED_CREDENTIALS_FILE`  
 Specifies the location of the file that the AWS CLI uses to store access keys\. The default path is `~/.aws/credentials`\)\.  
 You can't specify this value in a named profile setting or by using a command line parameter\.
+
+[`AWS_STS_REGIONAL_ENDPOINTS`](cli-configure-files.md#cli-config-sts_regional_endpoints)  
+Specifies how the AWS CLI determines the AWS service endpoint that the AWS CLI client uses to talk to the AWS Security Token Service \(AWS STS\)\.   
++ The default value for AWS CLI version 1 is `legacy`\.
++ The default value for AWS CLI version 2 is `regional`\.
+You can specify one of two values:  
++ **`legacy`** – Uses the global STS endpoint, `sts.amazonaws.com`, for the following AWS Regions: `ap-northeast-1`, `ap-south-1`, `ap-southeast-1`, `ap-southeast-2`, `aws-global`, `ca-central-1`, `eu-central-1`, `eu-north-1`, `eu-west-1`, `eu-west-2`, `eu-west-3`, `sa-east-1`, `us-east-1`, `us-east-2`, `us-west-1`, and `us-west-2`\. All other Regions automatically use their respective regional endpoint\.
++ **`regional`** – The AWS CLI always uses the AWS STS endpoint for the currently configured Region\. For example, if the client is configured to use `us-west-2`, all calls to AWS STS are made to the regional endpoint `sts.us-west-2.amazonaws.com` instead of the global `sts.amazonaws.com` endpoint\. To send a request to the global endpoint while this setting is enabled, you can set the Region to `aws-global`\.

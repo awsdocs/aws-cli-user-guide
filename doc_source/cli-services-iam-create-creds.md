@@ -1,6 +1,6 @@
 # Create an access key for an IAM user<a name="cli-services-iam-create-creds"></a>
 
-This topic describes how to use AWS Command Line Interface \(AWS CLI\) commands to create a set of access keys for an AWS Identity and Access Management \(IAM\) user\.
+This topic describes how to use AWS Command Line Interface \(AWS CLI\) commands to create a set of access keys for an AWS Identity and Access Management \(IAM\) user\. For more information on the IAM service, see the [AWS Identity and Access Management User Guide](https://docs.aws.amazon.com/IAM/latest/UserGuide/introduction.html)\.
 
 Before you run any commands, set your default credentials\. For more information, see [Configuring the AWS CLI](cli-chap-configure.md)\.
 

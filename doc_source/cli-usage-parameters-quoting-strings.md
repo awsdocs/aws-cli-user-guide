@@ -16,7 +16,7 @@ $ aws ec2 create-key-pair --key-name 'my key pair'
 C:\> aws ec2 create-key-pair --key-name "my key pair"
 ```
 
-Optionally, you can optionally separate the parameter name from the value with an equals sign \(=\) instead of a space\. This is typically necessary only if the value of the parameter starts with a hyphen\.
+Optionally, you can separate the parameter name from the value with an equals sign \(=\) instead of a space\. This is typically necessary only if the value of the parameter starts with a hyphen\.
 
 ```
 $ aws ec2 delete-key-pair --key-name=-mykey
