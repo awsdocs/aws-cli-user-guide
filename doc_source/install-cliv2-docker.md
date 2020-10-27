@@ -1,11 +1,19 @@
 # Using the official AWS CLI version 2 Docker image<a name="install-cliv2-docker"></a>
 
-This topic describes how to run, version control, and configure the AWS CLI version 2 on Docker\.
+This topic describes how to run, version control, and configure the AWS CLI version 2 on Docker\. For more information on how to use Docker, see [Docker's documentation](https://docs.docker.com/)\.
 
 Official Docker images provide isolation, portability, and security that AWS directly supports and maintains\. This enables you to use the AWS CLI version 2 in a container\-based environment without having to manage the installation yourself\. 
 
 **Note**  
 The AWS CLI version 2 is the only tool that's supported on the official AWS Docker image\.
+
+**Topics**
++ [Prerequisites](#cliv2-docker-prereq)
++ [Run the official AWS CLI version 2 Docker image](#cliv2-docker-install)
++ [Use specific versions and tags](#cliv2-docker-upgrade)
++ [Update to the latest Docker image](#cliv2-docker-update)
++ [Share host files, credentials, and configuration](#cliv2-docker-share-files)
++ [Shorten the Docker command](#cliv2-docker-aliases)
 
 ## Prerequisites<a name="cliv2-docker-prereq"></a>
 
@@ -35,7 +43,7 @@ This is how the command functions:
 
   ```
   $ docker run --rm -it amazon/aws-cli --version
-  aws-cli/2.0.6 Python/3.7.3 Linux/4.9.184-linuxkit botocore/2.0.0dev10
+  aws-cli/2.0.47 Python/3.7.3 Linux/4.9.184-linuxkit botocore/2.0.0dev10
   ```
 + `--rm` – Specifies to clean up the container after the command exits\.
 + `-it` – Specifies to open a pseudo\-TTY with `stdin`\. This enables you to provide input to the AWS CLI version 2 while it's running in a container, for example, by using the `aws configure` and `aws help` commands\.  If you are running scripts, -it is not needed. If you are experiencing errors with your scripts, omit -it from your Docker call.
@@ -55,7 +63,7 @@ You can use two types of tags:
 + `<major.minor.patch>` – Defines a specific version of the AWS CLI version 2 for the Docker image\. If you plan to use the Docker image in production, we recommend you use a specific version of the AWS CLI version 2 to ensure backward compatibility\. For example, to run version 2\.0\.6, append the version to the container image name\.
 
   ```
-  $ docker run --rm -it amazon/aws-cli:2.0.66 command
+  $ docker run --rm -it amazon/aws-cli:2.0.6 command
   ```
 
 ## Update to the latest Docker image<a name="cliv2-docker-update"></a>
@@ -103,7 +111,7 @@ download: s3://aws-cli-docker-demo/hello to ./hello
 #### [ Windows ]
 
 ```
-$ docker run --rm -it -v ~/.aws:/root/.aws -v %cd%:/aws amazon/aws-cli s3 cp s3://aws-cli-docker-demo/hello .
+$ docker run --rm -it -v %cd%.aws:/root/.aws -v %cd%:/aws amazon/aws-cli s3 cp s3://aws-cli-docker-demo/hello .
 download: s3://aws-cli-docker-demo/hello to ./hello
 ```
 
@@ -149,20 +157,20 @@ To shorten the Docker `aws` command, we suggest you use your operating system's 
   ```
 
 ------
-+ For access to the host file system and configuration settings when using `aws` commands, run the following\.
++ For access to the host file system and configuration settings when using `aws` commands, forwarding `AWS_PROFILE` to the container's environment, run the following\.
 
 ------
 #### [ Linux and macOS ]
 
   ```
-  $ alias aws='docker run --rm -it -v ~/.aws:/root/.aws -v $(pwd):/aws amazon/aws-cli'
+  $ alias aws='docker run --rm -it -v ~/.aws:/root/.aws -v $(pwd):/aws -e AWS_PROFILE amazon/aws-cli'
   ```
 
 ------
 #### [ Windows ]
 
   ```
-  C:\> doskey aws=docker run --rm -it -v ~/.aws:/root/.aws -v %cd%:/aws amazon/aws-cli $*
+  C:\> doskey aws=docker run --rm -it -v ~/.aws:/root/.aws -v %cd%:/aws -e AWS_PROFILE amazon/aws-cli $*
   ```
 
 ------
@@ -188,5 +196,7 @@ After setting your alias, you can run the AWS CLI version 2 from within a Docker
 
 ```
 $ aws --version
-aws-cli/2.0.6 Python/3.7.3 Linux/4.9.184-linuxkit botocore/2.0.0dev10
+
+aws-cli/2.0.47 Python/3.7.3 Linux/4.9.184-linuxkit botocore/2.0.0dev10
+
 ```
