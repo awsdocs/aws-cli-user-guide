@@ -38,7 +38,9 @@ One or more strings separated by spaces\. If any of the string items contain a s
 $ aws ec2 describe-spot-price-history --instance-types m1.xlarge m1.medium
 ```
 
- **Boolean** – Binary flag that turns an option on or off\. For example, `ec2 describe-spot-price-history` has a Boolean `--dry-run` parameter that, when specified, validates the query with the service without actually running the query\. 
+ ## Boolean<a name="parameter-type-boolean"></a>
+ 
+Binary flag that turns an option on or off\. For example, `ec2 describe-spot-price-history` has a Boolean `--dry-run` parameter that, when specified, validates the query with the service without actually running the query\. 
 
 ```
 $ aws ec2 describe-spot-price-history --dry-run
