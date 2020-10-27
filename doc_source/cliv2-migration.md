@@ -1,8 +1,9 @@
-# Breaking Changes – Migrating from AWS CLI version 1 to version 2<a name="cliv2-migration"></a>
+# Breaking changes – Migrating from AWS CLI version 1 to version 2<a name="cliv2-migration"></a>
 
 This topic describes the changes in behavior between AWS CLI version 1 and AWS CLI version 2 that might require you to make changes to scripts or commands to get the same behavior in version 2 as you did in version 1\.
 
 **Topics**
++ [AWS CLI version 2 now uses environment variable to set text file encoding](#cliv2-migration-encodingenvvar)
 + [AWS CLI version 2 now passes binary parameters as base64\-encoded strings by default](#cliv2-migration-binaryparam)
 + [AWS CLI version 2 improves Amazon S3 handling of file properties and tags when performing multipart copies](#cliv2-migration-s3-copy-metadata)
 + [AWS CLI version 2 no longer automatically retrieves `http://` or `https://` URLs for parameters](#cliv2-migration-paramfile)
@@ -15,6 +16,16 @@ This topic describes the changes in behavior between AWS CLI version 1 and AWS C
 + [AWS CLI version 2 replaces `ecr get-login` with `ecr get-login-password`](#cliv2-migration-ecr-get-login)
 + [AWS CLI version 2 support for plugins is changing](#cliv2-migration-profile-plugins)
 + [AWS CLI version 2 no longer supports "hidden" aliases](#cliv2-migration-aliases)
+
+## AWS CLI version 2 now uses environment variable to set text file encoding<a name="cliv2-migration-encodingenvvar"></a>
+
+By default, text files use the same encoding as the installed locale\. To set encoding for text files to be different from the locale, use the `AWS_CLI_FILE_ENCODING` environment variable\. The below example sets the CLI to open text files using `UTF-8` on windows\.
+
+```
+AWS_CLI_FILE_ENCODING=UTF-8
+```
+
+For more information, see [Environment variables to configure the AWS CLI](cli-configure-envvars.md) \.
 
 ## AWS CLI version 2 now passes binary parameters as base64\-encoded strings by default<a name="cliv2-migration-binaryparam"></a>
 
@@ -51,7 +62,7 @@ If you need to change this default behavior in AWS CLI version 2 commands, use t
 
 The AWS CLI version 2 no longer performs a GET operation when a parameter value begins with `http://` or `https://`, and then using the returned content as the value of the parameter\. If you need to retrieve a URL and pass the contents read from that URL as the value of a parameter, we recommend that you use `curl` or a similar tool to download the contents of the URL to a local file\. Then use the `file://` syntax to read the contents of that file and use it as the parameter's value\. 
 
-For example, the following command no longer tries to retrieve the contents of the page found at `http://www.google.com` and pass those contents as the parameter\. Instead, it passes the literal text string `https://google.com` as the parameter\.
+For example, the following command no longer tries to retrieve the contents of the page found at `http://www.google.com` and pass those contents as the parameter\. Instead, it passes the literal text string `https://www.google.com` as the parameter\.
 
 ```
 $ aws ssm put-parameter --value http://www.google.com --name prod.microservice1.db.secret --type String 2
@@ -184,22 +195,22 @@ In the following table, the first column displays the service, command, and para
 | --- | --- | 
 | cognito\-identity create\-identity\-pool open\-id\-connect\-provider\-arns | open\-id\-connect\-provider\-ar\-ns | 
 | storagegateway describe\-tapes tape\-arns | tape\-ar\-ns | 
-| storagegateway\.describe\-tape\-archives\.tape\-arns | tape\-ar\-ns | 
-| storagegateway\.describe\-vtl\-devices\.vtl\-device\-arns | vtl\-device\-ar\-ns | 
-| storagegateway\.describe\-cached\-iscsi\-volumes\.volume\-arns | volume\-ar\-ns | 
-| storagegateway\.describe\-stored\-iscsi\-volumes\.volume\-arns | volume\-ar\-ns | 
-| route53domains\.view\-billing\.start\-time | start | 
-| deploy\.create\-deployment\-group\.ec2\-tag\-set | ec\-2\-tag\-set | 
-| deploy\.list\-application\-revisions\.s3\-bucket | s\-3\-bucket | 
-| deploy\.list\-application\-revisions\.s3\-key\-prefix | s\-3\-key\-prefix | 
-| deploy\.update\-deployment\-group\.ec2\-tag\-set | ec\-2\-tag\-set | 
-| iam\.enable\-mfa\-device\.authentication\-code1 | authentication\-code\-1 | 
-| iam\.enable\-mfa\-device\.authentication\-code2 | authentication\-code\-2 | 
-| iam\.resync\-mfa\-device\.authentication\-code1 | authentication\-code\-1 | 
-| iam\.resync\-mfa\-device\.authentication\-code2 | authentication\-code\-2 | 
-| importexport\.get\-shipping\-label\.street1 | street\-1 | 
-| importexport\.get\-shipping\-label\.street2 | street\-2 | 
-| importexport\.get\-shipping\-label\.street3 | street\-3 | 
-| lambda\.publish\-version\.code\-sha256 | code\-sha\-256 | 
-| lightsail\.import\-key\-pair\.public\-key\-base64 | public\-key\-base\-64 | 
-| opsworks\.register\-volume\.ec2\-volume\-id | ec\-2\-volume\-id | 
+| storagegateway describe\-tape\-archives tape\-arns | tape\-ar\-ns | 
+| storagegateway describe\-vtl\-devices vtl\-device\-arns | vtl\-device\-ar\-ns | 
+| storagegateway describe\-cached\-iscsi\-volumes volume\-arns | volume\-ar\-ns | 
+| storagegateway describe\-stored\-iscsi\-volumes volume\-arns | volume\-ar\-ns | 
+| route53domains view\-billing start\-time | start | 
+| deploy create\-deployment\-group ec2\-tag\-set | ec\-2\-tag\-set | 
+| deploy list\-application\-revisions s3\-bucket | s\-3\-bucket | 
+| deploy list\-application\-revisions s3\-key\-prefix | s\-3\-key\-prefix | 
+| deploy update\-deployment\-group ec2\-tag\-set | ec\-2\-tag\-set | 
+| iam enable\-mfa\-device authentication\-code1 | authentication\-code\-1 | 
+| iam enable\-mfa\-device authentication\-code2 | authentication\-code\-2 | 
+| iam resync\-mfa\-device authentication\-code1 | authentication\-code\-1 | 
+| iam resync\-mfa\-device authentication\-code2 | authentication\-code\-2 | 
+| importexport get\-shipping\-label street1 | street\-1 | 
+| importexport get\-shipping\-label street2 | street\-2 | 
+| importexport get\-shipping\-label street3 | street\-3 | 
+| lambda publish\-version code\-sha256 | code\-sha\-256 | 
+| lightsail import\-key\-pair public\-key\-base64 | public\-key\-base\-64 | 
+| opsworks register\-volume ec2\-volume\-id | ec\-2\-volume\-id | 

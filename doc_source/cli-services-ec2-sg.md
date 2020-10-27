@@ -1,4 +1,4 @@
-# Creating, Configuring, and Deleting Security Groups for Amazon EC2<a name="cli-services-ec2-sg"></a>
+# Creating, configuring, and deleting security groups for Amazon EC2<a name="cli-services-ec2-sg"></a>
 
 You can create a security group for your Amazon Elastic Compute Cloud \(Amazon EC2\) instances that essentially operates as a firewall, with rules that determine what network traffic can enter and leave\. 
 
@@ -10,11 +10,11 @@ Use the AWS Command Line Interface \(AWS CLI\) to create a security group, add r
 The following examples assume that you have already [configured your default credentials](cli-services-ec2-keypairs.md)\.
 
 **Topics**
-+ [Create a Security Group](#creating-a-security-group)
-+ [Add Rules to Your Security Group](#configuring-a-security-group)
-+ [Delete Your Security Group](#deleting-a-security-group)
++ [Create a security group](#creating-a-security-group)
++ [Add rules to your security group](#configuring-a-security-group)
++ [Delete your security group](#deleting-a-security-group)
 
-## Create a Security Group<a name="creating-a-security-group"></a>
+## Create a security group<a name="creating-a-security-group"></a>
 
 You can create security groups associated with VPCs or for EC2\-Classic\.
 
@@ -87,7 +87,7 @@ $ aws ec2 describe-security-groups --group-names my-sg
 }
 ```
 
-## Add Rules to Your Security Group<a name="configuring-a-security-group"></a>
+## Add rules to your security group<a name="configuring-a-security-group"></a>
 
 When you run an Amazon EC2 instance, you must enable rules in the security group to allow incoming network traffic for your means of connecting to the image\. 
 
@@ -205,7 +205,7 @@ $ aws ec2 describe-security-groups --group-names my-sg
 }
 ```
 
-## Delete Your Security Group<a name="deleting-a-security-group"></a>
+## Delete your security group<a name="deleting-a-security-group"></a>
 
 To delete a security group, run the [delete\-security\-group](https://docs.aws.amazon.com/cli/latest/reference/ec2/delete-security-group.html) command\. 
 

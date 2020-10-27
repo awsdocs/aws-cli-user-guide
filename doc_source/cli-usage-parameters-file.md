@@ -1,6 +1,6 @@
-# Loading AWS CLI Parameters from a File<a name="cli-usage-parameters-file"></a>
+# Loading AWS CLI parameters from a file<a name="cli-usage-parameters-file"></a>
 
-Some parameters expect file names as arguments, from which the AWS CLI loads the data\. Other parameters enable you to specify the parameter value as either text typed on the command line or read from a file\. Whether a file is required or optional, you must encode the file correctly so that the AWS CLI can understand it\. The file's encoding must match the reading system's default locale\. You can be determine this by using the Python `locale.getpreferredencoding()` method\.
+Some parameters expect file names as arguments, from which the AWS CLI loads the data\. Other parameters enable you to specify the parameter value as either text typed on the command line or read from a file\. Whether a file is required or optional, you must encode the file correctly so that the AWS CLI can understand it\. The file's encoding must match the reading system's default locale\. You can determine this by using the Python `locale.getpreferredencoding()` method\.
 
 **Note**  
 By default, Windows PowerShell outputs text as UTF\-16, which conflicts with the UTF\-8 encoding used by many Linux systems\. We recommend that you use `-Encoding ascii` with your PowerShell `Out-File` commands to ensure the AWS CLI can read the resulting file\. 
@@ -58,7 +58,7 @@ $ aws sqs create-queue --queue-name my-queue --attributes file://attributes.json
 }
 ```
 
-## Binary Files<a name="cli-usage-parameters-file-binary"></a>
+## Binary files<a name="cli-usage-parameters-file-binary"></a>
 
 For commands that take binary data as a parameter, specify that the data is binary content by using the `fileb://` prefix\. Commands that accept binary data include: 
 +  **`aws ec2 run-instances`** – `--user-data` parameter\. 
@@ -80,7 +80,7 @@ $ aws s3api put-object --bucket my-bucket --key test.txt --body test.txt --sse-c
 }
 ```
 
-## Remote Files<a name="cli-usage-parameters-file-remote"></a>
+## Remote files<a name="cli-usage-parameters-file-remote"></a>
 
 The AWS CLI also supports loading parameters from a file hosted on the internet with an `http://` or `https://` URL\. The following example references a file stored in an Amazon S3 bucket\. This allows you to access parameter files from any computer, but it does require that the container is publicly accessible\. 
 
@@ -103,4 +103,4 @@ The preceding example assumes that the file `filename.json` contains the followi
 ]
 ```
 
-For another example referencing a file containing more complex JSON\-formatted parameters, see [Attaching an IAM Managed Policy to an IAM User](cli-services-iam-policy.md)\. 
+For another example referencing a file containing more complex JSON\-formatted parameters, see [Attaching an IAM managed policy to an IAM user](cli-services-iam-policy.md)\. 

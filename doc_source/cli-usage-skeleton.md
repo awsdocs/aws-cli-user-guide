@@ -1,4 +1,4 @@
-# Generating AWS CLI Skeleton and Input Parameters from a JSON or YAML Input File<a name="cli-usage-skeleton"></a>
+# Generating AWS CLI skeleton and input parameters from a JSON or YAML input file<a name="cli-usage-skeleton"></a>
 
 **Important**  
 **You can create and consume YAML input skeleton templates only with version 2 of the AWS CLI\.** If you use AWS CLI version 1, you can create and consume only JSON input skeleton templates\.

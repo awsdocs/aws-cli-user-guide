@@ -1,4 +1,4 @@
-# Using an HTTP Proxy<a name="cli-configure-proxy"></a>
+# Using an HTTP proxy<a name="cli-configure-proxy"></a>
 
  To access AWS through proxy servers, you can configure the `HTTP_PROXY` and `HTTPS_PROXY` environment variables with either the DNS domain names or IP addresses and port numbers that your proxy servers use\.
 
@@ -25,7 +25,7 @@ C:\> setx HTTPS_PROXY http://10.15.20.25:5678
 C:\> setx HTTPS_PROXY http://proxy.example.com:5678
 ```
 
-## Authenticating to a Proxy<a name="cli-configure-proxy-auth"></a>
+## Authenticating to a proxy<a name="cli-configure-proxy-auth"></a>
 
 The AWS CLI supports HTTP Basic authentication\. Specify the user name and password in the proxy URL, as follows\. 
 
@@ -46,7 +46,7 @@ C:\> setx HTTPS_PROXY http://username:password@proxy.example.com:5678
 **Note**  
 The AWS CLI doesn't support NTLM proxies\. If you use an NTLM or Kerberos protocol proxy, you might be able to connect through an authentication proxy like [Cntlm](http://cntlm.sourceforge.net)\.
 
-## Using a Proxy on Amazon EC2 Instances<a name="cli-configure-proxy-ec2"></a>
+## Using a proxy on Amazon EC2 instances<a name="cli-configure-proxy-ec2"></a>
 
 If you configure a proxy on an Amazon EC2 instance launched with an attached IAM role, ensure that you exempt the address used to access the [instance metadata](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html)\. To do this, set the `NO_PROXY` environment variable to the IP address of the instance metadata service, 169\.254\.169\.254\. This address does not vary\.
 

@@ -1,4 +1,4 @@
-# Common AWS CLI Parameter Types<a name="cli-usage-parameters-types"></a>
+# Common AWS CLI parameter types<a name="cli-usage-parameters-types"></a>
 
 This section describes some of the common parameter types and the typical required format\. If you are having trouble formatting a parameter for a specific command, check the help by entering **help** after the command name, as shown\. 
 
@@ -12,7 +12,7 @@ The help for each subcommand describes its function, options, output, and exampl
 
 String parameters can contain alphanumeric characters, symbols, and white space from the [ASCII](https://wikipedia.org/wiki/ASCII) character set\. Strings that contain white space must be surrounded by quotation marks\. We recommend that you don't use symbols or white space other than the standard space character because it can cause unexpected results\. 
 
-Some string parameters can accept binary data from a file\. See [Binary Files](cli-usage-parameters-file.md#cli-usage-parameters-file-binary) for an example\. 
+Some string parameters can accept binary data from a file\. See [Binary files](cli-usage-parameters-file.md#cli-usage-parameters-file-binary) for an example\. 
 
 ## Timestamp<a name="parameter-type-timestamp"></a>
 
@@ -38,7 +38,9 @@ One or more strings separated by spaces\. If any of the string items contain a s
 $ aws ec2 describe-spot-price-history --instance-types m1.xlarge m1.medium
 ```
 
- **Boolean** – Binary flag that turns an option on or off\. For example, `ec2 describe-spot-price-history` has a Boolean `--dry-run` parameter that, when specified, validates the query with the service without actually running the query\. 
+ ## Boolean<a name="parameter-type-boolean"></a>
+ 
+Binary flag that turns an option on or off\. For example, `ec2 describe-spot-price-history` has a Boolean `--dry-run` parameter that, when specified, validates the query with the service without actually running the query\. 
 
 ```
 $ aws ec2 describe-spot-price-history --dry-run
@@ -64,13 +66,13 @@ $ aws s3api put-object --bucket my-bucket --key testimage.png --body /tmp/image.
 
 *\(Available in the AWS CLI version 2 only\.\)* In the AWS CLI version 2, you can pass a binary value as a base64\-encoded string directly on the command line\. Also, by default in the AWS CLI version 2, files referenced with the `file://` prefix are treated as base64\-encoded text\. 
 
-You can revert the AWS CLI version 2 to be compatible with AWS CLI version 1 by setting the `[cli\-binary\-format](cli-configure-files.md#cli-config-cli_binary_format)` setting:
+You can revert the AWS CLI version 2 to be compatible with AWS CLI version 1 by setting the `cli-binary-format` setting:
 + If the setting's value is `raw-in-base64-out`, files referenced using the `file://` prefix are treated as raw unencoded binary\.
 + If the setting's value is `base64` \(the default value\), files referenced using the `file://` prefix are treated as base64\-encoded text\.
 
 Files referenced using the `fileb://` prefix are always treated as raw unencoded binary, regardless of the `cli_binary_format` setting\. 
 
-For more information, see the setting `[cli\-binary\-format](cli-configure-files.md#cli-config-cli_binary_format)`\.
+For more information, see the setting `cli-binary-format`\.
 
 ## Map<a name="parameter-type-map"></a>
 

@@ -1,4 +1,4 @@
-# Getting Help with the AWS CLI<a name="cli-usage-help"></a>
+# Getting help with the AWS CLI<a name="cli-usage-help"></a>
 
 You can get help with any command when using the AWS Command Line Interface \(AWS CLI\)\. To do so, simply type `help` at the end of a command name\. 
 
@@ -190,14 +190,14 @@ You can *pipe* \(\|\) the output of the help command to the `more` command to vi
 C:\> aws ec2 describe-instances help | more
 ```
 
-## AWS CLI Documentation<a name="cli-reference"></a>
+## AWS CLI documentation<a name="cli-reference"></a>
 
 The [AWS CLI Command Reference](https://docs.aws.amazon.com/cli/latest/reference/) also contains the help content for all AWS CLI commands\. The descriptions are presented for easy navigation and viewing on mobile, tablet, or desktop screens\. 
 
 **Note**  
 The help files contain links that cannot be viewed or navigated to from the command line\. You can view and interact with these links by using the online [AWS CLI Command Reference](https://docs.aws.amazon.com/cli/latest/reference/)\. 
 
-## API Documentation<a name="api-reference"></a>
+## API documentation<a name="api-reference"></a>
 
 All commands in the AWS CLI correspond to requests made to an AWS service's public API\. Each service with a public API has an API reference that can be found on the service's home page on the [AWS Documentation website](http://aws.amazon.com/documentation/)\. The content for an API reference varies based on how the API is constructed and which protocol is used\. Typically, an API reference contains detailed information about the operations supported by the API, the data sent to and from the service, and any error conditions that the service can report\. 
 
