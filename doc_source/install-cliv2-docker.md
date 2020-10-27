@@ -39,10 +39,6 @@ This is how the command functions:
   ```
 + `--rm` – Specifies to clean up the container after the command exits\.
 + `-it` – Specifies to open a pseudo\-TTY with `stdin`\. This enables you to provide input to the AWS CLI version 2 while it's running in a container, for example, by using the `aws configure` and `aws help` commands\.  If you are running scripts, -it is not needed. If you are experiencing errors with your scripts, omit -it from your Docker call.
-                                                                                                                                           ^[[K^[[?1l^[>
-```
-Since these characters are non-displayable characters this might be difficult to diagnose and cause unexpected script outcomes.
-
 
 For more information about the `docker run` command, see the [Docker reference guide](https://docs.docker.com/engine/reference/run/)\.
 
