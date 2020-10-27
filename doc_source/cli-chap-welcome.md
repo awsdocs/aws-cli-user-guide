@@ -1,19 +1,27 @@
-# What Is the AWS Command Line Interface?<a name="cli-chap-welcome"></a>
+# What is the AWS Command Line Interface?<a name="cli-chap-welcome"></a>
 
-The AWS Command Line Interface \(AWS CLI\) is an open source tool that enables you to interact with AWS services using commands in your command\-line shell\. With minimal configuration, the AWS CLI enables you to start running commands that implement functionality equivalent to that provided by the browser\-based AWS Management Console from the command prompt in your favorite terminal program:
+The AWS Command Line Interface \(AWS CLI\) is an open source tool that enables you to interact with AWS services using commands in your command\-line shell\. With minimal configuration, the AWS CLI enables you to start running commands that implement functionality equivalent to that provided by the browser\-based AWS Management Console from the command prompt in your terminal program:
 + **Linux shells** – Use common shell programs such as [https://www.gnu.org/software/bash/](https://www.gnu.org/software/bash/), [http://www.zsh.org/](http://www.zsh.org/), and [https://www.tcsh.org/](https://www.tcsh.org/) to run commands in Linux or macOS\.
 + **Windows command line** – On Windows, run commands at the Windows command prompt or in PowerShell\.
 + **Remotely** – Run commands on Amazon Elastic Compute Cloud \(Amazon EC2\) instances through a remote terminal program such as PuTTY or SSH, or with AWS Systems Manager\.
+
+All IaaS \(infrastructure as a service\) AWS administration, management, and access functions in the AWS Management Console are available in the AWS API and CLI\. New AWS IaaS features and services provide full AWS Management Console functionality through the API and CLI at launch or within 180 days of launch\. 
+
+The AWS CLI provides direct access to the public APIs of AWS services\. You can explore a service's capabilities with the AWS CLI, and develop shell scripts to manage your resources\. In addition to the low\-level, API\-equivalent commands, several AWS services provide customizations for the AWS CLI\. Customizations can include higher\-level commands that simplify using a service with a complex API\.
+
+## AWS CLI versions<a name="welcome-versions"></a>
 
 The AWS CLI is available in two versions and information in this guide applies to both versions unless stated otherwise\.
 + **Version 2\.x** – The current, generally available release of the AWS CLI that is intended for use in production environments\. This version does include some "breaking" changes from version 1 that might require you to change your scripts so that they continue to operate as you expect\. For a list of new features and breaking changes in version 2, see [Breaking changes – Migrating from AWS CLI version 1 to version 2](cliv2-migration.md)\.
 + **Version 1\.x** – The previous version of the AWS CLI that is available for backwards compatiblity\.
 
-All IaaS \(infrastructure as a service\) AWS administration, management, and access functions in the AWS Management Console are available in the AWS API and CLI\. New AWS IaaS features and services provide full AWS Management Console functionality through the API and CLI at launch or within 180 days of launch\. 
+## Maintenance and support for SDK major versions<a name="sdks-major-versions-maintenance-support"></a>
 
-The AWS CLI provides direct access to the public APIs of AWS services\. You can explore a service's capabilities with the AWS CLI, and develop shell scripts to manage your resources\. Or, you can take what you learn to develop programs in other languages by using the AWS SDKs\. In addition to the low\-level, API\-equivalent commands, several AWS services provide customizations for the AWS CLI\. Customizations can include higher\-level commands that simplify using a service with a complex API\.
+For information about maintenance and support for SDK major versions and their underlying dependencies, see the following in the [AWS SDKs and Tools Shared Configuration and Credentials Reference Guide](https://docs.aws.amazon.com/credref/latest/refdocs/overview.html):
++ [AWS SDKs and Tools Maintenance Policy](https://docs.aws.amazon.com/credref/latest/refdocs/maint-policy.html)
++ [AWS SDKs and Tools Version Support Matrix](https://docs.aws.amazon.com/credref/latest/refdocs/version-support-matrix.html)
 
-## Additional Documentation and Resources<a name="welcome-links"></a>
+## Additional documentation and resources<a name="welcome-links"></a>
 
 In addition to this guide, the following are valuable online resources for the AWS CLI\.
 + [AWS CLI version 1 reference guide](https://docs.aws.amazon.com/cli/latest/reference/)
@@ -21,6 +29,7 @@ In addition to this guide, the following are valuable online resources for the A
 + [AWS CLI GitHub Repository](https://github.com/aws/aws-cli) You can view—and fork—the source code for the AWS CLI on GitHub in the [aws\-cli repository](https://github.com/aws/aws-cli)\. Join the community of users on GitHub to provide feedback, request features, and submit your own contributions\!
 + [AWS CLI version 1 change notes](https://github.com/aws/aws-cli/blob/develop/CHANGELOG.rst)
 + [AWS CLI version 2 change notes](https://github.com/aws/aws-cli/blob/v2/CHANGELOG.rst)
++ [AWS CLI code examples repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/master/aws-cli)
 
 ### AWS SDKs<a name="cli-sdks"></a>
 

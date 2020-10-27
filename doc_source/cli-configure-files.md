@@ -88,7 +88,7 @@ If the output is empty, the setting is not explicitly set and uses the default v
 
 **[https://awscli.amazonaws.com/v2/documentation/api/latest/reference/configure/import.html](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/configure/import.html)**  
 **This feature is available only with AWS CLI version 2\.**  
-The following feature is available only if you use AWS CLI version 2\. It isn't available if you run AWS CLI version 1\. For information on how to install version 2, see [Installing the AWS CLI version 2](install-cliv2.md)\.
+The following feature is available only if you use AWS CLI version 2\. It isn't available if you run AWS CLI version 1\. For information on how to install version 2, see [Installing, updating, and uninstalling the AWS CLI version 2](install-cliv2.md)\.
 Import `CSV` credentials generated from the AWS web console\. A CSV file is imported with the profile name matching the IAM user name\.  
 
 ```
@@ -110,7 +110,7 @@ secret_key     ****************ABCD  shared-credentials-file
 
 **[https://docs.aws.amazon.com/cli/latest/reference/configure/list-profiles.html](https://docs.aws.amazon.com/cli/latest/reference/configure/list-profiles.html)**  
 **This feature is available only with AWS CLI version 2\.**  
-The following feature is available only if you use AWS CLI version 2\. It isn't available if you run AWS CLI version 1\. For information on how to install version 2, see [Installing the AWS CLI version 2](install-cliv2.md)\.
+The following feature is available only if you use AWS CLI version 2\. It isn't available if you run AWS CLI version 1\. For information on how to install version 2, see [Installing, updating, and uninstalling the AWS CLI version 2](install-cliv2.md)\.
 To list all your profile names, use the `aws configure list-profiles` command\.  
 
 ```
@@ -175,7 +175,7 @@ ca_bundle = dev/apps/ca-certs/cabundle-2019mar05.pem
 
 *cli\_binary\_format*  
 **This feature is available only with AWS CLI version 2\.**  
-The following feature is available only if you use AWS CLI version 2\. It isn't available if you run AWS CLI version 1\. For information on how to install version 2, see [Installing the AWS CLI version 2](install-cliv2.md)\.
+The following feature is available only if you use AWS CLI version 2\. It isn't available if you run AWS CLI version 1\. For information on how to install version 2, see [Installing, updating, and uninstalling the AWS CLI version 2](install-cliv2.md)\.
 Specifies how the AWS CLI version 2 interprets binary input parameters\. It can be one of the following values:  
 + **base64** – This is the default value\. An input parameter that is typed as a binary large object \(BLOB\) accepts a base64\-encoded string\. To pass true binary content, put the content in a file and provide the file's path and name with the `fileb://` prefix as the parameter's value\. To pass base64\-encoded text contained in a file, provide the file's path and name with the `file://` prefix as the parameter's value\.
 + **raw\-in\-base64\-out** – Provides backward compatibility with the AWS CLI version 1 behavior where binary values must be passed literally\. 
@@ -201,7 +201,7 @@ cli_follow_urlparam = false
 
 *cli\_pager*  
 **This feature is available only with AWS CLI version 2\.**  
-The following feature is available only if you use AWS CLI version 2\. It isn't available if you run AWS CLI version 1\. For information on how to install version 2, see [Installing the AWS CLI version 2](install-cliv2.md)\.
+The following feature is available only if you use AWS CLI version 2\. It isn't available if you run AWS CLI version 1\. For information on how to install version 2, see [Installing, updating, and uninstalling the AWS CLI version 2](install-cliv2.md)\.
 Specifies the pager program used for output\. By default, AWS CLI version 2 returns all output through your operating system’s default pager program\.  
 Can be overridden by the AWS\_PAGER environment variable\.  
 
@@ -249,6 +249,14 @@ Specifies the maximum duration of the role session, in seconds\. The value can r
 *[external\_id](cli-configure-role.md#cli-configure-role-xaccount)*  
 Specifies a unique identifier that is used by third parties to assume a role in their customers' accounts\. This maps to the `ExternalId` parameter in the `AssumeRole` operation\. This parameter is needed only if the trust policy for the role specifies a value for `ExternalId`\. For more information, see [How to use an External Gateway When Granting Access to Your AWS Resources to a Third Party](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html) in the *IAM User Guide*\.
 
+*[max\_attempts](cli-configure-retries.md)*  
+Specifies a value of maximum retry attempts the AWS CLI retry handler uses, where the initial call counts toward the `max_attempts` value that you provide\.   
+You can override this value by using the `AWS_MAX_ATTEMPTS` environment variable\.  
+
+```
+max_attempts = 3
+```
+
 *[mfa\_serial](cli-configure-role.md#cli-configure-role-mfa)*  
 The identification number of an MFA device to use when assuming a role\. This is mandatory only if the trust policy of the role being assumed includes a condition that requires MFA authentication\. The value can be either a serial number for a hardware device \(such as `GAHT12345678`\) or an Amazon Resource Name \(ARN\) for a virtual MFA device \(such as `arn:aws:iam::123456789012:mfa/user`\)\.
 
@@ -283,6 +291,14 @@ You can override this value by using the `AWS_DEFAULT_REGION` environment variab
 
 ```
 region = us-west-2
+```
+
+*[retry\_mode](cli-configure-retries.md)*  
+Specifies which retry mode AWS CLI uses\. There are three retry modes available: legacy \(default\), standard, and adaptive\. For more information on retries, see [AWS CLI retries](cli-configure-retries.md)\.  
+You can override this value by using the `AWS_RETRY_MODE` environment variable\.  
+
+```
+retry_mode = standard
 ```
 
 *[role\_arn](cli-configure-role.md)*  

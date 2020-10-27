@@ -1,13 +1,13 @@
-# Installing the AWS CLI version 1<a name="install-cliv1"></a>
+# Installing, updating, and uninstalling the AWS CLI version 1<a name="install-cliv1"></a>
 
 This topic provides links to information about how to install version 1 of the AWS Command Line Interface \(AWS CLI\)\. For information on the latest releases of AWS CLI version 1, see the [AWS CLI version 1 change notes](https://github.com/aws/aws-cli/blob/develop/CHANGELOG.rst) on GitHub\.
 
-*We recommend that you use AWS CLI version 2 instead\.* For information about how to install version 2, see [Installing the AWS CLI version 2](install-cliv2.md)\.
+*We recommend that you use AWS CLI version 2 instead\.* For information about how to install version 2, see [Installing, updating, and uninstalling the AWS CLI version 2](install-cliv2.md)\.
 
 **Important**  
 AWS CLI version 1 no longer supports Python versions 2\.6 and 3\.3\. All versions of the AWS CLI version 1 released after January 10th, 2020, starting with 1\.17, require Python 2\.7, Python 3\.4, or a later version\.  
-This change does not affect the Windows MSI installer version of the AWS CLI version 1 and the AWS CLI version 2\.  
-For more information, see [Using the AWS CLI version 1 with earlier versions of Python](deprecate-old-python-versions.md) in this guide, and the [deprecation announcement](https://aws.amazon.com/blogs/developer/deprecation-of-python-2-6-and-python-3-3-in-botocore-boto3-and-the-aws-cli/) blog post\.
+This change does not affect the Windows MSI installer version of the AWS CLI version 1 and the AWS CLI version 2\. For more information, see the [deprecation announcement](https://aws.amazon.com/blogs/developer/deprecation-of-python-2-6-and-python-3-3-in-botocore-boto3-and-the-aws-cli/) blog post\.  
+For more information on using an older version of Python with the AWS CLI version 1, see [Using the AWS CLI version 1 with earlier versions of Python](deprecate-old-python-versions.md)\.
 
 **Topics**
 + [Additional Documentation and Resources](#install-cliv1-links)

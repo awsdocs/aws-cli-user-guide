@@ -395,8 +395,6 @@ When you use this option, the command is performed on all files or objects under
 $ aws s3 rm s3://my-bucket/path --recursive
 ```
 
-When you use the `--recursive` option on a directory or folder with `cp`, `mv`, or `rm`, the command walks the directory tree, including all subdirectories\. These commands also accept the `--exclude`, `--include`, and `--acl` options as the `sync` command does\.
-
 ## References<a name="using-s3-commands-managing-buckets-references"></a>
 
 **AWS CLI reference:**

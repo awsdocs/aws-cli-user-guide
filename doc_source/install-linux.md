@@ -15,8 +15,8 @@ You must have Python 2 version 2\.7 or later, or Python 3 version 3\.4 or later 
 
 **Important**  
 AWS CLI version 1 no longer supports Python versions 2\.6 and 3\.3\. All versions of the AWS CLI version 1 released after January 10th, 2020, starting with 1\.17, require Python 2\.7, Python 3\.4, or a later version\.  
-This change does not affect the Windows MSI installer version of the AWS CLI version 1 and the AWS CLI version 2\.  
-For more information, see [Using the AWS CLI version 1 with earlier versions of Python](deprecate-old-python-versions.md) in this guide, and the [deprecation announcement](https://aws.amazon.com/blogs/developer/deprecation-of-python-2-6-and-python-3-3-in-botocore-boto3-and-the-aws-cli/) blog post\.
+This change does not affect the Windows MSI installer version of the AWS CLI version 1 and the AWS CLI version 2\. For more information, see the [deprecation announcement](https://aws.amazon.com/blogs/developer/deprecation-of-python-2-6-and-python-3-3-in-botocore-boto3-and-the-aws-cli/) blog post\.  
+For more information on using an older version of Python with the AWS CLI version 1, see [Using the AWS CLI version 1 with earlier versions of Python](deprecate-old-python-versions.md)\.
 
 ## Install and uninstall the AWS CLI version 1 on Linux using the bundled installer<a name="install-linux-bundled"></a>
 

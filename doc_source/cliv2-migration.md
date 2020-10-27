@@ -62,7 +62,7 @@ If you need to change this default behavior in AWS CLI version 2 commands, use t
 
 The AWS CLI version 2 no longer performs a GET operation when a parameter value begins with `http://` or `https://`, and then using the returned content as the value of the parameter\. If you need to retrieve a URL and pass the contents read from that URL as the value of a parameter, we recommend that you use `curl` or a similar tool to download the contents of the URL to a local file\. Then use the `file://` syntax to read the contents of that file and use it as the parameter's value\. 
 
-For example, the following command no longer tries to retrieve the contents of the page found at `http://www.google.com` and pass those contents as the parameter\. Instead, it passes the literal text string `https://www.google.com` as the parameter\.
+For example, the following command no longer tries to retrieve the contents of the page found at `http://www.google.com` and pass those contents as the parameter\. Instead, it passes the literal text string `https://google.com` as the parameter\.
 
 ```
 $ aws ssm put-parameter --value http://www.google.com --name prod.microservice1.db.secret --type String 2
@@ -195,22 +195,22 @@ In the following table, the first column displays the service, command, and para
 | --- | --- | 
 | cognito\-identity create\-identity\-pool open\-id\-connect\-provider\-arns | open\-id\-connect\-provider\-ar\-ns | 
 | storagegateway describe\-tapes tape\-arns | tape\-ar\-ns | 
-| storagegateway describe\-tape\-archives tape\-arns | tape\-ar\-ns | 
-| storagegateway describe\-vtl\-devices vtl\-device\-arns | vtl\-device\-ar\-ns | 
-| storagegateway describe\-cached\-iscsi\-volumes volume\-arns | volume\-ar\-ns | 
-| storagegateway describe\-stored\-iscsi\-volumes volume\-arns | volume\-ar\-ns | 
-| route53domains view\-billing start\-time | start | 
-| deploy create\-deployment\-group ec2\-tag\-set | ec\-2\-tag\-set | 
-| deploy list\-application\-revisions s3\-bucket | s\-3\-bucket | 
-| deploy list\-application\-revisions s3\-key\-prefix | s\-3\-key\-prefix | 
-| deploy update\-deployment\-group ec2\-tag\-set | ec\-2\-tag\-set | 
-| iam enable\-mfa\-device authentication\-code1 | authentication\-code\-1 | 
-| iam enable\-mfa\-device authentication\-code2 | authentication\-code\-2 | 
-| iam resync\-mfa\-device authentication\-code1 | authentication\-code\-1 | 
-| iam resync\-mfa\-device authentication\-code2 | authentication\-code\-2 | 
-| importexport get\-shipping\-label street1 | street\-1 | 
-| importexport get\-shipping\-label street2 | street\-2 | 
-| importexport get\-shipping\-label street3 | street\-3 | 
-| lambda publish\-version code\-sha256 | code\-sha\-256 | 
-| lightsail import\-key\-pair public\-key\-base64 | public\-key\-base\-64 | 
-| opsworks register\-volume ec2\-volume\-id | ec\-2\-volume\-id | 
+| storagegateway\.describe\-tape\-archives\.tape\-arns | tape\-ar\-ns | 
+| storagegateway\.describe\-vtl\-devices\.vtl\-device\-arns | vtl\-device\-ar\-ns | 
+| storagegateway\.describe\-cached\-iscsi\-volumes\.volume\-arns | volume\-ar\-ns | 
+| storagegateway\.describe\-stored\-iscsi\-volumes\.volume\-arns | volume\-ar\-ns | 
+| route53domains\.view\-billing\.start\-time | start | 
+| deploy\.create\-deployment\-group\.ec2\-tag\-set | ec\-2\-tag\-set | 
+| deploy\.list\-application\-revisions\.s3\-bucket | s\-3\-bucket | 
+| deploy\.list\-application\-revisions\.s3\-key\-prefix | s\-3\-key\-prefix | 
+| deploy\.update\-deployment\-group\.ec2\-tag\-set | ec\-2\-tag\-set | 
+| iam\.enable\-mfa\-device\.authentication\-code1 | authentication\-code\-1 | 
+| iam\.enable\-mfa\-device\.authentication\-code2 | authentication\-code\-2 | 
+| iam\.resync\-mfa\-device\.authentication\-code1 | authentication\-code\-1 | 
+| iam\.resync\-mfa\-device\.authentication\-code2 | authentication\-code\-2 | 
+| importexport\.get\-shipping\-label\.street1 | street\-1 | 
+| importexport\.get\-shipping\-label\.street2 | street\-2 | 
+| importexport\.get\-shipping\-label\.street3 | street\-3 | 
+| lambda\.publish\-version\.code\-sha256 | code\-sha\-256 | 
+| lightsail\.import\-key\-pair\.public\-key\-base64 | public\-key\-base\-64 | 
+| opsworks\.register\-volume\.ec2\-volume\-id | ec\-2\-volume\-id | 

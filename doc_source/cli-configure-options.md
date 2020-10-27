@@ -17,7 +17,17 @@ Specifies the maximum socket read time in seconds\. If the value is set to zero 
 Specifies support for color output\. Valid values are `on`, `off`, and `auto`\. The default value is `auto`\.
 
 **\-\-debug**  
-A Boolean switch that enables debug logging\. This includes additional diagnostic information about the operation of the command that can be useful when troubleshooting why a command provides unexpected results\.
+A Boolean switch that enables debug logging\. The AWS CLI by default provides cleaned up information regarding any successes or failures regarding command outcomes in the command output\. The `--debug` option provides the full Python logs\. This includes additional `stderr` diagnostic information about the operation of the command that can be useful when troubleshooting why a command provides unexpected results\. To easily view debug logs, we suggest sending the logs to a file to more easily search the information\. You can do this by using one of the following\.  
+To send **only** the `stderr` diagnostic information, append `2> debug.txt` where `debug.txt` is the name you want to use for your debug file:  
+
+```
+$ aws servicename commandname options --debug 2> debug.txt
+```
+To send **both** the output and `stderr` diagnostic information, append `&> debug.txt` where `debug.txt` is the name you want to use for your debug file:  
+
+```
+$ aws servicename commandname options --debug &> debug.txt
+```
 
 **\-\-endpoint\-url *<string>***  
 Specifies the URL to send the request to\. For most commands, the AWS CLI automatically determines the URL based on the selected service and the specified AWS Region\. However, some commands require that you specify an account\-specific URL\. You can also configure some AWS services to [host an endpoint directly within your private VPC](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html#what-is-privatelink), which might then need to be specified\.   

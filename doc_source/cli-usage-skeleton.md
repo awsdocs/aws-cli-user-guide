@@ -244,14 +244,14 @@ LicenseSpecifications: # The license configurations.
 #### [ JSON ]
 
    ```
-   $ aws ec2 run-instances --generate-cli-skeleton input> ec2runinst.json
+   $ aws ec2 run-instances --generate-cli-skeleton input > ec2runinst.json
    ```
 
 ------
 #### [ YAML ]
 
    ```
-   $ aws ec2 run-instances --generate-cli-skeleton yaml-input> ec2runinst.yaml
+   $ aws ec2 run-instances --generate-cli-skeleton yaml-input > ec2runinst.yaml
    ```
 
 ------

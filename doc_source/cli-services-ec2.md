@@ -8,9 +8,12 @@ aws ec2 help
 
 Before you run any commands, set your default credentials\. For more information, see [Configuring the AWS CLI](cli-chap-configure.md)\.
 
-This topic shows examples of AWS CLI commands that perform common tasks for Amazon EC2\.
+This topic shows short\-form examples of AWS CLI commands that perform common tasks for Amazon EC2\.
+
+For long\-form examples of AWS CLI commands, see [AWS CLI code examples repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/master/aws-cli) on *GitHub*\.
 
 **Topics**
 + [Creating, displaying, and deleting Amazon EC2 key pairs](cli-services-ec2-keypairs.md)
 + [Creating, configuring, and deleting security groups for Amazon EC2](cli-services-ec2-sg.md)
 + [Launching, listing, and terminating Amazon EC2 instances](cli-services-ec2-instances.md)
++ [Change an Amazon EC2 instance type using a bash script](cli-services-ec2-instance-type-script.md)
