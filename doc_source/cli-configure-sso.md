@@ -76,7 +76,7 @@ The AWS CLI confirms your role selection\.
 Using the role name "ReadOnly"
 ```
 
-Now you can finish the configuration of your profile, by specifying the [default output format](cli-configure-files.md#cli-config-output), the [default AWS Region](cli-configure-files.md#cli-config-region) to send commands to, and providing a [name for the profile](cli-chap-configure.md#cli-quick-configuration-multi-profiles) so you can reference this profile from among all those defined on the local computer\. In the following example, the user enters a default Region, default output format, and the name of the profile\. You can alternatively press `<ENTER>` to select any default values that are shown between the square brackets\. The suggested profile name is the account ID number followed by an underscore followed by the role name\.
+Now you can finish the configuration of your profile, by specifying the [default output format](cli-configure-files.md#cli-config-output), the [default AWS Region](cli-configure-files.md#cli-config-region) to send commands to, and providing a [name for the profile](cli-configure-quickstart.md#cli-configure-quickstart-profiles) so you can reference this profile from among all those defined on the local computer\. In the following example, the user enters a default Region, default output format, and the name of the profile\. You can alternatively press `<ENTER>` to select any default values that are shown between the square brackets\. The suggested profile name is the account ID number followed by an underscore followed by the role name\.
 
 ```
 CLI default client Region [None]: us-west-2<ENTER>
