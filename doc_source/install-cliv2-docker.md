@@ -237,7 +237,7 @@ To shorten the Docker `aws` command, we suggest you use your operating system's 
 #### [ Windows ]
 
   ```
-  C:\> doskey aws test=docker run --rm -it -v %userprofile%\.aws:/root/.aws -v %cd%:/aws amazon/aws-cli $*
+  C:\> doskey aws=docker run --rm -it -v %userprofile%\.aws:/root/.aws -v %cd%:/aws amazon/aws-cli $*
   ```
 
 ------
