@@ -85,7 +85,7 @@ Now that you have the role profile, role permissions, role trust relationship, a
 $ aws s3 ls --profile marketingadmin
 ```
 
-To use the role for several calls, you can set the `AWS_DEFAULT_PROFILE` environment variable for the current session from the command line\. While that environment variable is defined, you don't have to specify the `--profile` option on each command\. 
+To use the role for several calls, you can set the `AWS_PROFILE` environment variable for the current session from the command line\. While that environment variable is defined, you don't have to specify the `--profile` option on each command\. 
 
 **Linux or macOS**
 
