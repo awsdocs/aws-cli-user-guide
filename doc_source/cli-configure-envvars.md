@@ -81,6 +81,10 @@ If defined, this environment variable overrides the value for the profile settin
 Specifies the AWS Region to send the request to\.  
 If defined, this environment variable overrides the value for the profile setting `region`\. You can override this environment variable by using the `--region` command line parameter\.
 
+[`AWS_EC2_METADATA_DISABLED`](cli-configure-metadata.md)  
+Disables the use of the AWS EC2 instance metadata service (IMDS)\.  
+If set to false, user credentials or configuration (like the region) are not requested from IMDS\.
+
 [`AWS_MAX_ATTEMPTS`](cli-configure-files.md#cli-config-max_attempts)  
 Specifies a value of maximum retry attempts the AWS CLI retry handler uses, where the initial call counts toward the value that you provide\. For more information on retries, see [AWS CLI retries](cli-configure-retries.md)\.  
 If defined, this environment variable overrides the value for the profiles setting `max_attempts`\.
