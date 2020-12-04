@@ -154,7 +154,7 @@ sudo ./aws/install
      The default value is `/usr/local/bin`\.
 
    ```
-   $ sudo ./aws/install -i /usr/local/aws-cli -b /usr/local/bin
+   $ ./aws/install -i /usr/local/aws-cli -b /usr/local/bin
    ```
 
 1. Confirm the installation\.
