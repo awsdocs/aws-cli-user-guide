@@ -351,7 +351,7 @@ MyFile1.txt
 MyFile2.rtf
 MyFile88.txt
 
-// Exclude all .txt files, resulting in MyFile1.txt and MyFile88.txt being copied
+// Include all .txt files, resulting in MyFile1.txt and MyFile88.txt being copied
 $ aws s3 cp . s3://my-bucket/path --include "*.txt"
 
 // Exclude all .txt files but include all files with the "MyFile*.txt" format, resulting in, MyFile1.txt, MyFile2.rtf, MyFile88.txt being copied
