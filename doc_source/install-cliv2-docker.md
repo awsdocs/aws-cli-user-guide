@@ -37,7 +37,7 @@ $ docker run --rm -it amazon/aws-cli command
 ```
 
 This is how the command functions:
-+ `docker run --rm --it amazon/aws-cli` – The equivalent of the `aws` executable\. Each time you run this command, Docker spins up a container of your downloaded `amazon/aws-cli` image, and executes your `aws` command\. By default, the Docker image uses the latest version of the AWS CLI version 2\.
++ `docker run --rm -it amazon/aws-cli` – The equivalent of the `aws` executable\. Each time you run this command, Docker spins up a container of your downloaded `amazon/aws-cli` image, and executes your `aws` command\. By default, the Docker image uses the latest version of the AWS CLI version 2\.
 
   For example, to call the `aws --version` command in Docker, you run the following\.
 
