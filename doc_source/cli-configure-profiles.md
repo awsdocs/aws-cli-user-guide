@@ -54,7 +54,7 @@ $ export AWS_PROFILE=user1
 **Windows**
 
 ```
-C:\> setx AWS_PROFILE user1
+C:\> set AWS_PROFILE=user1
 ```
 
 Using `[set](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/set_1)` to set an environment variable changes the value used until the end of the current command prompt session, or until you set the variable to a different value\. 
