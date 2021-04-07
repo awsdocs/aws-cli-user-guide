@@ -1,6 +1,6 @@
 # Command completion<a name="cli-configure-completion"></a>
 
-On Unix\-like systems, the AWS Command Line Interface \(AWS CLI\) includes a command\-completion feature that enables you to use the **Tab** key to complete a partially entered command\. On most systems, this feature isn't automatically installed, so you need to configure it manually\.
+The AWS Command Line Interface \(AWS CLI\) includes a command\-completion feature that enables you to use the **Tab** key to complete a partially entered command\. On most systems, this feature isn't automatically installed, so you need to configure it manually\.
 
 **Topics**
 + [How it works](#cli-command-completion-about)
@@ -127,13 +127,13 @@ For the AWS completer to work successfully, you must first add it to your comput
    + **Zsh**– `.zshrc`
    + **Tcsh**– `.tcshrc`, `.cshrc`, or `.login`
 
-1. Add an export command at the end of your profile script that's similar to the following example\. Replace *`/usr/local/bin`* with the folder that you discovered in the previous section\.
+2. Add an export command at the end of your profile script that's similar to the following example\. Replace *`/usr/local/aws/bin`* with the folder that you discovered in the previous section\.
 
    ```
    export PATH=/usr/local/bin:$PATH
    ```
 
-1. Reload the profile into the current session to put those changes into effect\. Replace `.bash_profile` with the name of the shell script you discovered in the first section\.
+3. Reload the profile into the current session to put those changes into effect\. Replace `.bash_profile` with the name of the shell script you discovered in the first section\.
 
    ```
    $ source ~/.bash_profile
@@ -169,6 +169,23 @@ To enable command completion, run the command for the shell that you're using\. 
   ```
 
   Add the command to `~/.tschrc` to run it each time you open a new shell\.
+
++ **Pwsh**-
+
+  Add the following to your `pwsh` profile (use `echo $PROFILE` to locate).
+
+  ```ps
+  # AWS CLI
+  # PowerShell parameter completion shim for the aws CLI
+  Register-ArgumentCompleter -Native -CommandName aws -ScriptBlock {
+    param($commandName, $wordToComplete, $cursorPosition)
+    Set-Item -Path Env:COMP_LINE -Value $wordToComplete
+    Set-Item -Path Env:COMP_POINT -Value $cursorPosition
+    aws_completer.exe | ForEach-Object {
+        [System.Management.Automation.CompletionResult]::new($_, $_, 'ParameterValue', $_)
+    }
+  }
+  ```
 
 ### Test Command Completion<a name="cli-command-completion-test"></a>
 
