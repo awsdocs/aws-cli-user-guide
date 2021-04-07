@@ -1,7 +1,7 @@
 # Configuring the AWS CLI to use AWS Single Sign\-On<a name="cli-configure-sso"></a>
 
 **This feature is available only with AWS CLI version 2\.**  
-The following feature is available only if you use AWS CLI version 2\. It isn't available if you run AWS CLI version 1\. For information on how to install version 2, see [Installing the AWS CLI version 2](install-cliv2.md)\.
+The following feature is available only if you use AWS CLI version 2\. It isn't available if you run AWS CLI version 1\. For information on how to install version 2, see [Installing, updating, and uninstalling the AWS CLI version 2](install-cliv2.md)\.
 
 If your organization uses AWS Single Sign\-On \(AWS SSO\), your users can sign in to Active Directory, a built\-in AWS SSO directory, or [another iDP connected to AWS SSO](https://docs.aws.amazon.com/singlesignon/latest/userguide/manage-your-identity-source-idp.html) and get mapped to an AWS Identity and Access Management \(IAM\) role that enables you to run AWS CLI commands\. Regardless of which iDP you use, AWS SSO abstracts those distinctions away, and they all work with the AWS CLI as described below\. For example, you can connect Microsoft Azure AD as described in the blog article [The Next Evolution in AWS Single Sign\-On](http://aws.amazon.com/blogs/aws/the-next-evolution-in-aws-single-sign-on/)
 
@@ -89,9 +89,9 @@ If you specify `default` as the profile name, this profile becomes the one used 
 
 A final message describes the completed profile configuration\.
 
-```
-To use this profile, specify the profile name using --profile, as shown:
+To use this profile, specify the profile name using \-\-profile, as shown:
 
+```
 aws s3 ls --profile my-dev-profile
 ```
 
@@ -127,7 +127,7 @@ sso\_region
 The AWS Region that contains the AWS SSO portal host\. This is separate from, and can be a different region than the default CLI `region` parameter\.  
 
 ```
-sso_region = us_west-2
+sso_region = us-west-2
 ```
 
 sso\_account\_id  
@@ -242,7 +242,7 @@ $ aws sso login --profile my-first-sso-profile
 # account and role specified in the second named profile. It does not overwrite or 
 # in any way compromise the first profile's credentials. If this profile specifies the
 # same AWS SSO portal, then it uses the SSO credentials that you retrieved in the 
-# previoius command. The AWS CLI then retrieves AWS temporary credentials for the
+# previous command. The AWS CLI then retrieves AWS temporary credentials for the
 # IAM role associated with the second profile. You don't have to sign in to 
 # AWS SSO again.
 $ aws sso login --profile my-second-sso-profile

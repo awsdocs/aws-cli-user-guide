@@ -80,7 +80,7 @@ The specified AWS service might not return items in the same order each time you
 ## Client\-side pager<a name="cli-usage-pagination-clientside"></a>
 
 **This feature is available only with AWS CLI version 2\.**  
-The following feature is available only if you use AWS CLI version 2\. It isn't available if you run AWS CLI version 1\. For information on how to install version 2, see [Installing the AWS CLI version 2](install-cliv2.md)\.
+The following feature is available only if you use AWS CLI version 2\. It isn't available if you run AWS CLI version 1\. For information on how to install version 2, see [Installing, updating, and uninstalling the AWS CLI version 2](install-cliv2.md)\.
 
 AWS CLI version 2 provides the use of a client\-side pager program for output\. By default, this feature returns all output through your operating system’s default pager program\. 
 

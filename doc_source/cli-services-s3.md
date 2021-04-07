@@ -25,3 +25,4 @@ When operations such as these can be performed completely in the cloud, only the
 **Topics**
 + [Using high\-level \(s3\) commands with the AWS CLI](cli-services-s3-commands.md)
 + [Using API\-Level \(s3api\) commands with the AWS CLI](cli-services-s3-apicommands.md)
++ [Amazon S3 bucket lifecycle operations scripting example](cli-services-s3-lifecycle-example.md)

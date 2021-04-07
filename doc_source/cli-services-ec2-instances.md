@@ -1,19 +1,23 @@
 # Launching, listing, and terminating Amazon EC2 instances<a name="cli-services-ec2-instances"></a>
 
-You can use the AWS Command Line Interface \(AWS CLI\) to launch, list, and terminate Amazon Elastic Compute Cloud \(Amazon EC2\) instances\. You need a [key pair](cli-services-ec2-keypairs.md) and a [security group](cli-services-ec2-sg.md)\. You also need to select an Amazon Machine Image \(AMI\) and make a note of the AMI ID\. For more information, see [Finding a Suitable AMI](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/finding-an-ami.html) in the *Amazon EC2 User Guide for Linux Instances*\.
-
-If you launch an instance that isn't within the AWS Free Tier, you are billed after you launch the instance and charged for the time that the instance is running, even if it remains idle\.
-
-**Note**  
-The following examples assume that you have already [configured your default credentials](cli-services-ec2-keypairs.md)\.
+You can use the AWS Command Line Interface \(AWS CLI\) to launch, list, and terminate Amazon Elastic Compute Cloud \(Amazon EC2\) instances\. If you launch an instance that isn't within the AWS Free Tier, you are billed after you launch the instance and charged for the time that the instance is running, even if it remains idle\.
 
 **Topics**
++ [Prerequisites](#cli-services-ec2-instances-prereqs)
 + [Launch your instance](#launching-instances)
 + [Add a block device to your instance](#block-device-mapping)
 + [Add a tag to your instance](#tagging-instances)
 + [Connect to your instance](#connecting-to-instances)
 + [List your instances](#listing-instances)
 + [Terminate your instance](#terminating-instances)
+
+## Prerequisites<a name="cli-services-ec2-instances-prereqs"></a>
+
+To run the `ec2` commands in this topic, you need to:
++ Install and configure the AWS CLI\. For more information, see [Installing the AWS CLI](cli-chap-install.md) and [Configuration basics](cli-configure-quickstart.md)\. 
++ Set your IAM permissions to allow for Amazon EC2 access\. For more information about IAM permissions for Amazon EC2, see [IAM policies for Amazon EC2](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/iam-policies-for-amazon-ec2.html) in the *Amazon EC2 User Guide for Linux Instances*\.
++ Create a [key pair](cli-services-ec2-keypairs.md) and a [security group](cli-services-ec2-sg.md)\.
++ Select an Amazon Machine Image \(AMI\) and note the AMI ID\. For more information, see [Finding a Suitable AMI](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/finding-an-ami.html) in the *Amazon EC2 User Guide for Linux Instances*\.
 
 ## Launch your instance<a name="launching-instances"></a>
 

@@ -298,7 +298,7 @@ MyFile88.txt
 '''
 
 // Sync with delete, excluding files that match a pattern. MyFile88.txt is deleted, while remote MyFile1.txt is not.
-$ aws s3 sync . s3://my-bucket/path --delete --exclude "my-bucket/path/MyFile?.txt"
+$ aws s3 sync . s3://my-bucket/path --delete --exclude "path/MyFile?.txt"
 delete: s3://my-bucket/path/MyFile88.txt
 '''
 
@@ -410,5 +410,5 @@ $ aws s3 rm s3://my-bucket/path --recursive
 **Service reference:**
 + [Working with Amazon S3 buckets](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingBucket.html) in the *Amazon Simple Storage Service Developer Guide*
 + [Working with Amazon S3 objects](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingObjects.html) in the *Amazon Simple Storage Service Developer Guide*
-+ [Listing keys hierarchically using a prefix and delimiter](https://docs.aws.amazon.com/https://docs.aws.amazon.com/AmazonS3/latest/dev/ListingKeysHierarchy.html) in the *Amazon Simple Storage Service Developer Guide*
-+ [Abort multipart uploads to an S3 bucket using the AWS SDK for \.NET \(low\-level\)](https://docs.aws.amazon.com/https://docs.aws.amazon.com/AmazonS3/latest/dev/LLAbortMPUnet.html) in the *Amazon Simple Storage Service Developer Guide*
++ [Listing keys hierarchically using a prefix and delimiter](https://docs.aws.amazon.com/AmazonS3/latest/dev/ListingKeysHierarchy.html) in the *Amazon Simple Storage Service Developer Guide*
++ [Abort multipart uploads to an S3 bucket using the AWS SDK for \.NET \(low\-level\)](https://docs.aws.amazon.com/AmazonS3/latest/dev/LLAbortMPUnet.html) in the *Amazon Simple Storage Service Developer Guide*

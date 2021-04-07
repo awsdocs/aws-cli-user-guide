@@ -58,7 +58,7 @@ File C:\temp\largefile is created
 Next, split the file into 1 MiB \(1,048,576 byte\) chunks\.
 
 ```
-$ split --bytes=1048576 --verbose largefile chunk
+$ split -b 1048576 --verbose largefile chunk
 creating file `chunkaa'
 creating file `chunkab'
 creating file `chunkac'

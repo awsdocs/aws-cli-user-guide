@@ -1,11 +1,12 @@
-# Installing the AWS CLI version 2 on macOS<a name="install-cliv2-mac"></a>
+# Installing, updating, and uninstalling the AWS CLI version 2 on macOS<a name="install-cliv2-mac"></a>
 
 This topic describes how to install, update, and remove the AWS CLI version 2 on macOS\.
 
 **Important**  
 AWS CLI versions 1 and 2 use the same `aws` command name\. If you have both versions installed, your computer uses the first one found in your search path\. If you previously installed AWS CLI version 1, we recommend that you do one of the following to use AWS CLI version 2:  
-** Recommended** – Uninstall AWS CLI version 1 and use only AWS CLI version 2\. For uninstall instructions, determine the method you used to install AWS CLI version 1 and follow the appropriate uninstall instructions for your operating system in [Installing the AWS CLI version 1](install-cliv1.md)
+** Recommended** – Uninstall AWS CLI version 1 and use only AWS CLI version 2\. For uninstall instructions, determine the method you used to install AWS CLI version 1 and follow the appropriate uninstall instructions for your operating system in [Installing, updating, and uninstalling the AWS CLI version 1](install-cliv1.md)
 Use your operating system's ability to create a symbolic link \(symlink\) or alias with a different name for one of the two `aws` commands\. For example, you can use a [symbolic link](https://www.linux.com/tutorials/understanding-linux-links/) or [alias](https://www.linux.com/tutorials/aliases-diy-shell-commands/) on Linux and macOS, or [https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/doskey](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/doskey) on Windows\.
+For information on breaking changes between version 1 and version 2, see [Breaking changes – Migrating from AWS CLI version 1 to version 2](cliv2-migration.md)\.
 
 **Topics**
 + [Prerequisites](#cliv2-mac-prereq)
@@ -24,7 +25,7 @@ The following steps show how to install or update to the latest version of the A
 
 1. In your browser, download the macOS `pkg` file: 
    + **For the latest version of the AWS CLI:** [https://awscli.amazonaws.com/AWSCLIV2.pkg](https://awscli.amazonaws.com/AWSCLIV2.pkg)
-   + **For a specific version of the AWS CLI:** Append a hyphen and the version number to the filename\. For this example the filename for version *2\.0\.30* would be `AWSCLIV2-2.0.30.pkg` resulting in the following link [https://awscli.amazonaws.com/https://awscli.amazonaws.com/AWSCLIV2-2.0.30.pkg](https://awscli.amazonaws.com/https://awscli.amazonaws.com/AWSCLIV2-2.0.30.pkg)\. For a list of versions, see the [AWS CLI version 2 changelog](https://github.com/aws/aws-cli/blob/v2/CHANGELOG.rst) on *GitHub*\.
+   + **For a specific version of the AWS CLI:** Append a hyphen and the version number to the filename\. For this example the filename for version *2\.0\.30* would be `AWSCLIV2-2.0.30.pkg` resulting in the following link [https://awscli.amazonaws.com/AWSCLIV2-2.0.30.pkg](https://awscli.amazonaws.com/AWSCLIV2-2.0.30.pkg)\. For a list of versions, see the [AWS CLI version 2 changelog](https://github.com/aws/aws-cli/blob/v2/CHANGELOG.rst) on *GitHub*\.
 
 1. Double\-click the downloaded file to launch the installer\.
 
@@ -38,7 +39,7 @@ The following steps show how to install or update to the latest version of the A
 
        ```
        $ sudo ln -s /folder/installed/aws-cli/aws /usr/local/bin/aws
-       $ sudo ln -s /folder/installed/aws-cli/aws_completer /usr/local/bin/aws/aws_completer
+       $ sudo ln -s /folder/installed/aws-cli/aws_completer /usr/local/bin/aws_completer
        ```
 **Note**  
 You can view debug logs for the installation by pressing **Cmd\+L** anywhere in the installer\. This opens a log pane that enables you to filter and save the log\. The log file is also automatically saved to `/var/log/install.log`\.

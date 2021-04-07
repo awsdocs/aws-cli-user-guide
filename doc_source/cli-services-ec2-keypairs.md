@@ -4,13 +4,17 @@ You can use the AWS Command Line Interface \(AWS CLI\) to create, display, and d
 
 You must provide the key pair to Amazon EC2 when you create the instance, and then use that key pair to authenticate when you connect to the instance\. 
 
-**Note**  
-The following examples assume that you have already [configured your default credentials](#cli-services-ec2-keypairs)\.
-
 **Topics**
++ [Prerequisites](#cli-services-ec2-keypairs-prereqs)
 + [Create a key pair](#creating-a-key-pair)
 + [Display your key pair](#displaying-a-key-pair)
 + [Delete your key pair](#deleting-a-key-pair)
+
+## Prerequisites<a name="cli-services-ec2-keypairs-prereqs"></a>
+
+To run the `ec2` commands, you need to:
++ Install and configure the AWS CLI\. For more information, see [Installing the AWS CLI](cli-chap-install.md) and [Configuration basics](cli-configure-quickstart.md)\. 
++ Set your IAM permissions to allow for Amazon EC2 access\. For more information about IAM permissions for Amazon EC2, see [IAM policies for Amazon EC2](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/iam-policies-for-amazon-ec2.html) in the *Amazon EC2 User Guide for Linux Instances*\.
 
 ## Create a key pair<a name="creating-a-key-pair"></a>
 

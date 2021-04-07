@@ -1,7 +1,7 @@
 # Having the AWS CLI prompt you for parameters<a name="cli-usage-parameters-prompting"></a>
 
 **This feature is available only with AWS CLI version 2\.**  
-The following feature is available only if you use AWS CLI version 2\. It isn't available if you run AWS CLI version 1\. For information on how to install version 2, see [Installing the AWS CLI version 2](install-cliv2.md)\.
+The following feature is available only if you use AWS CLI version 2\. It isn't available if you run AWS CLI version 1\. For information on how to install version 2, see [Installing, updating, and uninstalling the AWS CLI version 2](install-cliv2.md)\.
 
 You can have the AWS CLI version 2 prompt you for parameters when you run a command\. On your command line, include `--cli-auto-prompt`\.
 
