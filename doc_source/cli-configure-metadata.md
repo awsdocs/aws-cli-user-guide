@@ -2,10 +2,12 @@
 
 When you run the AWS CLI from within an Amazon Elastic Compute Cloud \(Amazon EC2\) instance, you can simplify providing credentials to your commands\. Each Amazon EC2 instance contains metadata that the AWS CLI can directly query for temporary credentials\. When an IAM role is attached to the instance, the AWS CLI automatically and securely retrieves the credentials from the instance metadata\. 
 
+To disable this service, use the [AWS\_EC2\_METADATA\_DISABLED](cli-configure-envvars.md#envvars-list-AWS_EC2_METADATA_DISABLED) environment variable\.
+
 ## Prerequisites<a name="cli-configure-metadata-prereqs"></a>
 
 To use Amazon EC2 credentials with the AWS CLI, you need to complete the following:
-+ Launch the Amazon EC2 instance and confirm the AWS CLI is already installed\. If the AWS CLI is not installed, install the AWS CLI\. For more information, see [Installing the AWS CLI](cli-chap-install.md)\.
++ Launch the Amazon EC2 instance and confirm the AWS CLI is already installed\. If the AWS CLI is not installed, install the AWS CLI\. For more information, see [Installing, updating, and uninstalling the AWS CLI](cli-chap-install.md)\.
 + You understand configuration files\. For more information, see [Configuration and credential file settings](cli-configure-files.md)\. 
 + You understand named profiles\. For more information, see [Named profiles](cli-configure-profiles.md)\. 
 + You've created an AWS Identity and Access Management \(IAM\) role that has access to the resources needed, and attached that role to the Amazon EC2 instance when you launch it\. For more information, see [IAM policies for Amazon EC2](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/iam-policies-for-amazon-ec2.html) in the *Amazon EC2 User Guide for Linux Instances* and [Granting Applications That Run on Amazon EC2 Instances Access to AWS Resources](https://docs.aws.amazon.com/IAM/latest/UserGuide/role-usecase-ec2app.html) in the *IAM User Guide*\.

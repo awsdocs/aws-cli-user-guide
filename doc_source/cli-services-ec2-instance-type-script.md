@@ -12,7 +12,7 @@ This bash scripting example for Amazon EC2 changes the instance type for an Amaz
 ## Before you start<a name="cli-services-ec2-instance-type-script-prereqs"></a>
 
 Before you can run any of the below examples, the following things need to be completed\.
-+ AWS CLI installed, see [Installing the AWS CLI](cli-chap-install.md) for more information\.
++ AWS CLI installed, see [Installing, updating, and uninstalling the AWS CLI](cli-chap-install.md) for more information\.
 + AWS CLI configured, see [Configuration basics](cli-configure-quickstart.md) for more information\. The profile that you use must have permissions that allow the AWS operations performed by the examples\.
 + A running EC2 instance in the account for which you have permission to stop and modify\. If you run the test script, it launches an instance for you, tests changing the type, and then terminates the instance\.
 + As an AWS best practice, grant this code least privilege, or only the permissions required to perform a task\. For more information, see [Grant Least Privilege](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html#grant-least-privilege) in the *AWS Identity and Access Management \(IAM\) User Guide*\.

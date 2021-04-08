@@ -89,10 +89,13 @@ If the output is empty, the setting is not explicitly set and uses the default v
 **[https://awscli.amazonaws.com/v2/documentation/api/latest/reference/configure/import.html](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/configure/import.html)**  
 **This feature is available only with AWS CLI version 2\.**  
 The following feature is available only if you use AWS CLI version 2\. It isn't available if you run AWS CLI version 1\. For information on how to install version 2, see [Installing, updating, and uninstalling the AWS CLI version 2](install-cliv2.md)\.
-Import `CSV` credentials generated from the AWS web console\. A CSV file is imported with the profile name matching the IAM user name\.  
+Import `CSV` credentials generated from the AWS web console\. A CSV file is imported with the profile name matching the IAM user name\. The CSV file must contain the following headers\.  
++ User Name
++ Access key ID
++ Secret access key
 
 ```
-$ aws configure import –csv file://credentials.csv
+$ aws configure import --csv file://credentials.csv
 ```
 
 **[https://docs.aws.amazon.com/cli/latest/reference/configure/list.html](https://docs.aws.amazon.com/cli/latest/reference/configure/list.html)**  
@@ -172,6 +175,23 @@ Can be overridden by the `AWS_CA_BUNDLE` environment variable or the `--ca-bundl
 ```
 ca_bundle = dev/apps/ca-certs/cabundle-2019mar05.pem
 ```
+
+*cli\_auto\_prompt*  
+**This feature is available only with AWS CLI version 2\.**  
+The following feature is available only if you use AWS CLI version 2\. It isn't available if you run AWS CLI version 1\. For information on how to install version 2, see [Installing, updating, and uninstalling the AWS CLI version 2](install-cliv2.md)\.
+Enables the auto\-prompt for the AWS CLI version 2\. There are two settings that can be used:  
++ **`on`** uses the full auto\-prompt mode each time you attempt to run an `aws` command\. This includes pressing **ENTER** after both a complete command or incomplete command\.
+
+  ```
+  cli_auto_prompt = on
+  ```
++ **`on-partial`** uses partial auto\-promptmode\. If a command is incomplete or cannot be run due to client\-side validation errors, auto\-prompt is used\. This mode is particular useful if you have pre\-existing scripts, runbooks, or you only want to be auto\-prompted for commands you are unfamiliar with rather than prompted on every command\.
+
+  ```
+  cli_auto_prompt = on-partial
+  ```
+You can override this setting by using the `aws\_cli\_auto\_prompt` environment variable or the `\-\-cli\-auto\-prompt` and `\-\-no\-cli\-auto\-prompt` command line parameters\.  
+For information on the AWS CLI version 2 auto\-prompt feature, see [Having the AWS CLI prompt you for commands](cli-usage-parameters-prompting.md)\.
 
 *cli\_binary\_format*  
 **This feature is available only with AWS CLI version 2\.**  
@@ -262,11 +282,11 @@ The identification number of an MFA device to use when assuming a role\. This is
 
 *[output](cli-configure-quickstart.md#cli-configure-quickstart-format)*  
 Specifies the default output format for commands requested using this profile\. You can specify any of the following values:  
-+ [**`json`**](cli-usage-output.md#json-output) – The output is formatted as a [JSON](https://json.org/) string\.
-+ [**`yaml`**](cli-usage-output.md#yaml-output) – The output is formatted as a [YAML](https://yaml.org/) string\. *\(Available in the AWS CLI version 2 only\.\)*
-+ [**`yaml-stream`**](cli-usage-output.md#yaml-stream-output) – The output is streamed and formatted as a [YAML](https://yaml.org/) string\. Streaming allows for faster handling of large data types\. *\(Available in the AWS CLI version 2 only\.\)*
-+ [**`text`**](cli-usage-output.md#text-output) – The output is formatted as multiple lines of tab\-separated string values\. This can be useful to pass the output to a text processor, like `grep`, `sed`, or `awk`\.
-+ [**`table`**](cli-usage-output.md#table-output) – The output is formatted as a table using the characters \+\|\- to form the cell borders\. It typically presents the information in a "human\-friendly" format that is much easier to read than the others, but not as programmatically useful\.
++ [**`json`**](cli-usage-output-format.md#json-output) – The output is formatted as a [JSON](https://json.org/) string\.
++ [**`yaml`**](cli-usage-output-format.md#yaml-output) – The output is formatted as a [YAML](https://yaml.org/) string\. *\(Available in the AWS CLI version 2 only\.\)*
++ [**`yaml-stream`**](cli-usage-output-format.md#yaml-stream-output) – The output is streamed and formatted as a [YAML](https://yaml.org/) string\. Streaming allows for faster handling of large data types\. *\(Available in the AWS CLI version 2 only\.\)*
++ [**`text`**](cli-usage-output-format.md#text-output) – The output is formatted as multiple lines of tab\-separated string values\. This can be useful to pass the output to a text processor, like `grep`, `sed`, or `awk`\.
++ [**`table`**](cli-usage-output-format.md#table-output) – The output is formatted as a table using the characters \+\|\- to form the cell borders\. It typically presents the information in a "human\-friendly" format that is much easier to read than the others, but not as programmatically useful\.
 Can be overridden by the `AWS_DEFAULT_OUTPUT` environment variable or the `--output` command line option\.  
 
 ```

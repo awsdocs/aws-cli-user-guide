@@ -13,7 +13,7 @@ You must provide the key pair to Amazon EC2 when you create the instance, and th
 ## Prerequisites<a name="cli-services-ec2-keypairs-prereqs"></a>
 
 To run the `ec2` commands, you need to:
-+ Install and configure the AWS CLI\. For more information, see [Installing the AWS CLI](cli-chap-install.md) and [Configuration basics](cli-configure-quickstart.md)\. 
++ Install and configure the AWS CLI\. For more information, see [Installing, updating, and uninstalling the AWS CLI](cli-chap-install.md) and [Configuration basics](cli-configure-quickstart.md)\. 
 + Set your IAM permissions to allow for Amazon EC2 access\. For more information about IAM permissions for Amazon EC2, see [IAM policies for Amazon EC2](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/iam-policies-for-amazon-ec2.html) in the *Amazon EC2 User Guide for Linux Instances*\.
 
 ## Create a key pair<a name="creating-a-key-pair"></a>

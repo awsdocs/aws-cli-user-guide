@@ -11,9 +11,9 @@ This topic uses a bash scripting example for Amazon S3 bucket lifecycle operatio
 ## Before you start<a name="cli-services-s3-lifecycle-example-before"></a>
 
 Before you can run any of the below examples, the following things need to be completed\.
-+ AWS CLI installed, see [Installing the AWS CLI](cli-chap-install.md) for more information\.
++ AWS CLI installed, see [Installing, updating, and uninstalling the AWS CLI](cli-chap-install.md) for more information\.
 + AWS CLI configured, see [Configuration basics](cli-configure-quickstart.md) for more information\. The profile that you use must have permissions that allow the AWS operations performed by the examples\.
-+ As an AWS best practice, grant this code least privilege, or only the permissions required to perform a task\. For more information, see [Grant Least Privilege](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html#grant-least-privilege) in the *AWS Identity and Access Management \(IAM\) User Guide*\.
++ As an AWS best practice, grant this code least privilege, or only the permissions required to perform a task\. For more information, see [Grant Least Privilege](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html#grant-least-privilege) in the *IAM User Guide*\.
 + This code has not been tested in all AWS Regions\. Some AWS services are available only in specific Regions\. For more information, see [ Service Endpoints and Quotas](https://docs.aws.amazon.com/general/latest/gr/aws-service-information.html) in the *AWS General Reference Guide*\. 
 + Running this code can result in charges to your AWS account\. It is your responsibility to ensure that any resources created by this script are removed when you are done with them\. 
 

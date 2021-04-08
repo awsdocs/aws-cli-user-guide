@@ -103,4 +103,4 @@ The preceding example assumes that the file `filename.json` contains the followi
 ]
 ```
 
-For another example referencing a file containing more complex JSON\-formatted parameters, see [Attaching an IAM managed policy to an IAM user](cli-services-iam-policy.md)\. 
+For another example referencing a file containing JSON\-formatted parameters, see [Attaching an IAM managed policy to an IAM user](cli-services-iam-policy.md)\. 

@@ -150,11 +150,11 @@ $ sudo installer -pkg AWSCLIV2.pkg -target /
                -applyChoiceChangesXML choices.xml
    ```
 
-1. Because standard user permissions typically don't allow writing to folders in your `$PATH`, the installer in this mode doesn't try to add the symlinks to the `aws` and `aws_completer` programs\. For the AWS CLI to run correctly, you must manually create the symlinks after the installer finishes\. If your `$PATH` includes a folder you can write to and you specify the folder as the target's path, you can run the following command without `sudo`\. If you don't have a writable folder in your `$PATH`, you must use `sudo` for permissions to write to the specified target folder\.
+1. Because standard user permissions typically don't allow writing to folders in your `$PATH`, the installer in this mode doesn't try to add the symlinks to the `aws` and `aws_completer` programs\. For the AWS CLI to run correctly, you must manually create the symlinks after the installer finishes\. If your `$PATH` includes a folder you can write to and you specify the folder as the target's path, you can run the following command without `sudo`\. If you don't have a writable folder in your `$PATH`, you must use `sudo` for permissions to write to the specified target folder\. The default location for a symlink is `/usr/local/bin/`\.
 
    ```
-   $ sudo ln -s /folder/installed/aws-cli/aws /folder/in/your/PATH/aws
-   $ sudo ln -s /folder/installed/aws-cli/aws_completer /folder/in/your/PATH/aws_completer
+   $ sudo ln -s /folder/installed/aws-cli/aws /usr/local/bin/aws
+   $ sudo ln -s /folder/installed/aws-cli/aws_completer /usr/local/bin/aws_completer
    ```
 
    After installation is complete, debug logs are written to `/var/log/install.log`\.
@@ -169,7 +169,7 @@ To verify that the shell can find and run the `aws` command in your `$PATH`, use
 $ which aws
 /usr/local/bin/aws 
 $ aws --version
-aws-cli/2.0.47 Python/3.7.4 Darwin/18.7.0 botocore/2.0.0
+aws-cli/2.1.29 Python/3.7.4 Darwin/18.7.0 botocore/2.0.0
 ```
 
 ## Uninstall the AWS CLI version 2<a name="cliv2-mac-remove"></a>

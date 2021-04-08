@@ -14,7 +14,7 @@ You can use the AWS Command Line Interface \(AWS CLI\) to launch, list, and term
 ## Prerequisites<a name="cli-services-ec2-instances-prereqs"></a>
 
 To run the `ec2` commands in this topic, you need to:
-+ Install and configure the AWS CLI\. For more information, see [Installing the AWS CLI](cli-chap-install.md) and [Configuration basics](cli-configure-quickstart.md)\. 
++ Install and configure the AWS CLI\. For more information, see [Installing, updating, and uninstalling the AWS CLI](cli-chap-install.md) and [Configuration basics](cli-configure-quickstart.md)\. 
 + Set your IAM permissions to allow for Amazon EC2 access\. For more information about IAM permissions for Amazon EC2, see [IAM policies for Amazon EC2](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/iam-policies-for-amazon-ec2.html) in the *Amazon EC2 User Guide for Linux Instances*\.
 + Create a [key pair](cli-services-ec2-keypairs.md) and a [security group](cli-services-ec2-sg.md)\.
 + Select an Amazon Machine Image \(AMI\) and note the AMI ID\. For more information, see [Finding a Suitable AMI](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/finding-an-ami.html) in the *Amazon EC2 User Guide for Linux Instances*\.
@@ -255,7 +255,7 @@ For more information, see [Block Device Mapping](https://docs.aws.amazon.com/AWS
 
 A tag is a label that you assign to an AWS resource\. It enables you to add metadata to your resources that you can use for a variety of purposes\. For more information, see [Tagging Your Resources](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html) in the *Amazon EC2 User Guide for Linux Instances*\.
 
-The following example shows how to add a tag with the key name "`Name` and the value "`MyInstance`" to the specified instance, by using the [create\-tags](https://docs.aws.amazon.com/cli/latest/reference/ec2/create-tags.html) command\.
+The following example shows how to add a tag with the key name "`Name`" and the value "`MyInstance`" to the specified instance, by using the [create\-tags](https://docs.aws.amazon.com/cli/latest/reference/ec2/create-tags.html) command\.
 
 ```
 $ aws ec2 create-tags --resources i-5203422c --tags Key=Name,Value=MyInstance

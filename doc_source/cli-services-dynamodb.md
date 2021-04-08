@@ -1,6 +1,8 @@
 # Using Amazon DynamoDB with the AWS CLI<a name="cli-services-dynamodb"></a>
 
-The AWS Command Line Interface \(AWS CLI\) provides support for all of the AWS database services, including Amazon DynamoDB\. You can use the AWS CLI for ad hoc operations, such as creating a table\. You can also use it to embed DynamoDB operations within utility scripts\.
+The AWS Command Line Interface \(AWS CLI\) provides support for all of the AWS database services, including Amazon DynamoDB\. You can use the AWS CLI for ad hoc operations, such as creating a table\. You can also use it to embed DynamoDB operations within utility scripts\. 
+
+For more information about using the AWS CLI with DynamoDB, see [DynamoDB](https://docs.aws.amazon.com/cli/latest/reference/dynamodb/index.html) in the *AWS CLI Command Reference*\.
 
 To list the AWS CLI commands for DynamoDB, use the following command\.
 
@@ -8,14 +10,23 @@ To list the AWS CLI commands for DynamoDB, use the following command\.
 $ aws dynamodb help
 ```
 
-Before you run any commands, set your default credentials\. For more information, see [Configuring the AWS CLI](cli-chap-configure.md)\.
+**Topics**
++ [Prerequisites](#cli-services-dynamodb-prereqs)
++ [Creating and using DynamoDB tables](#cli-services-dynamodb-using)
++ [Using DynamoDB Local](#cli-services-dynamodb-local)
++ [Resources](#cli-services-dynamodb-resources)
+
+## Prerequisites<a name="cli-services-dynamodb-prereqs"></a>
+
+To run the `dynamodb` commands, you need to:
++ AWS CLI installed, see [Installing, updating, and uninstalling the AWS CLI](cli-chap-install.md) for more information\.
++ AWS CLI configured, see [Configuration basics](cli-configure-quickstart.md) for more information\. The profile that you use must have permissions that allow the AWS operations performed by the examples\.
+
+## Creating and using DynamoDB tables<a name="cli-services-dynamodb-using"></a>
 
 The command line format consists of an DynamoDB command name, followed by the parameters for that command\. The AWS CLI supports the CLI [shorthand syntax](cli-usage-shorthand.md) for the parameter values, and full JSON\.
 
-For example, the following command creates a table named `MusicCollection`\. 
-
-**Note**  
-For readability, long commands in this section are broken into separate lines\. The backslash \( \\ \) character is the line continuation character for the Linux command line, and lets you copy and paste \(or enter\) multiple lines at a Linux prompt\. If you're using a shell that doesn't use the backslash for line continuation, replace the backslash with that shell's line continuation character\. Or remove the backslashes and put the entire command on a single line\.
+FThe following example creates a table named `MusicCollection`\. 
 
 ```
 $ aws dynamodb create-table \
@@ -95,10 +106,22 @@ $ aws dynamodb query --table-name MusicCollection \
 }
 ```
 
-For more information about using the AWS CLI with DynamoDB, see [DynamoDB](https://docs.aws.amazon.com/cli/latest/reference/dynamodb/index.html) in the *AWS CLI Command Reference*\.
+## Using DynamoDB Local<a name="cli-services-dynamodb-local"></a>
 
 In addition to DynamoDB, you can use the AWS CLI with DynamoDB Local\. DynamoDB Local is a small client\-side database and server that mimics the DynamoDB service\. DynamoDB Local enables you to write applications that use the DynamoDB API, without manipulating any tables or data in the DynamoDB web service\. Instead, all of the API actions are rerouted to a local database\. This lets you save on provisioned throughput, data storage, and data transfer fees\.
 
 For more information about DynamoDB Local and how to use it with the AWS CLI, see the following sections of the [Amazon DynamoDB Developer Guide](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/):
 + [DynamoDB Local](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tools.DynamoDBLocal.html)
 + [Using the AWS CLI with DynamoDB Local](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tools.CLI.html#UsingWithDDBLocal)
+
+## Resources<a name="cli-services-dynamodb-resources"></a>
+
+**AWS CLI reference:**
++ [https://docs.aws.amazon.com/cli/latest/reference/dynamodb/](https://docs.aws.amazon.com/cli/latest/reference/dynamodb/)
++ [https://docs.aws.amazon.com/cli/latest/reference/dynamodb/create-table.html](https://docs.aws.amazon.com/cli/latest/reference/dynamodb/create-table.html)
++ [https://docs.aws.amazon.com/cli/latest/reference/dynamodb/put-item.html](https://docs.aws.amazon.com/cli/latest/reference/dynamodb/put-item.html)
++ [https://docs.aws.amazon.com/cli/latest/reference/dynamodb/query.html](https://docs.aws.amazon.com/cli/latest/reference/dynamodb/query.html)
+
+**Service reference:**
++ [DynamoDB Local](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tools.DynamoDBLocal.html) in the Amazon DynamoDB Developer Guide
++ [Using the AWS CLI with DynamoDB Local](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tools.CLI.html#UsingWithDDBLocal) in the Amazon DynamoDB Developer Guide

@@ -58,7 +58,7 @@ For more information, see [describe\-domain](https://docs.aws.amazon.com/cli/lat
 
 To register new domains, use [https://docs.aws.amazon.com/cli/latest/reference/swf/register-domain.html](https://docs.aws.amazon.com/cli/latest/reference/swf/register-domain.html)\. 
 
-There are two required parameters: `--name` and `--workflow-execution-retention-period-in-days`\. The `--name` parmeter takes the domain name to register\. The `--workflow-execution-retention-period-in-days` parameter takes an integer to specify the number of days to retain workflow execution data on this domain, up to a maximum period of 90 days \(for more information, see the [Amazon SWF FAQ](http://aws.amazon.com/swf/faqs/#retain_limit)\)\. 
+There are two required parameters: `--name` and `--workflow-execution-retention-period-in-days`\. The `--name` parameter takes the domain name to register\. The `--workflow-execution-retention-period-in-days` parameter takes an integer to specify the number of days to retain workflow execution data on this domain, up to a maximum period of 90 days \(for more information, see the [Amazon SWF FAQ](http://aws.amazon.com/swf/faqs/#retain_limit)\)\. 
 
 If you specify zero \(0\) for this value, the retention period is automatically set at the maximum duration\. Otherwise, workflow execution data isn't retained after the specified number of days have passed\. The following example shows how to register a new domain\.
 

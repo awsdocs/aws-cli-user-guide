@@ -20,12 +20,13 @@ For more information, see [Multipart upload overview](https://docs.aws.amazon.co
 + [Copy objects](#using-s3-commands-managing-objects-copy)
 + [Sync objects](#using-s3-commands-managing-objects-sync)
 + [Frequently used options for s3 commands](#using-s3-commands-managing-objects-param)
-+ [References](#using-s3-commands-managing-buckets-references)
++ [Resources](#using-s3-commands-managing-buckets-references)
 
 ## Prerequisites<a name="using-s3-commands-before"></a>
 
 To run the `s3` commands, you need to:
-+ Install and configure the AWS CLI\. For more information, see [Installing the AWS CLI](cli-chap-install.md) and [Configuration basics](cli-configure-quickstart.md)\. 
++ AWS CLI installed, see [Installing, updating, and uninstalling the AWS CLI](cli-chap-install.md) for more information\.
++ AWS CLI configured, see [Configuration basics](cli-configure-quickstart.md) for more information\. The profile that you use must have permissions that allow the AWS operations performed by the examples\.
 + Understand these Amazon S3 terms:
   + **Bucket** – A top\-level Amazon S3 folder\.
   + **Prefix** – An Amazon S3 folder in a bucket\.
@@ -128,10 +129,16 @@ For a few common options to use with this command, and examples, see [Frequently
 
 ### s3 rm examples<a name="using-s3-commands-delete-objects-examples"></a>
 
-The following example deletes all objects from `s3://bucket-name/example`\.
+The following example deletes `filename.txt` from `s3://bucket-name/example`\.
 
 ```
-$ aws s3 rm s3://bucket-name/example
+$ aws s3 rm s3://bucket-name/example/filename.txt --recursive
+```
+
+The following example deletes all objects from `s3://bucket-name/example` using the `--recursive` option\.
+
+```
+$ aws s3 rm s3://bucket-name/example --recursive
 ```
 
 ## Move objects<a name="using-s3-commands-managing-objects-move"></a>
@@ -219,10 +226,10 @@ The following example copies a file from your Amazon S3 bucket to your current w
 $ aws s3 cp s3://bucket-name/filename.txt ./
 ```
 
-The following example uses the cat text editor to stream the text "hello world" to the `s3://bucket-name/filename.txt` file\.
+The following example uses echo to stream the text "hello world" to the `s3://bucket-name/filename.txt` file\.
 
 ```
-$ cat "hello world" | aws s3 cp - s3://bucket-name/filename.txt
+$ echo "hello world" | aws s3 cp - s3://bucket-name/filename.txt
 ```
 
 The following example streams the `s3://bucket-name/filename.txt` file to `stdout` and prints the contents to the console\.
@@ -351,14 +358,15 @@ MyFile1.txt
 MyFile2.rtf
 MyFile88.txt
 
-// Exclude all .txt files, resulting in MyFile1.txt and MyFile88.txt being copied
+// Include all .txt files, resulting in MyFile1.txt and MyFile88.txt being copied
 $ aws s3 cp . s3://my-bucket/path --include "*.txt"
 
-// Exclude all .txt files but include all files with the "MyFile*.txt" format, resulting in, MyFile1.txt, MyFile2.rtf, MyFile88.txt being copied
-$ aws s3 cp . s3://my-bucket/path --exclude "*.txt" --include "MyFile*.txt"
+// Include all .txt files but exclude all files with the "MyFile*.txt" format, resulting in no files being copied
+$ aws s3 cp . s3://my-bucket/path --include "*.txt" --exclude "MyFile*.txt"
 
-// Exclude all .txt files, but include all files with the "MyFile*.txt" format, but exclude all files with the "MyFile?.txt" format resulting in, MyFile2.rtf and MyFile88.txt being copied
-$ aws s3 cp . s3://my-bucket/path --exclude "*.txt" --include "MyFile*.txt" --exclude "MyFile?.txt"
+// Include all .txt files, but exclude all files with the "MyFile*.txt" format, but include all files with the "MyFile?.txt" format resulting in MyFile1.txt being copied
+
+$ aws s3 cp . s3://my-bucket/path --include "*.txt" --exclude "MyFile*.txt" --include "MyFile?.txt"
 ```
 
 **grant**  
@@ -395,7 +403,7 @@ When you use this option, the command is performed on all files or objects under
 $ aws s3 rm s3://my-bucket/path --recursive
 ```
 
-## References<a name="using-s3-commands-managing-buckets-references"></a>
+## Resources<a name="using-s3-commands-managing-buckets-references"></a>
 
 **AWS CLI reference:**
 + [https://docs.aws.amazon.com/cli/latest/reference/s3/](https://docs.aws.amazon.com/cli/latest/reference/s3/)

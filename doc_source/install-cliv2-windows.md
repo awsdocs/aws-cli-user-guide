@@ -31,11 +31,11 @@ Before you can install or update the AWS CLI version 2 on Windows, be sure you h
 
 1. To confirm the installation, open the **Start** menu, search for `cmd` to open a command prompt window, and at the command prompt use the `aws --version` command\. 
 
-   Don't include the prompt symbol \(`C:\>`\) when you type a command\. These are included in program listings to differentiate commands that you type from output returned by the AWS CLI\. The rest of this guide uses the generic prompt symbol \(`$`\), except in cases where a command is Windows\-specific\. For more information about how we format code examples, see [Using the examples](cli-chap-welcome.md#cli-using-examples)\.
+   Don't include the prompt symbol \(`C:\>`\) when you type a command\. These are included in program listings to differentiate commands that you type from output returned by the AWS CLI\. The rest of this guide uses the generic prompt symbol \(`$`\), except in cases where a command is Windows\-specific\. For more information about how we format code examples, see [Using the AWS CLI examples](welcome-examples.md)\.
 
    ```
    C:\> aws --version
-   aws-cli/2.0.47 Python/3.7.4 Windows/10 botocore/2.0.0
+   aws-cli/2.1.29 Python/3.7.4 Windows/10 botocore/2.0.0
    ```
 
    If Windows is unable to find the program, you might need to close and reopen the command prompt window to refresh the path, or [add the installation directory to your PATH](install-windows.md#awscli-install-windows-path) environment variable manually\.

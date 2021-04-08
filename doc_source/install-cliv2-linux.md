@@ -19,7 +19,7 @@ For information on breaking changes between version 1 and version 2, see [Breaki
 + You must be able to extract or "unzip" the downloaded package\. If your operating system doesn't have the built\-in `unzip` command, use an equivalent\.
 + The AWS CLI version 2 uses `glibc`, `groff`, and `less`\. These are included by default in most major distributions of Linux\.
 + We support the AWS CLI version 2 on 64\-bit versions of recent distributions of CentOS, Fedora, Ubuntu, Amazon Linux 1, and Amazon Linux 2\.
-+ We support the AWS CLI version 2 on Linux ARM\.
++ We support the AWS CLI version 2 on 64\-bit Linux ARM\.
 + Because AWS doesn't maintain third\-party repositories, we can’t guarantee that they contain the latest version of the AWS CLI\.
 
 ## Install the AWS CLI version 2 on Linux<a name="cliv2-linux-install"></a>
@@ -161,7 +161,7 @@ sudo ./aws/install
 
    ```
    $ aws --version
-   aws-cli/2.0.47 Python/3.7.4 Linux/4.14.133-113.105.amzn2.x86_64 botocore/2.0.0
+   aws-cli/2.1.29 Python/3.7.4 Linux/4.14.133-113.105.amzn2.x86_64 botocore/2.0.0
    ```
 
 ## Update the AWS CLI version 2 on Linux<a name="cliv2-linux-upgrade"></a>
@@ -258,7 +258,7 @@ To update your copy of the AWS CLI version 2, from the Linux command line, follo
 
    ```
    $ aws --version
-   aws-cli/2.0.47 Python/3.7.4 Linux/4.14.133-113.105.amzn2.x86_64 botocore/2.0.0
+   aws-cli/2.1.29 Python/3.7.4 Linux/4.14.133-113.105.amzn2.x86_64 botocore/2.0.0
    ```
 
 ## Uninstall the AWS CLI version 2 on Linux<a name="cliv2-linux-remove"></a>

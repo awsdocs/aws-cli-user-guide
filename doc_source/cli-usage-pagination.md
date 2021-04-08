@@ -1,6 +1,6 @@
 # Using AWS CLI pagination options<a name="cli-usage-pagination"></a>
 
-This topic describes the different ways to paginate output from the AWS Command Line Interface \(AWS CLI\)\.There are primarily two ways to control pagination from the AWS CLI\.
+This topic describes the different ways to paginate output from the AWS Command Line Interface \(AWS CLI\)\. There are primarily two ways to control pagination from the AWS CLI\.
 + [Using server\-side pagination parameters\.](#cli-usage-pagination-serverside)
 + [Using your default output client\-side paging program](#cli-usage-pagination-clientside)\.
 
@@ -111,6 +111,8 @@ The following example sets the default to disable the use of a pager\.
 [default]
 cli_pager=
 ```
+
+
 
 ### How to use the AWS\_PAGER environment variable<a name="cli-usage-pagination-awspager"></a>
 

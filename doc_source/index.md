@@ -1,7 +1,7 @@
 # AWS Command Line Interface User Guide
 
 -----
-*****Copyright &copy; 2020 Amazon Web Services, Inc. and/or its affiliates. All rights reserved.*****
+*****Copyright &copy;  Amazon Web Services, Inc. and/or its affiliates. All rights reserved.*****
 
 -----
 Amazon's trademarks and trade dress may not be used in 
@@ -15,7 +15,10 @@ Amazon's trademarks and trade dress may not be used in
 -----
 ## Contents
 + [What is the AWS Command Line Interface?](cli-chap-welcome.md)
-+ [Installing the AWS CLI](cli-chap-install.md)
+   + [About the AWS CLI versions](welcome-versions.md)
+   + [Using the AWS CLI examples](welcome-examples.md)
+   + [Additional documentation and resources](welcome-resources.md)
++ [Installing, updating, and uninstalling the AWS CLI](cli-chap-install.md)
    + [Installing, updating, and uninstalling the AWS CLI version 2](install-cliv2.md)
       + [Using the official AWS CLI version 2 Docker image](install-cliv2-docker.md)
       + [Installing, updating, and uninstalling the AWS CLI version 2 on Linux](install-cliv2-linux.md)
@@ -27,7 +30,6 @@ Amazon's trademarks and trade dress may not be used in
       + [Install, Update, and Uninstall the AWS CLI version 1 on macOS](install-macos.md)
       + [Install, Update, and Uninstall the AWS CLI version 1 on Windows](install-windows.md)
       + [Install and Update the AWS CLI version 1 in a virtual environment](install-virtualenv.md)
-      + [Using the AWS CLI version 1 with earlier versions of Python](deprecate-old-python-versions.md)
 + [Configuring the AWS CLI](cli-chap-configure.md)
    + [Configuration basics](cli-configure-quickstart.md)
    + [Configuration and credential file settings](cli-configure-files.md)
@@ -47,13 +49,17 @@ Amazon's trademarks and trade dress may not be used in
    + [Specifying parameter values for the AWS CLI](cli-usage-parameters.md)
       + [Common AWS CLI parameter types](cli-usage-parameters-types.md)
       + [Using quotation marks with strings in the AWS CLI](cli-usage-parameters-quoting-strings.md)
-      + [Having the AWS CLI prompt you for parameters](cli-usage-parameters-prompting.md)
       + [Loading AWS CLI parameters from a file](cli-usage-parameters-file.md)
       + [Generating AWS CLI skeleton and input parameters from a JSON or YAML input file](cli-usage-skeleton.md)
       + [Using shorthand syntax with the AWS CLI](cli-usage-shorthand.md)
+   + [Having the AWS CLI prompt you for commands](cli-usage-parameters-prompting.md)
    + [Controlling command output from the AWS CLI](cli-usage-output.md)
-   + [Using AWS CLI pagination options](cli-usage-pagination.md)
+      + [Setting the AWS CLI output format](cli-usage-output-format.md)
+      + [Using AWS CLI pagination options](cli-usage-pagination.md)
+      + [Filtering AWS CLI output](cli-usage-filter.md)
    + [Understanding return codes from the AWS CLI](cli-usage-returncodes.md)
+   + [Using the AWS CLI wizards](cli-usage-wizard.md)
+   + [Creating and using AWS CLI aliases](cli-usage-alias.md)
 + [Using the AWS CLI to work with AWS Services](cli-chap-services.md)
    + [Using Amazon DynamoDB with the AWS CLI](cli-services-dynamodb.md)
    + [Using Amazon EC2 with the AWS CLI](cli-services-ec2.md)
@@ -72,7 +78,7 @@ Amazon's trademarks and trade dress may not be used in
       + [Using API-Level (s3api) commands with the AWS CLI](cli-services-s3-apicommands.md)
       + [Amazon S3 bucket lifecycle operations scripting example](cli-services-s3-lifecycle-example.md)
    + [Using Amazon SNS with the AWS CLI](cli-services-sns.md)
-   + [Using Amazon SWF with the AWS CLI](cli-services-swf.md)
+   + [Using Amazon Simple Workflow Service with the AWS CLI](cli-services-swf.md)
       + [List of Amazon SWF commands by category](cli-services-swf-commands.md)
       + [Working with Amazon SWF domains using the AWS CLI](cli-services-swf-domains.md)
 + [Security in the AWS Command Line Interface](security.md)

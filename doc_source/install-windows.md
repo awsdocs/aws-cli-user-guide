@@ -1,13 +1,8 @@
 # Install, Update, and Uninstall the AWS CLI version 1 on Windows<a name="install-windows"></a>
 
-You can install version 1 of the AWS Command Line Interface \(AWS CLI\) on Windows by using a standalone installer \(recommended\) or `pip`, which is a package manager for Python\. If you already have `pip`\. 
+You can install version 1 of the AWS Command Line Interface \(AWS CLI\) on Windows by using a standalone installer \(recommended\) or `pip`, which is a package manager for Python\.
 
 Don't include the prompt symbol \(`C:\>`\) when you type a command\. These are included in program listings to differentiate commands that you type from output returned by the CLI\. The rest of this guide uses the generic prompt symbol \(`$`\), except in cases where a command is Windows\-specific\.
-
-**Important**  
-AWS CLI version 1 no longer supports Python versions 2\.6 and 3\.3\. All versions of the AWS CLI version 1 released after January 10th, 2020, starting with 1\.17, require Python 2\.7, Python 3\.4, or a later version\.  
-This change does not affect the Windows MSI installer version of the AWS CLI version 1 and the AWS CLI version 2\. For more information, see the [deprecation announcement](https://aws.amazon.com/blogs/developer/deprecation-of-python-2-6-and-python-3-3-in-botocore-boto3-and-the-aws-cli/) blog post\.  
-For more information on using an older version of Python with the AWS CLI version 1, see [Using the AWS CLI version 1 with earlier versions of Python](deprecate-old-python-versions.md)\.
 
 **Topics**
 + [Install, update, and uninstall the AWS CLI version 1 using the MSI installer](#msi-on-windows)
@@ -35,7 +30,7 @@ Check the [Releases](https://github.com/aws/aws-cli/releases) page on GitHub to 
 
    ```
    C:\> aws --version
-   aws-cli/1.18.134 Python/3.7.4 Windows/10 botocore/1.13
+   aws-cli/1.19.3 Python/3.7.4 Windows/10 botocore/1.13
    ```
 
    If Windows is unable to find the program, you might need to close and reopen the command prompt to refresh the path, or [add the installation directory to your PATH](#awscli-install-windows-path) environment variable manually\.
@@ -60,46 +55,37 @@ To use the following uninstall instructions, you need to have installed the AWS 
 
 The Python Software Foundation provides installers for Windows that include `pip`\.
 
-### Install Python<a name="awscli-install-windows-pip-python"></a>
+### Prerequisites<a name="awscli-install-windows-pip-prereqs"></a>
 
-1. Download the Python Windows installer from the [downloads page](https://www.python.org/downloads/windows/) of [Python\.org](https://www.python.org)\.
+You must have Python 2 version 2\.7 or later, or Python 3 version 3\.6 or later installed\. For installation instructions, see the [Downloading Python](https://wiki.python.org/moin/BeginnersGuide/Download) page in Python's *Beginner Guide*\.
 
-1. Run the Python installer\.
-
-1. Choose **Add Python 3 to PATH**\.
-
-1. Choose **Install Now**\. The installer installs Python in your user folder and adds its program folders to your user path\.
-
-1. On the **Start** menu, choose **Command Prompt**\.
-
-1. To verify that Python and `pip` are both installed correctly, use the following commands and confirm there is output\.
-
-   ```
-   C:\> python --version
-   Python 3.7.1
-   C:\> pip3 --version
-   pip 19.2.3 from c:\program files\python37\lib\site-packages\pip (python 3.7)
-   ```
+**Warning**  
+As of 2/1/2021 Python 3\.4 and 3\.5 is deprecated\.  
+Python 2\.7 was deprecated by the [Python Software Foundation](https://www.python.org/psf-landing/) on January 1, 2020\. Going forward, customers using the AWS CLI version 1 should transition to using Python 3, with a minimum of Python 3\.6\. Python 2\.7 support is deprecated for new versions of the AWS CLI version 1 starting 7/19/2021\.  
+In order to use the AWS CLI version 1 with an older version of Python, you need to install an earlier version of the AWS CLI version 1\.  
+To view the AWS CLI version 1 Python version support matrix, see [About the AWS CLI versions](welcome-versions.md)\. 
 
 ### Install and update the AWS CLI version 1 using pip<a name="awscli-install-windows-pip-python"></a>
 
 1. To Install the AWS CLI version 1, use the `pip3` command \(if you use Python version 3 or later\) or the `pip` command\.
 
-   ```
-   C:\> pip3 install awscli
-   ```
-
-   To upgrade to the latest version, run the installation command with the `--user` and `--upgrade` paramaters\.
+   **For the latest version of the AWS CLI,** use the following command block:
 
    ```
-   C:\> pip3 install --user --upgrade awscli
+   C:\> pip3 install awscli --upgrade --user
+   ```
+
+   **For a specific version of the AWS CLI,** append a less\-than symbol `<` and the version number to the filename\. For this example the filename for version *1\.16\.312* would be *<1\.16\.312* resulting in the following command:
+
+   ```
+   C:\> pip3 install awscli<1.16.312 --upgrade --user
    ```
 
 1. Verify that the AWS CLI version 1 is installed correctly\. If there is no response, see the [Add the AWS CLI version 1 executable to your command line path](#awscli-install-windows-path) section\.
 
    ```
    C:\> aws --version
-   aws-cli/1.18.134 Python/3.7.4 Windows/10 botocore/1.13
+   aws-cli/1.19.3 Python/3.7.4 Windows/10 botocore/1.13
    ```
 
 ### Uninstall the AWS CLI version 1 using pip<a name="awscli-install-windows-pip-uninstall"></a>

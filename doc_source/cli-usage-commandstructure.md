@@ -2,6 +2,10 @@
 
 This topic covers how AWS Command Line Interface \(AWS CLI\) command is structured, and how to use wait commands\.
 
+**Topics**
++ [Command structure](#cli-usage-commandstructure-structure.title)
++ [Wait commands](#cli-usage-commandstructure-wait)
+
 ## Command structure<a name="cli-usage-commandstructure-structure.title"></a>
 
 The AWS CLI uses a multipart structure on the command line that must be specified in this order:
@@ -19,6 +23,32 @@ $ aws <command> <subcommand> [options and parameters]
 ```
 
 Parameters can take various types of input values, such as numbers, strings, lists, maps, and JSON structures\. What is supported is dependent upon the command and subcommand you specify\.
+
+### Examples<a name="cli-usage-commandstructure-structure-example"></a>
+
+**Amazon S3**
+
+The following example lists all of your Amazon S3 buckets\.
+
+```
+$ aws s3 ls
+2018-12-11 17:08:50 my-bucket
+2018-12-14 14:55:44 my-bucket2
+```
+
+For more information on the Amazon S3 commands, see [https://docs.aws.amazon.com/cli/latest/reference/s3/](https://docs.aws.amazon.com/cli/latest/reference/s3/) in the *AWS CLI Command Reference*\.
+
+[https://docs.aws.amazon.com/cli/latest/reference/s3/](https://docs.aws.amazon.com/cli/latest/reference/s3/)
+
+**AWS CloudFormation**
+
+The following [https://awscli.amazonaws.com/v2/documentation/api/latest/reference/cloudformation/change-set-create-complete.html](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/cloudformation/change-set-create-complete.html) command example changes the cloudformation stack name to *my\-change\-set*\.
+
+```
+$ aws cloudformation change-set-create-complete --stack-name my-stack --change-set-name my-change-set
+```
+
+For more information on the AWS CloudFormation commands, see `[aws cloudformation](https://docs.aws.amazon.com/cli/latest/reference/cloudformation/index.html)` in the *AWS CLI Command Reference*\.
 
 ## Wait commands<a name="cli-usage-commandstructure-wait"></a>
 
@@ -45,7 +75,7 @@ Parameters can take various types of input values, such as numbers, strings, lis
 **Note**  
 Not every AWS service supports `wait` commands\. See the [AWS CLI reference guide](https://docs.aws.amazon.com/cli/latest/reference/deploy/wait/index.html) to see if your service supports `wait` commands\.
 
-### Wait examples<a name="cli-usage-commandstructure-wait-example"></a>
+### Examples<a name="cli-usage-commandstructure-wait-example"></a>
 
 **AWS CloudFormation**
 

@@ -7,6 +7,19 @@ The argument types \(for example, string, Boolean\) for each command line option
 **\-\-ca\-bundle *<string>***  
 Specifies the certificate authority \(CA\) certificate bundle to use when verifying SSL certificates\.
 
+**\-\-cli\-auto\-prompt**  
+**This feature is available only with AWS CLI version 2\.**  
+The following feature is available only if you use AWS CLI version 2\. It isn't available if you run AWS CLI version 1\. For information on how to install version 2, see [Installing, updating, and uninstalling the AWS CLI version 2](install-cliv2.md)\.
+Enables auto\-prompt mode for a single command\. As the following examples show, you can specify it at any point\.  
+
+```
+$ aws --cli-auto-prompt
+$ aws dynamodb --cli-auto-prompt
+$ aws dynamodb describe-table --cli-auto-prompt
+```
+This option overrides the `aws\_cli\_auto\_prompt` environment variable and the `cli\_auto\_prompt` profile setting\.  
+For information on the AWS CLI version 2 auto\-prompt feature, see [Having the AWS CLI prompt you for commands](cli-usage-parameters-prompting.md)\.
+
 **\-\-cli\-connect\-timeout *<integer>***  
 Specifies the maximum socket connect time in seconds\. If the value is set to zero \(0\), the socket connect waits indefinitely \(is blocking\) and doesn't timeout\.
 
@@ -33,6 +46,17 @@ $ aws servicename commandname options --debug &> debug.txt
 Specifies the URL to send the request to\. For most commands, the AWS CLI automatically determines the URL based on the selected service and the specified AWS Region\. However, some commands require that you specify an account\-specific URL\. You can also configure some AWS services to [host an endpoint directly within your private VPC](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html#what-is-privatelink), which might then need to be specified\.   
 For a list of the standard service endpoints available in each Region, see [AWS Regions and Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html) in the *Amazon Web Services General Reference*\.
 
+**\-\-no\-cli\-auto\-prompt**  
+**This feature is available only with AWS CLI version 2\.**  
+The following feature is available only if you use AWS CLI version 2\. It isn't available if you run AWS CLI version 1\. For information on how to install version 2, see [Installing, updating, and uninstalling the AWS CLI version 2](install-cliv2.md)\.
+Disables auto\-prompt mode for a single command\.  
+
+```
+$ aws dynamodb describe-table --table-name Table1 --no-cli-auto-prompt
+```
+This option overrides the `aws\_cli\_auto\_prompt` environment variable and the `cli\_auto\_prompt` profile setting\.  
+For information on the AWS CLI version 2 auto\-prompt feature, see [Having the AWS CLI prompt you for commands](cli-usage-parameters-prompting.md)\.
+
 **\-\-no\-cli\-pager**  
 A Boolean switch that disables using a pager for the output of the command\.
 
@@ -44,11 +68,11 @@ A Boolean switch that disables signing the HTTP requests to the AWS service endp
 
 **\-\-output *<string>***  
 Specifies the output format to use for this command\. You can specify any of the following values:  
-+ [**`json`**](cli-usage-output.md#json-output) – The output is formatted as a [JSON](https://json.org/) string\.
-+ [**`yaml`**](cli-usage-output.md#yaml-output) – The output is formatted as a [YAML](https://yaml.org/) string\. *\(Available in the AWS CLI version 2 only\.\)*
-+ [**`yaml-stream`**](cli-usage-output.md#yaml-stream-output) – The output is streamed and formatted as a [YAML](https://yaml.org/) string\. Streaming allows for faster handling of large data types\. *\(Available in the AWS CLI version 2 only\.\)*
-+ [**`text`**](cli-usage-output.md#text-output) – The output is formatted as multiple lines of tab\-separated string values\. This can be useful to pass the output to a text processor, like `grep`, `sed`, or `awk`\.
-+ [**`table`**](cli-usage-output.md#table-output) – The output is formatted as a table using the characters \+\|\- to form the cell borders\. It typically presents the information in a "human\-friendly" format that is much easier to read than the others, but not as programmatically useful\.
++ [**`json`**](cli-usage-output-format.md#json-output) – The output is formatted as a [JSON](https://json.org/) string\.
++ [**`yaml`**](cli-usage-output-format.md#yaml-output) – The output is formatted as a [YAML](https://yaml.org/) string\. *\(Available in the AWS CLI version 2 only\.\)*
++ [**`yaml-stream`**](cli-usage-output-format.md#yaml-stream-output) – The output is streamed and formatted as a [YAML](https://yaml.org/) string\. Streaming allows for faster handling of large data types\. *\(Available in the AWS CLI version 2 only\.\)*
++ [**`text`**](cli-usage-output-format.md#text-output) – The output is formatted as multiple lines of tab\-separated string values\. This can be useful to pass the output to a text processor, like `grep`, `sed`, or `awk`\.
++ [**`table`**](cli-usage-output-format.md#table-output) – The output is formatted as a table using the characters \+\|\- to form the cell borders\. It typically presents the information in a "human\-friendly" format that is much easier to read than the others, but not as programmatically useful\.
 
 **\-\-profile *<string>***  
 Specifies the [named profile](cli-configure-profiles.md) to use for this command\. To set up additional named profiles, you can use the `aws configure` command with the `--profile` option\.  
@@ -58,7 +82,7 @@ $ aws configure --profile <profilename>
 ```
 
 **\-\-query *<string>***  
-Specifies a [JMESPath query](http://jmespath.org/) to use in filtering the response data\. For more information, see [How to filter the output with the `--query` option](cli-usage-output.md#cli-usage-output-filter)\.
+Specifies a [JMESPath query](http://jmespath.org/) to use in filtering the response data\. For more information, see [Filtering AWS CLI output](cli-usage-filter.md)\.
 
 **\-\-region *<string>***  
 Specifies which AWS Region to send this command's AWS request to\. For a list of all of the Regions that you can specify, see [AWS Regions and Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html) in the *Amazon Web Services General Reference*\.

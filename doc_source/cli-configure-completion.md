@@ -1,10 +1,14 @@
 # Command completion<a name="cli-configure-completion"></a>
 
-The AWS Command Line Interface \(AWS CLI\) includes a command\-completion feature that enables you to use the **Tab** key to complete a partially entered command\. On most systems, this feature isn't automatically installed, so you need to configure it manually\.
+The AWS Command Line Interface \(AWS CLI\) includes a bash\-compatible command\-completion feature that enables you to use the **Tab** key to complete a partially entered command\. On most systems you need to configure this manually\.
+
+For information on the AWS CLI version 2 auto\-prompt feature instead, see [Having the AWS CLI prompt you for commands](cli-usage-parameters-prompting.md)\.
 
 **Topics**
 + [How it works](#cli-command-completion-about)
-+ [Configuring command completion](#cli-command-completion-configure)
++ [Configuring command completion on Linux or macOS](#cli-command-completion-linux)
++ [Configuring command completion on Windows](#cli-command-completion-windows)
++ [Verify command completion](#cli-command-completion-test)
 
 ## How it works<a name="cli-command-completion-about"></a>
 
@@ -15,15 +19,18 @@ The following examples show different ways that you can use command completion:
 
   ```
   $ aws dynamodb dTAB
-  datapipeline     deploy           dlm              dynamodb       
-  datasync         devicefarm       dms              dynamodbstreams
-  dax              directconnect    docdb                           
-  ddb              discovery        ds
+  delete-backup                        describe-global-table
+  delete-item                          describe-global-table-settings
+  delete-table                         describe-limits
+  describe-backup                      describe-table
+  describe-continuous-backups          describe-table-replica-auto-scaling
+  describe-contributor-insights        describe-time-to-live
+  describe-endpoints
   ```
 + Partially enter a parameter and press **Tab** to display a suggested list of parameters\.
 
   ```
-  $ aws dynamodb db delete-table --TAB
+  $ aws dynamodb delete-table --TAB
   --ca-bundle              --endpoint-url           --profile              
   --cli-connect-timeout    --generate-cli-skeleton  --query                
   --cli-input-json         --no-paginate            --region               
@@ -38,86 +45,64 @@ The following examples show different ways that you can use command completion:
   Table 1                  Table 2                  Table 3
   ```
 
-## Configuring command completion<a name="cli-command-completion-configure"></a>
+## Configuring command completion on Linux or macOS<a name="cli-command-completion-linux"></a>
 
-To configure command completion, you must have two pieces of information: the name of the shell you're using and the location of the `aws_completer` script\.
+To configure command completion on Linux or macOS, you must know the name of the shell you're using and the location of the `aws_completer` script\.
 
-**Amazon Linux**  
+**Note**  
 Command completion is automatically configured and enabled by default on Amazon EC2 instances that run Amazon Linux\.
 
 **Topics**
-+ [Identify your shell](#cli-command-completion-shell)
-+ [Locate the AWS completer](#cli-command-completion-completer)
-+ [Add the completer's folder to your path](#cli-command-completion-path)
++ [Confirm the completer's folder is in your path](#cli-command-completion-path)
 + [Enable command completion](#cli-command-completion-enable)
-+ [Test Command Completion](#cli-command-completion-test)
 
-### Identify your shell<a name="cli-command-completion-shell"></a>
+### Confirm the completer's folder is in your path<a name="cli-command-completion-path"></a>
 
-To identify which shell you're using, you can use one of the following commands\.
-
-**echo $SHELL** – Displays the shell's program file name\. This usually matches the name of the in\-use shell, unless you launched a different shell after logging in\.
-
-```
-$ echo $SHELL
-/bin/bash
-```
-
-**ps** – Displays the processes running for the current user\. One of them is the shell\.
-
-```
-$ ps
-  PID TTY          TIME CMD
- 2148 pts/1    00:00:00 bash
- 8756 pts/1    00:00:00 ps
-```
-
-### Locate the AWS completer<a name="cli-command-completion-completer"></a>
-
- The location of the AWS completer can vary depending on the installation method used\. 
-
- **Package Manager** – Programs such as `pip`, `yum`, `brew`, and `apt-get` typically install the AWS completer \(or a symlink to it\) to a standard path location\. In this case, the `which` command can locate the completer for you\.
-
-If you used `pip` without the `--user` command, you might see the following path\.
+For the AWS completer to work successfully, the `aws_completer` needs to be in your shell's path\. The `which` command can check if the completer is in your path\.
 
 ```
 $ which aws_completer
 /usr/local/bin/aws_completer
 ```
 
-If you used the `--user` parameter on the `pip` install command, you can typically find the completer in the `local/bin` folder under your `$HOME` folder\.
+If the which command can't find the completer, then use the following steps to add the completer's folder to your path\.
 
-```
-$ which aws_completer
-/home/username/.local/bin/aws_completer
-```
+#### Step 1: Locate the AWS completer<a name="cli-command-completion-locate"></a>
 
- **Bundled Installer** – If you used the bundled installer per the instructions in the previous section, the AWS completer is located in the `bin` subfolder of the installation directory\. 
+ The location of the AWS completer can vary depending on the installation method used\. 
++ **Package Manager** \- Programs such as `pip`, `yum`, `brew`, and `apt-get` typically install the AWS completer \(or a symlink to it\) to a standard path location\. 
+  + If you used `pip` **without** the `--user` parameter, the default path is `/usr/local/bin/aws_completer`\.
+  + If you used `pip` **with** the `--user` parameter the default path is `/home/username/.local/bin/aws_completer`\.
++ **Bundled Installer** \- If you used the bundled installer, the default path is `/usr/local/bin/aws_completer`\.
 
-```
-$ ls /usr/local/bin
-activate
-activate.csh
-activate.fish
-activate_this.py
-aws
-aws.cmd
-aws_completer
-...
-```
-
-If all else fails, you can use `find` to search your entire file system for the AWS completer\. 
+If all else fails, you can use the `find` command to search your file system for the AWS completer\. 
 
 ```
 $ find / -name aws_completer
 /usr/local/bin/aws_completer
 ```
 
-### Add the completer's folder to your path<a name="cli-command-completion-path"></a>
+#### Step 2: Identify your shell<a name="cli-command-completion-shell"></a>
 
-For the AWS completer to work successfully, you must first add it to your computer's path\.
+To identify which shell you're using, you can use one of the following commands\.
++ **echo $SHELL** – Displays the shell's program file name\. This usually matches the name of the in\-use shell, unless you launched a different shell after logging in\.
 
-1. Find your shell's profile script in your user folder\. If you're not sure which shell you have, run echo $SHELL\.
+  ```
+  $ echo $SHELL
+  /bin/bash
+  ```
++ **ps** – Displays the processes running for the current user\. One of them is the shell\.
+
+  ```
+  $ ps
+    PID TTY          TIME CMD
+   2148 pts/1    00:00:00 bash
+   8756 pts/1    00:00:00 ps
+  ```
+
+#### Step 3: Add the completer to your path<a name="cli-command-completion-path-add"></a>
+
+1. Find your shell's profile script in your user folder\.
 
    ```
    $ ls -a ~/
@@ -127,13 +112,13 @@ For the AWS completer to work successfully, you must first add it to your comput
    + **Zsh**– `.zshrc`
    + **Tcsh**– `.tcshrc`, `.cshrc`, or `.login`
 
-2. Add an export command at the end of your profile script that's similar to the following example\. Replace *`/usr/local/aws/bin`* with the folder that you discovered in the previous section\.
+1. Add an export command at the end of your profile script that's similar to the following example\. Replace *`/usr/local/aws/bin`* with the folder that you discovered in the previous section\.
 
    ```
-   export PATH=/usr/local/bin:$PATH
+   export PATH=/usr/local/aws/bin:$PATH
    ```
 
-3. Reload the profile into the current session to put those changes into effect\. Replace `.bash_profile` with the name of the shell script you discovered in the first section\.
+1. Reload the profile into the current session to put those changes into effect\. Replace `.bash_profile` with the name of the shell script you discovered in the first section\.
 
    ```
    $ source ~/.bash_profile
@@ -141,11 +126,11 @@ For the AWS completer to work successfully, you must first add it to your comput
 
 ### Enable command completion<a name="cli-command-completion-enable"></a>
 
-To enable command completion, run the command for the shell that you're using\. You can add the command to your shell's RC file to run it each time you open a new shell\. In each command, replace the path `/usr/local/bin` with the one found on your system in the previous section\.
+After confirming the completer is in your path, enable command completion by running the appropriate command for the shell that you're using\. You can add the command to your shell's profile to run it each time you open a new shell\. In each command, replace the */usr/local/aws/bin* path with the one found on your system in [Confirm the completer's folder is in your path](#cli-command-completion-path)\.
 + **`bash`** – Use the built\-in command `complete`\.
 
   ```
-  $ complete -C '/usr/local/bin/aws_completer' aws
+  $ complete -C '/usr/local/aws/bin/aws_completer' aws
   ```
 
   Add the command to `~/.bashrc` to run it each time you open a new shell\. Your `~/.bash_profile` should source `~/.bashrc` to ensure that the command is also run in login shells\.
@@ -153,12 +138,14 @@ To enable command completion, run the command for the shell that you're using\. 
 
   ```
   $ autoload bashcompinit && bashcompinit
+  $ autoload -Uz compinit && compinit
+  $ compinit
   ```
 
   To enable command completion, use the built\-in command `complete`\.
 
   ```
-  $ complete -C '/usr/local/bin/aws_completer' aws
+  $ complete -C '/usr/local/aws/bin/aws_completer' aws
   ```
 
   Add the command to `~/.zshrc` to run it each time you open a new shell\.
@@ -170,26 +157,47 @@ To enable command completion, run the command for the shell that you're using\. 
 
   Add the command to `~/.tschrc` to run it each time you open a new shell\.
 
-+ **Pwsh**-
+After you've enabled command completion, [Verify command completion](#cli-command-completion-test) is working\.
 
-  Add the following to your `pwsh` profile (use `echo $PROFILE` to locate).
+## Configuring command completion on Windows<a name="cli-command-completion-windows"></a>
 
-  ```ps
-  # AWS CLI
-  # PowerShell parameter completion shim for the aws CLI
-  Register-ArgumentCompleter -Native -CommandName aws -ScriptBlock {
-    param($commandName, $wordToComplete, $cursorPosition)
-    Set-Item -Path Env:COMP_LINE -Value $wordToComplete
-    Set-Item -Path Env:COMP_POINT -Value $cursorPosition
-    aws_completer.exe | ForEach-Object {
-        [System.Management.Automation.CompletionResult]::new($_, $_, 'ParameterValue', $_)
-    }
-  }
-  ```
+To enable command completion for PowerShell on Windows, complete the following steps in PowerShell\.
 
-### Test Command Completion<a name="cli-command-completion-test"></a>
+1. Open your `$PROFILE` with the following command\.
 
-After enabling command completion, enter a partial command and press **Tab** to see the available commands\.
+   ```
+   PS C:\> Notepad $PROFILE
+   ```
+
+   If you do not have a `$PROFILE`, create a user profile using the following command\.
+
+   ```
+   PS C:\> if (!(Test-Path -Path $PROFILE ))
+   { New-Item -Type File -Path $PROFILE -Force }
+   ```
+
+   For more information on PowerShell profiles, see [How to Use Profiles in Windows PowerShell ISE](https://docs.microsoft.com/en-us/powershell/scripting/windows-powershell/ise/how-to-use-profiles-in-windows-powershell-ise) on the *Microsoft Docs* website\.
+
+1. To enable command completion, add the following code block to your profile, save, and then close the file\.
+
+   ```
+   Register-ArgumentCompleter -Native -CommandName aws -ScriptBlock {
+       param($commandName, $wordToComplete, $cursorPosition)
+           $env:COMP_LINE=$wordToComplete
+           $env:COMP_POINT=$cursorPosition
+           aws_completer.exe | ForEach-Object {
+               [System.Management.Automation.CompletionResult]::new($_, $_, 'ParameterValue', $_)
+           }
+           Remove-Item Env:\COMP_LINE     
+           Remove-Item Env:\COMP_POINT  
+   }
+   ```
+
+1. [Verify command completion](#cli-command-completion-test) is working\.
+
+## Verify command completion<a name="cli-command-completion-test"></a>
+
+After enabling command completion, reload your shell, enter a partial command, and press **Tab** to see the available commands\.
 
 ```
 $ aws sTAB

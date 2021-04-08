@@ -37,13 +37,13 @@ $ docker run --rm -it amazon/aws-cli command
 ```
 
 This is how the command functions:
-+ `docker run --rm --it amazon/aws-cli` – The equivalent of the `aws` executable\. Each time you run this command, Docker spins up a container of your downloaded `amazon/aws-cli` image, and executes your `aws` command\. By default, the Docker image uses the latest version of the AWS CLI version 2\.
++ `docker run --rm -it amazon/aws-cli` – The equivalent of the `aws` executable\. Each time you run this command, Docker spins up a container of your downloaded `amazon/aws-cli` image, and executes your `aws` command\. By default, the Docker image uses the latest version of the AWS CLI version 2\.
 
   For example, to call the `aws --version` command in Docker, you run the following\.
 
   ```
   $ docker run --rm -it amazon/aws-cli --version
-  aws-cli/2.0.47 Python/3.7.3 Linux/4.9.184-linuxkit botocore/2.0.0dev10
+  aws-cli/2.1.29 Python/3.7.3 Linux/4.9.184-linuxkit botocore/2.0.0dev10
   ```
 + `--rm` – Specifies to clean up the container after the command exits\.
 + `-it` – Specifies to open a pseudo\-TTY with `stdin`\. This enables you to provide input to the AWS CLI version 2 while it's running in a container, for example, by using the `aws configure` and `aws help` commands\. If you are running scripts, `-it` is not needed\. If you are experiencing errors with your scripts, omit `-it` from your Docker call\.
@@ -98,7 +98,7 @@ For more information about the `-v` flag and mounting, see the [Docker reference
 
 ### Example 1: Providing credentials and configuration<a name="cliv2-docker-share-files-config"></a>
 
-In this example, we're providing host credentials and configuration when running the `s3 ls` command to list your buckets in Amazon Simple Storage Service \(Amazon S3\)\.
+In this example, we're providing host credentials and configuration when running the `s3 ls` command to list your buckets in Amazon Simple Storage Service \(Amazon S3\)\. The below examples use the default location for AWS CLI credentials and configuration files, to use a different location, change the file path\.
 
 ------
 #### [ Linux and macOS ]
@@ -115,6 +115,8 @@ $ docker run --rm -it -v ~/.aws:/root/.aws amazon/aws-cli s3 ls
 $ docker run --rm -it -v %userprofile%\.aws:/root/.aws amazon/aws-cli s3 ls
 2020-03-25 00:30:48 aws-cli-docker-demo
 ```
+
+------
 
 You can call specific system's environment variables using the `-e` flag\. To use an environment variable, call it by name\. 
 
@@ -133,8 +135,6 @@ $ docker run --rm -it -v ~/.aws:/root/.aws -e ENVVAR_NAME amazon/aws-cli s3 ls
 $ docker run --rm -it -v %userprofile%\.aws:/root/.aws -e ENVVAR_NAME amazon/aws-cli s3 ls
 2020-03-25 00:30:48 aws-cli-docker-demo
 ```
-
-------
 
 ------
 
@@ -263,5 +263,5 @@ After setting your alias, you can run the AWS CLI version 2 from within a Docker
 
 ```
 $ aws --version
-aws-cli/2.0.47 Python/3.7.3 Linux/4.9.184-linuxkit botocore/2.0.0dev10
+aws-cli/2.1.29 Python/3.7.3 Linux/4.9.184-linuxkit botocore/2.0.0dev10
 ```

@@ -1,4 +1,4 @@
-# Using Amazon SWF with the AWS CLI<a name="cli-services-swf"></a>
+# Using Amazon Simple Workflow Service with the AWS CLI<a name="cli-services-swf"></a>
 
 You can access the features of Amazon Simple Workflow Service \(Amazon SWF\) using the AWS Command Line Interface \(AWS CLI\)\. 
 

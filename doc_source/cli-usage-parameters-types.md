@@ -76,7 +76,9 @@ For more information, see the setting `cli\-binary\-format`\.
 
 ## Map<a name="parameter-type-map"></a>
 
-A set of key\-value pairs specified in JSON or by using the CLI's [shorthand syntax](cli-usage-shorthand.md)\. The following JSON example reads an item from an Amazon DynamoDB table named *my\-table* with a map parameter, `--key`\. The parameter specifies the primary key named *id* with a number value of *1* in a nested JSON structure\. 
+A set of key\-value pairs specified in JSON or by using the CLI's [shorthand syntax](cli-usage-shorthand.md)\. The following JSON example reads an item from an Amazon DynamoDB table named *my\-table* with a map parameter, `--key`\. The parameter specifies the primary key named *id* with a number value of *1* in a nested JSON structure\.
+
+For more advanced JSON usage in a command line, consider using a command line JSON processor, like `jq`, to create JSON strings\. For more information on `jq`, see the [jq repository](http://stedolan.github.io/jq/) on *GitHub*\.
 
 ```
 $ aws dynamodb get-item --table-name my-table --key '{"id": {"N":"1"}}'

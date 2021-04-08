@@ -9,12 +9,13 @@ You can install the AWS Command Line Interface \(AWS CLI\) version 1 and its dep
 
 ## Prerequisites<a name="install-macosos-prereq"></a>
 
-Before you can install the AWS CLI version 1 on macOS, be sure you have Python 2 version 2\.7 or later, or Python 3 version 3\.4 or later installed\. For installation instructions, see the [Downloading Python](https://wiki.python.org/moin/BeginnersGuide/Download) page in Python's *Beginner Guide*\.
+Before you can install the AWS CLI version 1 on macOS, be sure you have Python 2 version 2\.7 or later, or Python 3 version 3\.6 or later installed\. For installation instructions, see the [Downloading Python](https://wiki.python.org/moin/BeginnersGuide/Download) page in Python's *Beginner Guide*\.
 
-**Important**  
-AWS CLI version 1 no longer supports Python versions 2\.6 and 3\.3\. All versions of the AWS CLI version 1 released after January 10th, 2020, starting with 1\.17, require Python 2\.7, Python 3\.4, or a later version\.  
-This change does not affect the Windows MSI installer version of the AWS CLI version 1 and the AWS CLI version 2\. For more information, see the [deprecation announcement](https://aws.amazon.com/blogs/developer/deprecation-of-python-2-6-and-python-3-3-in-botocore-boto3-and-the-aws-cli/) blog post\.  
-For more information on using an older version of Python with the AWS CLI version 1, see [Using the AWS CLI version 1 with earlier versions of Python](deprecate-old-python-versions.md)\.
+**Warning**  
+As of 2/1/2021 Python 3\.4 and 3\.5 is deprecated\.  
+Python 2\.7 was deprecated by the [Python Software Foundation](https://www.python.org/psf-landing/) on January 1, 2020\. Going forward, customers using the AWS CLI version 1 should transition to using Python 3, with a minimum of Python 3\.6\. Python 2\.7 support is deprecated for new versions of the AWS CLI version 1 starting 7/19/2021\.  
+In order to use the AWS CLI version 1 with an older version of Python, you need to install an earlier version of the AWS CLI version 1\.  
+To view the AWS CLI version 1 Python version support matrix, see [About the AWS CLI versions](welcome-versions.md)\. 
 
 ## Install, update and uninstall the AWS CLI version 1 on macOS using the bundled installer<a name="install-macosos-bundled"></a>
 
@@ -33,8 +34,18 @@ The following steps enable you to install the AWS CLI version 1 from the command
 
 The following is a summary of the installation commands that you can cut and paste to run as a single set of commands\.
 
+**For the latest version of the AWS CLI,** use the following command block:
+
 ```
-curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
+$ curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
+unzip awscli-bundle.zip
+sudo ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
+```
+
+**For a specific version of the AWS CLI,** append a hyphen and the version number to the filename\. For this example the filename for version *1\.16\.312* would be `awscli-bundle-1.16.312.zip` resulting in the following command:
+
+```
+$ curl "https://s3.amazonaws.com/aws-cli/awscli-bundle-1.16.312.zip" -o "awscli-bundle.zip"
 unzip awscli-bundle.zip
 sudo ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
 ```
@@ -44,10 +55,22 @@ sudo ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
 1. Download the AWS CLI version 1 bundled installer in one of the following ways:
    + Download using the `curl` command\.
 
+     **For the latest version of the AWS CLI,** use the following command block:
+
      ```
      $ curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
      ```
-   + Download using the direct link: [https://s3.amazonaws.com/aws-cli/awscli-bundle.zip](https://s3.amazonaws.com/aws-cli/awscli-bundle.zip)\.
+
+     **For a specific version of the AWS CLI,** append a hyphen and the version number to the filename\. For this example the filename for version *1\.16\.312* would be `awscli-bundle-1.16.312.zip` resulting in the following command:
+
+     ```
+     $ curl "https://s3.amazonaws.com/aws-cli/awscli-bundle-1.16.312.zip" -o "awscli-bundle.zip"
+     ```
+   + Download using the direct link\.
+
+     **For the latest version of the AWS CLI:** [https://s3.amazonaws.com/aws-cli/awscli-bundle.zip](https://s3.amazonaws.com/aws-cli/awscli-bundle.zip)
+
+     **For a specific version of the AWS CLI, **append a hyphen and the version number to the filename\. For this example the filename for version *1\.16\.312* would be `awscli-exe-linux-aarch64-2.0.30.zip` resulting in the following url [https://s3.amazonaws.com/aws-cli/awscli-bundle-2.0.30.zip](https://s3.amazonaws.com/aws-cli/awscli-bundle-2.0.30.zip)
 
 1. Extract \(unzip\) the files from the package\. If you don't have `unzip`, use your macOs distribution's built\-in package manager to install it\.
 
@@ -71,7 +94,7 @@ sudo ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
 
    ```
    $ aws --version
-   aws-cli/1.18.134 Python/3.7.4 Linux/4.14.133-113.105.amzn2.x86_64 botocore/1.13
+   aws-cli/1.19.3 Python/3.7.4 Linux/4.14.133-113.105.amzn2.x86_64 botocore/1.13
    ```
 
    If you get an error, see [Troubleshooting AWS CLI errors](cli-chap-troubleshooting.md)\.
@@ -80,10 +103,20 @@ sudo ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
 
 If you don't have `sudo` permissions or want to install the AWS CLI only for the current user, you can use a modified version of the previous commands\. The first two commands are the same\. 
 
+**For the latest version of the AWS CLI,** use the following command block:
+
 ```
 $ curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
-$ unzip awscli-bundle.zip
-$ ./awscli-bundle/install -b ~/bin/aws
+unzip awscli-bundle.zip
+./awscli-bundle/install -b ~/bin/aws
+```
+
+**For a specific version of the AWS CLI,** append a hyphen and the version number to the filename\. For this example the filename for version *1\.16\.312* would be `awscli-bundle-1.16.312.zip` resulting in the following command:
+
+```
+$ curl "https://s3.amazonaws.com/aws-cli/awscli-bundle-1.16.312.zip" -o "awscli-bundle.zip"
+unzip awscli-bundle.zip
+./awscli-bundle/install -b ~/bin/aws
 ```
 
 **To install the AWS CLI version 1 for the current user**
@@ -91,10 +124,22 @@ $ ./awscli-bundle/install -b ~/bin/aws
 1. Download the AWS CLI version 1 bundled installer using one of the the following methods:
    + Download using the `curl` command\.
 
+     **For the latest version of the AWS CLI,** use the following command block:
+
      ```
      $ curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
      ```
-   + Download using the direct link: [https://s3.amazonaws.com/aws-cli/awscli-bundle.zip](https://s3.amazonaws.com/aws-cli/awscli-bundle.zip)\.
+
+     **For a specific version of the AWS CLI,** append a hyphen and the version number to the filename\. For this example the filename for version *1\.16\.312* would be `awscli-bundle-1.16.312.zip` resulting in the following command:
+
+     ```
+     $ curl "https://s3.amazonaws.com/aws-cli/awscli-bundle-1.16.312.zip" -o "awscli-bundle.zip"
+     ```
+   + Download using the direct link\.
+
+     **For the latest version of the AWS CLI:** [https://s3.amazonaws.com/aws-cli/awscli-bundle.zip](https://s3.amazonaws.com/aws-cli/awscli-bundle.zip)
+
+     **For a specific version of the AWS CLI, **append a hyphen and the version number to the filename\. For this example the filename for version *1\.16\.312* would be `awscli-exe-linux-aarch64-2.0.30.zip` resulting in the following url [https://s3.amazonaws.com/aws-cli/awscli-bundle-2.0.30.zip](https://s3.amazonaws.com/aws-cli/awscli-bundle-2.0.30.zip)
 
 1. Extract the files from the package\. If you don't have `unzip`, use your Linux distribution's built\-in package manager to install it\.
 
@@ -145,7 +190,7 @@ $ ./awscli-bundle/install -b ~/bin/aws
 
    ```
    $ aws --version
-   aws-cli/1.18.134 Python/3.7.4 Linux/4.14.133-113.105.amzn2.x86_64 botocore/1.13
+   aws-cli/1.19.3 Python/3.7.4 Linux/4.14.133-113.105.amzn2.x86_64 botocore/1.13
    ```
 
    If you get an error, see [Troubleshooting AWS CLI errors](cli-chap-troubleshooting.md)\.
@@ -189,15 +234,23 @@ If you don't already have `pip` installed, you can install it by using the scrip
 
 1. Use the `pip` or `pip3` command to install the AWS CLI\. We recommend that if you use Python version 3 or later, that you use the `pip3` command\.
 
+   **For the latest version of the AWS CLI,** use the following command block:
+
    ```
    $ pip3 install awscli --upgrade --user
+   ```
+
+   **For a specific version of the AWS CLI,** append a less\-than symbol `<` and the version number to the filename\. For this example the filename for version *1\.16\.312* would be *<1\.16\.312* resulting in the following command:
+
+   ```
+   $ pip3 install awscli<1.16.312 --upgrade --user
    ```
 
 1. Verify that the AWS CLI is installed correctly\.
 
    ```
    $ aws --version
-   aws-cli/1.18.134 Python/3.7.4 Darwin/18.7.0 botocore/1.13
+   aws-cli/1.19.3 Python/3.7.4 Darwin/18.7.0 botocore/1.13
    ```
 
    If the program isn't found, [add it to your command line path](#awscli-install-osx-path)\.

@@ -66,6 +66,23 @@ If defined, this environment variable overrides the value for the profile settin
 Specifies the path to a certificate bundle to use for HTTPS certificate validation\.  
 If defined, this environment variable overrides the value for the profile setting `ca_bundle`\. You can override this environment variable by using the `--ca-bundle` command line parameter\.
 
+`AWS_CLI_AUTO_PROMPT`  
+**This feature is available only with AWS CLI version 2\.**  
+The following feature is available only if you use AWS CLI version 2\. It isn't available if you run AWS CLI version 1\. For information on how to install version 2, see [Installing, updating, and uninstalling the AWS CLI version 2](install-cliv2.md)\.
+Enables the auto\-prompt for the AWS CLI version 2\. There are two settings that can be used:  
++ **`on`** uses the full auto\-prompt mode each time you attempt to run an `aws` command\. This includes pressing **ENTER** after both a complete command or incomplete command\.
+
+  ```
+  aws_cli_auto_prompt=on
+  ```
++ **`on-partial`** uses partial auto\-prompt mode\. If a command is incomplete or cannot be run due to client\-side validation errors, auto\-prompt is used\. This mode is particular useful if you have pre\-existing scripts, runbooks, or you only want to be auto\-prompted for commands you are unfamiliar with rather than prompted on every command\.
+
+  ```
+  aws_cli_auto_prompt=on-partial
+  ```
+If defined, this environment variable overrides the value for the `cli\_auto\_prompt` profile setting\. You can override this environment variable by using the `\-\-cli\-auto\-prompt` and `\-\-no\-cli\-auto\-prompt` command line parameters\.   
+For information on the AWS CLI version 2 auto\-prompt feature, see [Having the AWS CLI prompt you for commands](cli-usage-parameters-prompting.md)\.
+
 `AWS_CLI_FILE_ENCODING`  
 AWS CLI version 2 only\. Specifies the encoding used for text files\. By default encoding matches your locale\. To set encoding different from the locale, use the `aws_cli_file_encoding` environment variable\. For example, if you use Windows with default encoding `CP1252`, setting `aws_cli_file_encoding=UTF-8` sets the CLI to open text files using `UTF-8`\.
 
@@ -81,9 +98,9 @@ If defined, this environment variable overrides the value for the profile settin
 Specifies the AWS Region to send the request to\.  
 If defined, this environment variable overrides the value for the profile setting `region`\. You can override this environment variable by using the `--region` command line parameter\.
 
-[`AWS_EC2_METADATA_DISABLED`](cli-configure-metadata.md)  
-Disables the use of the AWS EC2 instance metadata service (IMDS)\.  
-If set to false, user credentials or configuration (like the region) are not requested from IMDS\.
+`AWS_EC2_METADATA_DISABLED`  
+Disables the use of the Amazon EC2 instance metadata service \(IMDS\)\.   
+If set to false, user credentials or configuration \(like the region\) are not requested from IMDS\.
 
 [`AWS_MAX_ATTEMPTS`](cli-configure-files.md#cli-config-max_attempts)  
 Specifies a value of maximum retry attempts the AWS CLI retry handler uses, where the initial call counts toward the value that you provide\. For more information on retries, see [AWS CLI retries](cli-configure-retries.md)\.  

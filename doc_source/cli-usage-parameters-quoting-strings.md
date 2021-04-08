@@ -78,8 +78,8 @@ Use single quotation marks `' '` or double quotation marks `" "`\.
 Since JSON data structures include double quotes, we suggest **single** quotation marks `' '` to enclose it\. If you use **single** quotation marks, you do not need to escape **double** quotation marks embedded in the JSON string\. However, you need to escape each **single** quotation mark with a backtick ``` within the JSON structure\.
 
 ```
-PS C:\> aws ec2 run-instances \
-    --image-id ami-12345678 \
+PS C:\> aws ec2 run-instances `
+    --image-id ami-12345678 `
     --block-device-mappings '[{"DeviceName":"/dev/sdb","Ebs":{"VolumeSize":20,"DeleteOnTermination":false,"VolumeType":"standard"}}]'
 ```
 
@@ -88,8 +88,8 @@ PS C:\> aws ec2 run-instances \
 If you use **double** quotation marks, you do not need to escape **single** quotation marks embedded in the JSON string\. However, you need to escape each **double** quotation mark with a backtick ``` within the JSON structure, as with the following example\.
 
 ```
-PS C:\> aws ec2 run-instances \
-    --image-id ami-12345678 \
+PS C:\> aws ec2 run-instances `
+    --image-id ami-12345678 `
     --block-device-mappings "[{`"DeviceName`":`"/dev/sdb`",`"Ebs`":{`"VolumeSize`":20,`"DeleteOnTermination`":false,`"VolumeType`":`"standard`"}}]"
 ```
 
@@ -101,11 +101,13 @@ For more information on using quotes, see [About Quoting Rules](https://docs.mic
 The Windows command prompt requires double quotation marks `" "` to enclose the JSON data structure\. Also, to prevent the command processor from misinterpreting the double quotation marks embedded in the JSON, you must also escape \(precede with a backslash `\` character\) each double quotation mark `"` within the JSON data structure itself, as in the following example\. 
 
 ```
-C:\> aws ec2 run-instances \
-    --image-id ami-12345678 
+C:\> aws ec2 run-instances ^
+    --image-id ami-12345678 ^
     --block-device-mappings "[{\"DeviceName\":\"/dev/sdb\",\"Ebs\":{\"VolumeSize\":20,\"DeleteOnTermination\":false,\"VolumeType\":\"standard\"}}]"
 ```
 
 Only the outermost double quotation marks are not escaped\.
 
 ------
+
+For more advanced JSON usage in a command line, consider using a command line JSON processor, like `jq`, to create JSON strings\. For more information on `jq`, see the [jq repository](http://stedolan.github.io/jq/) on *GitHub*\.
