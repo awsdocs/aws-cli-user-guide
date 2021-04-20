@@ -93,10 +93,6 @@ A Boolean switch that displays the current version of the AWS CLI program that i
 Common uses for command line options include checking your resources in multiple AWS Regions, and changing the output format for legibility or ease of use when scripting\. For example, if you're not sure which Region your instance is running in, you can run the **describe\-instances** command against each Region until you find it, as follows\. 
 
 ```
-$ aws ec2 describe-instances --output table --region us-east-1
--------------------
-|DescribeInstances|
-+-----------------+
 $ aws ec2 describe-instances --output table --region us-west-1
 -------------------
 |DescribeInstances|
