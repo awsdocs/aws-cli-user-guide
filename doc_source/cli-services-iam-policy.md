@@ -9,8 +9,9 @@ Before you run any commands, set your default credentials\. For more information
 1. Determine the Amazon Resource Name \(ARN\) of the policy to attach\. The following command uses `list-policies` to find the ARN of the policy with the name `PowerUserAccess`\. It then stores that ARN in an environment variable\.
 
    ```
-   $ export POLICYARN=$(aws iam list-policies --query 'Policies[?PolicyName==`PowerUserAccess`].{ARN:Arn}' --output text)       ~
-   $ echo $POLICYARN
+   $ POLICY_NAME="PowerUserAccess"
+   $ export POLICYARN=$(aws iam list-policies --query "Policies[?PolicyName=='$POLICY_NAME'].{ARN:Arn}" --output text)
+   $ echo "$POLICYARN"
    arn:aws:iam::aws:policy/PowerUserAccess
    ```
 
