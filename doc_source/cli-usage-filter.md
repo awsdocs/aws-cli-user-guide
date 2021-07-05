@@ -717,7 +717,7 @@ Your identifier label does not need to be the same as the name of the identifier
 
 ```
 $ aws ec2 describe-volumes \
-    --query 'Volumes[].{VolumeType: VolumeType}'
+    --query 'Volumes[].{Type: VolumeType}'
 [
   {
     "Type": "standard",
