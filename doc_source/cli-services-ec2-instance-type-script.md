@@ -25,7 +25,7 @@ This example is written as a function in the shell script file `change_ec2_insta
 
 ```
 $ source ./change_ec2_instance_type.sh
-$ ./change_ec2_instance_type -i *instance-id* -t new-type
+$ change_ec2_instance_type -i *instance-id* -t new-type
 ```
 
 For the full example and downloadable script files, see [Change Amazon EC2 Instance Type](https://github.com/awsdocs/aws-doc-sdk-examples/tree/master/aws-cli/bash-linux/ec2/change-ec2-instance-type) in the *AWS Code Examples Repository* on *GitHub*\.
