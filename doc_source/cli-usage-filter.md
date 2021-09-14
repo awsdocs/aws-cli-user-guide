@@ -559,7 +559,7 @@ The following example filters for the `VolumeIds` of all `Volumes` that have a s
 
 ```
 $ aws ec2 describe-volumes \
-    --query 'Volumes[?Size < 20].VolumeId'
+    --query 'Volumes[?Size < `20`].VolumeId'
 [
   "vol-2e410a47",
   "vol-a1b3c7nd"
