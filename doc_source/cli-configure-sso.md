@@ -13,7 +13,7 @@ This topic describes how to configure the AWS CLI to authenticate the user with 
 
 ## Configuring a named profile to use AWS SSO<a name="sso-configure-profile"></a>
 
-You can configure one or more of your AWS CLI [named profiles](cli-configure-profiles.md) to use a role from AWS SSO You can create and configure multiple profiles and configure each one to use a a different AWS SSO user portal or SSO\-defined role\.
+You can configure one or more of your AWS CLI [named profiles](cli-configure-profiles.md) to use a role from AWS SSO. You can create and configure multiple profiles and configure each one to use a a different AWS SSO user portal or SSO\-defined role\.
 
 You can configure the profile in the following ways:
 + [Automatically](#sso-configure-profile-auto), using the command `aws configure sso`
