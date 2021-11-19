@@ -893,18 +893,18 @@ $ aws ec2 describe-volumes \
     --query 'Volumes.Tags[?Value == `test`]'
 ```
 
-Then filter out all the positive `test` results using the `not_null` function\. 
+Then filter out all the positive `test` results using the `not_null` function\. Negating it will filter for volumes that do not have the tag value\. 
 
 ```
 $ aws ec2 describe-volumes \
-    --query 'Volumes[?not_null(Tags[?Value == `test`].Value)]'
+    --query 'Volumes[?!not_null(Tags[?Value == `test`].Value)]'
 ```
 
 Pipe the results to flatten out the results resulting in the following query\.
 
 ```
 $ aws ec2 describe-volumes \
-    --query 'Volumes[?not_null(Tags[?Value == `test`].Value)] | []'
+    --query 'Volumes[?!not_null(Tags[?Value == `test`].Value)] | []'
 ```
 
 ## Combining server\-side and client\-side filtering<a name="cli-usage-filter-combining"></a>
