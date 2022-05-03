@@ -74,6 +74,12 @@ If the which command can't find the completer, then use the following steps to a
   + If you used `pip` **without** the `--user` parameter, the default path is `/usr/local/bin/aws_completer`\.
   + If you used `pip` **with** the `--user` parameter the default path is `/home/username/.local/bin/aws_completer`\.
 + **Bundled Installer** \- If you used the bundled installer, the default path is `/usr/local/bin/aws_completer`\.
++ If you used Docker to install AWS CLI you can create a script to reference the completer inside the docker image:
+
+```
+#!/bin/bash
+docker run --rmi -e COMP_LINE -e COMP_POINT --entrypoint /usr/local/bin/aws_completer amazon/aws-cli $@
+```
 
 If all else fails, you can use the `find` command to search your file system for the AWS completer\. 
 
