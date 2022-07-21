@@ -694,5 +694,5 @@ function generate_random_name {
 + [aws ec2 wait instance\-stopped](https://docs.aws.amazon.com/cli/latest/reference/ec2/wait/instance-stopped.html)
 
 **Other reference:**
-+ [Amazon Elastic Compute Cloud Documentation](https://docs.aws.amazon.com/https://docs.aws.amazon.com/ec2/)
++ [Amazon Elastic Compute Cloud Documentation](https://docs.aws.amazon.com/ec2/)
 + To view and contribute to AWS SDK and AWS CLI code examples, see the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/) on *GitHub*\.
