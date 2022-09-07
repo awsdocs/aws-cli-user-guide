@@ -74,7 +74,7 @@ C:\> echo [toplevel] > %USERPROFILE%/.aws/cli/alias
 #### [ Windows ]
 
    ```
-   $ echo [toplevel] > %USERPROFILE%/.aws/cli/alias
+   C:\> echo [toplevel] > %USERPROFILE%/.aws/cli/alias
    ```
 
 ------
