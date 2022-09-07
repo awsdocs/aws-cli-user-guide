@@ -75,7 +75,7 @@ Follow these steps from the command line to install the AWS CLI version 1 using 
 
      **For the latest version of the AWS CLI:** [https://s3.amazonaws.com/aws-cli/awscli-bundle.zip](https://s3.amazonaws.com/aws-cli/awscli-bundle.zip)
 
-     **For a specific version of the AWS CLI, **append a hyphen and the version number to the filename\. For this example the filename for version *1\.16\.312* would be `awscli-exe-linux-aarch64-2.0.30.zip` resulting in the following url [https://s3.amazonaws.com/aws-cli/awscli-bundle-2.0.30.zip](https://s3.amazonaws.com/aws-cli/awscli-bundle-2.0.30.zip)
+     **For a specific version of the AWS CLI,** append a hyphen and the version number to the filename\. For this example the filename for version *1\.16\.312* would be `awscli-exe-linux-aarch64-1.16.312.zip` resulting in the following url [https://s3.amazonaws.com/aws-cli/awscli-bundle-1.16.312.zip](https://s3.amazonaws.com/aws-cli/awscli-bundle-1.16.312.zip)
 
 1. Extract the files from the package\. If you don't have `unzip` to extract the files, use your Linux distribution's built\-in package manager to install it\.
 
