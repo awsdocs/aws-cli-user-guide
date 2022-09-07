@@ -161,7 +161,7 @@ The following example moves all objects from `s3://bucket-name/example` to `s3:/
 $ aws s3 mv s3://bucket-name/example s3://my-bucket/
 ```
 
-The following example moves a local file from your current working directory to the Amazon S3 bucket with the `s3 cp` command\.
+The following example moves a local file from your current working directory to the Amazon S3 bucket with the `s3 mv` command\.
 
 ```
 $ aws s3 mv filename.txt s3://bucket-name
