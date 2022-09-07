@@ -25,7 +25,7 @@ You can add an AWS SSO enabled profile to your AWS CLI by running the following 
 
 ```
 $ aws configure sso
-SSO start URL [None]: [None]: https://my-sso-portal.awsapps.com/start
+SSO start URL [None]: https://my-sso-portal.awsapps.com/start
 SSO region [None]:us-east-1
 ```
 
