@@ -3,7 +3,7 @@
 Some parameters expect file names as arguments, from which the AWS CLI loads the data\. Other parameters enable you to specify the parameter value as either text typed on the command line or read from a file\. Whether a file is required or optional, you must encode the file correctly so that the AWS CLI can understand it\. The file's encoding must match the reading system's default locale\. You can determine this by using the Python `locale.getpreferredencoding()` method\.
 
 **Note**  
-By default, Windows PowerShell outputs text as UTF\-16, which conflicts with the UTF\-8 encoding used by many Linux systems\. We recommend that you use `-Encoding ascii` with your PowerShell `Out-File` commands to ensure the AWS CLI can read the resulting file\. 
+By default, Windows PowerShell outputs text as UTF\-16, which conflicts with the UTF\-8 encoding that is [expected](https://datatracker.ietf.org/doc/html/rfc8259#section-8.1) for JSON (and common on macOS and Linux systems)\. If you use PowerShell, we recommend that you use `-Encoding ascii` with your PowerShell `Out-File` commands to ensure the AWS CLI can read the resulting file\.
 
 Sometimes it's convenient to load a parameter value from a file instead of trying to type it all as a command line parameter value, such as when the parameter is a complex JSON string\. To specify a file that contains the value, specify a file URL in the following format\.
 
