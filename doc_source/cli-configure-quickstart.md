@@ -5,6 +5,9 @@ This section explains how to quickly configure basic settings that the AWS Comma
 **Note**  
 AWS requires that all incoming requests are cryptographically signed\. The AWS CLI does this for you\. The "signature" includes a date/time stamp\. Therefore, you must ensure that your computer's date and time are set correctly\. If you don't, and the date/time in the signature is too far off of the date/time recognized by the AWS service, AWS rejects the request\.
 
+**Note**  
+If you are using AWS SSO please review the [AWS Single Sign On Instructions](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-sso.html)\.
+
 **Topics**
 + [Quick configuration with `aws configure`](#cli-configure-quickstart-config)
 + [Access key ID and secret access key](#cli-configure-quickstart-creds)
