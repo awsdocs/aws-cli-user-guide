@@ -1,6 +1,6 @@
 ## AWS CLI User Guide
 
-The open source version of the AWS CLI User Guide
+The open source version of the AWS CLI version 1 User Guide
 
 We welcome your contributions to improving this guide. All submissions will be reviewed for technical accuracy and possibly reworded to comply with style guidelines required by our editorial team.
 
