@@ -1,15 +1,17 @@
+--------
+
+--------
+
 # Using the official AWS CLI version 2 Docker image<a name="install-cliv2-docker"></a>
 
 This topic describes how to run, version control, and configure the AWS CLI version 2 on Docker\. For more information on how to use Docker, see [Docker's documentation](https://docs.docker.com/)\.
 
 Official Docker images provide isolation, portability, and security that AWS directly supports and maintains\. This enables you to use the AWS CLI version 2 in a container\-based environment without having to manage the installation yourself\. 
 
-**Note**  
-The AWS CLI version 2 is the only tool that's supported on the official AWS Docker image\.
-
 **Topics**
 + [Prerequisites](#cliv2-docker-prereq)
 + [Run the official AWS CLI version 2 Docker image](#cliv2-docker-install)
++ [Notes on interfaces and backwards compatibility of Docker image](#cliv2-docker-install-notes)
 + [Use specific versions and tags](#cliv2-docker-upgrade)
 + [Update to the latest Docker image](#cliv2-docker-update)
 + [Share host files, credentials, environment variables, and configuration](#cliv2-docker-share-files)
@@ -43,12 +45,20 @@ This is how the command functions:
 
   ```
   $ docker run --rm -it amazon/aws-cli --version
-  aws-cli/2.1.29 Python/3.7.3 Linux/4.9.184-linuxkit botocore/2.0.0dev10
+  aws-cli/2.7.24 Python/3.7.3 Linux/4.9.184-linuxkit botocore/2.4.5dev10
   ```
 + `--rm` – Specifies to clean up the container after the command exits\.
-+ `-it` – Specifies to open a pseudo\-TTY with `stdin`\. This enables you to provide input to the AWS CLI version 2 while it's running in a container, for example, by using the `aws configure` and `aws help` commands\. If you are running scripts, `-it` is not needed\. If you are experiencing errors with your scripts, omit `-it` from your Docker call\.
++ `-it` – Specifies to open a pseudo\-TTY with `stdin`\. This enables you to provide input to the AWS CLI version 2 while it's running in a container, for example, by using the `aws configure` and `aws help` commands\. When choosing whether to omit `-it`, consider the following:
+  + If you are running scripts, `-it` is not needed\. 
+  + If you are experiencing errors with your scripts, omitting `-it` from your Docker call might fix the issue\.
+  + If you are trying to pipe output, `-it` might cause errors and omitting `-it` from your Docker call might resolve this issue\. If you'd like to keep the `-it` flag, but still would like to pipe output, disabling the [client\-side pager](cli-usage-pagination.md#cli-usage-pagination-clientside) the AWS CLI uses by default should resolve the issue\.
 
 For more information about the `docker run` command, see the [Docker reference guide](https://docs.docker.com/engine/reference/run/)\.
+
+## Notes on interfaces and backwards compatibility of Docker image<a name="cliv2-docker-install-notes"></a>
++ The only tool supported on the image is the AWS CLI\. Only the `aws` executable should ever be directly run\. For example, even though `less` and `groff` are explicitly installed on the image, they should not be executed directly outside of an AWS CLI command\.
++ The `/aws` working directory is user controlled\. The image will not write to this directory, unless instructed by the user in running an AWS CLI command\.
++ There are no backwards compatibility guarantees in relying on the latest tag\. To guarantee backwards compatibility, you must pin to a specific <major\.minor\.patch> tag as those tags are immutable; they will only ever be pushed to once\.
 
 ## Use specific versions and tags<a name="cliv2-docker-upgrade"></a>
 
@@ -86,15 +96,25 @@ $ docker run --rm -it -v ~/.aws:/root/.aws amazon/aws-cli command
 ```
 
 ------
-#### [ Windows ]
+#### [ Windows Command Prompt ]
 
 ```
 $ docker run --rm -it -v %userprofile%\.aws:/root/.aws amazon/aws-cli command
 ```
 
 ------
+#### [ Windows PowerShell ]
+
+```
+C:\> docker run --rm -it -v $env:userprofile\.aws:/root/.aws  amazon/aws-cli command
+```
+
+------
 
 For more information about the `-v` flag and mounting, see the [Docker reference guide](https://docs.docker.com/storage/volumes/)\. 
+
+**Note**  
+For information on `config` and `credentials` files, see [Configuration and credential file settings](cli-configure-files.md)\.
 
 ### Example 1: Providing credentials and configuration<a name="cliv2-docker-share-files-config"></a>
 
@@ -109,11 +129,18 @@ $ docker run --rm -it -v ~/.aws:/root/.aws amazon/aws-cli s3 ls
 ```
 
 ------
-#### [ Windows ]
+#### [ Windows Command Prompt ]
 
 ```
 $ docker run --rm -it -v %userprofile%\.aws:/root/.aws amazon/aws-cli s3 ls
 2020-03-25 00:30:48 aws-cli-docker-demo
+```
+
+------
+#### [ Windows PowerShell ]
+
+```
+C:\> docker run --rm -it -v $env:userprofile\.aws:/root/.aws amazon/aws-cli s3 ls
 ```
 
 ------
@@ -129,11 +156,18 @@ $ docker run --rm -it -v ~/.aws:/root/.aws -e ENVVAR_NAME amazon/aws-cli s3 ls
 ```
 
 ------
-#### [ Windows ]
+#### [ Windows Command Prompt ]
 
 ```
 $ docker run --rm -it -v %userprofile%\.aws:/root/.aws -e ENVVAR_NAME amazon/aws-cli s3 ls
 2020-03-25 00:30:48 aws-cli-docker-demo
+```
+
+------
+#### [ Windows PowerShell ]
+
+```
+C:\> docker run --rm -it -v $env:userprofile\.aws:/root/.aws -e ENVVAR_NAME amazon/aws-cli s3 ls
 ```
 
 ------
@@ -153,11 +187,18 @@ download: s3://aws-cli-docker-demo/hello to ./hello
 ```
 
 ------
-#### [ Windows ]
+#### [ Windows Command Prompt ]
 
 ```
 $ docker run --rm -it -v %userprofile%\.aws:/root/.aws -v %cd%:/aws amazon/aws-cli s3 cp s3://aws-cli-docker-demo/hello .
 download: s3://aws-cli-docker-demo/hello to ./hello
+```
+
+------
+#### [ Windows PowerShell ]
+
+```
+C:\> docker run --rm -it -v $env:userprofile\.aws:/root/.aws -v $pwd\aws:/aws amazon/aws-cli s3 cp s3://aws-cli-docker-demo/hello .
 ```
 
 ------
@@ -203,6 +244,13 @@ $ docker run --rm -it -v %userprofile%\.aws:/root/.aws -e AWS_PROFILE amazon/aws
 ```
 
 ------
+#### [ Windows PowerShell ]
+
+```
+C:\> docker run --rm -it -v $env:userprofile\.aws:/root/.aws -e AWS_PROFILE amazon/aws-cli s3 ls
+```
+
+------
 
 ## Shorten the Docker command<a name="cliv2-docker-aliases"></a>
 
@@ -217,10 +265,18 @@ To shorten the Docker `aws` command, we suggest you use your operating system's 
   ```
 
 ------
-#### [ Windows ]
+#### [ Windows Command Prompt ]
 
   ```
   C:\> doskey aws=docker run --rm -it amazon/aws-cli $*
+  ```
+
+------
+#### [ Windows PowerShell ]
+
+  ```
+  C:\> Function AWSCLI {docker run --rm -it amazon/aws-cli $args}
+  Set-Alias -Name aws -Value AWSCLI
   ```
 
 ------
@@ -234,10 +290,18 @@ To shorten the Docker `aws` command, we suggest you use your operating system's 
   ```
 
 ------
-#### [ Windows ]
+#### [ Windows Command Prompt ]
 
   ```
   C:\> doskey aws=docker run --rm -it -v %userprofile%\.aws:/root/.aws -v %cd%:/aws amazon/aws-cli $*
+  ```
+
+------
+#### [ Windows PowerShell ]
+
+  ```
+  C:\> Function AWSCLI {docker run --rm -it -v $env:userprofile\.aws:/root/.aws -v $pwd\aws:/aws amazon/aws-cli $args}
+  Set-Alias -Name aws -Value AWSCLI
   ```
 
 ------
@@ -251,10 +315,18 @@ To shorten the Docker `aws` command, we suggest you use your operating system's 
   ```
 
 ------
-#### [ Windows ]
+#### [ Windows Command Prompt ]
 
   ```
   C:\> doskey aws=docker run --rm -it -v %userprofile%\.aws:/root/.aws -v %cd%:/aws amazon/aws-cli:2.0.6 $*
+  ```
+
+------
+#### [ Windows PowerShell ]
+
+  ```
+  C:\> Function AWSCLI {docker run --rm -it -v $env:userprofile\.aws:/root/.aws -v $pwd\aws:/aws amazon/aws-cli:2.0.6 $args}
+  Set-Alias -Name aws -Value AWSCLI
   ```
 
 ------
@@ -263,5 +335,5 @@ After setting your alias, you can run the AWS CLI version 2 from within a Docker
 
 ```
 $ aws --version
-aws-cli/2.1.29 Python/3.7.3 Linux/4.9.184-linuxkit botocore/2.0.0dev10
+aws-cli/2.7.24 Python/3.7.3 Linux/4.9.184-linuxkit botocore/2.4.5dev10
 ```

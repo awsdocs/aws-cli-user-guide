@@ -1,3 +1,7 @@
+--------
+
+--------
+
 # Creating and using AWS CLI aliases<a name="cli-usage-alias"></a>
 
 Aliases are shortcuts you can create in the AWS Command Line Interface \(AWS CLI\) to shorten commands or scripts that you frequently use\. You create aliases in the `alias` file located in your configuration folder\.
@@ -13,7 +17,7 @@ Aliases are shortcuts you can create in the AWS Command Line Interface \(AWS CLI
 ## Prerequisites<a name="cli-usage-alias-prepreqs"></a>
 
 To use alias commands, you need to complete the following:
-+ Install and configure the AWS CLI\. For more information, see [Installing, updating, and uninstalling the AWS CLI](cli-chap-install.md) and [Configuration basics](cli-configure-quickstart.md)\.
++ Install and configure the AWS CLI\. For more information, see [Installing or updating the latest version of the AWS CLI](getting-started-install.md) and [Configuration basics](cli-configure-quickstart.md)\.
 + Use a minimum AWS CLI version of 1\.11\.24 or 2\.0\.0\.
 + \(Optional\) To use AWS CLI alias bash scripts, you must use a bash\-compatible terminal\.
 
@@ -74,7 +78,7 @@ C:\> echo [toplevel] > %USERPROFILE%/.aws/cli/alias
 #### [ Windows ]
 
    ```
-   C:\> echo [toplevel] > %USERPROFILE%/.aws/cli/alias
+   $ echo [toplevel] > %USERPROFILE%/.aws/cli/alias
    ```
 
 ------
@@ -95,7 +99,7 @@ aliasname = command [--options]
 
 The *aliasname* is what you call your alias\. The *command* is the command you want to call, which can include other aliases\. You can include options or parameters in your alias, or add them when calling your alias\.
 
-The following example creates an alias named `aws whoami` using the [https://docs.aws.amazon.com/cli/latest/reference/sts/get-caller-identity.html](https://docs.aws.amazon.com/cli/latest/reference/sts/get-caller-identity.html) command\. Since this alias calls an existing AWS CLI command, you can write the command without the `aws` prefix\.
+The following example creates an alias named `aws whoami` using the [https://awscli.amazonaws.com/v2/documentation/api/latest/reference/sts/get-caller-identity.html](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/sts/get-caller-identity.html) command\. Since this alias calls an existing AWS CLI command, you can write the command without the `aws` prefix\.
 
 ```
 whoami = sts get-caller-identity
@@ -273,6 +277,6 @@ Running the commands in this section deletes your existing `alias` file\. To avo
 ## Resources<a name="cli-usage-alias-references"></a>
 + The [AWS CLI alias repository](https://github.com/awslabs/awscli-aliases) on *GitHub* contains AWS CLI alias examples created by the AWS CLI developer team and the contribution of the AWS CLI community\.
 + The alias feature announcement from [AWS re:Invent 2016: The Effective AWS CLI User](https://www.youtube.com/watch?t=1590&v=Xc1dHtWa9-Q) on *YouTube*\. 
-+ [https://docs.aws.amazon.com/cli/latest/reference/sts/get-caller-identity.html](https://docs.aws.amazon.com/cli/latest/reference/sts/get-caller-identity.html)
-+ [https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-instances.html](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-instances.html)
-+ [https://docs.aws.amazon.com/cli/latest/reference/sns/publish.html](https://docs.aws.amazon.com/cli/latest/reference/sns/publish.html)
++ [https://awscli.amazonaws.com/v2/documentation/api/latest/reference/sts/get-caller-identity.html](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/sts/get-caller-identity.html)
++ [https://awscli.amazonaws.com/v2/documentation/api/latest/reference/ec2/describe-instances.html](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/ec2/describe-instances.html)
++ [https://awscli.amazonaws.com/v2/documentation/api/latest/reference/sns/publish.html](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/sns/publish.html)

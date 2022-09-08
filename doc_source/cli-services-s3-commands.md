@@ -1,17 +1,16 @@
+--------
+
+--------
+
 # Using high\-level \(s3\) commands with the AWS CLI<a name="cli-services-s3-commands"></a>
 
-This topic describes how you can manage Amazon S3 buckets and objects using the [https://docs.aws.amazon.com/cli/latest/reference/s3/](https://docs.aws.amazon.com/cli/latest/reference/s3/) commands in the AWS CLI\. 
+This topic describes some of the commands you can use to manage Amazon S3 buckets and objects using the [https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3/index.html](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3/index.html) commands in the AWS CLI\. For commands not covered in this topic and additional command examples, see the [https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3/index.html](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3/index.html) commands in the *AWS CLI Reference*\.
 
 The high\-level `aws s3` commands simplify managing Amazon S3 objects\. These commands enable you to manage the contents of Amazon S3 within itself and with local directories\.
 
-**Note**  
-When you use `aws s3` commands to upload large objects to an Amazon S3 bucket, the AWS CLI automatically performs a multipart upload\. You can't resume a failed upload when using these `aws s3` commands\.   
-If the multipart upload fails due to a timeout, or if you manually canceled in the AWS CLI, the AWS CLI stops the upload and cleans up any files that were created\. This process can take several minutes\.   
-If the multipart upload or cleanup process is canceled by a kill command or system failure, the created files remain in the Amazon S3 bucket\. To clean up the multipart upload, use the [s3api abort\-multipart\-upload](https://docs.aws.amazon.com/cli/latest/reference/s3api/abort-multipart-upload.html) command\.  
-For more information, see [Multipart upload overview](https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuoverview.html) in the *Amazon Simple Storage Service Developer Guide*\.
-
 **Topics**
-+ [Prerequisites](#using-s3-commands-before)
++ [Prerequisites](#using-s3-commands-prereqs)
++ [Before you start](#using-s3-commands-before)
 + [Create a bucket](#using-s3-commands-managing-buckets-creating)
 + [List buckets and objects](#using-s3-commands-listing-buckets)
 + [Delete buckets](#using-s3-commands-delete-buckets)
@@ -22,19 +21,44 @@ For more information, see [Multipart upload overview](https://docs.aws.amazon.co
 + [Frequently used options for s3 commands](#using-s3-commands-managing-objects-param)
 + [Resources](#using-s3-commands-managing-buckets-references)
 
-## Prerequisites<a name="using-s3-commands-before"></a>
+## Prerequisites<a name="using-s3-commands-prereqs"></a>
 
 To run the `s3` commands, you need to:
-+ AWS CLI installed, see [Installing, updating, and uninstalling the AWS CLI](cli-chap-install.md) for more information\.
++ AWS CLI installed, see [Installing or updating the latest version of the AWS CLI](getting-started-install.md) for more information\.
 + AWS CLI configured, see [Configuration basics](cli-configure-quickstart.md) for more information\. The profile that you use must have permissions that allow the AWS operations performed by the examples\.
 + Understand these Amazon S3 terms:
   + **Bucket** – A top\-level Amazon S3 folder\.
   + **Prefix** – An Amazon S3 folder in a bucket\.
   + **Object** – Any item that's hosted in an Amazon S3 bucket\.
 
+## Before you start<a name="using-s3-commands-before"></a>
+
+This section describes a few things to note before you use `aws s3` commands\.
+
+### Large object uploads<a name="using-s3-commands-before-large"></a>
+
+When you use `aws s3` commands to upload large objects to an Amazon S3 bucket, the AWS CLI automatically performs a multipart upload\. You can't resume a failed upload when using these `aws s3` commands\. 
+
+If the multipart upload fails due to a timeout, or if you manually canceled in the AWS CLI, the AWS CLI stops the upload and cleans up any files that were created\. This process can take several minutes\. 
+
+If the multipart upload or cleanup process is canceled by a kill command or system failure, the created files remain in the Amazon S3 bucket\. To clean up the multipart upload, use the [s3api abort\-multipart\-upload](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3api/abort-multipart-upload.html) command\.
+
+### File properties and tags in multipart copies<a name="using-s3-commands-before-tags"></a>
+
+When you use the AWS CLI version 1 version of commands in the `aws s3` namespace to copy a file from one Amazon S3 bucket location to another Amazon S3 bucket location, and that operation uses [multipart copy](https://docs.aws.amazon.com/AmazonS3/latest/dev/CopyingObjctsMPUapi.html), no file properties from the source object are copied to the destination object\.
+
+By default, the AWS CLI version 2 commands in the `s3` namespace that perform multipart copies transfers all tags and the following set of properties from the source to the destination copy: `content-type`, `content-language`, `content-encoding`, `content-disposition`, `cache-control`, `expires`, and `metadata`\.
+
+This can result in additional AWS API calls to the Amazon S3 endpoint that would not have been made if you used AWS CLI version 1\. These can include: `HeadObject`, `GetObjectTagging`, and `PutObjectTagging`\.
+
+If you need to change this default behavior in AWS CLI version 2 commands, use the `--copy-props` parameter to specify one of the following options:
++ **default** – The default value\. Specifies that the copy includes all tags attached to the source object and the properties encompassed by the `--metadata-directive` parameter used for non\-multipart copies: `content-type`, `content-language`, `content-encoding`, `content-disposition`, `cache-control`, `expires`, and `metadata`\.
++ **metadata\-directive** – Specifies that the copy includes only the properties that are encompassed by the `--metadata-directive` parameter used for non\-multipart copies\. It doesn't copy any tags\.
++ **none** – Specifies that the copy includes none of the properties from the source object\.
+
 ## Create a bucket<a name="using-s3-commands-managing-buckets-creating"></a>
 
-Use the [https://docs.aws.amazon.com/cli/latest/reference/s3/mb.html](https://docs.aws.amazon.com/cli/latest/reference/s3/mb.html) command to make a bucket\. Bucket names must be ***globally*** unique \(unique across all of Amazon S3\) and should be DNS compliant\. 
+Use the [https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3/mb.html](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3/mb.html) command to make a bucket\. Bucket names must be ***globally*** unique \(unique across all of Amazon S3\) and should be DNS compliant\. 
 
 Bucket names can contain lowercase letters, numbers, hyphens, and periods\. Bucket names can start and end only with a letter or number, and cannot contain a period next to a hyphen or another period\. 
 
@@ -54,7 +78,7 @@ $ aws s3 mb s3://bucket-name
 
 ## List buckets and objects<a name="using-s3-commands-listing-buckets"></a>
 
-To list your buckets, folders, or objects, use the [https://docs.aws.amazon.com/cli/latest/reference/s3/ls.html](https://docs.aws.amazon.com/cli/latest/reference/s3/ls.html) command\. Using the command without a target or options lists all buckets\. 
+To list your buckets, folders, or objects, use the [https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3/ls.html](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3/ls.html) command\. Using the command without a target or options lists all buckets\. 
 
 **Syntax**
 
@@ -62,7 +86,7 @@ To list your buckets, folders, or objects, use the [https://docs.aws.amazon.com/
 $ aws s3 ls <target> [--options]
 ```
 
-For a few common options to use with this command, and examples, see [Frequently used options for s3 commands](#using-s3-commands-managing-objects-param)\. For a complete list of available options, see [https://docs.aws.amazon.com/cli/latest/reference/s3/ls.html](https://docs.aws.amazon.com/cli/latest/reference/s3/ls.html) in the *AWS CLI Command Reference*\.
+For a few common options to use with this command, and examples, see [Frequently used options for s3 commands](#using-s3-commands-managing-objects-param)\. For a complete list of available options, see [https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3/ls.html](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3/ls.html) in the *AWS CLI Command Reference*\.
 
 ### s3 ls examples<a name="using-s3-commands-managing-objects-list-examples"></a>
 
@@ -91,7 +115,7 @@ $ aws s3 ls s3://bucket-name/example/
 
 ## Delete buckets<a name="using-s3-commands-delete-buckets"></a>
 
-To delete a bucket, use the [https://docs.aws.amazon.com/cli/latest/reference/s3/rb.html](https://docs.aws.amazon.com/cli/latest/reference/s3/rb.html) command\. 
+To delete a bucket, use the [https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3/rb.html](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3/rb.html) command\. 
 
 **Syntax**
 
@@ -117,7 +141,7 @@ $ aws s3 rb s3://bucket-name --force
 
 ## Delete objects<a name="using-s3-commands-delete-objects"></a>
 
-To delete objects in a bucket or your local directory, use the [https://docs.aws.amazon.com/cli/latest/reference/s3/rm.html](https://docs.aws.amazon.com/cli/latest/reference/s3/rm.html) command\. 
+To delete objects in a bucket or your local directory, use the [https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3/rm.html](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3/rm.html) command\. 
 
 **Syntax**
 
@@ -125,7 +149,7 @@ To delete objects in a bucket or your local directory, use the [https://docs.aws
 $ aws s3 rm  <target> [--options]
 ```
 
-For a few common options to use with this command, and examples, see [Frequently used options for s3 commands](#using-s3-commands-managing-objects-param)\. For a complete list of options, see [https://docs.aws.amazon.com/cli/latest/reference/s3/rm.html](https://docs.aws.amazon.com/cli/latest/reference/s3/rm.html) in the *AWS CLI Command Reference*\.
+For a few common options to use with this command, and examples, see [Frequently used options for s3 commands](#using-s3-commands-managing-objects-param)\. For a complete list of options, see [https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3/rm.html](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3/rm.html) in the *AWS CLI Command Reference*\.
 
 ### s3 rm examples<a name="using-s3-commands-delete-objects-examples"></a>
 
@@ -143,7 +167,7 @@ $ aws s3 rm s3://bucket-name/example --recursive
 
 ## Move objects<a name="using-s3-commands-managing-objects-move"></a>
 
-Use the [https://docs.aws.amazon.com/cli/latest/reference/s3/mv.html](https://docs.aws.amazon.com/cli/latest/reference/s3/mv.html) command to move objects from a bucket or a local directory\. 
+Use the [https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3/mv.html](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3/mv.html) command to move objects from a bucket or a local directory\. 
 
 **Syntax**
 
@@ -151,7 +175,7 @@ Use the [https://docs.aws.amazon.com/cli/latest/reference/s3/mv.html](https://do
 $ aws s3 mv <source> <target> [--options]
 ```
 
-For a few common options to use with this command, and examples, see [Frequently used options for s3 commands](#using-s3-commands-managing-objects-param)\. For a complete list of available options, see [https://docs.aws.amazon.com/cli/latest/reference/s3/mv.html](https://docs.aws.amazon.com/cli/latest/reference/s3/mv.html) in the *AWS CLI Command Reference*\.
+For a few common options to use with this command, and examples, see [Frequently used options for s3 commands](#using-s3-commands-managing-objects-param)\. For a complete list of available options, see [https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3/mv.html](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3/mv.html) in the *AWS CLI Command Reference*\.
 
 ### s3 mv examples<a name="using-s3-commands-managing-objects-move-examples"></a>
 
@@ -161,7 +185,7 @@ The following example moves all objects from `s3://bucket-name/example` to `s3:/
 $ aws s3 mv s3://bucket-name/example s3://my-bucket/
 ```
 
-The following example moves a local file from your current working directory to the Amazon S3 bucket with the `s3 mv` command\.
+The following example moves a local file from your current working directory to the Amazon S3 bucket with the `s3 cp` command\.
 
 ```
 $ aws s3 mv filename.txt s3://bucket-name
@@ -175,7 +199,7 @@ $ aws s3 mv s3://bucket-name/filename.txt ./
 
 ## Copy objects<a name="using-s3-commands-managing-objects-copy"></a>
 
-Use the [https://docs.aws.amazon.com/cli/latest/reference/s3/cp.html](https://docs.aws.amazon.com/cli/latest/reference/s3/cp.html) command to copy objects from a bucket or a local directory\. 
+Use the [https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3/cp.html](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3/cp.html) command to copy objects from a bucket or a local directory\. 
 
 **Syntax**
 
@@ -204,7 +228,7 @@ The `s3 cp` command uses the following syntax to download an Amazon S3 file stre
 $ aws s3 cp <target> [--options] -
 ```
 
-For a few common options to use with this command, and examples, see [Frequently used options for s3 commands](#using-s3-commands-managing-objects-param)\. For the complete list of options, see [https://docs.aws.amazon.com/cli/latest/reference/s3/cp.html](https://docs.aws.amazon.com/cli/latest/reference/s3/cp.html) in the *AWS CLI Command Reference*\.
+For a few common options to use with this command, and examples, see [Frequently used options for s3 commands](#using-s3-commands-managing-objects-param)\. For the complete list of options, see [https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3/cp.html](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3/cp.html) in the *AWS CLI Command Reference*\.
 
 ### `s3 cp` examples<a name="using-s3-commands-managing-objects-copy-examples"></a>
 
@@ -247,7 +271,7 @@ $ aws s3 cp s3://bucket-name/pre - | bzip2 --best | aws s3 cp - s3://bucket-name
 
 ## Sync objects<a name="using-s3-commands-managing-objects-sync"></a>
 
-The [https://docs.aws.amazon.com/cli/latest/reference/s3/sync.html](https://docs.aws.amazon.com/cli/latest/reference/s3/sync.html) command synchronizes the contents of a bucket and a directory, or the contents of two buckets\. Typically, `s3 sync` copies missing or outdated files or objects between the source and target\. However, you can also supply the `--delete` option to remove files or objects from the target that are not present in the source\. 
+The [https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3/sync.html](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3/sync.html) command synchronizes the contents of a bucket and a directory, or the contents of two buckets\. Typically, `s3 sync` copies missing or outdated files or objects between the source and target\. However, you can also supply the `--delete` option to remove files or objects from the target that are not present in the source\. 
 
 **Syntax**
 
@@ -255,7 +279,7 @@ The [https://docs.aws.amazon.com/cli/latest/reference/s3/sync.html](https://docs
 $ aws s3 sync <source> <target> [--options]
 ```
 
-For a few common options to use with this command, and examples, see [Frequently used options for s3 commands](#using-s3-commands-managing-objects-param)\. For a complete list of options, see [https://docs.aws.amazon.com/cli/latest/reference/s3/sync.html](https://docs.aws.amazon.com/cli/latest/reference/s3/sync.html) in the *AWS CLI Command Reference*\.
+For a few common options to use with this command, and examples, see [Frequently used options for s3 commands](#using-s3-commands-managing-objects-param)\. For a complete list of options, see [https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3/sync.html](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3/sync.html) in the *AWS CLI Command Reference*\.
 
 ### s3 sync examples<a name="using-s3-commands-managing-objects-sync-examples"></a>
 
@@ -321,10 +345,10 @@ delete: MyFile2.rtf
 
 ## Frequently used options for s3 commands<a name="using-s3-commands-managing-objects-param"></a>
 
-The following options are frequently used for the commands described in this topic\. For a complete list of options you can use on a command, see the specific command in the [AWS CLI Command Reference](https://docs.aws.amazon.com/cli/latest/reference/s3/)\.
+The following options are frequently used for the commands described in this topic\. For a complete list of options you can use on a command, see the specific command in the [AWS CLI version 2 reference guide](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/index.html)\.
 
 **acl**  
-`s3 sync` and `s3 cp` can use the `--acl` option\. This enables you to set the access permissions for files copied to Amazon S3\. The `--acl` option accepts `private`, `public-read`, and `public-read-write` values\. For more information, see [Canned ACL](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl) in the *Amazon Simple Storage Service Developer Guide*\.  
+`s3 sync` and `s3 cp` can use the `--acl` option\. This enables you to set the access permissions for files copied to Amazon S3\. The `--acl` option accepts `private`, `public-read`, and `public-read-write` values\. For more information, see [Canned ACL](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl) in the *Amazon Simple Storage Service User Guide*\.  
 
 ```
 $ aws s3 sync . s3://my-bucket/path --acl public-read
@@ -406,17 +430,17 @@ $ aws s3 rm s3://my-bucket/path --recursive
 ## Resources<a name="using-s3-commands-managing-buckets-references"></a>
 
 **AWS CLI reference:**
-+ [https://docs.aws.amazon.com/cli/latest/reference/s3/](https://docs.aws.amazon.com/cli/latest/reference/s3/)
-+ [https://docs.aws.amazon.com/cli/latest/reference/s3/cp.html](https://docs.aws.amazon.com/cli/latest/reference/s3/cp.html)
-+ [https://docs.aws.amazon.com/cli/latest/reference/s3/mb.html](https://docs.aws.amazon.com/cli/latest/reference/s3/mb.html)
-+ [https://docs.aws.amazon.com/cli/latest/reference/s3/mv.html](https://docs.aws.amazon.com/cli/latest/reference/s3/mv.html)
-+ [https://docs.aws.amazon.com/cli/latest/reference/s3/ls.html](https://docs.aws.amazon.com/cli/latest/reference/s3/ls.html)
-+ [https://docs.aws.amazon.com/cli/latest/reference/s3/rb.html](https://docs.aws.amazon.com/cli/latest/reference/s3/rb.html)
-+ [https://docs.aws.amazon.com/cli/latest/reference/s3/rm.html](https://docs.aws.amazon.com/cli/latest/reference/s3/rm.html)
-+ [https://docs.aws.amazon.com/cli/latest/reference/s3/sync.html](https://docs.aws.amazon.com/cli/latest/reference/s3/sync.html)
++ [https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3/index.html](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3/index.html)
++ [https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3/cp.html](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3/cp.html)
++ [https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3/mb.html](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3/mb.html)
++ [https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3/mv.html](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3/mv.html)
++ [https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3/ls.html](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3/ls.html)
++ [https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3/rb.html](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3/rb.html)
++ [https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3/rm.html](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3/rm.html)
++ [https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3/sync.html](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3/sync.html)
 
 **Service reference:**
-+ [Working with Amazon S3 buckets](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingBucket.html) in the *Amazon Simple Storage Service Developer Guide*
-+ [Working with Amazon S3 objects](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingObjects.html) in the *Amazon Simple Storage Service Developer Guide*
-+ [Listing keys hierarchically using a prefix and delimiter](https://docs.aws.amazon.com/AmazonS3/latest/dev/ListingKeysHierarchy.html) in the *Amazon Simple Storage Service Developer Guide*
-+ [Abort multipart uploads to an S3 bucket using the AWS SDK for \.NET \(low\-level\)](https://docs.aws.amazon.com/AmazonS3/latest/dev/LLAbortMPUnet.html) in the *Amazon Simple Storage Service Developer Guide*
++ [Working with Amazon S3 buckets](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingBucket.html) in the *Amazon Simple Storage Service User Guide*
++ [Working with Amazon S3 objects](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingObjects.html) in the *Amazon Simple Storage Service User Guide*
++ [Listing keys hierarchically using a prefix and delimiter](https://docs.aws.amazon.com/AmazonS3/latest/dev/ListingKeysHierarchy.html) in the *Amazon Simple Storage Service User Guide*
++ [Abort multipart uploads to an S3 bucket using the AWS SDK for \.NET \(low\-level\)](https://docs.aws.amazon.com/AmazonS3/latest/dev/LLAbortMPUnet.html) in the *Amazon Simple Storage Service User Guide*

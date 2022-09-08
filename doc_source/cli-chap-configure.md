@@ -1,3 +1,7 @@
+--------
+
+--------
+
 # Configuring the AWS CLI<a name="cli-chap-configure"></a>
 
 This section explains how to configure the settings that the AWS Command Line Interface \(AWS CLI\) uses to interact with AWS\. These include your security credentials, the default output format, and the default AWS Region\.
@@ -8,8 +12,8 @@ AWS requires that all incoming requests are cryptographically signed\. The AWS C
 **Topics**
 + [Configuration basics](cli-configure-quickstart.md)
 + [Configuration and credential file settings](cli-configure-files.md)
-+ [Named profiles](cli-configure-profiles.md)
-+ [Configuring the AWS CLI to use AWS Single Sign\-On](cli-configure-sso.md)
++ [Named profiles for the AWS CLI](cli-configure-profiles.md)
++ [Configuring the AWS CLI to use AWS IAM Identity Center \(successor to AWS Single Sign\-On\)](cli-configure-sso.md)
 + [Environment variables to configure the AWS CLI](cli-configure-envvars.md)
 + [Command line options](cli-configure-options.md)
 + [Command completion](cli-configure-completion.md)

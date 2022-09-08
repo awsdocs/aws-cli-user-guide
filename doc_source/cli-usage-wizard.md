@@ -1,7 +1,8 @@
-# Using the AWS CLI wizards<a name="cli-usage-wizard"></a>
+--------
 
-**This feature is available only with AWS CLI version 2\.**  
-The following feature is available only if you use AWS CLI version 2\. It isn't available if you run AWS CLI version 1\. For information on how to install version 2, see [Installing, updating, and uninstalling the AWS CLI version 2](install-cliv2.md)\.
+--------
+
+# Using the AWS CLI wizards<a name="cli-usage-wizard"></a>
 
 The AWS Command Line Interface \(AWS CLI\) provides the ability to use a wizard for some commands\. To contribute or view the full list of available AWS CLI wizards, see the [AWS CLI wizards folder](https://github.com/aws/aws-cli/tree/v2/awscli/customizations/wizard/wizards) on GitHub\. 
 

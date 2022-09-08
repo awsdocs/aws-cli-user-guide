@@ -1,3 +1,7 @@
+--------
+
+--------
+
 # Configuration basics<a name="cli-configure-quickstart"></a>
 
 This section explains how to quickly configure basic settings that the AWS Command Line Interface \(AWS CLI\) uses to interact with AWS\. These include your security credentials, the default output format, and the default AWS Region\.
@@ -5,12 +9,11 @@ This section explains how to quickly configure basic settings that the AWS Comma
 **Note**  
 AWS requires that all incoming requests are cryptographically signed\. The AWS CLI does this for you\. The "signature" includes a date/time stamp\. Therefore, you must ensure that your computer's date and time are set correctly\. If you don't, and the date/time in the signature is too far off of the date/time recognized by the AWS service, AWS rejects the request\.
 
-**Note**  
-If you are using AWS SSO please review the [AWS Single Sign On Instructions](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-sso.html)\.
-
-**Topics**
+**Contents**
 + [Quick configuration with `aws configure`](#cli-configure-quickstart-config)
 + [Access key ID and secret access key](#cli-configure-quickstart-creds)
+  + [Creating a key pair](#cli-configure-quickstart-creds-create)
+  + [Importing a key pair via \.CSV file](#cli-configure-quickstart-creds-import)
 + [Region](#cli-configure-quickstart-region)
 + [Output format](#cli-configure-quickstart-format)
 + [Profiles](#cli-configure-quickstart-profiles)
@@ -38,9 +41,17 @@ Default output format [None]: json
 
 ## Access key ID and secret access key<a name="cli-configure-quickstart-creds"></a>
 
+Access keys use an access key ID and secret access key that you use to sign programmatic requests to AWS\.
+
+**Topics**
++ [Creating a key pair](#cli-configure-quickstart-creds-create)
++ [Importing a key pair via \.CSV file](#cli-configure-quickstart-creds-import)
+
+### Creating a key pair<a name="cli-configure-quickstart-creds-create"></a>
+
 Access keys consist of an access key ID and secret access key, which are used to sign programmatic requests that you make to AWS\. If you don't have access keys, you can create them from the AWS Management Console\. As a best practice, do not use the AWS account root user access keys for any task where it's not required\. Instead, [create a new administrator IAM user](https://docs.aws.amazon.com/IAM/latest/UserGuide/getting-started_create-admin-group.html) with access keys for yourself\.
 
-The only time that you can view or download the secret access key is when you create the keys\. You cannot recover them later\. However, you can create new access keys at any time\. You must also have permissions to perform the required IAM actions\. For more information, see [Permissions Required to Access IAM Resources](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_permissions-required.html) in the *IAM User Guide*\.
+The only time that you can view or download the secret access key is when you create the keys\. You cannot recover them later\. However, you can create new access keys at any time\. You must also have permissions to perform the required IAM actions\. For more information, see [Permissions required to access IAM resources](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_permissions-required.html) in the *IAM User Guide*\.
 
 **To create access keys for an IAM user**
 
@@ -63,8 +74,28 @@ The only time that you can view or download the secret access key is when you cr
 1. After you download the `.csv` file, choose **Close**\. When you create an access key, the key pair is active by default, and you can use the pair right away\.
 
 **Related topics**
-+ [What Is IAM?](https://docs.aws.amazon.com/IAM/latest/UserGuide/introduction.html) in the *IAM User Guide*
-+ [AWS Security Credentials](https://docs.aws.amazon.com/general/latest/gr/aws-security-credentials.html) in *AWS General Reference* 
++ [What is IAM?](https://docs.aws.amazon.com/IAM/latest/UserGuide/introduction.html) in the *IAM User Guide*
++ [AWS security credentials](https://docs.aws.amazon.com/general/latest/gr/aws-security-credentials.html) in *AWS General Reference* 
+
+### Importing a key pair via \.CSV file<a name="cli-configure-quickstart-creds-import"></a>
+
+Instead of using `aws configure` to enter in a key pair, you can import the `.csv` file you downloaded after you created your key pair\. 
+
+The `.csv` file must contain the following headers\.
++ User Name
++ Access key ID
++ Secret access key
+
+**Note**  
+During initial key pair creation, once you close the **Download \.csv file** dialog box, you cannot access your secret access key after you close the dialog box\. If you need a `.csv` file, you'll need to create one yourself with the required headers and your stored key pair information\. If you do not have access to your key pair information, you need to create a new key pair\.
+
+To import the `.csv` file, use the `aws configure import` command with the `--csv` option as follows:
+
+```
+$ aws configure import --csv file://credentials.csv
+```
+
+For more information, see `aws\_configure\_import`\.
 
 ## Region<a name="cli-configure-quickstart-region"></a>
 
@@ -76,11 +107,11 @@ You must specify an AWS Region when using the AWS CLI, either explicitly or by s
 ## Output format<a name="cli-configure-quickstart-format"></a>
 
 The `Default output format` specifies how the results are formatted\. The value can be any of the values in the following list\. If you don't specify an output format, `json` is used as the default\.
-+ [**`json`**](cli-usage-output-format.md#json-output) – The output is formatted as a [JSON](https://json.org/) string\.
-+ [**`yaml`**](cli-usage-output-format.md#yaml-output) – The output is formatted as a [YAML](https://yaml.org/) string\. *\(Available in the AWS CLI version 2 only\.\)*
-+ [**`yaml-stream`**](cli-usage-output-format.md#yaml-stream-output) – The output is streamed and formatted as a [YAML](https://yaml.org/) string\. Streaming allows for faster handling of large data types\. *\(Available in the AWS CLI version 2 only\.\)*
-+ [**`text`**](cli-usage-output-format.md#text-output) – The output is formatted as multiple lines of tab\-separated string values\. This can be useful to pass the output to a text processor, like `grep`, `sed`, or `awk`\.
-+ [**`table`**](cli-usage-output-format.md#table-output) – The output is formatted as a table using the characters \+\|\- to form the cell borders\. It typically presents the information in a "human\-friendly" format that is much easier to read than the others, but not as programmatically useful\.
++ **[`json`](cli-usage-output-format.md#json-output)** – The output is formatted as a [JSON](https://json.org/) string\.
++  **[`yaml`](cli-usage-output-format.md#yaml-output)** – The output is formatted as a [YAML](https://yaml.org/) string\.
++ **[`yaml-stream`](cli-usage-output-format.md#yaml-stream-output)** – The output is streamed and formatted as a [YAML](https://yaml.org/) string\. Streaming allows for faster handling of large data types\.
++ **[`text`](cli-usage-output-format.md#text-output)** – The output is formatted as multiple lines of tab\-separated string values\. This can be useful to pass the output to a text processor, like `grep`, `sed`, or `awk`\.
++ **[`table`](cli-usage-output-format.md#table-output)** – The output is formatted as a table using the characters \+\|\- to form the cell borders\. It typically presents the information in a "human\-friendly" format that is much easier to read than the others, but not as programmatically useful\.
 
 ## Profiles<a name="cli-configure-quickstart-profiles"></a>
 
@@ -104,7 +135,7 @@ $ aws s3 ls --profile produser
 
 To update these settings, run `aws configure` again \(with or without the `--profile` parameter, depending on which profile you want to update\) and enter new values as appropriate\. The next sections contain more information about the files that `aws configure` creates, additional settings, and named profiles\.
 
-For more information on named profiles, see [Named profiles](cli-configure-profiles.md)\.
+For more information on named profiles, see [Named profiles for the AWS CLI](cli-configure-profiles.md)\.
 
 ## Configuration settings and precedence<a name="cli-configure-quickstart-precedence"></a>
 
@@ -120,4 +151,4 @@ The AWS CLI uses credentials and configuration settings located in multiple plac
 
 1. **[Container credentials](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-iam-roles.html)** – You can associate an IAM role with each of your Amazon Elastic Container Service \(Amazon ECS\) task definitions\. Temporary credentials for that role are then available to that task's containers\. For more information, see [IAM Roles for Tasks](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-iam-roles.html) in the *Amazon Elastic Container Service Developer Guide*\.
 
-1. **[Instance profile credentials](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/iam-roles-for-amazon-ec2.html)** – You can associate an IAM role with each of your Amazon Elastic Compute Cloud \(Amazon EC2\) instances\. Temporary credentials for that role are then available to code running in the instance\. The credentials are delivered through the Amazon EC2 metadata service\. For more information, see [IAM Roles for Amazon EC2](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/iam-roles-for-amazon-ec2.html) in the *Amazon EC2 User Guide for Linux Instances* and [Using Instance Profiles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2_instance-profiles.html) in the *IAM User Guide*\.
+1. **[Amazon EC2 instance profile credentials](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/iam-roles-for-amazon-ec2.html)** – You can associate an IAM role with each of your Amazon Elastic Compute Cloud \(Amazon EC2\) instances\. Temporary credentials for that role are then available to code running in the instance\. The credentials are delivered through the Amazon EC2 metadata service\. For more information, see [IAM Roles for Amazon EC2](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/iam-roles-for-amazon-ec2.html) in the *Amazon EC2 User Guide for Linux Instances* and [Using Instance Profiles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2_instance-profiles.html) in the *IAM User Guide*\.

@@ -1,10 +1,14 @@
+--------
+
+--------
+
 # Sourcing credentials with an external process<a name="cli-configure-sourcing-external"></a>
 
 **Warning**  
 This topic discusses sourcing credentials from an external process\. This could be a security risk if the command to generate the credentials becomes accessible by non\-approved processes or users\. We recommend that you use the supported, secure alternatives provided by the AWS CLI and AWS to reduce the risk of compromising your credentials\. Ensure that you secure the `config` file and any supporting files and tools to prevent disclosure\.  
-Ensure that your custom credential tool does not write any secret information to `StdErr` because the SDKs and CLI can capture and log such information, potentially exposing it to unauthorized users\.
+Ensure that your custom credential tool does not write any secret information to `StdErr` because the SDKs and AWS CLI can capture and log such information, potentially exposing it to unauthorized users\.
 
-If you have a method to generate or look up credentials that isn't directly supported by the AWS CLI, you can configure the CLI to use it by configuring the `credential_process` setting in the `config` file\. 
+If you have a method to generate or look up credentials that isn't directly supported by the AWS CLI, you can configure the AWS CLI to use it by configuring the `credential_process` setting in the `config` file\. 
 
 For example, you might include an entry similar to the following in the `config` file\.
 

@@ -1,6 +1,12 @@
+--------
+
+--------
+
 # Using AWS CLI pagination options<a name="cli-usage-pagination"></a>
 
-This topic describes the different ways to paginate output from the AWS Command Line Interface \(AWS CLI\)\. There are primarily two ways to control pagination from the AWS CLI\.
+This topic describes the different ways to paginate output from the AWS Command Line Interface \(AWS CLI\)\. 
+
+There are primarily two ways to control pagination from the AWS CLI\.
 + [Using server\-side pagination parameters\.](#cli-usage-pagination-serverside)
 + [Using your default output client\-side paging program](#cli-usage-pagination-clientside)\.
 
@@ -14,11 +20,11 @@ For commands that can return a large list of items, the AWS Command Line Interfa
 + `--max-items`
 + `--starting-token`
 
-By default, the AWS CLI uses a page size of 1000 and retrieves all available items\. For example, if you run `aws s3api list-objects` on an Amazon S3 bucket that contains 3,500 objects, the AWS CLI automatically makes four calls to Amazon S3, handling the service\-specific pagination logic for you in the background and returning all 3,500 objects in the final output\.
+By default, the AWS CLI uses a page size determined by the individual service and retrieves all available items\. For example, Amazon S3 has a default page size of 1000\. If you run `aws s3api list-objects` on an Amazon S3 bucket that contains 3,500 objects, the AWS CLI automatically makes four calls to Amazon S3, handling the service\-specific pagination logic for you in the background and returning all 3,500 objects in the final output\.
 
 ### How to use the \-\-no\-paginate parameter<a name="cli-usage-pagination-nopaginate"></a>
 
-To disable pagination and return only the first page of results, use the `--no-paginate` option\. When using a command, by default the AWS CLI automatically makes multiple calls to return all possible results to create pagination\. One call for each page\. Disabling pagination has the AWS CLI only call once for the first page of command results\. 
+The `--no-paginate` option disables following pagination tokens on the client side\. When using a command, by default the AWS CLI automatically makes multiple calls to return all possible results to create pagination\. One call for each page\. Disabling pagination has the AWS CLI only call once for the first page of command results\. 
 
 For example, if you run `aws s3api list-objects` on an Amazon S3 bucket that contains 3,500 objects, the AWS CLI only makes the first call to Amazon S3, returning only the first 1,000 objects in the final output\.
 
@@ -33,7 +39,7 @@ $ aws s3api list-objects \
 
 ### How to use the \-\-page\-size parameter<a name="cli-usage-pagination-pagesize"></a>
 
-If you see issues when running list commands on a large number of resources, the default page size of 1000 might be too high\. This can cause calls to AWS services to exceed the maximum allowed time and generate a "timed out" error\. You can use the `--page-size` option to specify that the AWS CLI request a smaller number of items from each call to the AWS service\. The CLI still retrieves the full list, but performs a larger number of service API calls in the background and retrieves a smaller number of items with each call\. This gives the individual calls a better chance of succeeding without a timeout\. Changing the page size doesn't affect the output; it affects only the number of API calls that need to be made to generate the output\.
+If you see issues when running list commands on a large number of resources, the default page size might be too high\. This can cause calls to AWS services to exceed the maximum allowed time and generate a "timed out" error\. You can use the `--page-size` option to specify that the AWS CLI request a smaller number of items from each call to the AWS service\. The AWS CLI still retrieves the full list, but performs a larger number of service API calls in the background and retrieves a smaller number of items with each call\. This gives the individual calls a better chance of succeeding without a timeout\. Changing the page size doesn't affect the output; it affects only the number of API calls that need to be made to generate the output\.
 
 ```
 $ aws s3api list-objects \
@@ -79,15 +85,11 @@ The specified AWS service might not return items in the same order each time you
 
 ## Client\-side pager<a name="cli-usage-pagination-clientside"></a>
 
-**This feature is available only with AWS CLI version 2\.**  
-The following feature is available only if you use AWS CLI version 2\. It isn't available if you run AWS CLI version 1\. For information on how to install version 2, see [Installing, updating, and uninstalling the AWS CLI version 2](install-cliv2.md)\.
-
 AWS CLI version 2 provides the use of a client\-side pager program for output\. By default, this feature returns all output through your operating system’s default pager program\. 
 
 In order of precedence, you can specify the output pager in the following ways:
-+ Using the `cli_pager` setting in the `config` file in a named profile\.
++ Using the `cli_pager` setting in the `config` file in the `default` or named profile\.
 + Using the `AWS_PAGER` environment variable\.
-+ Using the `cli_pager` setting in the `config` file in `default` profile\.
 + Using the `PAGER` environment variable\.
 
 In order of precedence, you can disable all use of an external paging program in the following ways:
@@ -199,6 +201,6 @@ The following example uses the `/c` parameter\.
 C:\> setx AWS_PAGER "more /c"
 ```
 
-For more information on `more` flags see [more](http://manpages.org/less/1#options) on *Microsoft Docs*\.
+For more information on `more` flags see [more](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/more) on *Microsoft Docs*\.
 
 ------

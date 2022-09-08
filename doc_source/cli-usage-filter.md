@@ -1,8 +1,12 @@
+--------
+
+--------
+
 # Filtering AWS CLI output<a name="cli-usage-filter"></a>
 
 The AWS Command Line Interface \(AWS CLI\) has both server\-side and client\-side filtering that you can use individually or together to filter your AWS CLI output\. Server\-side filtering is processed first and returns your output for client\-side filtering\. 
 + Server\-side filtering is supported by the API, and you usually implement it with a `--filter` parameter\. The service only returns matching results which can speed up HTTP response times for large data sets\.
-+ Client\-side filtering is supported by the AWS CLI client using the `--query` parameter\. This parameter has capabilities the server\-side filtering may not have\.
++ Client\-side filtering is supported by the AWS CLI client using the `--query` parameter\. This parameter has capabilities the server\-side filtering might not have\.
 
 **Topics**
 + [Server\-side filtering](#cli-usage-filter-server-side)
@@ -13,11 +17,11 @@ The AWS Command Line Interface \(AWS CLI\) has both server\-side and client\-sid
 ## Server\-side filtering<a name="cli-usage-filter-server-side"></a>
 
 Server\-side filtering in the AWS CLI is provided by the AWS service API\. The AWS service only returns the records in the HTTP response that match your filter, which can speed up HTTP response times for large data sets\. Since server\-side filtering is defined by the service API, the parameter names and functions vary between services\. Some common parameter names used for filtering are: 
-+ `--filter` such as [ses](https://docs.aws.amazon.com/cli/latest/reference/ses/create-receipt-filter.html) and [ce](https://docs.aws.amazon.com/cli/latest/reference/ce/get-cost-and-usage.html)\. 
-+ `--filters` such as [ec2](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-volumes.html), [autoscaling](https://docs.aws.amazon.com/cli/latest/reference/autoscaling/describe-tags.html), and [rds](https://docs.aws.amazon.com/cli/latest/reference/rds/describe-db-instances.html)\. 
-+ Names starting with the word `filter`, for example `--filter-expression` for the [https://docs.aws.amazon.com/cli/latest/reference/dynamodb/scan.html](https://docs.aws.amazon.com/cli/latest/reference/dynamodb/scan.html) command\.
++ `--filter` such as [ses](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/ses/create-receipt-filter.html) and [ce](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/ce/get-cost-and-usage.html)\. 
++ `--filters` such as [ec2](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/ec2/describe-volumes.html), [autoscaling](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/autoscaling/describe-tags.html), and [rds](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/rds/describe-db-instances.html)\. 
++ Names starting with the word `filter`, for example `--filter-expression` for the [https://awscli.amazonaws.com/v2/documentation/api/latest/reference/dynamodb/scan.html](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/dynamodb/scan.html) command\.
 
-For information about whether a specific command has server\-side filtering and the filtering rules, see the [AWS CLI Command Reference](https://docs.aws.amazon.com/cli/latest/reference/)\.
+For information about whether a specific command has server\-side filtering and the filtering rules, see the [AWS CLI version 2 reference guide](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/index.html)\.
 
 ## Client\-side filtering<a name="cli-usage-filter-client-side"></a>
 
@@ -27,7 +31,7 @@ Querying uses [JMESPath syntax](http://jmespath.org/) to create expressions for 
 
 **Important**  
 The output type you specify changes how the `--query` option operates:  
-If you specify `--output text`, the output is paginated *before* the `--query` filter is applied, and the AWS CLI runs the query once on *each page* of the output\. Due to this, the query includes the first matching element on each page which can result in unexpected extra output\. To work around this extra output, you can specify `--no-paginate` to apply the filter only to the complete set of results, but may result in long output\. To additionally filter the output, you can use other command line tools such as `head` or `tail`\.
+If you specify `--output text`, the output is paginated *before* the `--query` filter is applied, and the AWS CLI runs the query once on *each page* of the output\. Due to this, the query includes the first matching element on each page which can result in unexpected extra output\. To additionally filter the output, you can use other command line tools such as `head` or `tail`\.
 If you specify `--output json`, `--output yaml`, or `--output yaml-stream` the output is completely processed as a single, native structure before the `--query` filter is applied\. The AWS CLI runs the query only once against the entire structure, producing a filtered result that is then output\.
 
 **Topics**
@@ -529,7 +533,7 @@ Expression comparators include `==`, `!=`, `<`, `<=`, `>`, and `>=` \. The follo
 
 ```
 $ aws ec2 describe-volumes \
-    --query 'Volumes[*].Attachments[?State=='attached'].VolumeId'
+    --query 'Volumes[*].Attachments[?State==`attached`].VolumeId'
 [
   [
     "vol-e11a5288"
@@ -547,7 +551,7 @@ This can then be flattened resulting in the following example\.
 
 ```
 $ aws ec2 describe-volumes \
-    --query 'Volumes[*].Attachments[?State=='attached'].VolumeId[]'
+    --query 'Volumes[*].Attachments[?State==`attached`].VolumeId[]'
 [
   "vol-e11a5288",
   "vol-2e410a47",
@@ -678,7 +682,7 @@ To be more readable, flatten out the expression as shown in the following exampl
 
 ```
 $ aws ec2 describe-volumes \
-    --query 'Volumes[].[VolumeId, VolumeType, Attachments[].[InstanceId, VolumeId][]][]'
+    --query 'Volumes[].[VolumeId, VolumeType, Attachments[].[InstanceId, State][]][]'
 [
   "vol-e11a5288",
   "standard",
@@ -720,13 +724,13 @@ $ aws ec2 describe-volumes \
     --query 'Volumes[].{VolumeType: VolumeType}'
 [
   {
-    "Type": "standard",
+    "VolumeType": "standard",
   },
   {
-    "Type": "standard",
+    "VolumeType": "standard",
   },
   {
-    "Type": "standard",
+    "VolumeType": "standard",
   }
 ]
 ```
@@ -829,7 +833,7 @@ The following example shows how to list all of your snapshots that were created 
 ```
 $ aws ec2 describe-snapshots --owner self \
     --output json \
-    --query 'Snapshots[?StartTime>=`2018-02-07`].{Id:SnapshotId,VId:VolumeId,Size:VolumeSize}' \
+    --query 'Snapshots[?StartTime>=`2018-02-07`].{Id:SnapshotId,VId:VolumeId,Size:VolumeSize}'
 [
     {
         "id": "snap-0effb42b7a1b2c3d4",
@@ -893,18 +897,18 @@ $ aws ec2 describe-volumes \
     --query 'Volumes.Tags[?Value == `test`]'
 ```
 
-Then filter out all the positive `test` results using the `not_null` function\. Negating it will filter for volumes that do not have the tag value\. 
+Then filter out all the positive `test` results using the `not_null` function\. 
 
 ```
 $ aws ec2 describe-volumes \
-    --query 'Volumes[?!not_null(Tags[?Value == `test`].Value)]'
+    --query 'Volumes[?not_null(Tags[?Value == `test`].Value)]'
 ```
 
 Pipe the results to flatten out the results resulting in the following query\.
 
 ```
 $ aws ec2 describe-volumes \
-    --query 'Volumes[?!not_null(Tags[?Value == `test`].Value)] | []'
+    --query 'Volumes[?not_null(Tags[?Value == `test`].Value)] | []'
 ```
 
 ## Combining server\-side and client\-side filtering<a name="cli-usage-filter-combining"></a>
@@ -921,7 +925,7 @@ $ aws ec2 describe-volumes \
     {
         "Id": "vol-0be9bb0bf12345678",
         "Size": 80,
-        "Type": "gp2"
+        "VolumeType": "gp2"
     }
 ]
 ```

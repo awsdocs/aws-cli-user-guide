@@ -1,4 +1,19 @@
+--------
+
+--------
+
 # Getting help with the AWS CLI<a name="cli-usage-help"></a>
+
+This topic describes how to access help content for the AWS Command Line Interface \(AWS CLI\)\.
+
+**Topics**
++ [The built\-in AWS CLI help command](#cli-usage-help-command)
++ [AWS CLI reference guide](#cli-reference)
++ [API documentation](#api-reference)
++ [Troubleshooting errors](#help-tshoot)
++ [Additional help](#help-additional)
+
+## The built\-in AWS CLI help command<a name="cli-usage-help-command"></a>
 
 You can get help with any command when using the AWS Command Line Interface \(AWS CLI\)\. To do so, simply type `help` at the end of a command name\. 
 
@@ -190,12 +205,9 @@ You can *pipe* \(\|\) the output of the help command to the `more` command to vi
 C:\> aws ec2 describe-instances help | more
 ```
 
-## AWS CLI documentation<a name="cli-reference"></a>
+## AWS CLI reference guide<a name="cli-reference"></a>
 
-The [AWS CLI Command Reference](https://docs.aws.amazon.com/cli/latest/reference/) also contains the help content for all AWS CLI commands\. The descriptions are presented for easy navigation and viewing on mobile, tablet, or desktop screens\. 
-
-**Note**  
-The help files contain links that cannot be viewed or navigated to from the command line\. You can view and interact with these links by using the online [AWS CLI Command Reference](https://docs.aws.amazon.com/cli/latest/reference/)\. 
+The help files contain links that cannot be viewed or navigated to from the command line\. You can view and interact with these links by using the online [AWS CLI version 2 reference guide](https://awscli.amazonaws.com/v2/documentation/api/latest/index.html)\. The reference also contains the help content for all AWS CLI commands\. The descriptions are presented for easy navigation and viewing on mobile, tablet, or desktop screens\. 
 
 ## API documentation<a name="api-reference"></a>
 
@@ -210,4 +222,12 @@ All commands in the AWS CLI correspond to requests made to an AWS service's publ
 The name and availability of each section can vary, depending on the service\. 
 
 **Service\-specific CLIs**  
-Some services have a separate CLI that dates from before a single AWS CLI was created to work with all services\. These service\-specific CLIs have separate documentation that is linked from the service's documentation page\. Documentation for service\-specific CLIs does not apply to the AWS CLI\. 
+Some services have a separate CLI that dates from before a single AWS CLI was created to work with all services\. These service\-specific CLIs have separate documentation that is linked from the service's documentation page\. Documentation for service\-specific CLIs do not apply to the AWS CLI\. 
+
+## Troubleshooting errors<a name="help-tshoot"></a>
+
+For help diagnosing and fixing AWS CLI errors, see [Troubleshooting AWS CLI errors](cli-chap-troubleshooting.md)\.
+
+## Additional help<a name="help-additional"></a>
+
+For additional help with your AWS CLI issues, visit the [AWS CLI community](https://github.com/aws/aws-cli/issues) on *GitHub*\.

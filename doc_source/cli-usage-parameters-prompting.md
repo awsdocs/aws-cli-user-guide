@@ -1,7 +1,8 @@
-# Having the AWS CLI prompt you for commands<a name="cli-usage-parameters-prompting"></a>
+--------
 
-**This feature is available only with AWS CLI version 2\.**  
-The following feature is available only if you use AWS CLI version 2\. It isn't available if you run AWS CLI version 1\. For information on how to install version 2, see [Installing, updating, and uninstalling the AWS CLI version 2](install-cliv2.md)\.
+--------
+
+# Having the AWS CLI prompt you for commands<a name="cli-usage-parameters-prompting"></a>
 
 You can have the AWS CLI version 2 prompt you commands, parameters, and resources when you run an `aws` command\.
 
@@ -69,7 +70,7 @@ $ aws dynamodb describe-table
 ```
 
 **Shorthand completion**  
-For parameters that use shorthand syntax, auto\-prompt suggests values to use\. In the following example, auto\-prompt lists shorthand syntax values for the `--placement` parameter in the `aws ec2 run-stances` command\.  
+For parameters that use shorthand syntax, auto\-prompt suggests values to use\. In the following example, auto\-prompt lists shorthand syntax values for the `--placement` parameter in the `aws ec2 run-instances` command\.  
 
 ```
 $ aws ec2 run-instances
@@ -81,7 +82,7 @@ $ aws ec2 run-instances
 ```
 
 **File completion**  
-When filling out parameters in aws commands, auto\-complete suggests local filenames after using the prefix `file://` or `fileb://`\. In the following example, auto\-prompt suggests local files after entering in `--item file://` for the `aws ec2 run-instances` command\.  
+When filling out parameters in `aws` commands, auto\-complete suggests local filenames after using the prefix `file://` or `fileb://`\. In the following example, auto\-prompt suggests local files after entering in `--item file://` for the `aws ec2 run-instances` command\.  
 
 ```
 $ aws ec2 run-instances
@@ -92,7 +93,7 @@ $ aws ec2 run-instances
 ```
 
 **Region completion**  
-When using the global parameter `--region`, auto\-prompt lists possible regions to select from\. In the following example, auto\-prompt suggests regions in alphabetical order after entering in `--region` for the `aws dynamodb list-tables` command\.  
+When using the global parameter `--region`, auto\-prompt lists possible Regions to select from\. In the following example, auto\-prompt suggests Regions in alphabetical order after entering in `--region` for the `aws dynamodb list-tables` command\.  
 
 ```
 $ aws dynamodb list-tables
@@ -115,7 +116,7 @@ $ aws dynamodb list-tables
 ```
 
 **Fuzzy searching**  
-Complete commands and values that contain a specific set of characters\. In the following example, auto\-prompt suggests regions that contain `eu` after entering in `--region eu` for the `aws dynamodb list-tables` command\.  
+Complete commands and values that contain a specific set of characters\. In the following example, auto\-prompt suggests Regions that contain `eu` after entering in `--region eu` for the `aws dynamodb list-tables` command\.  
 
 ```
 $ aws dynamodb list-tables

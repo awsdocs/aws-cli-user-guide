@@ -1,3 +1,7 @@
+--------
+
+--------
+
 # AWS CLI retries<a name="cli-configure-retries"></a>
 
 This topic describes how the AWS CLI might see calls to AWS services fail due to unexpected issues\. These issues can occur on the server side or might fail due to rate limiting from the AWS service you're attempting to call\. These kinds of failures usually don’t require special handling and the call is automatically made again, often after a brief waiting period\. The AWS CLI provides many features to assist in retrying client calls to AWS services when these kinds of errors or exceptions are experienced\.
@@ -16,8 +20,9 @@ This topic describes how the AWS CLI might see calls to AWS services fail due to
 
 ### Legacy retry mode<a name="cli-usage-retries-legacy"></a>
 
-Legacy mode is the default mode used by the AWS CLI version 1\. Legacy mode uses an older retry handler that has limited functionality which includes:
+Legacy mode uses an older retry handler that has limited functionality which includes:
 + A default value of 4 for maximum retry attempts, making a total of 5 call attempts\. This value can be overwritten through the `max_attempts` configuration parameter\. 
++ DynamoDB has a default value of 9 for maximum retry attempts, making a total of 10 call attempts\. This value can be overwritten through the `max_attempts` configuration parameter\. 
 + Retry attempts for the following limited number of errors/exceptions:
   + General socket/connection errors:
     + `ConnectionError`
@@ -81,7 +86,7 @@ In the AWS CLI, users can configure retries in the following ways:
 + AWS CLI configuration file
 
 Users can customize the following retry options:
-+ Retry mode \- Specifies which retry mode the AWS CLI uses\. As described previously, there are three retry modes available: legacy, standard, and adaptive\. The default value for AWS CLI version 1 is legacy and for AWS CLI version 2 is standard\.
++ Retry mode \- Specifies which retry mode the AWS CLI uses\. As described previously, there are three retry modes available: legacy, standard, and adaptive\. The default value for the AWS CLI version 2 is standard\.
 + Max attempts \- Specifies the value of maximum retry attempts the AWS CLI retry handler uses, where the initial call counts toward the value that you provide\. The default value is 5\.
 
 ### Defining a retry configuration in your environment variables<a name="cli-usage-retries-configure-envvar"></a>
@@ -95,9 +100,6 @@ The retry environment variables are:
 For more information on environment variables, see [Environment variables to configure the AWS CLI](cli-configure-envvars.md)\.
 
 ### Defining a retry configuration in your AWS configuration file<a name="cli-usage-retries-configure-file"></a>
-
-**This feature is available only with AWS CLI version 2\.**  
-The following feature is available only if you use AWS CLI version 2\. It isn't available if you run AWS CLI version 1\. For information on how to install version 2, see [Installing, updating, and uninstalling the AWS CLI version 2](install-cliv2.md)\.
 
 To change your retry configuration, update your global AWS configuration file\. The default location for your AWS config file is \~/\.aws/config\.
 

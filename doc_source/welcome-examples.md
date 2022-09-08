@@ -1,3 +1,7 @@
+--------
+
+--------
+
 # Using the AWS CLI examples<a name="welcome-examples"></a>
 
 The AWS Command Line Interface \(AWS CLI\) examples in this guide are formatted using the following conventions:
@@ -19,13 +23,13 @@ The following **aws configure** command example demonstrates user input, replace
 
 1. The final **Enter** command is shown as replaceable text because there is no user input for that line\.
 
-```
-$ aws configure
-AWS Access Key ID [None]: AKIAIOSFODNN7EXAMPLE
-AWS Secret Access Key [None]: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
-Default region name [None]: us-west-2
-Default output format [None]: ENTER
-```
+   ```
+   $ aws configure
+   AWS Access Key ID [None]: AKIAIOSFODNN7EXAMPLE
+   AWS Secret Access Key [None]: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+   Default region name [None]: us-west-2
+   Default output format [None]: ENTER
+   ```
 
 The following example shows a simple command with output\. To use this example, enter the full text of the command \(the highlighted text after the prompt\), and then press **Enter**\. The name of the security group, *`my-sg`*, is replaceable to your desired security group name\. The JSON document, including the curly braces, is output\. If you configure your CLI to output in text or table format, the output will be formatted differently\. [JSON](https://json.org) is the default output format\.
 
@@ -35,6 +39,3 @@ $ aws ec2 create-security-group --group-name my-sg --description "My security gr
     "GroupId": "sg-903004f8"
 }
 ```
-
-**Note**  
-Arguments that must be replaced \(such as AWS Access Key ID\), and those that should be replaced \(such as group name\), are both shown as *replaceable text in italics*\. If an argument must be replaced, it's noted in the text that describes the example\.

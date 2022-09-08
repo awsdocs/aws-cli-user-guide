@@ -1,19 +1,15 @@
+--------
+
+--------
+
 # Setting the AWS CLI output format<a name="cli-usage-output-format"></a>
 
 This topic describes the different output formats for the AWS Command Line Interface \(AWS CLI\)\. The AWS CLI supports the following output formats:
-+ [**`json`**](#json-output) – The output is formatted as a [JSON](https://json.org/) string\.
-+ [**`yaml`**](#yaml-output) – The output is formatted as a [YAML](https://yaml.org/) string\. *\(Available in the AWS CLI version 2 only\.\)*
-+ [**`yaml-stream`**](#yaml-stream-output) – The output is streamed and formatted as a [YAML](https://yaml.org/) string\. Streaming allows for faster handling of large data types\. *\(Available in the AWS CLI version 2 only\.\)*
-+ [**`text`**](#text-output) – The output is formatted as multiple lines of tab\-separated string values\. This can be useful to pass the output to a text processor, like `grep`, `sed`, or `awk`\.
-+ [**`table`**](#table-output) – The output is formatted as a table using the characters \+\|\- to form the cell borders\. It typically presents the information in a "human\-friendly" format that is much easier to read than the others, but not as programmatically useful\.
-
-**Topics**
-+ [How to select the output format](#cli-usage-output-format)
-+ [JSON output format](#json-output)
-+ [YAML output format](#yaml-output)
-+ [YAML stream output format](#yaml-stream-output)
-+ [Text output format](#text-output)
-+ [Table output format](#table-output)
++ **[`json`](#json-output)** – The output is formatted as a [JSON](https://json.org/) string\.
++  **[`yaml`](#yaml-output)** – The output is formatted as a [YAML](https://yaml.org/) string\.
++ **[`yaml-stream`](#yaml-stream-output)** – The output is streamed and formatted as a [YAML](https://yaml.org/) string\. Streaming allows for faster handling of large data types\.
++ **[`text`](#text-output)** – The output is formatted as multiple lines of tab\-separated string values\. This can be useful to pass the output to a text processor, like `grep`, `sed`, or `awk`\.
++ **[`table`](#table-output)** – The output is formatted as a table using the characters \+\|\- to form the cell borders\. It typically presents the information in a "human\-friendly" format that is much easier to read than the others, but not as programmatically useful\.
 
 ## How to select the output format<a name="cli-usage-output-format"></a>
 
@@ -78,9 +74,6 @@ $ aws iam list-users --output json
 
 ## YAML output format<a name="yaml-output"></a>
 
-**This feature is available only with AWS CLI version 2\.**  
-The following feature is available only if you use AWS CLI version 2\. It isn't available if you run AWS CLI version 1\. For information on how to install version 2, see [Installing, updating, and uninstalling the AWS CLI version 2](install-cliv2.md)\.
-
 [YAML](https://yaml.org) is a good choice for handling the output programmatically with services and tools that emit or consume [YAML](https://yaml.org)\-formatted strings, such as AWS CloudFormation with its support for [YAML\-formatted templates](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-formats.html)\.
 
 For more advanced filtering that you might not be able to do with `--query`, you can consider `yq`, a command line YAML processor\. You can download it and find documentation at [https://mikefarah.gitbook.io/yq/](https://mikefarah.gitbook.io/yq/)\.
@@ -112,9 +105,6 @@ Users:
 ```
 
 ## YAML stream output format<a name="yaml-stream-output"></a>
-
-**This feature is available only with AWS CLI version 2\.**  
-The following feature is available only if you use AWS CLI version 2\. It isn't available if you run AWS CLI version 1\. For information on how to install version 2, see [Installing, updating, and uninstalling the AWS CLI version 2](install-cliv2.md)\.
 
 The `yaml-stream` format takes advantage of the [YAML](https://yaml.org) format while providing more responsive/faster viewing of large data sets by streaming the data to you\. You can start viewing and using YAML data before the entire query downloads\. 
 

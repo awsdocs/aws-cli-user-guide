@@ -1,8 +1,19 @@
+--------
+
+--------
+
 # Using Amazon DynamoDB with the AWS CLI<a name="cli-services-dynamodb"></a>
 
-The AWS Command Line Interface \(AWS CLI\) provides support for all of the AWS database services, including Amazon DynamoDB\. You can use the AWS CLI for ad hoc operations, such as creating a table\. You can also use it to embed DynamoDB operations within utility scripts\. 
 
-For more information about using the AWS CLI with DynamoDB, see [DynamoDB](https://docs.aws.amazon.com/cli/latest/reference/dynamodb/index.html) in the *AWS CLI Command Reference*\.
+****  
+
+| An introduction to Amazon DynamoDB | 
+| --- | 
+|   | 
+
+The AWS Command Line Interface \(AWS CLI\) provides support for all of the AWS database services, including Amazon DynamoDB\. You can use the AWS CLI for impromptu operations, such as creating a table\. You can also use it to embed DynamoDB operations within utility scripts\. 
+
+For more information about using the AWS CLI with DynamoDB, see ```[dynamodb](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/dynamodb/index.html)` in the *AWS CLI Command Reference*\.
 
 To list the AWS CLI commands for DynamoDB, use the following command\.
 
@@ -19,14 +30,14 @@ $ aws dynamodb help
 ## Prerequisites<a name="cli-services-dynamodb-prereqs"></a>
 
 To run the `dynamodb` commands, you need to:
-+ AWS CLI installed, see [Installing, updating, and uninstalling the AWS CLI](cli-chap-install.md) for more information\.
++ AWS CLI installed, see [Installing or updating the latest version of the AWS CLI](getting-started-install.md) for more information\.
 + AWS CLI configured, see [Configuration basics](cli-configure-quickstart.md) for more information\. The profile that you use must have permissions that allow the AWS operations performed by the examples\.
 
 ## Creating and using DynamoDB tables<a name="cli-services-dynamodb-using"></a>
 
 The command line format consists of an DynamoDB command name, followed by the parameters for that command\. The AWS CLI supports the CLI [shorthand syntax](cli-usage-shorthand.md) for the parameter values, and full JSON\.
 
-FThe following example creates a table named `MusicCollection`\. 
+The following example creates a table named `MusicCollection`\. 
 
 ```
 $ aws dynamodb create-table \
@@ -53,7 +64,9 @@ $ aws dynamodb put-item \
         "TableName": "MusicCollection"
     }
 }
+```
 
+```
 $ aws dynamodb put-item \
     --table-name MusicCollection \
     --item '{ 
@@ -62,7 +75,6 @@ $ aws dynamodb put-item \
         "AlbumTitle": {"S": "Songs About Life"} 
       }' \
     --return-consumed-capacity TOTAL
-
 {
     "ConsumedCapacity": {
         "CapacityUnits": 1.0,
@@ -117,10 +129,10 @@ For more information about DynamoDB Local and how to use it with the AWS CLI, se
 ## Resources<a name="cli-services-dynamodb-resources"></a>
 
 **AWS CLI reference:**
-+ [https://docs.aws.amazon.com/cli/latest/reference/dynamodb/](https://docs.aws.amazon.com/cli/latest/reference/dynamodb/)
-+ [https://docs.aws.amazon.com/cli/latest/reference/dynamodb/create-table.html](https://docs.aws.amazon.com/cli/latest/reference/dynamodb/create-table.html)
-+ [https://docs.aws.amazon.com/cli/latest/reference/dynamodb/put-item.html](https://docs.aws.amazon.com/cli/latest/reference/dynamodb/put-item.html)
-+ [https://docs.aws.amazon.com/cli/latest/reference/dynamodb/query.html](https://docs.aws.amazon.com/cli/latest/reference/dynamodb/query.html)
++ [https://awscli.amazonaws.com/v2/documentation/api/latest/reference/dynamodb/index.html](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/dynamodb/index.html)
++ [https://awscli.amazonaws.com/v2/documentation/api/latest/reference/dynamodb/create-table.html](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/dynamodb/create-table.html)
++ [https://awscli.amazonaws.com/v2/documentation/api/latest/reference/dynamodb/put-item.html](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/dynamodb/put-item.html)
++ [https://awscli.amazonaws.com/v2/documentation/api/latest/reference/dynamodb/query.html](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/dynamodb/query.html)
 
 **Service reference:**
 + [DynamoDB Local](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tools.DynamoDBLocal.html) in the Amazon DynamoDB Developer Guide

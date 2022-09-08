@@ -1,3 +1,7 @@
+--------
+
+--------
+
 # Command structure in the AWS CLI<a name="cli-usage-commandstructure"></a>
 
 This topic covers how AWS Command Line Interface \(AWS CLI\) command is structured, and how to use wait commands\.
@@ -16,7 +20,7 @@ The AWS CLI uses a multipart structure on the command line that must be specifie
 
 1. The *subcommand* that specifies which operation to perform\.
 
-1. General CLI options or parameters required by the operation\. You can specify these in any order as long as they follow the first three parts\. If an exclusive parameter is specified multiple times, only the *last value* applies\.
+1. General AWS CLI options or parameters required by the operation\. You can specify these in any order as long as they follow the first three parts\. If an exclusive parameter is specified multiple times, only the *last value* applies\.
 
 ```
 $ aws <command> <subcommand> [options and parameters]
@@ -36,23 +40,21 @@ $ aws s3 ls
 2018-12-14 14:55:44 my-bucket2
 ```
 
-For more information on the Amazon S3 commands, see [https://docs.aws.amazon.com/cli/latest/reference/s3/](https://docs.aws.amazon.com/cli/latest/reference/s3/) in the *AWS CLI Command Reference*\.
-
-[https://docs.aws.amazon.com/cli/latest/reference/s3/](https://docs.aws.amazon.com/cli/latest/reference/s3/)
+For more information on the Amazon S3 commands, see [https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3/index.html](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3/index.html) in the *AWS CLI Command Reference*\.
 
 **AWS CloudFormation**
 
-The following [https://awscli.amazonaws.com/v2/documentation/api/latest/reference/cloudformation/change-set-create-complete.html](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/cloudformation/change-set-create-complete.html) command example changes the cloudformation stack name to *my\-change\-set*\.
+The following [https://awscli.amazonaws.com/v2/documentation/api/latest/reference/cloudformation/create-change-set.html](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/cloudformation/create-change-set.html)command example changes the cloudformation stack name to *my\-change\-set*\.
 
 ```
-$ aws cloudformation change-set-create-complete --stack-name my-stack --change-set-name my-change-set
+$ aws cloudformation create-change-set --stack-name my-stack --change-set-name my-change-set
 ```
 
-For more information on the AWS CloudFormation commands, see `[aws cloudformation](https://docs.aws.amazon.com/cli/latest/reference/cloudformation/index.html)` in the *AWS CLI Command Reference*\.
+For more information on the AWS CloudFormation commands, see [https://awscli.amazonaws.com/v2/documentation/api/latest/reference/cloudformation/index.html](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/cloudformation/index.html) in the *AWS CLI Command Reference*\.
 
 ## Wait commands<a name="cli-usage-commandstructure-wait"></a>
 
-Some AWS services have `wait` commands available\. Any command that uses `aws wait` usually waits until a command is complete before it moves on to the next step\. This is especially useful for multipart commands or scripting, as you can use a wait command to to prevent moving to subsequent steps if the wait command fails\.
+Some AWS services have `wait` commands available\. Any command that uses `aws wait` usually waits until a command is complete before it moves on to the next step\. This is especially useful for multipart commands or scripting, as you can use a wait command to prevent moving to subsequent steps if the wait command fails\.
 
 The AWS CLI uses a multipart structure on the command line for the `wait` command that must be specified in this order:
 
@@ -73,7 +75,7 @@ $ aws <command> wait <subcommand> [options and parameters]
 Parameters can take various types of input values, such as numbers, strings, lists, maps, and JSON structures\. What is supported is dependent upon the command and subcommand you specify\.
 
 **Note**  
-Not every AWS service supports `wait` commands\. See the [AWS CLI reference guide](https://docs.aws.amazon.com/cli/latest/reference/deploy/wait/index.html) to see if your service supports `wait` commands\.
+Not every AWS service supports `wait` commands\. See the [AWS CLI version 2 reference guide](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/index.html) to see if your service supports `wait` commands\.
 
 ### Examples<a name="cli-usage-commandstructure-wait-example"></a>
 
@@ -85,14 +87,14 @@ The following [https://awscli.amazonaws.com/v2/documentation/api/latest/referenc
 $ aws cloudformation wait change-set-create-complete --stack-name my-stack --change-set-name my-change-set
 ```
 
-For more information on the AWS CloudFormation `wait` commands, see [wait](https://docs.aws.amazon.com/cli/latest/reference/cloudformation/wait/index.html) in the *AWS CLI Command Reference*\.
+For more information on the AWS CloudFormation `wait` commands, see [https://awscli.amazonaws.com/v2/documentation/api/latest/reference/cloudformation/wait/index.html](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/cloudformation/wait/index.html) in the *AWS CLI Command Reference*\.
 
 **AWS CodeDeploy**
 
-The following [https://awscli.amazonaws.com/v2/documentation/api/latest/reference/deploy/wait/deployment-successful.html](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/deploy/wait/deployment-successful.html) command examples pauses until the *d\-A1B2C3111* deployment completes successfully\.
+The following [https://awscli.amazonaws.com/v2/documentation/api/latest/reference/cloudformation/wait/change-set-create-complete.html](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/cloudformation/wait/change-set-create-complete.html) command examples pauses until the *d\-A1B2C3111* deployment completes successfully\.
 
 ```
 $ aws deploy wait deployment-successful --deployment-id d-A1B2C3111
 ```
 
-For more information on the AWS CodeDeploy `wait` commands, see [wait](https://docs.aws.amazon.com/cli/latest/reference/deploy/wait/index.html) in the *AWS CLI Command Reference*\.
+For more information on the AWS CodeDeploy `wait` commands, see [https://awscli.amazonaws.com/v2/documentation/api/latest/reference/cloudformation/wait/index.html](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/cloudformation/wait/index.html) in the *AWS CLI Command Reference*\.

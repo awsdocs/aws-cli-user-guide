@@ -1,3 +1,7 @@
+--------
+
+--------
+
 # Controlling command output from the AWS CLI<a name="cli-usage-output"></a>
 
 This section describes the different ways to control the output from the AWS Command Line Interface \(AWS CLI\)\.

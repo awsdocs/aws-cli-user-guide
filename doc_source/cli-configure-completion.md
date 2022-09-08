@@ -1,3 +1,7 @@
+--------
+
+--------
+
 # Command completion<a name="cli-configure-completion"></a>
 
 The AWS Command Line Interface \(AWS CLI\) includes a bash\-compatible command\-completion feature that enables you to use the **Tab** key to complete a partially entered command\. On most systems you need to configure this manually\.
@@ -8,14 +12,13 @@ For information on the AWS CLI version 2 auto\-prompt feature instead, see [Havi
 + [How it works](#cli-command-completion-about)
 + [Configuring command completion on Linux or macOS](#cli-command-completion-linux)
 + [Configuring command completion on Windows](#cli-command-completion-windows)
-+ [Verify command completion](#cli-command-completion-test)
 
 ## How it works<a name="cli-command-completion-about"></a>
 
-When you partially enter a command, parameter, or option, the command\-completion feature either automatically completes your command or displays a suggested list of commands\. To prompt command completion, you partially enter in a command and press **Tab**\.
+When you partially enter a command, parameter, or option, the command\-completion feature either automatically completes your command or displays a suggested list of commands\. To prompt command completion, you partially enter in a command and press the completion key, which is typically *Tab* in most shells\.
 
 The following examples show different ways that you can use command completion:
-+ Partially enter a command and press **Tab** to display a suggested list of commands\.
++ Partially enter a command and press *Tab* to display a suggested list of commands\.
 
   ```
   $ aws dynamodb dTAB
@@ -27,7 +30,7 @@ The following examples show different ways that you can use command completion:
   describe-contributor-insights        describe-time-to-live
   describe-endpoints
   ```
-+ Partially enter a parameter and press **Tab** to display a suggested list of parameters\.
++ Partially enter a parameter and press *Tab* to display a suggested list of parameters\.
 
   ```
   $ aws dynamodb delete-table --TAB
@@ -38,7 +41,7 @@ The following examples show different ways that you can use command completion:
   --color                  --no-verify-ssl          --version              
   --debug                  --output
   ```
-+ Enter a parameter and press **Tab** to display a suggested list of resource values\. This feature is available only in the AWS CLI version 2\.
++ Enter a parameter and press *Tab* to display a suggested list of resource values\. This feature is available only in the AWS CLI version 2\.
 
   ```
   $ aws dynamodb db delete-table --table-name TAB
@@ -55,6 +58,7 @@ Command completion is automatically configured and enabled by default on Amazon 
 **Topics**
 + [Confirm the completer's folder is in your path](#cli-command-completion-path)
 + [Enable command completion](#cli-command-completion-enable)
++ [Verify command completion](#cli-command-completion-test)
 
 ### Confirm the completer's folder is in your path<a name="cli-command-completion-path"></a>
 
@@ -112,10 +116,10 @@ To identify which shell you're using, you can use one of the following commands\
    + **Zsh**– `.zshrc`
    + **Tcsh**– `.tcshrc`, `.cshrc`, or `.login`
 
-1. Add an export command at the end of your profile script that's similar to the following example\. Replace *`/usr/local/aws/bin`* with the folder that you discovered in the previous section\.
+1. Add an export command at the end of your profile script that's similar to the following example\. Replace `/usr/local/bin/` with the folder that you discovered in the previous section\.
 
    ```
-   export PATH=/usr/local/aws/bin:$PATH
+   export PATH=/usr/local/bin/:$PATH
    ```
 
 1. Reload the profile into the current session to put those changes into effect\. Replace `.bash_profile` with the name of the shell script you discovered in the first section\.
@@ -126,40 +130,52 @@ To identify which shell you're using, you can use one of the following commands\
 
 ### Enable command completion<a name="cli-command-completion-enable"></a>
 
-After confirming the completer is in your path, enable command completion by running the appropriate command for the shell that you're using\. You can add the command to your shell's profile to run it each time you open a new shell\. In each command, replace the */usr/local/aws/bin* path with the one found on your system in [Confirm the completer's folder is in your path](#cli-command-completion-path)\.
+After confirming the completer is in your path, enable command completion by running the appropriate command for the shell that you're using\. You can add the command to your shell's profile to run it each time you open a new shell\. In each command, replace the */usr/local/bin/* path with the one found on your system in [Confirm the completer's folder is in your path](#cli-command-completion-path)\.
 + **`bash`** – Use the built\-in command `complete`\.
 
   ```
-  $ complete -C '/usr/local/aws/bin/aws_completer' aws
+  $ complete -C '/usr/local/bin/aws_completer' aws
   ```
 
-  Add the command to `~/.bashrc` to run it each time you open a new shell\. Your `~/.bash_profile` should source `~/.bashrc` to ensure that the command is also run in login shells\.
+  Add the previous command to `~/.bashrc` to run it each time you open a new shell\. Your `~/.bash_profile` should source `~/.bashrc` to ensure that the command is also run in login shells\.
 +  **`zsh`** – To run command completion, you need to run `bashcompinit` by adding the following autoload line at the end of your `~/.zshrc` profile script\.
 
   ```
   $ autoload bashcompinit && bashcompinit
   $ autoload -Uz compinit && compinit
-  $ compinit
   ```
 
   To enable command completion, use the built\-in command `complete`\.
 
   ```
-  $ complete -C '/usr/local/aws/bin/aws_completer' aws
+  $ complete -C '/usr/local/bin/aws_completer' aws
   ```
 
-  Add the command to `~/.zshrc` to run it each time you open a new shell\.
+  Add the previous commands to `~/.zshrc` to run it each time you open a new shell\.
 +  **`tcsh`** – Complete for `tcsh` takes a word type and pattern to define the completion behavior\. 
 
   ```
   > complete aws 'p/*/`aws_completer`/'
   ```
 
-  Add the command to `~/.tschrc` to run it each time you open a new shell\.
+  Add the previous command to `~/.tschrc` to run it each time you open a new shell\.
 
 After you've enabled command completion, [Verify command completion](#cli-command-completion-test) is working\.
 
+### Verify command completion<a name="cli-command-completion-test"></a>
+
+After enabling command completion, reload your shell, enter a partial command, and press **Tab** to see the available commands\.
+
+```
+$ aws sTAB
+s3              ses             sqs             sts             swf
+s3api           sns             storagegateway  support
+```
+
 ## Configuring command completion on Windows<a name="cli-command-completion-windows"></a>
+
+**Note**  
+For information on how PowerShell handles their completion, including their various completion keys, see [about\_Tab\_Expansion](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_tab_expansion?view=powershell-7.1) in the *Microsoft PowerShell Docs*\.
 
 To enable command completion for PowerShell on Windows, complete the following steps in PowerShell\.
 
@@ -184,9 +200,6 @@ To enable command completion for PowerShell on Windows, complete the following s
    Register-ArgumentCompleter -Native -CommandName aws -ScriptBlock {
        param($commandName, $wordToComplete, $cursorPosition)
            $env:COMP_LINE=$wordToComplete
-           if ($env:COMP_LINE.Length -lt $cursorPosition){
-               $env:COMP_LINE=$env:COMP_LINE + " "
-           }
            $env:COMP_POINT=$cursorPosition
            aws_completer.exe | ForEach-Object {
                [System.Management.Automation.CompletionResult]::new($_, $_, 'ParameterValue', $_)
@@ -196,14 +209,20 @@ To enable command completion for PowerShell on Windows, complete the following s
    }
    ```
 
-1. [Verify command completion](#cli-command-completion-test) is working\.
+1. After enabling command completion, reload your shell, enter a partial command, and press **Tab** to cycle through the available commands\.
 
-## Verify command completion<a name="cli-command-completion-test"></a>
+   ```
+   $ aws sTab
+   ```
 
-After enabling command completion, reload your shell, enter a partial command, and press **Tab** to see the available commands\.
+   ```
+   $ aws s3
+   ```
 
-```
-$ aws sTAB
-s3              ses             sqs             sts             swf
-s3api           sns             storagegateway  support
-```
+   To see all available commands available to your completion, enter a partial command and press **Ctrl** \+ **Space**\.
+
+   ```
+   $ aws sCtrl + Space
+   s3              ses             sqs             sts             swf
+   s3api           sns             storagegateway  support
+   ```
