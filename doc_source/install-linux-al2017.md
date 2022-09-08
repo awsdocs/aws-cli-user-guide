@@ -1,28 +1,31 @@
+--------
+
+**This documentation is for Version 1 of the AWS CLI only\.** For documentation related to Version 2 of the AWS CLI, see the [Version 2 User Guide](https://docs.aws.amazon.com/cli/latest/userguide/)\.
+
+--------
+
 # Install, Update, and Uninstall the AWS CLI version 1 on Amazon Linux<a name="install-linux-al2017"></a>
 
 The AWS CLI version 1 is preinstalled on Amazon Linux and Amazon Linux 2\. Check the currently installed version by using the following command\.
 
 ```
 $ aws --version
-aws-cli/1.19.3 Python/3.7.4 Linux/4.14.133-113.105.amzn2.x86_64 botocore/1.13
+aws-cli/1.25.55 Python/3.8.8 Linux/4.14.133-113.105.amzn2.x86_64 botocore/1.13
 ```
 
-**Topics**
-+ [Prerequisites](#install-amazon-linux-prereq)
-+ [Install or update the AWS CLI version 1 on Amazon Linux using pip](#install-amazon-linux-pip)
-+ [Uninstall the AWS CLI version 1 using pip](#install-amazon-linux-uninstall)
+Depending on when you created your Amazon Linux instance, the AWS CLI version 1 is preinstalled using one of the following package managers:
++ [pip](#install-amazon-linux-pip)
++ [yum](#install-amazon-linux-yum)
 
 ## Prerequisites<a name="install-amazon-linux-prereq"></a>
 
-You must have Python 2 version 2\.7 or later, or Python 3 version 3\.6 or later installed\. For installation instructions, see the [Downloading Python](https://wiki.python.org/moin/BeginnersGuide/Download) page in Python's *Beginner Guide*\.
+You must have Python 3\.6 or later installed\. For installation instructions, see the [Downloading Python](https://wiki.python.org/moin/BeginnersGuide/Download) page in Python's *Beginner Guide*\.
 
-**Warning**  
-As of 2/1/2021 Python 3\.4 and 3\.5 is deprecated\.  
-Python 2\.7 was deprecated by the [Python Software Foundation](https://www.python.org/psf-landing/) on January 1, 2020\. Going forward, customers using the AWS CLI version 1 should transition to using Python 3, with a minimum of Python 3\.6\. Python 2\.7 support is deprecated for new versions of the AWS CLI version 1 starting 7/19/2021\.  
-In order to use the AWS CLI version 1 with an older version of Python, you need to install an earlier version of the AWS CLI version 1\.  
-To view the AWS CLI version 1 Python version support matrix, see [About the AWS CLI versions](welcome-versions.md)\. 
+## Install, update, or uninstall using pip<a name="install-amazon-linux-pip"></a>
 
-## Install or update the AWS CLI version 1 on Amazon Linux using pip<a name="install-amazon-linux-pip"></a>
+Most Amazon Linux instances use pip to preinstall the AWS CLI version 1\.
+
+### Install or update the AWS CLI version 1 on Amazon Linux using pip<a name="install-amazon-linux-pip-install"></a>
 
 To install the latest version of the AWS CLI version 1 for the current user, use the following instructions\.
 
@@ -62,13 +65,50 @@ To install the latest version of the AWS CLI version 1 for the current user, use
 
    ```
    $ aws --version
-   aws-cli/1.19.3 Python/3.7.4 Linux/4.14.133-113.105.amzn2.x86_64 botocore/1.13
+   aws-cli/1.25.55 Python/3.8.8 Linux/4.14.133-113.105.amzn2.x86_64 botocore/1.13
    ```
 
-## Uninstall the AWS CLI version 1 using pip<a name="install-amazon-linux-uninstall"></a>
+### Uninstall the AWS CLI version 1 using pip<a name="install-amazon-linux-pip-uninstall"></a>
 
 If you need to uninstall the AWS CLI, use `pip uninstall`\.
 
 ```
 $ pip3 uninstall awscli
 ```
+
+## Install, update, or uninstall using yum<a name="install-amazon-linux-yum"></a>
+
+Most Amazon Linux 2 instances use yum to preinstall the AWS CLI version 1\.
+
+### Install or update the AWS CLI version 1 on Amazon Linux using yum<a name="install-amazon-linux-yum-install"></a>
+
+To install the latest version of the AWS CLI version 1 , run the following command\.
+
+```
+$ sudo yum install awscli
+```
+
+To update to the latest version of the AWS CLI version 1 , run the following command\.
+
+```
+$ sudo yum update awscli
+```
+
+To verify that you're running the new version, use the `aws --version` command\.
+
+```
+$ aws --version
+aws-cli/1.25.55 Python/3.8.8 Linux/4.14.133-113.105.amzn2.x86_64 botocore/1.13
+```
+
+### Uninstall the AWS CLI version 1 using yum<a name="install-amazon-linux-yum-uninstall"></a>
+
+Some newer images of Amazon Linux 2 use yum to install the Amazon Linux 2 you need to uninstall the AWS CLI, use `pip uninstall`\.
+
+```
+$ sudo yum remove awscli
+```
+
+## Troubleshooting AWS CLI install and uninstall errors<a name="install-amazon-linux-tshoot"></a>
+
+If you come across issues after installing or uninstalling the AWS CLI, see [Troubleshooting AWS CLI errors](cli-chap-troubleshooting.md) for troubleshooting steps\. For the most relevant troubleshooting steps, see [Command not found errors](cli-chap-troubleshooting.md#tshoot-install-not-found), [The "`aws --version`" command returns a different version than you installed](cli-chap-troubleshooting.md#tshoot-install-wrong-version), and [The "`aws --version`" command returns a version after uninstalling the AWS CLI](cli-chap-troubleshooting.md#tshoot-uninstall-1)\.

@@ -1,3 +1,9 @@
+--------
+
+**This documentation is for Version 1 of the AWS CLI only\.** For documentation related to Version 2 of the AWS CLI, see the [Version 2 User Guide](https://docs.aws.amazon.com/cli/latest/userguide/)\.
+
+--------
+
 # Compliance validation for the AWS CLI<a name="cli-security-compliance-validation"></a>
 
 Third\-party auditors assess the security and compliance of AWS services as part of multiple AWS compliance programs\. Using the AWS Command Line Interface \(AWS CLI\) to access a service does not alter that service's compliance\. 

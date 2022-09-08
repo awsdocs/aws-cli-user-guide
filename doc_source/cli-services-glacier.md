@@ -1,23 +1,43 @@
+--------
+
+**This documentation is for Version 1 of the AWS CLI only\.** For documentation related to Version 2 of the AWS CLI, see the [Version 2 User Guide](https://docs.aws.amazon.com/cli/latest/userguide/)\.
+
+--------
+
 # Using Amazon S3 Glacier with the AWS CLI<a name="cli-services-glacier"></a>
 
-You can access the features of Amazon S3 Glacier using the AWS Command Line Interface \(AWS CLI\)\. To list the AWS CLI commands for S3 Glacier, use the following command\.
+
+****  
+
+| An introduction to Amazon S3 Glacier | 
+| --- | 
+|   | 
+
+This topic shows examples of AWS CLI commands that perform common tasks for S3 Glacier\. The examples demonstrate how to use the AWS CLI to upload a large file to S3 Glacier by splitting it into smaller parts and uploading them from the command line\.
+
+You can access Amazon S3 Glacier features using the AWS Command Line Interface \(AWS CLI\)\. To list the AWS CLI commands for S3 Glacier, use the following command\.
 
 ```
 aws glacier help
 ```
 
-This topic shows examples of AWS CLI commands that perform common tasks for S3 Glacier\. The examples demonstrate how to use the AWS CLI to upload a large file to S3 Glacier by splitting it into smaller parts and uploading them from the command line\.
-
-Before you run any commands, set your default credentials\. For more information, see [Configuring the AWS CLI](cli-chap-configure.md)\.
-
 **Note**  
-This tutorial uses several command line tools that typically come preinstalled on Unix\-like operating systems, including Linux and macOS\. Windows users can use the same tools by installing [Cygwin](https://www.cygwin.com/) and running the commands from the Cygwin terminal\. We note Windows native commands and utilities that perform the same functions where available\.
+For command reference and additional examples, see `[aws glacier](https://docs.aws.amazon.com/cli/latest/reference/glacier/index.html)` in the *AWS CLI Command Reference*\.
 
 **Topics**
++ [Prerequisites](#cli-services-glacier-prereqs)
 + [Create an Amazon S3 Glacier vault](#cli-services-glacier-vault)
 + [Prepare a file for uploading](#cli-services-glacier-prep)
 + [Initiate a multipart upload and upload files](#cli-services-glacier-initiate)
 + [Complete the upload](#cli-services-glacier-complete)
++ [Resources](#cli-services-glacier-resources)
+
+## Prerequisites<a name="cli-services-glacier-prereqs"></a>
+
+To run the `glacier` commands, you need to:
++ AWS CLI installed, see [Installing, updating, and uninstalling the AWS CLI](cli-chap-install.md) for more information\.
++ AWS CLI configured, see [Configuration basics](cli-configure-quickstart.md) for more information\. The profile that you use must have permissions that allow the AWS operations performed by the examples\.
++ This tutorial uses several command line tools that typically come preinstalled on Unix\-like operating systems, including Linux and macOS\. Windows users can use the same tools by installing [Cygwin](https://www.cygwin.com/) and running the commands from the Cygwin terminal\. We note Windows native commands and utilities that perform the same functions where available\.
 
 ## Create an Amazon S3 Glacier vault<a name="cli-services-glacier-vault"></a>
 
@@ -196,3 +216,18 @@ $ rm chunk* hash*
 ```
 
 For more information on multipart uploads, see [Uploading Large Archives in Parts](https://docs.aws.amazon.com/amazonglacier/latest/dev/uploading-archive-mpu.html) and [Computing Checksums](https://docs.aws.amazon.com/amazonglacier/latest/dev/checksum-calculations.html) in the *Amazon S3 Glacier Developer Guide*\. 
+
+## Resources<a name="cli-services-glacier-resources"></a>
+
+**AWS CLI reference:**
++ `[aws glacier](https://docs.aws.amazon.com/cli/latest/reference/glacier/index.html)`
++ `[aws glacier complete\-multipart\-upload](https://docs.aws.amazon.com/cli/latest/reference/glacier/complete-multipart-upload.html)`
++ `[aws glacier create\-vault](https://docs.aws.amazon.com/cli/latest/reference/glacier/create-vault.html)`
++ `[aws glacier describe\-vault](https://docs.aws.amazon.com/cli/latest/reference/glacier/describe-vault.html)`
++ `[aws glacier initiate\-multipart\-upload](https://docs.aws.amazon.com/cli/latest/reference/glacier/initiate-multipart-upload.html)`
+
+**Service reference:**
++ [Amazon S3 Glacier Developer Guide](https://docs.aws.amazon.com/amazonglacier/latest/dev/)
++ [Uploading Large Archives in Parts](https://docs.aws.amazon.com/amazonglacier/latest/dev/uploading-archive-mpu.html) in the *Amazon S3 Glacier Developer Guide*
++ [Computing Checksums](https://docs.aws.amazon.com/amazonglacier/latest/dev/checksum-calculations.html) in the *Amazon S3 Glacier Developer Guide*
++ [Working with Vaults](https://docs.aws.amazon.com/amazonglacier/latest/dev/working-with-vaults.html) in the *Amazon S3 Glacier Developer Guide*

@@ -1,18 +1,20 @@
-# Enforcing a minimum version of TLS 1\.2<a name="cli-security-enforcing-tls"></a>
+--------
 
-To add increased security when communicating with AWS services, you should configure your AWS Command Line Interface \(AWS CLI\) to use TLS 1\.2 or later\. When you use the AWS CLI, Python is used to set the TLS version\.
+**This documentation is for Version 1 of the AWS CLI only\.** For documentation related to Version 2 of the AWS CLI, see the [Version 2 User Guide](https://docs.aws.amazon.com/cli/latest/userguide/)\.
 
-Based on your AWS CLI version, the steps you perform to enforce a TLS minimum of 1\.2 varies\.
+--------
 
-**Topics**
-+ [Configuring the AWS CLI version 1 to enforce a minimum version of TLS 1\.2 minimum](#enforcing-tls-v1)
-+ [Configuring the AWS CLI version 2 to enforce a minimum version of TLS 1\.2](#enforcing-tls-v2)
+# Enforcing a minimum version of TLS<a name="cli-security-enforcing-tls"></a>
 
-## Configuring the AWS CLI version 1 to enforce a minimum version of TLS 1\.2 minimum<a name="enforcing-tls-v1"></a>
+To add increased security when communicating with AWS services, you should use TLS 1\.2 or later\. When you use the AWS CLI, Python is used to set the TLS version\.
 
 To ensure the AWS CLI version 1 uses no TLS version earlier than TLS 1\.2, you might need to recompile OpenSSL to enforce this minimum and then recompile Python to use the newly built OpenSSL\. 
 
-### Determine your currently supported protocols<a name="enforcing-tls-supported"></a>
+**Topics**
++ [Determine your currently supported protocols](#enforcing-tls-supported)
++ [Compile OpenSSL and Python](#enforcing-tls-compile)
+
+## Determine your currently supported protocols<a name="enforcing-tls-supported"></a>
 
 First, create a self\-signed certificate to use for the test server and the Python SDK using OpenSSL\.
 
@@ -26,7 +28,7 @@ Then spin up a test server using OpenSSL\.
 $ openssl s_server -key key.pem -cert cert.pem -www
 ```
 
-In a new terminal window, create a virtual environment and install the Python SDK\.
+In a new terminal window, create a virtual environment and install the SDK for Python\.
 
 ```
 $ python3 -m venv test-env
@@ -76,7 +78,7 @@ $ urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='localhost', port=4
 
 If you're able to make a connection, you need to recompile OpenSSL and Python to disable negotiation of protocols earlier than TLS v1\.2\.
 
-### Compile OpenSSL and Python<a name="enforcing-tls-compile"></a>
+## Compile OpenSSL and Python<a name="enforcing-tls-compile"></a>
 
 To ensure the SDK or AWS CLI doesn't negotiate for anything earlier than TLS 1\.2, you need to recompile OpenSSL and Python\. To do this, copy the following content to create a script and run it\.
 
@@ -120,7 +122,3 @@ $ Python 3.8.1
 ```
 
 To confirm this new version of Python doesn't negotiate a version earlier than TLS 1\.2, rerun the steps from [Determine your currently supported protocols](#enforcing-tls-supported) using the newly installed Python version \(that is, `/opt/python-with-min-tls1_2/bin/python3`\)\.
-
-## Configuring the AWS CLI version 2 to enforce a minimum version of TLS 1\.2<a name="enforcing-tls-v2"></a>
-
-AWS CLI version 2 uses an internal Python script that's compiled to use a minimum of TLS 1\.2 when the service it's talking to supports it\. No further steps are needed to enforce this minimum\.

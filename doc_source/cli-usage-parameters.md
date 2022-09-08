@@ -1,3 +1,9 @@
+--------
+
+**This documentation is for Version 1 of the AWS CLI only\.** For documentation related to Version 2 of the AWS CLI, see the [Version 2 User Guide](https://docs.aws.amazon.com/cli/latest/userguide/)\.
+
+--------
+
 # Specifying parameter values for the AWS CLI<a name="cli-usage-parameters"></a>
 
 Many parameters used in the AWS Command Line Interface \(AWS CLI\) are simple string or numeric values, such as the key\-pair name `my-key-pair` in the following example\. 
@@ -12,5 +18,5 @@ You can surround strings that do not contain any space characters with quotation
 + [Common AWS CLI parameter types](cli-usage-parameters-types.md)
 + [Using quotation marks with strings in the AWS CLI](cli-usage-parameters-quoting-strings.md)
 + [Loading AWS CLI parameters from a file](cli-usage-parameters-file.md)
-+ [Generating AWS CLI skeleton and input parameters from a JSON or YAML input file](cli-usage-skeleton.md)
++ [AWS CLI skeletons and input files](cli-usage-skeleton.md)
 + [Using shorthand syntax with the AWS CLI](cli-usage-shorthand.md)

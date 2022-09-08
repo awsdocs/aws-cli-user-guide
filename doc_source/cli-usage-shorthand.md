@@ -1,22 +1,36 @@
+--------
+
+**This documentation is for Version 1 of the AWS CLI only\.** For documentation related to Version 2 of the AWS CLI, see the [Version 2 User Guide](https://docs.aws.amazon.com/cli/latest/userguide/)\.
+
+--------
+
 # Using shorthand syntax with the AWS CLI<a name="cli-usage-shorthand"></a>
 
 The AWS Command Line Interface \(AWS CLI\) can accept many of its option parameters in JSON format\. However, it can be tedious to enter large JSON lists or structures on the command line\. To make this easier, the AWS CLI also supports a shorthand syntax that enables a simpler representation of your option parameters than using the full JSON format\.
 
+**Topics**
++ [Structure parameters](#shorthand-structure-parameters)
++ [Using shorthand syntax with the AWS Command Line Interface](#shorthand-list-parameters)
+
 ## Structure parameters<a name="shorthand-structure-parameters"></a>
 
-The shorthand syntax in the AWS CLI makes it easier for users to input parameters that are flat \(non\-nested structures\)\. The format is a comma\-separated list of key\-value pairs\.
+The shorthand syntax in the AWS CLI makes it easier for users to input parameters that are flat \(non\-nested structures\)\. The format is a comma\-separated list of key\-value pairs\. Be sure to use the [quoting](cli-usage-parameters-quoting-strings.md) and escaping rules appropriate for your terminal as shorthand syntax are strings\.
 
-**Linux or macOS**
+------
+#### [ Linux or macOS ]
 
 ```
 --option key1=value1,key2=value2,key3=value3
 ```
 
-**PowerShell**
+------
+#### [ PowerShell ]
 
 ```
 --option "key1=value1,key2=value2,key3=value3"
 ```
+
+------
 
 These are both equivalent to the following example, formatted in JSON\.
 

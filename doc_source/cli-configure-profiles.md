@@ -1,10 +1,28 @@
-# Named profiles<a name="cli-configure-profiles"></a>
+--------
 
-A *named profile* is a collection of settings and credentials that you can apply to a AWS CLI command\. When you specify a profile to run a command, the settings and credentials are used to run that command\. You can specify one profile that is the "default", and is used when no profile is explicitly referenced\. Other profiles have names that you can specify as a parameter on the command line for individual commands\. Alternatively, you can specify a profile in an environment variable [\(AWS\_PROFILE\)](cli-configure-envvars.md) which essentially overrides the default profile for commands that run in that session\.
+**This documentation is for Version 1 of the AWS CLI only\.** For documentation related to Version 2 of the AWS CLI, see the [Version 2 User Guide](https://docs.aws.amazon.com/cli/latest/userguide/)\.
 
-The AWS CLI supports using any of multiple *named profiles* that are stored in the `config` and `credentials` files\. You can configure additional profiles by using `aws configure` with the `--profile` option, or by adding entries to the `config` and `credentials` files\. 
+--------
 
-The following example shows a `credentials` file with two profiles\. The first *\[default\]* is used when you run a CLI command with no profile\. The second is used when you run a CLI command with the `--profile user1` parameter\.
+# Named profiles for the AWS CLI<a name="cli-configure-profiles"></a>
+
+A *named profile* is a collection of settings and credentials that you can apply to a AWS CLI command\. When you specify a profile to run a command, the settings and credentials are used to run that command\. Multiple *named profiles* can be stored in the `config` and `credentials` files\.
+
+You can specify one `default` profile that is used when no profile is explicitly referenced\. Other profiles have names that you can specify as a parameter on the command line for individual commands\. Alternatively, you can specify a profile in the `AWS\_PROFILE` environment variable which overrides the default profile for commands that run in that session\.
+
+**Topics**
++ [Creating named profiles](#cli-configure-profiles-create)
++ [Using named profiles](#using-profiles)
+
+## Creating named profiles<a name="cli-configure-profiles-create"></a>
+
+You can configure additional profiles by using [`aws configure`](cli-configure-files.md#cli-configure-files-methods) with the `--profile` option, or by manually adding entries to the `config` and `credentials` files\. For more information on the `config` and `credentials` files, see [Configuration and credential file settings](cli-configure-files.md)\.
+
+**Credentials profile**
+
+The following example shows a `credentials` file with two profiles\. The first *\[default\]* is used when you run a AWS CLI command with no profile\. The second is used when you run a AWS CLI command with the `--profile user1` parameter\.
+
+The `credentials` file uses a different naming format than the AWS CLI `config` file for named profiles\. Do ***not*** use the word `profile` when creating an entry in the `credentials` file\.
 
 **`~/.aws/credentials`** \(Linux & Mac\) or **`%USERPROFILE%\.aws\credentials`** \(Windows\)
 
@@ -18,7 +36,11 @@ aws_access_key_id=AKIAI44QH8DHBEXAMPLE
 aws_secret_access_key=je7MtGbClwBF/2Zp9Utk/h3yCo8nvbEXAMPLEKEY
 ```
 
-Each profile can specify different credentials—perhaps from different IAM users—and can also specify different AWS Regions and output formats\.
+**Config profile**
+
+Each profile can specify different credentials—perhaps from different IAM users—and can also specify different AWS Regions and output formats\. When naming the profile in a `config` file, include the prefix word "`profile`"\.
+
+The following example specifies Region and output information for the `default` and `user1` profiles\.
 
 **`~/.aws/config`** \(Linux & Mac\) or **`%USERPROFILE%\.aws\config`** \(Windows\)
 
@@ -32,10 +54,7 @@ region=us-east-1
 output=text
 ```
 
-**Important**  
-The `credentials` file uses a different naming format than the CLI `config` file for named profiles\. Include the prefix word "`profile`" only when configuring a named profile in the `config` file\. Do ***not*** use the word `profile` when creating an entry in the `credentials` file\.
-
-## Using profiles with the AWS CLI<a name="using-profiles"></a>
+## Using named profiles<a name="using-profiles"></a>
 
 To use a named profile, add the `--profile profile-name` option to your command\. The following example lists all of your Amazon EC2 instances using the credentials and settings defined in the `user1` profile from the previous example files\.
 

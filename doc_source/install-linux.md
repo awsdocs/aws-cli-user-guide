@@ -1,3 +1,9 @@
+--------
+
+**This documentation is for Version 1 of the AWS CLI only\.** For documentation related to Version 2 of the AWS CLI, see the [Version 2 User Guide](https://docs.aws.amazon.com/cli/latest/userguide/)\.
+
+--------
+
 # Install, Update, and Uninstall the AWS CLI version 1 on Linux<a name="install-linux"></a>
 
 You can install the AWS Command Line Interface \(AWS CLI\) version 1 and its dependencies on most Linux distributions by using the `pip` package manager or the bundled installer\.
@@ -11,13 +17,11 @@ Although the `awscli` package is available in repositories for other package man
 
 ## Prerequisites<a name="install-linux-prereqs"></a>
 
-You must have Python 2 version 2\.7 or later, or Python 3 version 3\.6 or later installed\. For installation instructions, see the [Downloading Python](https://wiki.python.org/moin/BeginnersGuide/Download) page in Python's *Beginner Guide*\.
+You must have Python 3\.6 or later installed\. For installation instructions, see the [Downloading Python](https://wiki.python.org/moin/BeginnersGuide/Download) page in Python's *Beginner Guide*\.
 
 **Warning**  
-As of 2/1/2021 Python 3\.4 and 3\.5 is deprecated\.  
-Python 2\.7 was deprecated by the [Python Software Foundation](https://www.python.org/psf-landing/) on January 1, 2020\. Going forward, customers using the AWS CLI version 1 should transition to using Python 3, with a minimum of Python 3\.6\. Python 2\.7 support is deprecated for new versions of the AWS CLI version 1 starting 7/19/2021\.  
-In order to use the AWS CLI version 1 with an older version of Python, you need to install an earlier version of the AWS CLI version 1\.  
-To view the AWS CLI version 1 Python version support matrix, see [About the AWS CLI versions](welcome-versions.md)\. 
+Python 2\.7 was deprecated by the [Python Software Foundation](https://www.python.org/psf-landing/) on January 1, 2020\. Starting with AWS CLI version 1\.20\.0, a minimum version of Python 3\.6 is required\.  
+In order to use the AWS CLI version 1 with an older version of Python, you need to install an earlier version of the AWS CLI version 1\. To view the AWS CLI version 1 Python version support matrix, see [Python version requirements](cli-chap-install.md#cli-chap-install-python)\. 
 
 ## Install and uninstall the AWS CLI version 1 on Linux using the bundled installer<a name="install-linux-bundled"></a>
 
@@ -75,7 +79,7 @@ Follow these steps from the command line to install the AWS CLI version 1 using 
 
      **For the latest version of the AWS CLI:** [https://s3.amazonaws.com/aws-cli/awscli-bundle.zip](https://s3.amazonaws.com/aws-cli/awscli-bundle.zip)
 
-     **For a specific version of the AWS CLI, **append a hyphen and the version number to the filename\. For this example the filename for version *1\.16\.312* would be `awscli-exe-linux-aarch64-2.0.30.zip` resulting in the following url [https://s3.amazonaws.com/aws-cli/awscli-bundle-2.0.30.zip](https://s3.amazonaws.com/aws-cli/awscli-bundle-2.0.30.zip)
+     **For a specific version of the AWS CLI, **append a hyphen and the version number to the filename\. For this example the filename for version *1\.16\.312* would be `awscli-bundle-1.16.312.zip` resulting in the following url [https://s3.amazonaws.com/aws-cli/awscli-bundle-1.16.312.zip](https://s3.amazonaws.com/aws-cli/awscli-bundle-1.16.312.zip)
 
 1. Extract the files from the package\. If you don't have `unzip` to extract the files, use your Linux distribution's built\-in package manager to install it\.
 
@@ -99,7 +103,7 @@ Follow these steps from the command line to install the AWS CLI version 1 using 
 
    ```
    $ aws --version
-   aws-cli/1.19.3 Python/3.7.4 Linux/4.14.133-113.105.amzn2.x86_64 botocore/1.13
+   aws-cli/1.25.55 Python/3.8.8 Linux/4.14.133-113.105.amzn2.x86_64 botocore/1.13
    ```
 
    If you get an error, see [Troubleshooting AWS CLI errors](cli-chap-troubleshooting.md)\.
@@ -195,19 +199,29 @@ unzip awscli-bundle.zip
 
    ```
    $ aws --version
-   aws-cli/1.19.3 Python/3.7.4 Linux/4.14.133-113.105.amzn2.x86_64 botocore/1.13
+   aws-cli/1.25.55 Python/3.8.8 Linux/4.14.133-113.105.amzn2.x86_64 botocore/1.13
    ```
 
    If you get an error, see [Troubleshooting AWS CLI errors](cli-chap-troubleshooting.md)\.
 
 ### Uninstall the AWS CLI version 1 bundled installer<a name="install-linux-bundled-uninstall"></a>
 
-If you installed the AWS CLI using the bundled installer, follow these instructions\. The bundled installer doesn't put anything outside of the installation directory except the optional symlink, so uninstalling is as simple as deleting those two items\.
+1. If you installed the AWS CLI using the bundled installer, follow these instructions\. The bundled installer doesn't put anything outside of the installation directory except the optional symlink, so uninstalling is as simple as deleting those two items\.
 
-```
-$ sudo rm -rf /usr/local/aws
-$ sudo rm /usr/local/bin/aws
-```
+   ```
+   $ sudo rm -rf /usr/local/aws
+   $ sudo rm /usr/local/bin/aws
+   ```
+
+1. **\(Optional\)** Remove the shared AWS SDK and AWS CLI settings information in the `.aws` folder\.
+**Warning**  
+These configuration and credentials settings are shared across all AWS SDKs and the AWS CLI\. If you remove this folder, they cannot be accessed by any AWS SDKs that are still on your system\.
+
+   The default location of the `.aws` folder differs between platforms, by default the folder is located in *\~/\.aws/*\. If your user account has write permission to this directory, you don't need to use `sudo`\.
+
+   ```
+   $ sudo rm ~/.aws/
+   ```
 
 ## Install and uninstall the AWS CLI version 1 using pip<a name="install-linux-pip"></a>
 
@@ -216,6 +230,7 @@ $ sudo rm /usr/local/bin/aws
 + [Install and update the AWS CLI version 1 using pip](#install-linux-awscli)
 + [Add the AWS CLI version 1 executable to your command line path](#install-linux-path)
 + [Uninstall the AWS CLI using pip](#post-install-uninstall)
++ [Troubleshooting AWS CLI install and uninstall errors](#install-linux-tshoot)
 
 ### Install pip<a name="install-linux-pip-pip"></a>
 
@@ -276,17 +291,23 @@ If you don't already have `pip` installed, you can install it by using the scrip
    $ pip3 install awscli --upgrade --user
    ```
 
-   **For a specific version of the AWS CLI,** append a less\-than symbol `<` and the version number to the filename\. For this example the filename for version *1\.16\.312* would be *<1\.16\.312* resulting in the following command:
+   **For a specific version of the AWS CLI,** append two equals signs `=` and the version number to the filename\. For this example the filename for version *1\.16\.312* would be *==1\.16\.312* resulting in the following command:
 
    ```
-   $ pip3 install awscli<1.16.312 --upgrade --user
+   $ pip3 install awscli==1.16.312 --upgrade --user
+   ```
+**Note**  
+Use appropriate quoting rules for your terminal\. In order to use the `=` character, you might need to use single or double quotes to escape properly\. The following example escapes using single quotes:  
+
+   ```
+   $ pip3 install 'awscli==1.16.312' --upgrade --user
    ```
 
 1. Verify that the AWS CLI installed correctly\.
 
    ```
    $ aws --version
-   aws-cli/1.19.3 Python/3.7.4 Linux/4.14.133-113.105.amzn2.x86_64 botocore/1.13
+   aws-cli/1.25.55 Python/3.8.8 Linux/4.14.133-113.105.amzn2.x86_64 botocore/1.13
    ```
 
    If you get an error, see [Troubleshooting AWS CLI errors](cli-chap-troubleshooting.md)\.
@@ -348,12 +369,26 @@ $ ls -al /usr/local/bin/python
 
 ### Uninstall the AWS CLI using pip<a name="post-install-uninstall"></a>
 
-If you installed the AWS CLI using `pip` or `pip3`, you need to uninstall the AWS CLI using the same package manager by running one of the following commands\.
+1. If you installed the AWS CLI using `pip` or `pip3`, you need to uninstall the AWS CLI using the same package manager by running one of the following commands\.
 
-```
-$ pip uninstall awscli
-```
+   ```
+   $ pip uninstall awscli
+   ```
 
-```
-$ pip3 uninstall awscli
-```
+   ```
+   $ pip3 uninstall awscli
+   ```
+
+1. **\(Optional\)** Remove the shared AWS SDK and AWS CLI settings information in the `.aws` folder\.
+**Warning**  
+These configuration and credentials settings are shared across all AWS SDKs and the AWS CLI\. If you remove this folder, they cannot be accessed by any AWS SDKs that are still on your system\.
+
+   The default location of the `.aws` folder differs between platforms, by default the folder is located in *\~/\.aws/*\. If your user account has write permission to this directory, you don't need to use `sudo`\.
+
+   ```
+   $ sudo rm ~/.aws/
+   ```
+
+### Troubleshooting AWS CLI install and uninstall errors<a name="install-linux-tshoot"></a>
+
+If you come across issues after installing or uninstalling the AWS CLI, see [Troubleshooting AWS CLI errors](cli-chap-troubleshooting.md) for troubleshooting steps\. For the most relevant troubleshooting steps, see [Command not found errors](cli-chap-troubleshooting.md#tshoot-install-not-found), [The "`aws --version`" command returns a different version than you installed](cli-chap-troubleshooting.md#tshoot-install-wrong-version), and [The "`aws --version`" command returns a version after uninstalling the AWS CLI](cli-chap-troubleshooting.md#tshoot-uninstall-1)\.

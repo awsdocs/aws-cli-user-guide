@@ -1,3 +1,9 @@
+--------
+
+**This documentation is for Version 1 of the AWS CLI only\.** For documentation related to Version 2 of the AWS CLI, see the [Version 2 User Guide](https://docs.aws.amazon.com/cli/latest/userguide/)\.
+
+--------
+
 # Using Amazon SNS with the AWS CLI<a name="cli-services-sns"></a>
 
 You can access the features of Amazon Simple Notification Service \(Amazon SNS\) using the AWS Command Line Interface \(AWS CLI\)\. To list the AWS CLI commands for Amazon SNS, use the following command\.
@@ -8,7 +14,7 @@ aws sns help
 
 Before you run any commands, set your default credentials\. For more information, see [Configuring the AWS CLI](cli-chap-configure.md)\.
 
-This topic shows examples of CLI commands that perform common tasks for Amazon SNS\.
+This topic shows examples of AWS CLI commands that perform common tasks for Amazon SNS\.
 
 **Topics**
 + [Create a topic](#cli-create-sns-topic)
@@ -67,7 +73,7 @@ If it was not your intention to subscribe, click here to unsubscribe.
 
 ## Publish to a topic<a name="cli-publish-sns-topic"></a>
 
-To send a message to all subscribers of a topic, use the [publish](https://docs.aws.amazon.com/cli/latest/reference/sns/publish.html) command\. 
+To send a message to all subscribers of a topic, use the [https://docs.aws.amazon.com/cli/latest/reference/sns/publish.html](https://docs.aws.amazon.com/cli/latest/reference/sns/publish.html) command\. 
 
 The following example sends the message "Hello World\!" to all subscribers of the specified topic\.
 
@@ -82,13 +88,13 @@ In this example, AWS sends an email message with the text "Hello World\!" to `sa
 
 ## Unsubscribe from a topic<a name="cli-unsubscribe-sns-topic"></a>
 
-To unsubscribe from a topic and stop receiving messages published to that topic, use the [unsubscribe](https://docs.aws.amazon.com/cli/latest/reference/sns/unsubscribe.html) command and specify the ARN of the topic you want to unsubscribe from\.
+To unsubscribe from a topic and stop receiving messages published to that topic, use the [https://docs.aws.amazon.com/cli/latest/reference/sns/unsubscribe.html](https://docs.aws.amazon.com/cli/latest/reference/sns/unsubscribe.html) command and specify the ARN of the topic you want to unsubscribe from\.
 
 ```
 $ aws sns unsubscribe --subscription-arn arn:aws:sns:us-west-2:123456789012:my-topic:1328f057-de93-4c15-512e-8bb22EXAMPLE
 ```
 
-To verify that you successfully unsubscribed, use the [list\-subscriptions](https://docs.aws.amazon.com/cli/latest/reference/sns/list-subscriptions.html) command to confirm that the ARN no longer appears in the list\.
+To verify that you successfully unsubscribed, use the [https://docs.aws.amazon.com/cli/latest/reference/sns/list-subscriptions.html](https://docs.aws.amazon.com/cli/latest/reference/sns/list-subscriptions.html) command to confirm that the ARN no longer appears in the list\.
 
 ```
 $ aws sns list-subscriptions
@@ -96,13 +102,13 @@ $ aws sns list-subscriptions
 
 ## Delete a topic<a name="cli-delete-sns-topic"></a>
 
-To delete a topic, run the [delete\-topic](https://docs.aws.amazon.com/cli/latest/reference/sns/delete-topic.html) command\.
+To delete a topic, run the [https://docs.aws.amazon.com/cli/latest/reference/sns/delete-topic.html](https://docs.aws.amazon.com/cli/latest/reference/sns/delete-topic.html) command\.
 
 ```
 $ aws sns delete-topic --topic-arn arn:aws:sns:us-west-2:123456789012:my-topic
 ```
 
-To verify that AWS successfully deleted the topic, use the [list\-topics](https://docs.aws.amazon.com/cli/latest/reference/sns/list-topics.html) command to confirm that the topic no longer appears in the list\.
+To verify that AWS successfully deleted the topic, use the [https://docs.aws.amazon.com/cli/latest/reference/sns/list-topics.html](https://docs.aws.amazon.com/cli/latest/reference/sns/list-topics.html) command to confirm that the topic no longer appears in the list\.
 
 ```
 $ aws sns list-topics

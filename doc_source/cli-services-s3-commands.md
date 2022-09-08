@@ -1,17 +1,18 @@
+--------
+
+**This documentation is for Version 1 of the AWS CLI only\.** For documentation related to Version 2 of the AWS CLI, see the [Version 2 User Guide](https://docs.aws.amazon.com/cli/latest/userguide/)\.
+
+--------
+
 # Using high\-level \(s3\) commands with the AWS CLI<a name="cli-services-s3-commands"></a>
 
-This topic describes how you can manage Amazon S3 buckets and objects using the [https://docs.aws.amazon.com/cli/latest/reference/s3/](https://docs.aws.amazon.com/cli/latest/reference/s3/) commands in the AWS CLI\. 
+This topic describes some of the commands you can use to manage Amazon S3 buckets and objects using the [https://docs.aws.amazon.com/cli/latest/reference/s3/index.html](https://docs.aws.amazon.com/cli/latest/reference/s3/index.html) commands in the AWS CLI\. For commands not covered in this topic and additional command examples, see the [https://docs.aws.amazon.com/cli/latest/reference/s3/index.html](https://docs.aws.amazon.com/cli/latest/reference/s3/index.html) commands in the *AWS CLI Reference*\.
 
 The high\-level `aws s3` commands simplify managing Amazon S3 objects\. These commands enable you to manage the contents of Amazon S3 within itself and with local directories\.
 
-**Note**  
-When you use `aws s3` commands to upload large objects to an Amazon S3 bucket, the AWS CLI automatically performs a multipart upload\. You can't resume a failed upload when using these `aws s3` commands\.   
-If the multipart upload fails due to a timeout, or if you manually canceled in the AWS CLI, the AWS CLI stops the upload and cleans up any files that were created\. This process can take several minutes\.   
-If the multipart upload or cleanup process is canceled by a kill command or system failure, the created files remain in the Amazon S3 bucket\. To clean up the multipart upload, use the [s3api abort\-multipart\-upload](https://docs.aws.amazon.com/cli/latest/reference/s3api/abort-multipart-upload.html) command\.  
-For more information, see [Multipart upload overview](https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuoverview.html) in the *Amazon Simple Storage Service Developer Guide*\.
-
 **Topics**
-+ [Prerequisites](#using-s3-commands-before)
++ [Prerequisites](#using-s3-commands-prereqs)
++ [Before you start](#using-s3-commands-before)
 + [Create a bucket](#using-s3-commands-managing-buckets-creating)
 + [List buckets and objects](#using-s3-commands-listing-buckets)
 + [Delete buckets](#using-s3-commands-delete-buckets)
@@ -22,7 +23,7 @@ For more information, see [Multipart upload overview](https://docs.aws.amazon.co
 + [Frequently used options for s3 commands](#using-s3-commands-managing-objects-param)
 + [Resources](#using-s3-commands-managing-buckets-references)
 
-## Prerequisites<a name="using-s3-commands-before"></a>
+## Prerequisites<a name="using-s3-commands-prereqs"></a>
 
 To run the `s3` commands, you need to:
 + AWS CLI installed, see [Installing, updating, and uninstalling the AWS CLI](cli-chap-install.md) for more information\.
@@ -31,6 +32,22 @@ To run the `s3` commands, you need to:
   + **Bucket** – A top\-level Amazon S3 folder\.
   + **Prefix** – An Amazon S3 folder in a bucket\.
   + **Object** – Any item that's hosted in an Amazon S3 bucket\.
+
+## Before you start<a name="using-s3-commands-before"></a>
+
+This section describes a few things to note before you use `aws s3` commands\.
+
+### Large object uploads<a name="using-s3-commands-before-large"></a>
+
+When you use `aws s3` commands to upload large objects to an Amazon S3 bucket, the AWS CLI automatically performs a multipart upload\. You can't resume a failed upload when using these `aws s3` commands\. 
+
+If the multipart upload fails due to a timeout, or if you manually canceled in the AWS CLI, the AWS CLI stops the upload and cleans up any files that were created\. This process can take several minutes\. 
+
+If the multipart upload or cleanup process is canceled by a kill command or system failure, the created files remain in the Amazon S3 bucket\. To clean up the multipart upload, use the [s3api abort\-multipart\-upload](https://docs.aws.amazon.com/cli/latest/reference/s3api/abort-multipart-upload.html) command\.
+
+### File properties and tags in multipart copies<a name="using-s3-commands-before-tags"></a>
+
+When you use the AWS CLI version 1 version of commands in the `aws s3` namespace to copy a file from one Amazon S3 bucket location to another Amazon S3 bucket location, and that operation uses [multipart copy](https://docs.aws.amazon.com/AmazonS3/latest/dev/CopyingObjctsMPUapi.html), no file properties from the source object are copied to the destination object\.
 
 ## Create a bucket<a name="using-s3-commands-managing-buckets-creating"></a>
 
@@ -321,10 +338,10 @@ delete: MyFile2.rtf
 
 ## Frequently used options for s3 commands<a name="using-s3-commands-managing-objects-param"></a>
 
-The following options are frequently used for the commands described in this topic\. For a complete list of options you can use on a command, see the specific command in the [AWS CLI Command Reference](https://docs.aws.amazon.com/cli/latest/reference/s3/)\.
+The following options are frequently used for the commands described in this topic\. For a complete list of options you can use on a command, see the specific command in the [AWS CLI reference guide](https://docs.aws.amazon.com/cli/latest/reference/)\.
 
 **acl**  
-`s3 sync` and `s3 cp` can use the `--acl` option\. This enables you to set the access permissions for files copied to Amazon S3\. The `--acl` option accepts `private`, `public-read`, and `public-read-write` values\. For more information, see [Canned ACL](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl) in the *Amazon Simple Storage Service Developer Guide*\.  
+`s3 sync` and `s3 cp` can use the `--acl` option\. This enables you to set the access permissions for files copied to Amazon S3\. The `--acl` option accepts `private`, `public-read`, and `public-read-write` values\. For more information, see [Canned ACL](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl) in the *Amazon Simple Storage Service User Guide*\.  
 
 ```
 $ aws s3 sync . s3://my-bucket/path --acl public-read
@@ -406,7 +423,7 @@ $ aws s3 rm s3://my-bucket/path --recursive
 ## Resources<a name="using-s3-commands-managing-buckets-references"></a>
 
 **AWS CLI reference:**
-+ [https://docs.aws.amazon.com/cli/latest/reference/s3/](https://docs.aws.amazon.com/cli/latest/reference/s3/)
++ [https://docs.aws.amazon.com/cli/latest/reference/s3/index.html](https://docs.aws.amazon.com/cli/latest/reference/s3/index.html)
 + [https://docs.aws.amazon.com/cli/latest/reference/s3/cp.html](https://docs.aws.amazon.com/cli/latest/reference/s3/cp.html)
 + [https://docs.aws.amazon.com/cli/latest/reference/s3/mb.html](https://docs.aws.amazon.com/cli/latest/reference/s3/mb.html)
 + [https://docs.aws.amazon.com/cli/latest/reference/s3/mv.html](https://docs.aws.amazon.com/cli/latest/reference/s3/mv.html)
@@ -416,7 +433,7 @@ $ aws s3 rm s3://my-bucket/path --recursive
 + [https://docs.aws.amazon.com/cli/latest/reference/s3/sync.html](https://docs.aws.amazon.com/cli/latest/reference/s3/sync.html)
 
 **Service reference:**
-+ [Working with Amazon S3 buckets](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingBucket.html) in the *Amazon Simple Storage Service Developer Guide*
-+ [Working with Amazon S3 objects](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingObjects.html) in the *Amazon Simple Storage Service Developer Guide*
-+ [Listing keys hierarchically using a prefix and delimiter](https://docs.aws.amazon.com/AmazonS3/latest/dev/ListingKeysHierarchy.html) in the *Amazon Simple Storage Service Developer Guide*
-+ [Abort multipart uploads to an S3 bucket using the AWS SDK for \.NET \(low\-level\)](https://docs.aws.amazon.com/AmazonS3/latest/dev/LLAbortMPUnet.html) in the *Amazon Simple Storage Service Developer Guide*
++ [Working with Amazon S3 buckets](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingBucket.html) in the *Amazon Simple Storage Service User Guide*
++ [Working with Amazon S3 objects](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingObjects.html) in the *Amazon Simple Storage Service User Guide*
++ [Listing keys hierarchically using a prefix and delimiter](https://docs.aws.amazon.com/AmazonS3/latest/dev/ListingKeysHierarchy.html) in the *Amazon Simple Storage Service User Guide*
++ [Abort multipart uploads to an S3 bucket using the AWS SDK for \.NET \(low\-level\)](https://docs.aws.amazon.com/AmazonS3/latest/dev/LLAbortMPUnet.html) in the *Amazon Simple Storage Service User Guide*

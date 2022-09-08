@@ -1,3 +1,9 @@
+--------
+
+**This documentation is for Version 1 of the AWS CLI only\.** For documentation related to Version 2 of the AWS CLI, see the [Version 2 User Guide](https://docs.aws.amazon.com/cli/latest/userguide/)\.
+
+--------
+
 # Creating and using AWS CLI aliases<a name="cli-usage-alias"></a>
 
 Aliases are shortcuts you can create in the AWS Command Line Interface \(AWS CLI\) to shorten commands or scripts that you frequently use\. You create aliases in the `alias` file located in your configuration folder\.

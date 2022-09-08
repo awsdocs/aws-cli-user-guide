@@ -1,3 +1,9 @@
+--------
+
+**This documentation is for Version 1 of the AWS CLI only\.** For documentation related to Version 2 of the AWS CLI, see the [Version 2 User Guide](https://docs.aws.amazon.com/cli/latest/userguide/)\.
+
+--------
+
 # Security in the AWS Command Line Interface<a name="security"></a>
 
 Cloud security at AWS is the highest priority\. As an AWS customer, you benefit from a data center and network architecture that is built to meet the requirements of the most security\-sensitive organizations\.
@@ -12,4 +18,4 @@ This documentation helps you understand how to apply the shared responsibility m
 + [Data protection in the AWS CLI](data-protection.md)
 + [Identity and Access Management for the AWS CLI](cli-security-iam.md)
 + [Compliance validation for the AWS CLI](cli-security-compliance-validation.md)
-+ [Enforcing a minimum version of TLS 1\.2](cli-security-enforcing-tls.md)
++ [Enforcing a minimum version of TLS](cli-security-enforcing-tls.md)

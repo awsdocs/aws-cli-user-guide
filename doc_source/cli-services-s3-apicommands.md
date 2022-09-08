@@ -1,14 +1,34 @@
+--------
+
+**This documentation is for Version 1 of the AWS CLI only\.** For documentation related to Version 2 of the AWS CLI, see the [Version 2 User Guide](https://docs.aws.amazon.com/cli/latest/userguide/)\.
+
+--------
+
 # Using API\-Level \(s3api\) commands with the AWS CLI<a name="cli-services-s3-apicommands"></a>
 
-The API\-level commands \(contained in the `s3api` command set\) provide direct access to the Amazon Simple Storage Service \(Amazon S3\) APIs, and enable some operations that are not exposed in the high\-level `s3` commands\. These commands are the equivalent of the other AWS services that provide API\-level access to the services' functionality\.
+The API\-level commands \(contained in the `s3api` command set\) provide direct access to the Amazon Simple Storage Service \(Amazon S3\) APIs, and enable some operations that are not exposed in the high\-level `s3` commands\. These commands are the equivalent of the other AWS services that provide API\-level access to the services' functionality\. For more information on the `s3` commands, see [Using high\-level \(s3\) commands with the AWS CLI](cli-services-s3-commands.md)
 
-This topic provides examples that demonstrate how to use the lower\-level commands that map to the Amazon S3 APIs\. In addition, you can find examples for each S3 API command in the [s3api section of the CLI Reference Guide](https://docs.aws.amazon.com/cli/latest/reference/s3api/)\.
+This topic provides examples that demonstrate how to use the lower\-level commands that map to the Amazon S3 APIs\. In addition, you can find examples for each S3 API command in the `s3api` section of the [AWS CLI reference guide](https://docs.aws.amazon.com/cli/latest/reference/s3api/index.html)\.
 
-Before you run any commands, set your default credentials\. For more information, see [Configuring the AWS CLI](cli-chap-configure.md)\.
+**Topics**
++ [Prerequisites](#cli-services-s3-apicommands-prereqs)
++ [Apply a custom ACL](#cli-services-s3-apicommands-acls)
++ [Configure a logging policy](#cli-services-s3-apicommands-logpol)
++ [Resources](#cli-services-s3-apicommands-resources)
+
+## Prerequisites<a name="cli-services-s3-apicommands-prereqs"></a>
+
+To run the `s3api` commands, you need to:
++ AWS CLI installed, see [Installing, updating, and uninstalling the AWS CLI](cli-chap-install.md) for more information\.
++ AWS CLI configured, see [Configuration basics](cli-configure-quickstart.md) for more information\. The profile that you use must have permissions that allow the AWS operations performed by the examples\.
++ Understand these Amazon S3 terms:
+  + **Bucket** – A top\-level Amazon S3 folder\.
+  + **Prefix** – An Amazon S3 folder in a bucket\.
+  + **Object** – Any item that's hosted in an Amazon S3 bucket\.
 
 ## Apply a custom ACL<a name="cli-services-s3-apicommands-acls"></a>
 
-With high\-level commands, you can use the `--acl` option to apply predefined access control lists \(ACLs\) to Amazon S3 objects\. But you can't use that command to set bucket\-wide ACLs\. However, you can do this by using the [put\-bucket\-acl](https://docs.aws.amazon.com/cli/latest/reference/s3api/put-bucket-acl.html) API\-level command\. 
+With high\-level commands, you can use the `--acl` option to apply predefined access control lists \(ACLs\) to Amazon S3 objects\. But you can't use that command to set bucket\-wide ACLs\. However, you can do this by using the `[put\-bucket\-acl](https://docs.aws.amazon.com/cli/latest/reference/)``` API\-level command\. 
 
 The following example shows how to grant full control to two AWS users \(*user1@example\.com* and *user2@example\.com*\) and read permission to everyone\. The identifier for "everyone" comes from a special URI that you pass as a parameter\.
 
@@ -55,3 +75,16 @@ The `logging.json` file in the previous command has the following content\.
   }
 }
 ```
+
+## Resources<a name="cli-services-s3-apicommands-resources"></a>
+
+**AWS CLI reference:**
++ [https://docs.aws.amazon.com/cli/latest/reference/s3api/](https://docs.aws.amazon.com/cli/latest/reference/s3api/)
++ [https://docs.aws.amazon.com/cli/latest/reference/s3api/put-bucket-acl.html](https://docs.aws.amazon.com/cli/latest/reference/s3api/put-bucket-acl.html)
++ [https://docs.aws.amazon.com/cli/latest/reference/s3api/put-bucket-logging.html](https://docs.aws.amazon.com/cli/latest/reference/s3api/put-bucket-logging.html)
+
+**Service reference:**
++ [Working with Amazon S3 buckets](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingBucket.html) in the *Amazon Simple Storage Service User Guide*
++ [Working with Amazon S3 objects](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingObjects.html) in the *Amazon Simple Storage Service User Guide*
++ [Listing keys hierarchically using a prefix and delimiter](https://docs.aws.amazon.com/AmazonS3/latest/dev/ListingKeysHierarchy.html) in the *Amazon Simple Storage Service User Guide*
++ [Abort multipart uploads to an S3 bucket using the AWS SDK for \.NET \(low\-level\)](https://docs.aws.amazon.com/AmazonS3/latest/dev/LLAbortMPUnet.html) in the *Amazon Simple Storage Service User Guide*

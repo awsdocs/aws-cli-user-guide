@@ -1,8 +1,14 @@
+--------
+
+**This documentation is for Version 1 of the AWS CLI only\.** For documentation related to Version 2 of the AWS CLI, see the [Version 2 User Guide](https://docs.aws.amazon.com/cli/latest/userguide/)\.
+
+--------
+
 # Filtering AWS CLI output<a name="cli-usage-filter"></a>
 
 The AWS Command Line Interface \(AWS CLI\) has both server\-side and client\-side filtering that you can use individually or together to filter your AWS CLI output\. Server\-side filtering is processed first and returns your output for client\-side filtering\. 
 + Server\-side filtering is supported by the API, and you usually implement it with a `--filter` parameter\. The service only returns matching results which can speed up HTTP response times for large data sets\.
-+ Client\-side filtering is supported by the AWS CLI client using the `--query` parameter\. This parameter has capabilities the server\-side filtering may not have\.
++ Client\-side filtering is supported by the AWS CLI client using the `--query` parameter\. This parameter has capabilities the server\-side filtering might not have\.
 
 **Topics**
 + [Server\-side filtering](#cli-usage-filter-server-side)
@@ -17,7 +23,7 @@ Server\-side filtering in the AWS CLI is provided by the AWS service API\. The A
 + `--filters` such as [ec2](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-volumes.html), [autoscaling](https://docs.aws.amazon.com/cli/latest/reference/autoscaling/describe-tags.html), and [rds](https://docs.aws.amazon.com/cli/latest/reference/rds/describe-db-instances.html)\. 
 + Names starting with the word `filter`, for example `--filter-expression` for the [https://docs.aws.amazon.com/cli/latest/reference/dynamodb/scan.html](https://docs.aws.amazon.com/cli/latest/reference/dynamodb/scan.html) command\.
 
-For information about whether a specific command has server\-side filtering and the filtering rules, see the [AWS CLI Command Reference](https://docs.aws.amazon.com/cli/latest/reference/)\.
+For information about whether a specific command has server\-side filtering and the filtering rules, see the [AWS CLI reference guide](https://docs.aws.amazon.com/cli/latest/reference/)\.
 
 ## Client\-side filtering<a name="cli-usage-filter-client-side"></a>
 
@@ -27,8 +33,8 @@ Querying uses [JMESPath syntax](http://jmespath.org/) to create expressions for 
 
 **Important**  
 The output type you specify changes how the `--query` option operates:  
-If you specify `--output text`, the output is paginated *before* the `--query` filter is applied, and the AWS CLI runs the query once on *each page* of the output\. Due to this, the query includes the first matching element on each page which can result in unexpected extra output\. To work around this extra output, you can specify `--no-paginate` to apply the filter only to the complete set of results, but may result in long output\. To additionally filter the output, you can use other command line tools such as `head` or `tail`\.
-If you specify `--output json`, `--output yaml`, or `--output yaml-stream` the output is completely processed as a single, native structure before the `--query` filter is applied\. The AWS CLI runs the query only once against the entire structure, producing a filtered result that is then output\.
+If you specify `--output text`, the output is paginated *before* the `--query` filter is applied, and the AWS CLI runs the query once on *each page* of the output\. Due to this, the query includes the first matching element on each page which can result in unexpected extra output\. To additionally filter the output, you can use other command line tools such as `head` or `tail`\.
+If you specify `--output json`, the output is completely processed as a single, native structure before the `--query` filter is applied\. The AWS CLI runs the query only once against the entire structure, producing a filtered result that is then output\.
 
 **Topics**
 + [Before you start](#cli-usage-filter-client-side-output)
@@ -529,7 +535,7 @@ Expression comparators include `==`, `!=`, `<`, `<=`, `>`, and `>=` \. The follo
 
 ```
 $ aws ec2 describe-volumes \
-    --query 'Volumes[*].Attachments[?State=='attached'].VolumeId'
+    --query 'Volumes[*].Attachments[?State==`attached`].VolumeId'
 [
   [
     "vol-e11a5288"
@@ -547,7 +553,7 @@ This can then be flattened resulting in the following example\.
 
 ```
 $ aws ec2 describe-volumes \
-    --query 'Volumes[*].Attachments[?State=='attached'].VolumeId[]'
+    --query 'Volumes[*].Attachments[?State==`attached`].VolumeId[]'
 [
   "vol-e11a5288",
   "vol-2e410a47",
@@ -559,7 +565,7 @@ The following example filters for the `VolumeIds` of all `Volumes` that have a s
 
 ```
 $ aws ec2 describe-volumes \
-    --query 'Volumes[?Size < 20].VolumeId'
+    --query 'Volumes[?Size < `20`].VolumeId'
 [
   "vol-2e410a47",
   "vol-a1b3c7nd"
@@ -678,7 +684,7 @@ To be more readable, flatten out the expression as shown in the following exampl
 
 ```
 $ aws ec2 describe-volumes \
-    --query 'Volumes[].[VolumeId, VolumeType, Attachments[].[InstanceId, VolumeId][]][]'
+    --query 'Volumes[].[VolumeId, VolumeType, Attachments[].[InstanceId, State][]][]'
 [
   "vol-e11a5288",
   "standard",
@@ -720,13 +726,13 @@ $ aws ec2 describe-volumes \
     --query 'Volumes[].{VolumeType: VolumeType}'
 [
   {
-    "Type": "standard",
+    "VolumeType": "standard",
   },
   {
-    "Type": "standard",
+    "VolumeType": "standard",
   },
   {
-    "Type": "standard",
+    "VolumeType": "standard",
   }
 ]
 ```
@@ -829,7 +835,7 @@ The following example shows how to list all of your snapshots that were created 
 ```
 $ aws ec2 describe-snapshots --owner self \
     --output json \
-    --query 'Snapshots[?StartTime>=`2018-02-07`].{Id:SnapshotId,VId:VolumeId,Size:VolumeSize}' \
+    --query 'Snapshots[?StartTime>=`2018-02-07`].{Id:SnapshotId,VId:VolumeId,Size:VolumeSize}'
 [
     {
         "id": "snap-0effb42b7a1b2c3d4",
@@ -921,7 +927,7 @@ $ aws ec2 describe-volumes \
     {
         "Id": "vol-0be9bb0bf12345678",
         "Size": 80,
-        "Type": "gp2"
+        "VolumeType": "gp2"
     }
 ]
 ```
@@ -947,9 +953,6 @@ $ aws ec2 describe-volumes \
 ```
 
 ## Additional resources<a name="cli-usage-filter-resources"></a>
-
-**AWS CLI autoprompt**  
-When beginning to use filter expressions, you can use the auto\-prompt feature in the AWS CLI version 2\. The auto\-prompt feature provides a preview when you press the **F5** key\. For more information, see [Having the AWS CLI prompt you for commands](cli-usage-parameters-prompting.md)\.
 
 **JMESPath Terminal**  
 JMESPath Terminal is an interactive terminal command to experiment with JMESPath expressions that are used for client\-side filtering\. Using the `jpterm` command, the terminal shows immediate query results as you're typing\. You can directly pipe AWS CLI output to the terminal, enabling advanced querying experimentation\.   

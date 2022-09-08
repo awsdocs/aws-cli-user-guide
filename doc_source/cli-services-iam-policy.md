@@ -1,3 +1,9 @@
+--------
+
+**This documentation is for Version 1 of the AWS CLI only\.** For documentation related to Version 2 of the AWS CLI, see the [Version 2 User Guide](https://docs.aws.amazon.com/cli/latest/userguide/)\.
+
+--------
+
 # Attaching an IAM managed policy to an IAM user<a name="cli-services-iam-policy"></a>
 
 This topic describes how to use AWS Command Line Interface \(AWS CLI\) commands to attach an AWS Identity and Access Management \(IAM\) policy to an IAM user\. The policy in this example provides the user with "Power User Access"\. For more information on the IAM service, see the [AWS Identity and Access Management User Guide](https://docs.aws.amazon.com/IAM/latest/UserGuide/introduction.html)\.
@@ -14,7 +20,7 @@ Before you run any commands, set your default credentials\. For more information
    arn:aws:iam::aws:policy/PowerUserAccess
    ```
 
-1. To attach the policy, use the [https://docs.aws.amazon.com/cli/latest/reference/iam/attach-user-policy.html](https://docs.aws.amazon.com/cli/latest/reference/iam/attach-user-policy.html) command, and reference the environment variable that holds the policy ARN\.
+1. To attach the policy, use the [https://docs.aws.amazon.com/cli/latest/reference/iam/attach-user-policy.html](https://docs.aws.amazon.com/cli/latest/reference/iam/attach-user-policy.html)[https://awscli.amazonaws.com/v2/documentation/api/latest/reference/iam/attach-user-policy.html](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/iam/attach-user-policy.html) command, and reference the environment variable that holds the policy ARN\.
 
    ```
    $ aws iam attach-user-policy --user-name MyUser --policy-arn $POLICYARN

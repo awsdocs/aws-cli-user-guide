@@ -1,19 +1,15 @@
+--------
+
+**This documentation is for Version 1 of the AWS CLI only\.** For documentation related to Version 2 of the AWS CLI, see the [Version 2 User Guide](https://docs.aws.amazon.com/cli/latest/userguide/)\.
+
+--------
+
 # Setting the AWS CLI output format<a name="cli-usage-output-format"></a>
 
 This topic describes the different output formats for the AWS Command Line Interface \(AWS CLI\)\. The AWS CLI supports the following output formats:
-+ [**`json`**](#json-output) – The output is formatted as a [JSON](https://json.org/) string\.
-+ [**`yaml`**](#yaml-output) – The output is formatted as a [YAML](https://yaml.org/) string\. *\(Available in the AWS CLI version 2 only\.\)*
-+ [**`yaml-stream`**](#yaml-stream-output) – The output is streamed and formatted as a [YAML](https://yaml.org/) string\. Streaming allows for faster handling of large data types\. *\(Available in the AWS CLI version 2 only\.\)*
-+ [**`text`**](#text-output) – The output is formatted as multiple lines of tab\-separated string values\. This can be useful to pass the output to a text processor, like `grep`, `sed`, or `awk`\.
-+ [**`table`**](#table-output) – The output is formatted as a table using the characters \+\|\- to form the cell borders\. It typically presents the information in a "human\-friendly" format that is much easier to read than the others, but not as programmatically useful\.
-
-**Topics**
-+ [How to select the output format](#cli-usage-output-format)
-+ [JSON output format](#json-output)
-+ [YAML output format](#yaml-output)
-+ [YAML stream output format](#yaml-stream-output)
-+ [Text output format](#text-output)
-+ [Table output format](#table-output)
++ **[`json`](#json-output)** – The output is formatted as a [JSON](https://json.org/) string\.
++ **[`text`](#text-output)** – The output is formatted as multiple lines of tab\-separated string values\. This can be useful to pass the output to a text processor, like `grep`, `sed`, or `awk`\.
++ **[`table`](#table-output)** – The output is formatted as a table using the characters \+\|\- to form the cell borders\. It typically presents the information in a "human\-friendly" format that is much easier to read than the others, but not as programmatically useful\.
 
 ## How to select the output format<a name="cli-usage-output-format"></a>
 
@@ -74,107 +70,6 @@ $ aws iam list-users --output json
         }
     ]
 }
-```
-
-## YAML output format<a name="yaml-output"></a>
-
-**This feature is available only with AWS CLI version 2\.**  
-The following feature is available only if you use AWS CLI version 2\. It isn't available if you run AWS CLI version 1\. For information on how to install version 2, see [Installing, updating, and uninstalling the AWS CLI version 2](install-cliv2.md)\.
-
-[YAML](https://yaml.org) is a good choice for handling the output programmatically with services and tools that emit or consume [YAML](https://yaml.org)\-formatted strings, such as AWS CloudFormation with its support for [YAML\-formatted templates](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-formats.html)\.
-
-For more advanced filtering that you might not be able to do with `--query`, you can consider `yq`, a command line YAML processor\. You can download it and find documentation at [https://mikefarah.gitbook.io/yq/](https://mikefarah.gitbook.io/yq/)\.
-
-The following is an example of YAML output\.
-
-```
-$ aws iam list-users --output yaml
-```
-
-```
-Users:
-- Arn: arn:aws:iam::123456789012:user/Admin
-  CreateDate: '2014-10-16T16:03:09+00:00'
-  PasswordLastUsed: '2016-06-03T18:37:29+00:00'
-  Path: /
-  UserId: AIDA1111111111EXAMPLE
-  UserName: Admin
-- Arn: arn:aws:iam::123456789012:user/backup/backup-user
-  CreateDate: '2019-09-17T19:30:40+00:00'
-  Path: /backup/
-  UserId: AIDA2222222222EXAMPLE
-  UserName: arq-45EFD6D1-CE56-459B-B39F-F9C1F78FBE19
-- Arn: arn:aws:iam::123456789012:user/cli-user
-  CreateDate: '2019-09-17T19:30:40+00:00'
-  Path: /
-  UserId: AIDA3333333333EXAMPLE
-  UserName: cli-user
-```
-
-## YAML stream output format<a name="yaml-stream-output"></a>
-
-**This feature is available only with AWS CLI version 2\.**  
-The following feature is available only if you use AWS CLI version 2\. It isn't available if you run AWS CLI version 1\. For information on how to install version 2, see [Installing, updating, and uninstalling the AWS CLI version 2](install-cliv2.md)\.
-
-The `yaml-stream` format takes advantage of the [YAML](https://yaml.org) format while providing more responsive/faster viewing of large data sets by streaming the data to you\. You can start viewing and using YAML data before the entire query downloads\. 
-
-For more advanced filtering that you might not be able to do with `--query`, you can consider `yq`, a command line YAML processor\. You can download it and find documentation at [http://mikefarah.github.io/yq/](http://mikefarah.github.io/yq/)\.
-
-The following is an example of `yaml-stream` output\.
-
-```
-$ aws iam list-users --output yaml-stream
-```
-
-```
-- IsTruncated: false
-  Users:
-  - Arn: arn:aws:iam::123456789012:user/Admin
-    CreateDate: '2014-10-16T16:03:09+00:00'
-    PasswordLastUsed: '2016-06-03T18:37:29+00:00'
-    Path: /
-    UserId: AIDA1111111111EXAMPLE
-    UserName: Admin
-  - Arn: arn:aws:iam::123456789012:user/backup/backup-user
-    CreateDate: '2019-09-17T19:30:40+00:00'
-    Path: /backup/
-    UserId: AIDA2222222222EXAMPLE
-    UserName: arq-45EFD6D1-CE56-459B-B39F-F9C1F78FBE19
-  - Arn: arn:aws:iam::123456789012:user/cli-user
-    CreateDate: '2019-09-17T19:30:40+00:00'
-    Path: /
-    UserId: AIDA3333333333EXAMPLE
-    UserName: cli-user
-```
-
-The following is an example of `yaml-stream` output in conjunction with using the `--page-size` parameter to paginate the streamed YAML content\.
-
-```
-$ aws iam list-users --output yaml-stream --page-size 2
-```
-
-```
-- IsTruncated: true
-  Marker: ab1234cdef5ghi67jk8lmo9p/q012rs3t445uv6789w0x1y2z/345a6b78c9d00/1efgh234ij56klmno78pqrstu90vwxyx  
-  Users:
-  - Arn: arn:aws:iam::123456789012:user/Admin
-    CreateDate: '2014-10-16T16:03:09+00:00'
-    PasswordLastUsed: '2016-06-03T18:37:29+00:00'
-    Path: /
-    UserId: AIDA1111111111EXAMPLE
-    UserName: Admin
-  - Arn: arn:aws:iam::123456789012:user/backup/backup-user
-    CreateDate: '2019-09-17T19:30:40+00:00'
-    Path: /backup/
-    UserId: AIDA2222222222EXAMPLE
-    UserName: arq-45EFD6D1-CE56-459B-B39F-F9C1F78FBE19
-- IsTruncated: false
-  Users:
-  - Arn: arn:aws:iam::123456789012:user/cli-user
-    CreateDate: '2019-09-17T19:30:40+00:00'
-    Path: /
-    UserId: AIDA3333333333EXAMPLE
-    UserName: cli-user
 ```
 
 ## Text output format<a name="text-output"></a>

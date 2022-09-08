@@ -1,14 +1,24 @@
+--------
+
+**This documentation is for Version 1 of the AWS CLI only\.** For documentation related to Version 2 of the AWS CLI, see the [Version 2 User Guide](https://docs.aws.amazon.com/cli/latest/userguide/)\.
+
+--------
+
 # Creating, displaying, and deleting Amazon EC2 key pairs<a name="cli-services-ec2-keypairs"></a>
 
 You can use the AWS Command Line Interface \(AWS CLI\) to create, display, and delete your key pairs for Amazon Elastic Compute Cloud \(Amazon EC2\)\. You use key pairs to connect to an Amazon EC2 instance\. 
 
-You must provide the key pair to Amazon EC2 when you create the instance, and then use that key pair to authenticate when you connect to the instance\. 
+You must provide the key pair to Amazon EC2 when you create the instance, and then use that key pair to authenticate when you connect to the instance\.
+
+**Note**  
+For additional command examples, see the [AWS CLI reference guide](https://docs.aws.amazon.com/cli/latest/reference/)\.
 
 **Topics**
 + [Prerequisites](#cli-services-ec2-keypairs-prereqs)
 + [Create a key pair](#creating-a-key-pair)
 + [Display your key pair](#displaying-a-key-pair)
 + [Delete your key pair](#deleting-a-key-pair)
++ [References](#cli-services-ec2-keypairs-references)
 
 ## Prerequisites<a name="cli-services-ec2-keypairs-prereqs"></a>
 
@@ -18,7 +28,7 @@ To run the `ec2` commands, you need to:
 
 ## Create a key pair<a name="creating-a-key-pair"></a>
 
-To create a key pair, use the [create\-key\-pair](https://docs.aws.amazon.com/cli/latest/reference/ec2/create-key-pair.html) command with the `--query` option, and the `--output text` option to pipe your private key directly into a file\.
+To create a key pair, use the `[aws ec2 create\-key\-pair](https://docs.aws.amazon.com/cli/latest/reference/ec2/create-key-pair.html)` command with the `--query` option, and the `--output text` option to pipe your private key directly into a file\.
 
 ```
 $ aws ec2 create-key-pair --key-name MyKeyPair --query 'KeyMaterial' --output text > MyKeyPair.pem
@@ -70,7 +80,7 @@ $ chmod 400 MyKeyPair.pem
 
 A "fingerprint" is generated from your key pair, and you can use it to verify that the private key that you have on your local machine matches the public key that's stored in AWS\. 
 
-The fingerprint is an SHA1 hash taken from a DER\-encoded copy of the private key\. This value is captured when the key pair is created, and is stored in AWS with the public key\. You can view the fingerprint in the Amazon EC2 console or by running the AWS CLI command `aws ec2 describe-key-pairs`\. 
+The fingerprint is an SHA1 hash taken from a DER\-encoded copy of the private key\. This value is captured when the key pair is created, and is stored in AWS with the public key\. You can view the fingerprint in the Amazon EC2 console or by running the AWS CLI command `[aws ec2 describe\-key\-pairs](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-key-pairs.html)`\. 
 
 The following example displays the fingerprint for `MyKeyPair`\.
 
@@ -90,8 +100,20 @@ For more information about keys and fingerprints, see [Amazon EC2 Key Pairs](htt
 
 ## Delete your key pair<a name="deleting-a-key-pair"></a>
 
-To delete a key pair, run the following command, substituting *`MyKeyPair`* with the name of the pair to delete\.
+To delete a key pair, run the `[aws ec2 delete\-key\-pair](https://docs.aws.amazon.com/cli/latest/reference/ec2/delete-key-pair.html)` command, substituting *`MyKeyPair`* with the name of the pair to delete\.
 
 ```
 $ aws ec2 delete-key-pair --key-name MyKeyPair
 ```
+
+## References<a name="cli-services-ec2-keypairs-references"></a>
+
+**AWS CLI reference:**
++ `[aws ec2](https://docs.aws.amazon.com/cli/latest/reference/ec2/index.html)`
++ `[aws ec2 create\-key\-pair](https://docs.aws.amazon.com/cli/latest/reference/ec2/create-key-pair.html)`
++ `[aws ec2 delete\-key\-pair](https://docs.aws.amazon.com/cli/latest/reference/ec2/delete-key-pair.html)`
++ `[aws ec2 describe\-key\-pairs](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-key-pairs.html)`
+
+**Other reference:**
++ [Amazon Elastic Compute Cloud Documentation](https://docs.aws.amazon.com/ec2/)
++ To view and contribute to AWS SDK and AWS CLI code examples, see the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/) on *GitHub*\.

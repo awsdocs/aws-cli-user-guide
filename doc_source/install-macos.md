@@ -1,3 +1,9 @@
+--------
+
+**This documentation is for Version 1 of the AWS CLI only\.** For documentation related to Version 2 of the AWS CLI, see the [Version 2 User Guide](https://docs.aws.amazon.com/cli/latest/userguide/)\.
+
+--------
+
 # Install, Update, and Uninstall the AWS CLI version 1 on macOS<a name="install-macos"></a>
 
 You can install the AWS Command Line Interface \(AWS CLI\) version 1 and its dependencies on macOS by using the bundled installer or `pip`\. 
@@ -6,16 +12,15 @@ You can install the AWS Command Line Interface \(AWS CLI\) version 1 and its dep
 + [Prerequisites](#install-macosos-prereq)
 + [Install, update and uninstall the AWS CLI version 1 on macOS using the bundled installer](#install-macosos-bundled)
 + [Install, update and uninstall the AWS CLI version 1 using pip](#awscli-install-osx-pip)
++ [Troubleshooting AWS CLI install and uninstall errors](#awscli-install-osx-tshoot)
 
 ## Prerequisites<a name="install-macosos-prereq"></a>
 
-Before you can install the AWS CLI version 1 on macOS, be sure you have Python 2 version 2\.7 or later, or Python 3 version 3\.6 or later installed\. For installation instructions, see the [Downloading Python](https://wiki.python.org/moin/BeginnersGuide/Download) page in Python's *Beginner Guide*\.
+Before you can install the AWS CLI version 1 on macOS, be sure you have Python 3\.6 or later installed\. For installation instructions, see the [Downloading Python](https://wiki.python.org/moin/BeginnersGuide/Download) page in Python's *Beginner Guide*\.
 
 **Warning**  
-As of 2/1/2021 Python 3\.4 and 3\.5 is deprecated\.  
-Python 2\.7 was deprecated by the [Python Software Foundation](https://www.python.org/psf-landing/) on January 1, 2020\. Going forward, customers using the AWS CLI version 1 should transition to using Python 3, with a minimum of Python 3\.6\. Python 2\.7 support is deprecated for new versions of the AWS CLI version 1 starting 7/19/2021\.  
-In order to use the AWS CLI version 1 with an older version of Python, you need to install an earlier version of the AWS CLI version 1\.  
-To view the AWS CLI version 1 Python version support matrix, see [About the AWS CLI versions](welcome-versions.md)\. 
+Python 2\.7 was deprecated by the [Python Software Foundation](https://www.python.org/psf-landing/) on January 1, 2020\. Starting with AWS CLI version 1\.20\.0, a minimum version of Python 3\.6 is required\.  
+In order to use the AWS CLI version 1 with an older version of Python, you need to install an earlier version of the AWS CLI version 1\. To view the AWS CLI version 1 Python version support matrix, see [Python version requirements](cli-chap-install.md#cli-chap-install-python)\. 
 
 ## Install, update and uninstall the AWS CLI version 1 on macOS using the bundled installer<a name="install-macosos-bundled"></a>
 
@@ -94,7 +99,7 @@ sudo ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
 
    ```
    $ aws --version
-   aws-cli/1.19.3 Python/3.7.4 Linux/4.14.133-113.105.amzn2.x86_64 botocore/1.13
+   aws-cli/1.25.55 Python/3.8.8 Linux/4.14.133-113.105.amzn2.x86_64 botocore/1.13
    ```
 
    If you get an error, see [Troubleshooting AWS CLI errors](cli-chap-troubleshooting.md)\.
@@ -190,19 +195,29 @@ unzip awscli-bundle.zip
 
    ```
    $ aws --version
-   aws-cli/1.19.3 Python/3.7.4 Linux/4.14.133-113.105.amzn2.x86_64 botocore/1.13
+   aws-cli/1.25.55 Python/3.8.8 Linux/4.14.133-113.105.amzn2.x86_64 botocore/1.13
    ```
 
    If you get an error, see [Troubleshooting AWS CLI errors](cli-chap-troubleshooting.md)\.
 
 ### Uninstall the AWS CLI version 1 bundled installer<a name="install-macosos-bundled-uninstall"></a>
 
-The bundled installer puts everything inside of the installation directory except the optional symlink, so to uninstall, you just need to delete those two items\.
+1. The bundled installer puts everything inside of the installation directory except the optional symlink, so to uninstall, you just need to delete those two items\.
 
-```
-$ sudo rm -rf /usr/local/aws
-$ sudo rm /usr/local/bin/aws
-```
+   ```
+   $ sudo rm -rf /usr/local/aws
+   $ sudo rm /usr/local/bin/aws
+   ```
+
+1. **\(Optional\)** Remove the shared AWS SDK and AWS CLI settings information in the `.aws` folder\.
+**Warning**  
+These configuration and credentials settings are shared across all AWS SDKs and the AWS CLI\. If you remove this folder, they cannot be accessed by any AWS SDKs that are still on your system\.
+
+   The default location of the `.aws` folder differs between platforms, by default the folder is located in *\~/\.aws/*\. If your user account has write permission to this directory, you don't need to use `sudo`\.
+
+   ```
+   $ sudo rm ~/.aws/
+   ```
 
 ## Install, update and uninstall the AWS CLI version 1 using pip<a name="awscli-install-osx-pip"></a>
 
@@ -240,24 +255,30 @@ If you don't already have `pip` installed, you can install it by using the scrip
    $ pip3 install awscli --upgrade --user
    ```
 
-   **For a specific version of the AWS CLI,** append a less\-than symbol `<` and the version number to the filename\. For this example the filename for version *1\.16\.312* would be *<1\.16\.312* resulting in the following command:
+   **For a specific version of the AWS CLI,** append two equals signs `=` and the version number to the filename\. For this example the filename for version *1\.16\.312* would be *==1\.16\.312* resulting in the following command:
 
    ```
-   $ pip3 install awscli<1.16.312 --upgrade --user
+   $ pip3 install awscli==1.16.312 --upgrade --user
+   ```
+**Note**  
+Use appropriate quoting rules for your terminal\. To use the `=` character, you might need to use single or double quotes to escape properly\. The following example escapes using single quotes:  
+
+   ```
+   $ pip3 install 'awscli==1.16.312' --upgrade --user
    ```
 
 1. Verify that the AWS CLI is installed correctly\.
 
    ```
    $ aws --version
-   aws-cli/1.19.3 Python/3.7.4 Darwin/18.7.0 botocore/1.13
+   aws-cli/1.25.55 Python/3.8.8 Darwin/18.7.0 botocore/1.13
    ```
 
    If the program isn't found, [add it to your command line path](#awscli-install-osx-path)\.
 
 ### Add the AWS CLI version 1 executable to your macOS command line path<a name="awscli-install-osx-path"></a>
 
-After installing with `pip`, you may need to add the `aws` program to your operating system's `PATH` environment variable\. The location of the program depends on where Python is installed\.
+After installing with `pip`, you might need to add the `aws` program to your operating system's `PATH` environment variable\. The location of the program depends on where Python is installed\.
 
 **Example AWS CLI install location \- macOS with Python 3\.6 and `pip` \(user mode\)**  
 
@@ -310,8 +331,22 @@ $ ls -al /usr/local/bin/python
 
 ### Uninstall the AWS CLI using pip<a name="awscli-install-osx-pip-uninstall"></a>
 
-If you need to uninstall the AWS CLI, use `pip uninstall`\.
+1. To uninstall the AWS CLI, use `pip uninstall`\.
 
-```
-$ pip3 uninstall awscli
-```
+   ```
+   $ pip3 uninstall awscli
+   ```
+
+1. **\(Optional\)** Remove the shared AWS SDK and AWS CLI settings information in the `.aws` folder\.
+**Warning**  
+These configuration and credentials settings are shared across all AWS SDKs and the AWS CLI\. If you remove this folder, they cannot be accessed by any AWS SDKs that are still on your system\.
+
+   The default location of the `.aws` folder differs between platforms, by default the folder is located in *\~/\.aws/*\. If your user account has write permission to this directory, you don't need to use `sudo`\.
+
+   ```
+   $ sudo rm ~/.aws/
+   ```
+
+## Troubleshooting AWS CLI install and uninstall errors<a name="awscli-install-osx-tshoot"></a>
+
+If you come across issues after installing or uninstalling the AWS CLI, see [Troubleshooting AWS CLI errors](cli-chap-troubleshooting.md) for troubleshooting steps\. For the most relevant troubleshooting steps, see [Command not found errors](cli-chap-troubleshooting.md#tshoot-install-not-found), [The "`aws --version`" command returns a different version than you installed](cli-chap-troubleshooting.md#tshoot-install-wrong-version), and [The "`aws --version`" command returns a version after uninstalling the AWS CLI](cli-chap-troubleshooting.md#tshoot-uninstall-1)\.

@@ -1,4 +1,17 @@
+--------
+
+**This documentation is for Version 1 of the AWS CLI only\.** For documentation related to Version 2 of the AWS CLI, see the [Version 2 User Guide](https://docs.aws.amazon.com/cli/latest/userguide/)\.
+
+--------
+
 # Using AWS Identity and Access Management from the AWS CLI<a name="cli-services-iam"></a>
+
+
+****  
+
+| An introduction to AWS Identity and Access Management | 
+| --- | 
+|   | 
 
 You can access the features of AWS Identity and Access Management \(IAM\) using the AWS Command Line Interface \(AWS CLI\)\. To list the AWS CLI commands for IAM, use the following command\.
 

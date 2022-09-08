@@ -1,8 +1,21 @@
+--------
+
+**This documentation is for Version 1 of the AWS CLI only\.** For documentation related to Version 2 of the AWS CLI, see the [Version 2 User Guide](https://docs.aws.amazon.com/cli/latest/userguide/)\.
+
+--------
+
 # Using Amazon DynamoDB with the AWS CLI<a name="cli-services-dynamodb"></a>
 
-The AWS Command Line Interface \(AWS CLI\) provides support for all of the AWS database services, including Amazon DynamoDB\. You can use the AWS CLI for ad hoc operations, such as creating a table\. You can also use it to embed DynamoDB operations within utility scripts\. 
 
-For more information about using the AWS CLI with DynamoDB, see [DynamoDB](https://docs.aws.amazon.com/cli/latest/reference/dynamodb/index.html) in the *AWS CLI Command Reference*\.
+****  
+
+| An introduction to Amazon DynamoDB | 
+| --- | 
+|   | 
+
+The AWS Command Line Interface \(AWS CLI\) provides support for all of the AWS database services, including Amazon DynamoDB\. You can use the AWS CLI for impromptu operations, such as creating a table\. You can also use it to embed DynamoDB operations within utility scripts\. 
+
+For more information about using the AWS CLI with DynamoDB, see `[dynamodb](https://docs.aws.amazon.com/cli/latest/reference/dynamodb/index.html)``` in the *AWS CLI Command Reference*\.
 
 To list the AWS CLI commands for DynamoDB, use the following command\.
 
@@ -26,7 +39,7 @@ To run the `dynamodb` commands, you need to:
 
 The command line format consists of an DynamoDB command name, followed by the parameters for that command\. The AWS CLI supports the CLI [shorthand syntax](cli-usage-shorthand.md) for the parameter values, and full JSON\.
 
-FThe following example creates a table named `MusicCollection`\. 
+The following example creates a table named `MusicCollection`\. 
 
 ```
 $ aws dynamodb create-table \
@@ -53,7 +66,9 @@ $ aws dynamodb put-item \
         "TableName": "MusicCollection"
     }
 }
+```
 
+```
 $ aws dynamodb put-item \
     --table-name MusicCollection \
     --item '{ 
@@ -62,7 +77,6 @@ $ aws dynamodb put-item \
         "AlbumTitle": {"S": "Songs About Life"} 
       }' \
     --return-consumed-capacity TOTAL
-
 {
     "ConsumedCapacity": {
         "CapacityUnits": 1.0,
