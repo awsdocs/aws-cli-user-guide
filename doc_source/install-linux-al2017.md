@@ -103,7 +103,7 @@ aws-cli/1.25.55 Python/3.8.8 Linux/4.14.133-113.105.amzn2.x86_64 botocore/1.13
 
 ### Uninstall the AWS CLI version 1 using yum<a name="install-amazon-linux-yum-uninstall"></a>
 
-Some newer images of Amazon Linux 2 use yum to install the Amazon Linux 2 you need to uninstall the AWS CLI, use `pip uninstall`\.
+Some newer images of Amazon Linux 2 use yum to install the Amazon Linux 2. To uninstall the AWS CLI with yum, use `yum remove`\.
 
 ```
 $ sudo yum remove awscli
