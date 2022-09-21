@@ -152,6 +152,13 @@ After confirming the completer is in your path, enable command completion by run
   ```
 
   Add the previous commands to `~/.zshrc` to run it each time you open a new shell\.
+
++ **`zsh` + `oh-my-zsh`** - To run command completion, simply include the aws plugin in your `oh-my-zsh` plugins inside your `~/.zshrc` profile.
+
+  ```
+  plugins=(git aws ...)
+  ```
+
 +  **`tcsh`** – Complete for `tcsh` takes a word type and pattern to define the completion behavior\. 
 
   ```
