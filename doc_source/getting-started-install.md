@@ -39,9 +39,8 @@ We provide the steps in one easy to copy and paste group based on whether you us
 
 ```
 $ curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-$ unzip awscliv2.zip
-$ sudo bash ./aws/install
-$ sudo rm -rf ./aws/
+unzip awscliv2.zip
+sudo bash ./aws/install
 ```
 
 ------
@@ -49,9 +48,8 @@ $ sudo rm -rf ./aws/
 
 ```
 $ curl "https://awscli.amazonaws.com/awscli-exe-linux-aarch64.zip" -o "awscliv2.zip"
-$ unzip awscliv2.zip
-$ sudo bash ./aws/install
-$ sudo rm -rf ./aws/
+unzip awscliv2.zip
+sudo bash ./aws/install
 ```
 
 ------
