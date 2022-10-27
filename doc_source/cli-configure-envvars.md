@@ -110,7 +110,7 @@ If defined, this environment variable overrides the value for the profile settin
 
 [`AWS_DEFAULT_REGION`](cli-configure-quickstart.md#cli-configure-quickstart-region)  
 Specifies the AWS Region to send the request to\.  
-If defined, this environment variable overrides the value for the profile setting `region` and \. You can override this environment variable by using the `--region` command line parameter and the AWS SDK compatible `AWS_REGION` environment variable\.
+If defined, this environment variable overrides the value for the profile setting `region`. You can override this environment variable by using the `--region` command line parameter and the AWS SDK compatible `AWS_REGION` environment variable\.
 
 `AWS_EC2_METADATA_DISABLED`  
 Disables the use of the Amazon EC2 instance metadata service \(IMDS\)\.   
