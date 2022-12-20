@@ -5,7 +5,7 @@
 # Setting the AWS CLI output format<a name="cli-usage-output-format"></a>
 
 This topic describes the different output formats for the AWS Command Line Interface \(AWS CLI\)\. The AWS CLI supports the following output formats:
-+ **[`json`](#json-output)** – The output is formatted as a [JSON](https://json.org/) string\.
++ **[`json`](#json-output)** – The output is formatted as a [JSON](https://json.org/) string\. This can be useful to pass the output to a JSON processor, like `jq`.
 +  **[`yaml`](#yaml-output)** – The output is formatted as a [YAML](https://yaml.org/) string\.
 + **[`yaml-stream`](#yaml-stream-output)** – The output is streamed and formatted as a [YAML](https://yaml.org/) string\. Streaming allows for faster handling of large data types\.
 + **[`text`](#text-output)** – The output is formatted as multiple lines of tab\-separated string values\. This can be useful to pass the output to a text processor, like `grep`, `sed`, or `awk`\.
