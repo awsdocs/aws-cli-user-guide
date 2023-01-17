@@ -114,7 +114,9 @@ If defined, this environment variable overrides the value for the profile settin
 
 `AWS_EC2_METADATA_DISABLED`  
 Disables the use of the Amazon EC2 instance metadata service \(IMDS\)\.   
-If set to true, user credentials or configuration \(like the Region\) are not requested from IMDS\.
+If set to true, user credentials or configuration \(like the Region\) are not requested from IMDS\. 
+
+This environment variable will effect all AWS SDK commands that rely on the IMDS in addition to AWS CLI commands. 
 
 [`AWS_MAX_ATTEMPTS`](cli-configure-files.md#cli-config-max_attempts)  
 Specifies a value of maximum retry attempts the AWS CLI retry handler uses, where the initial call counts toward the value that you provide\. For more information on retries, see [AWS CLI retries](cli-configure-retries.md)\.  
