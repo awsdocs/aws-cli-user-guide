@@ -197,22 +197,35 @@ To enable command completion for PowerShell on Windows, complete the following s
 1. To enable command completion, add the following code block to your profile, save, and then close the file\.
 
    ```
-   Register-ArgumentCompleter -Native -CommandName aws -ScriptBlock {
-       param($commandName, $wordToComplete, $cursorPosition)
-           $env:COMP_LINE=$wordToComplete
-           $env:COMP_POINT=$cursorPosition
-           aws_completer.exe | ForEach-Object {
-               [System.Management.Automation.CompletionResult]::new($_, $_, 'ParameterValue', $_)
-           }
-           Remove-Item Env:\COMP_LINE     
-           Remove-Item Env:\COMP_POINT  
-   }
+Register-ArgumentCompleter -Native -CommandName aws -ScriptBlock {
+	param($commandName, $wordToComplete, $cursorPosition)
+		$wordPattern = '.*'
+		if ($wordToComplete -match '\*') {
+			$wordPattern = [regex]::new('(?<=\*).+').Match($wordToComplete).Value
+			$env:COMP_LINE = [regex]::new('.+(?=\*)').Match($wordToComplete).Value
+		} else {
+			$env:COMP_LINE = $wordToComplete
+		}
+		if ($env:COMP_LINE.Length -lt $cursorPosition) {
+			$env:COMP_LINE = $env:COMP_LINE + ' '
+		}
+		$env:COMP_POINT = $cursorPosition
+		aws_completer.exe | ForEach-Object {
+			[System.Management.Automation.CompletionResult]::new($_, $_, 'ParameterValue', $_) 
+		} | Where-Object -FilterScript { $_.CompletionText -match $wordPattern }
+		Remove-Item Env:\COMP_LINE     
+		Remove-Item Env:\COMP_POINT  
+}
    ```
 
 1. After enabling command completion, reload your shell, enter a partial command, and press **Tab** to cycle through the available commands\.
 
    ```
    $ aws sTab
+   ```
+
+   ```
+   $ aws \*recordTab
    ```
 
    ```
