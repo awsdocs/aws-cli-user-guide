@@ -365,7 +365,7 @@ $ chmod +x ~/.local/bin/aws
 
 ```
 $ aws s3 ls
-An error occurred (AcessDenied) when calling the ListBuckets operation: Access denied.
+An error occurred (AccessDenied) when calling the ListBuckets operation: Access denied.
 ```
 When you run a AWS CLI command, AWS operations are performed on your behalf, using credentials that associate you with an IAM user or role\. The policies attached to that IAM user or role must grant you permission to call the API actions that correspond to the commands that you run with the AWS CLI\.   
 Most commands call a single action with a name that matches the command name\. However, custom commands like `aws s3 sync` call multiple APIs\. You can see which APIs a command calls by using the `--debug` option\.  
