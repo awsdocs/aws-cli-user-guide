@@ -216,7 +216,7 @@ These configuration and credentials settings are shared across all AWS SDKs and 
    The default location of the `.aws` folder differs between platforms, by default the folder is located in *\~/\.aws/*\. If your user account has write permission to this directory, you don't need to use `sudo`\.
 
    ```
-   $ sudo rm ~/.aws/
+   $ sudo rm -r ~/.aws/
    ```
 
 ## Install, update and uninstall the AWS CLI version 1 using pip<a name="awscli-install-osx-pip"></a>
